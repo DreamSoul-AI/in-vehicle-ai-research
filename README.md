@@ -26,4 +26,4 @@ python -m http.server 8000 --bind 127.0.0.1 --directory dist
 修改产品记录时，先核对上级主数据、来源与日期，再更新网页副本。未公开价格不得填零，整车、组合包、软件和企业项目分别记录。来源图片仅作研究识别，不表示厂商合作或背书。
 
 # 四、托管
-Sites 项目身份保留在 `.openai/hosting.json`，更新沿用该身份。新建站点保持私有访问，源码与实际部署版本通过 Sites 工作流关联。凭证不写入项目文件。
+Sites 项目身份保留在 `.openai/hosting.json`，更新沿用该身份。站点已部署为 [私有研究网页](https://dreamsoul-in-vehicle-ai-research.shared-dream.chatgpt.site)，源码与实际部署版本通过 Sites 工作流关联。凭证不写入项目文件。
