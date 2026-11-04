@@ -152,7 +152,7 @@ function showStage(id) {
 }
 async function initialize() {
   try {
-    const response = await fetch("data/products.json?v=ratings-market-20261105");
+    const response = await fetch("data/products.json?v=named-platforms-20261105");
     if (!response.ok) throw new Error(`数据返回 ${response.status}`);
     const data = await response.json();
     if (!Array.isArray(data.products) || !Array.isArray(data.stages))

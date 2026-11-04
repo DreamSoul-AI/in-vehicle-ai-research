@@ -1,31 +1,34 @@
-%% title: 平台角色与任务执行位置
-%% 图1 平台角色与执行位置。分析示意，非进程图，箭头表示管理或接入关系。
+%% title: 平台、具体产品与公司关系
+%% 分析示意；实线表示提供、实现或投射，虚线表示授权或具体系统集成条件。
 %% 来源 https://developer.apple.com/carplay/
-%% 来源 https://developer.android.com/training/cars/platforms/android-auto
+%% 来源 https://source.android.com/docs/setup/about
 %% 来源 https://source.android.com/docs/automotive/start/what_automotive
-%% 来源 https://mfi.apple.com/en/faqs
+%% 来源 https://www.atotodirect.com/en-gb/pages/about-atoto
 flowchart TB
-  PLATFORM["平台方<br/>类别、框架与分发规则"]
-  APP["应用开发者<br/>任务流程与执行接口"]
-  subgraph PHONE["手机执行环境"]
-    SYSTEM["系统助手"]
-    OWN["自有伴随 App"]
-    PROJECT["CarPlay / Android Auto<br/>手机应用"]
+  APPLE["Apple Inc."]
+  GOOGLE["Google LLC<br/>主导 AOSP 项目"]
+  AOTULE["Aotule 品牌方<br/>HK Auto Smart 全球运营销售"]
+  subgraph PHONE["手机与相应服务"]
+    SIRI["Apple Siri"]
+    GEMINI["Google Gemini"]
+    CP["Apple CarPlay"]
+    AA["Google Android Auto"]
   end
-  subgraph VEHICLE["车内设备环境"]
-    RECEIVER["投射接收屏<br/>显示、输入与音频"]
-    NATIVE["AAOS / 后装本机应用<br/>系统与权限分别核对"]
+  subgraph CAR["车内设备与系统"]
+    SCREEN["相容投射接收设备<br/>逐品牌型号核对"]
+    AAOS["Android Automotive OS<br/>由车厂或设备商具体集成"]
+    ATOTO["ATOTO S8 Gen4 S84G209P<br/>具体 Android 替换车机"]
   end
-  DEVICE["设备商 / ODM<br/>硬件、固件与认证"]
-  OEM["车厂<br/>原车接口与系统授权"]
-  CHANNEL["渠道 / 安装商<br/>适配、交付与支持"]
-  PLATFORM --> APP
-  PLATFORM --> SYSTEM
-  APP --> OWN
-  APP --> PROJECT
-  PROJECT -->|"投射交互"| RECEIVER
-  APP --> NATIVE
-  DEVICE --> RECEIVER
-  DEVICE --> NATIVE
-  OEM -.->|"按车型和权限提供"| NATIVE
-  CHANNEL -.->|"服务于实际设备组合"| VEHICLE
+  GAS["Google GAS<br/>授权应用与服务集合"]
+  OEM["车厂 / 系统伙伴"]
+  APPLE --> SIRI
+  APPLE --> CP
+  GOOGLE --> GEMINI
+  GOOGLE --> AA
+  GOOGLE --> AAOS
+  GOOGLE --> GAS
+  GAS -.->|"可选授权集成"| AAOS
+  OEM -.-> AAOS
+  CP -->|"投射交互"| SCREEN
+  AA -->|"投射交互"| SCREEN
+  AOTULE --> ATOTO

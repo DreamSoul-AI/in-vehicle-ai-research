@@ -7,10 +7,13 @@
 .decision-stage button[aria-pressed=true] { background: var(--blue); color: white; border-color: var(--blue); }
 .decision-takeaway { padding: 14px 17px; background: #fff7c4; border-left: 3px solid #e5c000; font-size: 14px; font-weight: 600; }
 .score-table-wrap { overflow: auto; border: 1px solid var(--line); border-radius: 8px; background: white; }
-.score-table { width: 100%; min-width: 720px; border-collapse: collapse; table-layout: fixed; font-size: 13px; }
+.score-table { width: 100%; min-width: 800px; border-collapse: collapse; table-layout: fixed; font-size: 13px; }
 .score-table th, .score-table td { padding: 13px 9px; vertical-align: middle; text-align: center; }
 .score-table th:first-child { width: 160px; text-align: left; position: sticky; left: 0; background: #f5f8fd; z-index: 1; }
-.score-table th:nth-child(2) { width: 90px; }
+.score-table th:nth-child(2) { width: 74px; }
+.score-table th:nth-child(3) { width: 90px; }
+.score-company a { font-size: 12px; }
+.score-company-detail { font-size: 13px; line-height: 1.9; }
 .score-table th:last-child { width: 107px; }
 .score-table th small { display: block; font-size: 10px; color: var(--muted); font-weight: 400; }
 .score-platform { border: 0; background: transparent; color: var(--blue); padding: 0; font-size: 13px; font-weight: 650; text-align: left; text-decoration: underline; text-underline-offset: 3px; }
@@ -69,10 +72,13 @@
   .decision-heading :is(h3,h4) { font-size: 23px; }
   .score-table { min-width: 0; }
   .score-dimension { display: none; }
-  .score-table th:first-child { width: 43%; }
-  .score-table th:nth-child(2) { width: 25%; }
-  .score-table th:last-child { width: 32%; }
-  .score-table th, .score-table td { padding: 12px 8px; }
+  .score-table th:first-child { width: 38%; }
+  .score-table th:nth-child(2) { width: 17%; }
+  .score-table th:nth-child(3) { width: 20%; }
+  .score-table th:last-child { width: 25%; }
+  .score-table th, .score-table td { padding: 12px 5px; }
+  .score-company a { font-size: 10px; }
+  .score-track { width: min(48px,100%); }
   .score-platform { font-size: 12px; }
   .score-tag { font-size: 10px; padding: 3px; }
   .decision-takeaway { font-size: 12px; padding: 11px; }

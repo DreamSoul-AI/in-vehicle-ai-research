@@ -5,27 +5,27 @@
       {
         "id": "deployment",
         "label": "部署匹配",
-        "anchor": "按阶段形态判断。0已证实不可部署，1需重大前提，2需较多准备，3需常规集成，4较契合但需验证，5直接匹配且新增负担较小。未知用null。"
+        "anchor": "针对本阶段采用现成平台或产品。1需重大额外前提，2需较多载体与准备，3需常规设备集成或安装，4较契合且需配置，5可轻量直接采用。未知不计0。"
       },
       {
         "id": "reuse",
         "label": "任务复用",
-        "anchor": "按目标任务的现成程度判断。0已证实不可复用，1主要自行建设，2有限组件，3基础组件需整合，4大部分可复用，5直接复用已配置任务与账号。未知用null。"
+        "anchor": "计现成导航、通话和媒体等目标任务。1主要缺失，2需伙伴补齐服务，3已有基础组件但要适配，4多数任务可复用但有限制，5可复用已配置的相容主力任务。不计拟建软件。"
       },
       {
-        "id": "autonomy",
-        "label": "流程自主",
-        "anchor": "限定在有权执行的任务内。0所需流程不可实现，1调用固定流程，2局部配置，3框架内定制，4大部分自控，5掌握完整有限任务状态与流程。未知用null。"
+        "id": "configurability",
+        "label": "可配置性",
+        "anchor": "只计现成设置、偏好、默认应用和厂商支持入口。1几乎固定，2有限偏好，3多项任务或服务配置，4较丰富设备与助手配置，5已验证在无需自研软件条件下满足完整目标配置。不把开发框架潜力算已有能力。"
       },
       {
         "id": "access",
         "label": "接入可得",
-        "anchor": "评估必要接口和权限的取得路径。0已证实不可取得，1专门系统合作，2关键能力依赖合作，3逐项申请或核验，4主要公开接口和常规授权，5必要资格已实际核准。未知报价不计0。"
+        "anchor": "1依赖专门系统合作，2有关键接口或组合待核，3公开配置路径存在但条件较多，4以相容产品和常规设置为主，5目标组合已实际核准。无公开报价不计0。"
       },
       {
         "id": "maintenance",
         "label": "维护易度",
-        "anchor": "越高表示项目持续责任越轻。0已证实不可持续，1系统硬件全面维护，2设备版本负担较重，3常规兼容支持，4主要复用平台，5仅少量明确支持。不是已测成本。"
+        "anchor": "只评估采用现成方案的选型、配置、交付与售后责任。1系统合作责任很重，2安装与多层依赖较多，3常规配置与服务协调，4主要由平台维护但仍需兼容支持，5持续支持负担已证实较小。不是实测成本。"
       }
     ],
     "stages": {
@@ -53,368 +53,417 @@
     "platforms": [
       {
         "id": "carplay",
-        "name": "CarPlay",
-        "type": "手机投射平台",
-        "confidence": "中：基于文档判断，非体验实测",
-        "prerequisite": "按自有应用接入现成相容硬件评估，需iPhone、相容接收屏及应用类别与entitlement审核；不假设自研接收端已获MFi资格。",
+        "name": "Apple CarPlay",
+        "type": "现成手机投射生态",
+        "confidence": "中：采用现成生态的文档判断，非实测",
+        "prerequisite": "使用已有相容CarPlay接收设备和已支持应用，不预设开发我方App。需相容iPhone、手机服务、音频与安装条件；若将来另做应用或硬件合作，再单列开发授权。",
         "sources": [
           {
-            "title": "Apple CarPlay",
-            "url": "https://developer.apple.com/carplay/"
+            "title": "Apple CarPlay产品页",
+            "url": "https://www.apple.com/ios/carplay/"
           },
           {
-            "title": "CarPlay Developer Guide",
-            "url": "https://developer.apple.com/download/files/CarPlay-Developer-Guide.pdf"
+            "title": "Apple车内使用Siri指南",
+            "url": "https://support.apple.com/en-ie/guide/iphone/iph0aa8c80e6/27/ios/27"
           },
           {
-            "title": "Apple MFi FAQ",
-            "url": "https://mfi.apple.com/en/faqs"
+            "title": "Apple官方主体依据",
+            "url": "https://www.apple.com/legal/intellectual-property/trademark/appletmlist.html"
           }
         ],
         "voice": {
           "scores": [
             1,
             5,
-            3,
-            3,
-            3
+            2,
+            4,
+            4
           ],
           "reasons": [
-            "需相容接收屏，增加首期免屏目标之外的前提",
-            "可复用iPhone相容导航、通信和媒体任务",
-            "可定制类别内流程，仍受模板和音频规则约束",
-            "应用授权路径可查，目标应用尚未获准",
-            "仍需维护应用、手机版本、连接和硬件兼容"
+            "需相容屏幕，增加免屏首款之外的载体前提",
+            "可复用已支持的iPhone导航、通信和媒体",
+            "主要使用现成应用与偏好，不能自定全部交互",
+            "采用既有相容设备和支持应用，以用户配置为主",
+            "平台维护核心体验，仍需连接和设备兼容支持"
           ],
-          "tag": "需屏幕入口"
+          "tag": "需相容屏幕"
         },
         "panel": {
           "scores": [
             4,
             5,
-            3,
-            3,
-            3
+            2,
+            4,
+            4
           ],
           "reasons": [
-            "相容投射屏更契合第二阶段显示目标",
-            "可复用手机应用和既有账号内容",
-            "界面和交互仍受CarPlay类别与模板约束",
-            "新增面板不免除应用授权和硬件条件",
-            "复用投射生态，仍承担自身应用与连接支持"
+            "相容投射屏匹配固定显示目标",
+            "继续复用iPhone现成任务和账号",
+            "仅计现成设置，不计我方新应用能力",
+            "需验证具体接收设备、手机和使用地区",
+            "核心生态由平台维护，保留安装与配对支持"
           ],
-          "tag": "相容投射路线"
-        }
+          "tag": "现成投射路线"
+        },
+        "company": "Apple",
+        "companyLegal": "Apple Inc.",
+        "companyRole": "Siri与CarPlay品牌及平台提供方",
+        "companyUrl": "https://www.apple.com/legal/intellectual-property/trademark/appletmlist.html"
       },
       {
         "id": "android-auto",
-        "name": "Android Auto",
-        "type": "手机投射平台",
-        "confidence": "中：基于文档判断，非体验实测",
-        "prerequisite": "需受支持Android手机、相容接收界面和应用类别/可信分发条件。接口读取或应用录音不等于车辆控制或常驻监听。",
+        "name": "Google Android Auto",
+        "type": "现成手机投射生态",
+        "confidence": "中：采用现成生态的文档判断，非实测",
+        "prerequisite": "使用受支持Android手机、相容接收设备与现成应用，不预设我方App。Google助手、任务、语言和数据条件分别核验。",
         "sources": [
           {
-            "title": "Android Auto overview",
-            "url": "https://developer.android.com/training/cars/platforms/android-auto"
+            "title": "Android Auto用户入门",
+            "url": "https://support.google.com/androidauto/answer/6348019?hl=en"
           },
           {
-            "title": "Android for Cars categories",
-            "url": "https://developer.android.com/training/cars"
+            "title": "Android Auto官方产品页",
+            "url": "https://www.android.com/auto/"
           },
           {
-            "title": "Record from the car microphone",
-            "url": "https://developer.android.com/training/cars/apps/library/car-microphone"
+            "title": "Gemini车内使用条件",
+            "url": "https://support.google.com/gemini/answer/16735982?hl=en"
+          },
+          {
+            "title": "Google官方主体依据",
+            "url": "https://play.google.com/store/apps/details?id=com.google.android.projection.gearhead&hl=en"
           }
         ],
         "voice": {
           "scores": [
             1,
             5,
-            3,
-            3,
-            3
+            2,
+            4,
+            4
           ],
           "reasons": [
-            "需手机与接收界面，首期增加屏幕前提",
-            "直接借用相容手机导航、媒体和通信体验",
-            "能做类别内流程，录音受许可和焦点约束",
-            "公开开发及分发路径存在，任务类别仍需核准",
-            "仍需手机版本、音频、重连和应用支持"
+            "需相容接收界面，首款增加屏幕前提",
+            "复用已支持的手机导航、通信和媒体",
+            "使用平台和现成应用设置，不能任意编排全部任务",
+            "现成产品已有配置路径，具体组合仍需验证",
+            "Google与应用方维护服务，仍需手机和连接支持"
           ],
-          "tag": "需屏幕入口"
+          "tag": "需相容屏幕"
         },
         "panel": {
           "scores": [
             4,
             5,
-            3,
-            3,
-            3
+            2,
+            4,
+            4
           ],
           "reasons": [
-            "相容面板可承担固定显示与车内输入",
-            "继续复用手机相容任务和内容生态",
-            "模板和支持类别限定流程自主范围",
-            "设备相容与应用分发条件分别验证",
-            "平台分担部分界面工作，兼容支持仍需承担"
+            "投射屏可提供固定导航和媒体显示",
+            "继续复用相容手机应用与账号",
+            "仅评估现成界面和偏好设置",
+            "核对手机、主机、应用和地区条件",
+            "主要协调音源、配对、版本和服务问题"
           ],
-          "tag": "相容投射路线"
-        }
+          "tag": "现成投射路线"
+        },
+        "company": "Google",
+        "companyLegal": "Google LLC",
+        "companyRole": "Android Auto官方产品发行主体",
+        "companyUrl": "https://play.google.com/store/apps/details?id=com.google.android.projection.gearhead&hl=en"
       },
       {
         "id": "aaos",
         "name": "AAOS（AOSP）",
-        "type": "车内系统基座",
-        "confidence": "中低：系统能力有文档，项目集成未验证",
-        "prerequisite": "按自有系统集成路线评估，需硬件、系统移植与持续维护资源。流程自主以具备系统集成权为条件，车辆属性和特权须另获授权。",
+        "type": "开源车内系统基座",
+        "confidence": "低：具体系统载体与伙伴未落实，非实测",
+        "prerequisite": "作为采用现成AAOS系统或系统伙伴方案的参考，不假设我们拥有系统集成权。需明确实际设备、服务、车辆接口和持续支持，AOSP基座不是可直接交付的完整零售助手。",
         "sources": [
           {
-            "title": "What is Android Automotive?",
+            "title": "AOSP平台与GAS定义",
             "url": "https://source.android.com/docs/automotive/start/what_automotive"
           },
           {
-            "title": "Vehicle HAL overview",
-            "url": "https://source.android.com/docs/automotive/vhal"
+            "title": "AAOS应用与硬件环境",
+            "url": "https://developer.android.com/training/cars/platforms/automotive-os"
           },
           {
-            "title": "Voice assistant integration flows",
+            "title": "AOSP助手系统集成条件",
             "url": "https://source.android.com/docs/automotive/voice/voice_interaction_guide/integration_flows"
+          },
+          {
+            "title": "Google官方主体依据",
+            "url": "https://source.android.com/docs/setup/about"
           }
         ],
         "voice": {
           "scores": [
             1,
             2,
-            5,
             2,
-            1
+            2,
+            2
           ],
           "reasons": [
-            "引入车内系统与轻量免屏首款明显不匹配",
-            "开源基座不包含已获许可的全部目标服务",
-            "有系统集成权时可控制完整有限任务流程",
-            "关键属性与特权仍需系统或OEM合作",
-            "需承担系统、硬件、接口和长期更新责任"
+            "车内系统基座与轻量免屏首款形态距离较大",
+            "基座不自动附带全部地图、内容和助手服务",
+            "不计系统开发潜力，仅保守计已有设置层",
+            "关键设备、系统伙伴和实际服务尚需落实",
+            "采用现成系统仍需协调硬件、版本与伙伴支持"
           ],
-          "tag": "系统投入较重"
+          "tag": "需系统载体"
         },
         "panel": {
           "scores": [
             3,
             2,
-            5,
             2,
-            1
+            2,
+            2
           ],
           "reasons": [
-            "可作为面板系统基础，仍需硬件和移植",
-            "AOSP不自动附送GAS、地图和内容账号",
-            "系统集成条件满足时可定制深度流程",
-            "系统合作与必要权限仍须逐项取得",
-            "自有系统路线的长期维护责任仍较重"
+            "可作为面板系统基础，实际设备仍待明确",
+            "目标任务依赖所装服务，不能把GAS视为默认",
+            "具体配置随系统伙伴版本，不假设自研权限",
+            "需明确可采用系统、设备与必要接口",
+            "设备、固件和服务链的持续支持仍待落实"
           ],
-          "tag": "本机系统路线"
-        }
+          "tag": "需系统载体"
+        },
+        "company": "Google",
+        "companyLegal": "Google LLC",
+        "companyRole": "Google主导AOSP项目；具体车内系统由车厂或设备商集成",
+        "companyUrl": "https://source.android.com/docs/setup/about"
       },
       {
         "id": "gas",
-        "name": "GAS",
+        "name": "Google GAS",
         "type": "AAOS授权服务层",
-        "confidence": "分类依据充分，具体商务未知；非体验实测",
-        "prerequisite": "需要AAOS及系统伙伴，与Google协商服务授权。GAS不是独立操作系统，报价未知不表示能力为0，分数也不与AAOS相加。",
+        "confidence": "分类依据充分，具体商务未知；非实测",
+        "prerequisite": "Google Automotive Services需AAOS和系统伙伴集成授权，不是独立操作系统或零售硬件，不与AAOS加总评分。未取得报价不记为0。",
         "sources": [
           {
-            "title": "Google GAS partner roles",
+            "title": "Google GAS合作角色",
             "url": "https://developers.google.com/cars"
           },
           {
-            "title": "AOSP GAS definition",
+            "title": "AOSP GAS定义",
             "url": "https://source.android.com/docs/automotive/start/what_automotive"
           }
         ],
         "voice": {
           "scores": null,
           "reasons": [
-            "服务层需依附系统",
-            "可补充Google应用与服务",
-            "定制范围需合同和接口核实",
-            "需要系统伙伴和Google授权",
-            "责任及持续费用需项目确认"
+            "服务层需依附实际系统",
+            "可补充Google应用和服务",
+            "现成配置随授权与系统版本",
+            "需要系统伙伴和Google合作",
+            "责任和持续费用按实际项目确认"
           ],
           "tag": "服务层不计分"
         },
         "panel": {
           "scores": null,
           "reasons": [
-            "与AAOS集成后形成车内体验",
+            "与AAOS及硬件集成形成体验",
             "可补充地图、助手和应用生态",
-            "不因授权自动取得全部车权",
-            "合同与设备条件仍须确认",
-            "按实际许可与伙伴分工核算"
+            "不因授权取得全部车辆权限",
+            "合同、设备及区域条件须确认",
+            "按实际平台和伙伴安排承担支持"
           ],
           "tag": "服务层不计分"
-        }
+        },
+        "company": "Google",
+        "companyLegal": "Google LLC",
+        "companyRole": "Google汽车应用与服务许可提供方",
+        "companyUrl": "https://developers.google.com/cars"
       },
       {
-        "id": "aftermarket-android",
-        "name": "普通后装 Android",
-        "type": "具体设备与固件类别",
-        "confidence": "低：类别暂定，具体SKU与接口待核；非实测",
-        "prerequisite": "暂按可安装相容应用的商业面板评估，需锁定型号、系统、供电和安装方式。Android名称不证明AAOS、GAS或SDK已开放。",
+        "id": "siri",
+        "name": "Apple Siri",
+        "type": "iPhone系统助手",
+        "confidence": "中：基础任务与入口有官方依据，目标配件未实测",
+        "prerequisite": "需相容iPhone、已启用Siri及Apple支持的目标语言，并核对锁屏、按钮和真实音频路由。不把Siri AI或任意蓝牙配件能力自动计入；当前官方Siri语言表未列波兰语，若目标只接受波兰语需另作适用性判断。 目标语种须获Siri支持；不能由iPhone界面语言推定波兰语语音任务可用。",
         "sources": [
           {
-            "title": "ATOTO S8 Gen4 manual",
+            "title": "Apple车内使用Siri指南",
+            "url": "https://support.apple.com/en-ie/guide/iphone/iph0aa8c80e6/27/ios/27"
+          },
+          {
+            "title": "Apple功能可用性",
+            "url": "https://www.apple.com/ios/feature-availability/"
+          },
+          {
+            "title": "CK11厂商语音调用指南",
+            "url": "https://support.avantree.com/hc/en-us/articles/50767188774937-How-to-Make-a-Call-by-Voice-Command"
+          },
+          {
+            "title": "Apple官方主体依据",
+            "url": "https://www.apple.com/legal/intellectual-property/trademark/appletmlist.html"
+          }
+        ],
+        "voice": {
+          "scores": [
+            5,
+            5,
+            2,
+            4,
+            4
+          ],
+          "reasons": [
+            "相容iPhone已有Siri，可从轻量入口验证",
+            "可复用已支持的电话、地图和媒体任务",
+            "仅计现成偏好，不假设定制新的软件流程",
+            "有官方车内入口和具体配件说明，仍核对型号",
+            "Apple维护助手，交付方仍处理配对与兼容"
+          ],
+          "tag": "需语言配件核验"
+        },
+        "panel": {
+          "scores": [
+            2,
+            5,
+            2,
+            4,
+            4
+          ],
+          "reasons": [
+            "Siri本身不替代固定显示载体",
+            "继续复用相容iPhone任务",
+            "不把平台开发框架当用户现有配置",
+            "需配合明确的显示或CarPlay入口",
+            "主要协调既有系统、连接和内容依赖"
+          ],
+          "tag": "需显示载体"
+        },
+        "company": "Apple",
+        "companyLegal": "Apple Inc.",
+        "companyRole": "Siri与CarPlay品牌及平台提供方",
+        "companyUrl": "https://www.apple.com/legal/intellectual-property/trademark/appletmlist.html"
+      },
+      {
+        "id": "gemini",
+        "name": "Google Gemini",
+        "type": "手机或车内助手服务",
+        "confidence": "中低：任务与官方车内路径可核，通用蓝牙按钮未证",
+        "prerequisite": "按受支持Android手机及已设置的Gemini评估，核对账号、语言、锁屏与目标应用。通用车载蓝牙按钮直接调用Gemini未获本轮证明，不能把Google Assistant配件说明自动移植给Gemini；面板经Android Auto或特定Google built-in另核。",
+        "sources": [
+          {
+            "title": "Gemini手机任务与限制",
+            "url": "https://support.google.com/gemini/answer/14579631?hl=en"
+          },
+          {
+            "title": "Gemini车内入口条件",
+            "url": "https://support.google.com/gemini/answer/16735982?hl=en"
+          },
+          {
+            "title": "Google built-in助手设置",
+            "url": "https://support.google.com/built-in/answer/16516528?hl=en"
+          },
+          {
+            "title": "Google官方主体依据",
+            "url": "https://play.google.com/store/apps/details?id=com.google.android.apps.bard&hl=en"
+          }
+        ],
+        "voice": {
+          "scores": [
+            4,
+            4,
+            3,
+            2,
+            4
+          ],
+          "reasons": [
+            "需确认手机安装或默认助手设置，仍可先不加屏幕",
+            "已支持多种手机任务，但部分旧助手服务不同",
+            "可管理相容应用和助手偏好，范围按账号与任务",
+            "通用蓝牙按键链路未证，必须做目标组合验证",
+            "服务由Google维护，保留手机、账号和网络支持"
+          ],
+          "tag": "蓝牙按键待核"
+        },
+        "panel": {
+          "scores": [
+            2,
+            4,
+            3,
+            3,
+            4
+          ],
+          "reasons": [
+            "Gemini服务本身仍需明确的显示载体",
+            "可复用受支持任务，不能保证全部应用相同",
+            "相容应用与助手设置可调，仍受服务范围约束",
+            "官方Android Auto和built-in入口存在，组合仍需核实",
+            "Google维护核心服务，仍需连接与区域条件支持"
+          ],
+          "tag": "按入口分别核验"
+        },
+        "company": "Google",
+        "companyLegal": "Google LLC",
+        "companyRole": "Gemini官方Google Play发行主体",
+        "companyUrl": "https://play.google.com/store/apps/details?id=com.google.android.apps.bard&hl=en"
+      },
+      {
+        "id": "atoto-s84g209p",
+        "name": "ATOTO S84G209P",
+        "type": "双DIN替换车机",
+        "confidence": "中低：具体手册可核，安装、供货与体验未实测",
+        "prerequisite": "需拆换原车机，确认双DIN空间、面框线束、常电/ACC、扬声器和原车功能。DriveChat与SSHub是厂商已有软件，需账号与配置，DriveChat命令和AI回答需联网；库存、地区和套餐另核。",
+        "sources": [
+          {
+            "title": "ATOTO S84G209P商品页",
+            "url": "https://www.atotodirect.com/de-us/products/atoto-s84g209p-9inch-double-din-car-stereo-eu"
+          },
+          {
+            "title": "ATOTO S8 Gen4官方手册",
             "url": "https://www.atotodirect.com/en-gb/pages/manual-460-en"
           },
           {
-            "title": "Carlinkit UHD product requirements",
-            "url": "https://www.carlinkit.com/uhd6225"
+            "title": "Aotule官方主体依据",
+            "url": "https://www.atotodirect.com/en-gb/pages/about-atoto"
           }
         ],
         "voice": {
           "scores": [
-            2,
-            2,
+            1,
+            4,
             4,
             3,
             2
           ],
           "reasons": [
-            "需要本机载体和配置，首期形态负担较多",
-            "可借本机组件，但不能默认复用手机全部任务",
-            "允许安装自有App时可定制较多流程",
-            "具体SDK、后台和音频接口仍需设备商确认",
-            "需管理型号、固件、批次及原车适配差异"
+            "拆装双DIN主机与免屏免拆首款目标不符",
+            "可借本机应用、手机互联及现成DriveChat任务",
+            "有厂商设置、唤醒词和聊天配置，仅计厂商已提供的设置",
+            "公开手册与配置路径存在，设备和账号条件待核",
+            "拆装、线束、固件、账号及网络需多方支持"
           ],
-          "tag": "需具体型号"
+          "tag": "双DIN需拆装"
         },
         "panel": {
           "scores": [
-            4,
             3,
+            4,
             4,
             3,
             2
           ],
           "reasons": [
-            "商业面板形态与固定显示目标较契合",
-            "可组合本机应用或已支持的手机互联",
-            "可自定义较多应用流程，仍受固件权限限制",
-            "商品和手册可查，关键系统接口尚待核实",
-            "长期固件、配件与批次维护仍由项目承担"
+            "是明确面板载体，但双DIN拆装仍增加交付负担",
+            "本机任务与手机互联均有既有路径",
+            "用户可采用厂商提供的设备和助手配置",
+            "车型安装、原车功能和软件服务分别核验",
+            "安装及多层服务链增加诊断和售后责任"
           ],
-          "tag": "需具体型号"
-        }
-      },
-      {
-        "id": "phone-assistant",
-        "name": "手机系统助手",
-        "type": "现成任务入口",
-        "confidence": "中：具体调用流程有文档，目标组合未实测",
-        "prerequisite": "按选定手机与助手生态评估，需支持的按钮触发、权限、账号和音频路径。不能把一组设备行为外推全部手机。",
-        "sources": [
-          {
-            "title": "Avantree CK11 interactive guide",
-            "url": "https://avantree.com/pages/ck11-interactive-user-guide"
-          },
-          {
-            "title": "Roadtrip voice assistant activation",
-            "url": "https://support.avantree.com/hc/en-us/articles/38121800304793-Roadtrip-How-to-activate-the-voice-assistant-with-the-car-kit-Siri-Google-Assistant"
-          },
-          {
-            "title": "Gemini in your car",
-            "url": "https://support.google.com/gemini/answer/16735982?hl=en"
-          }
-        ],
-        "voice": {
-          "scores": [
-            5,
-            5,
-            1,
-            4,
-            4
-          ],
-          "reasons": [
-            "可由小外设调用已有助手，新增系统工作较少",
-            "借用已配置的手机任务和账号",
-            "主要调用既有流程，自定义与结果观测有限",
-            "已有具体调用说明，按钮和拾音仍需验证",
-            "减少自建服务，保留连接和平台变化支持"
-          ],
-          "tag": "轻量任务入口"
+          "tag": "双DIN需拆装"
         },
-        "panel": {
-          "scores": [
-            2,
-            5,
-            1,
-            4,
-            4
-          ],
-          "reasons": [
-            "助手本身不能替代面板和可见状态集成",
-            "可继续复用已有手机任务",
-            "确认界面、转交和状态仍主要由助手决定",
-            "手机侧可用性需核实，另选显示接入路线",
-            "继续复用平台服务但仍需支持连接变化"
-          ],
-          "tag": "需显示载体"
-        }
-      },
-      {
-        "id": "companion-app",
-        "name": "自有伴随 App",
-        "type": "手机自有任务流程",
-        "confidence": "中低：工程路线判断，任务接口和实现未验证",
-        "prerequisite": "只评估获准接口内的有限任务，手机计算可配免屏外设。第二阶段仍须明确投射或设备接口，上屏资格尚未获准。",
-        "sources": [
-          {
-            "title": "Android common intents",
-            "url": "https://developer.android.com/guide/components/intents-common"
-          },
-          {
-            "title": "Android Auto integration constraints",
-            "url": "https://developer.android.com/training/cars/platforms/android-auto"
-          },
-          {
-            "title": "AAOS app requirements",
-            "url": "https://developer.android.com/training/cars/platforms/automotive-os"
-          }
-        ],
-        "voice": {
-          "scores": [
-            4,
-            4,
-            5,
-            4,
-            3
-          ],
-          "reasons": [
-            "借手机计算，但需安装、权限与首次配置",
-            "可借现有任务组件，需开发和验证转交",
-            "可掌握自有有限任务的确认、取消与状态",
-            "手机侧主要使用公开接口和常规授权",
-            "需维护App、权限、任务接口和可选服务"
-          ],
-          "tag": "可控任务流程"
-        },
-        "panel": {
-          "scores": [
-            3,
-            4,
-            5,
-            3,
-            3
-          ],
-          "reasons": [
-            "需新增投射或设备接口，落实显示载体",
-            "复用已有手机任务组件，仍需适配",
-            "在授权范围内组织完整可见任务流程",
-            "新增类别、分发或设备接口核验",
-            "仍承担应用、服务与目标设备兼容支持"
-          ],
-          "tag": "须落实上屏"
-        }
+        "company": "Aotule",
+        "companyLegal": "Shenzhen Aotule Technology Co., Ltd.",
+        "companyRole": "ATOTO品牌归属方；Aotule为公司全称的前台简写",
+        "companyUrl": "https://www.atotodirect.com/en-gb/pages/about-atoto",
+        "companyNotes": "官网披露其全资子公司HK Auto Smart Technology Co., Limited获授权负责全球运营销售。具体型号法定制造主体未确认。"
       }
     ]
   },
