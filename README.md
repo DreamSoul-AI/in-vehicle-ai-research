@@ -1,7 +1,9 @@
-车载端侧 AI 投资研究网页。内容包含竞品图鉴、筛选搜索、最多三项对比、离线与技术证据、进入机会及原始资料。配色和信息呈现沿用桌面智能硬件研究网页。
+车载端侧 AI 研究网页。内容包含竞品图鉴、筛选搜索、最多三项对比、离线与技术证据、进入机会及原始资料。配色和信息呈现沿用桌面智能硬件研究网页。
+
+在线阅读：[GitHub Pages](https://dreamsoul-ai.github.io/in-vehicle-ai-research/)。源码：[DreamSoul-AI/in-vehicle-ai-research](https://github.com/DreamSoul-AI/in-vehicle-ai-research)。
 
 # 一、内容与目录
-- `dist/index.html`：投资研究主入口
+- `dist/index.html`：研究网页主入口
 - `dist/app.js`、`dist/style.css`：交互与响应式样式
 - `dist/data/products.json`：23个样本的网页数据，默认核心视图为8项本地模型线索
 - `dist/assets/products/`：10张官方来源配图，出处保留在产品记录中
@@ -26,4 +28,19 @@ python -m http.server 8000 --bind 127.0.0.1 --directory dist
 修改产品记录时，先核对上级主数据、来源与日期，再更新网页副本。未公开价格不得填零，整车、组合包、软件和企业项目分别记录。来源图片仅作研究识别，不表示厂商合作或背书。
 
 # 四、托管
-Sites 项目身份保留在 `.openai/hosting.json`，更新沿用该身份。站点已部署为 [私有研究网页](https://dreamsoul-in-vehicle-ai-research.shared-dream.chatgpt.site)，源码与实际部署版本通过 Sites 工作流关联。凭证不写入项目文件。
+主要发布入口为 GitHub Pages。源码仓库位于 `DreamSoul-AI/in-vehicle-ai-research`，保持私有，Pages 网页公开提供研究内容。
+
+`main` 保存完整网站源码，`gh-pages` 保存从 `dist/` 提取的静态发布文件，Pages 从 `gh-pages` 分支根目录提供网页。不需要安装依赖或构建，站内资源使用相对路径以适配项目 Pages 子路径。
+
+完成修改和本地检查后，提交源码并发布：
+
+```powershell
+git push origin main
+git subtree push --prefix dist origin gh-pages
+```
+
+等待 GitHub Pages 构建成功后，再检查在线页面及数据资源。此方式不需要新增 Actions 工作流授权。
+
+先前的 Sites 私有预览保留，其身份记录位于 `.openai/hosting.json`，本次不更新该预览。GitHub Pages 为后续更新和分享入口。凭证不写入项目文件。
+
+第三方品牌、图片和内容的权利归相应权利人。仓库未授予第三方素材新的复用许可，公开网页不代表素材为开源许可。
