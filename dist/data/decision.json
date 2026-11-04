@@ -1,0 +1,463 @@
+{
+  "asOf": "2026-11-05",
+  "score": {
+    "dimensions": [
+      {
+        "id": "deployment",
+        "label": "部署匹配",
+        "anchor": "按阶段形态判断。0已证实不可部署，1需重大前提，2需较多准备，3需常规集成，4较契合但需验证，5直接匹配且新增负担较小。未知用null。"
+      },
+      {
+        "id": "reuse",
+        "label": "任务复用",
+        "anchor": "按目标任务的现成程度判断。0已证实不可复用，1主要自行建设，2有限组件，3基础组件需整合，4大部分可复用，5直接复用已配置任务与账号。未知用null。"
+      },
+      {
+        "id": "autonomy",
+        "label": "流程自主",
+        "anchor": "限定在有权执行的任务内。0所需流程不可实现，1调用固定流程，2局部配置，3框架内定制，4大部分自控，5掌握完整有限任务状态与流程。未知用null。"
+      },
+      {
+        "id": "access",
+        "label": "接入可得",
+        "anchor": "评估必要接口和权限的取得路径。0已证实不可取得，1专门系统合作，2关键能力依赖合作，3逐项申请或核验，4主要公开接口和常规授权，5必要资格已实际核准。未知报价不计0。"
+      },
+      {
+        "id": "maintenance",
+        "label": "维护易度",
+        "anchor": "越高表示项目持续责任越轻。0已证实不可持续，1系统硬件全面维护，2设备版本负担较重，3常规兼容支持，4主要复用平台，5仅少量明确支持。不是已测成本。"
+      }
+    ],
+    "stages": {
+      "voice": {
+        "label": "阶段1 免屏外设",
+        "weights": [
+          30,
+          30,
+          10,
+          20,
+          10
+        ]
+      },
+      "panel": {
+        "label": "阶段2 智能面板",
+        "weights": [
+          20,
+          20,
+          25,
+          20,
+          15
+        ]
+      }
+    },
+    "platforms": [
+      {
+        "id": "carplay",
+        "name": "CarPlay",
+        "type": "手机投射平台",
+        "confidence": "中：基于文档判断，非体验实测",
+        "prerequisite": "按自有应用接入现成相容硬件评估，需iPhone、相容接收屏及应用类别与entitlement审核；不假设自研接收端已获MFi资格。",
+        "sources": [
+          {
+            "title": "Apple CarPlay",
+            "url": "https://developer.apple.com/carplay/"
+          },
+          {
+            "title": "CarPlay Developer Guide",
+            "url": "https://developer.apple.com/download/files/CarPlay-Developer-Guide.pdf"
+          },
+          {
+            "title": "Apple MFi FAQ",
+            "url": "https://mfi.apple.com/en/faqs"
+          }
+        ],
+        "voice": {
+          "scores": [
+            1,
+            5,
+            3,
+            3,
+            3
+          ],
+          "reasons": [
+            "需相容接收屏，增加首期免屏目标之外的前提",
+            "可复用iPhone相容导航、通信和媒体任务",
+            "可定制类别内流程，仍受模板和音频规则约束",
+            "应用授权路径可查，目标应用尚未获准",
+            "仍需维护应用、手机版本、连接和硬件兼容"
+          ],
+          "tag": "需屏幕入口"
+        },
+        "panel": {
+          "scores": [
+            4,
+            5,
+            3,
+            3,
+            3
+          ],
+          "reasons": [
+            "相容投射屏更契合第二阶段显示目标",
+            "可复用手机应用和既有账号内容",
+            "界面和交互仍受CarPlay类别与模板约束",
+            "新增面板不免除应用授权和硬件条件",
+            "复用投射生态，仍承担自身应用与连接支持"
+          ],
+          "tag": "相容投射路线"
+        }
+      },
+      {
+        "id": "android-auto",
+        "name": "Android Auto",
+        "type": "手机投射平台",
+        "confidence": "中：基于文档判断，非体验实测",
+        "prerequisite": "需受支持Android手机、相容接收界面和应用类别/可信分发条件。接口读取或应用录音不等于车辆控制或常驻监听。",
+        "sources": [
+          {
+            "title": "Android Auto overview",
+            "url": "https://developer.android.com/training/cars/platforms/android-auto"
+          },
+          {
+            "title": "Android for Cars categories",
+            "url": "https://developer.android.com/training/cars"
+          },
+          {
+            "title": "Record from the car microphone",
+            "url": "https://developer.android.com/training/cars/apps/library/car-microphone"
+          }
+        ],
+        "voice": {
+          "scores": [
+            1,
+            5,
+            3,
+            3,
+            3
+          ],
+          "reasons": [
+            "需手机与接收界面，首期增加屏幕前提",
+            "直接借用相容手机导航、媒体和通信体验",
+            "能做类别内流程，录音受许可和焦点约束",
+            "公开开发及分发路径存在，任务类别仍需核准",
+            "仍需手机版本、音频、重连和应用支持"
+          ],
+          "tag": "需屏幕入口"
+        },
+        "panel": {
+          "scores": [
+            4,
+            5,
+            3,
+            3,
+            3
+          ],
+          "reasons": [
+            "相容面板可承担固定显示与车内输入",
+            "继续复用手机相容任务和内容生态",
+            "模板和支持类别限定流程自主范围",
+            "设备相容与应用分发条件分别验证",
+            "平台分担部分界面工作，兼容支持仍需承担"
+          ],
+          "tag": "相容投射路线"
+        }
+      },
+      {
+        "id": "aaos",
+        "name": "AAOS（AOSP）",
+        "type": "车内系统基座",
+        "confidence": "中低：系统能力有文档，项目集成未验证",
+        "prerequisite": "按自有系统集成路线评估，需硬件、系统移植与持续维护资源。流程自主以具备系统集成权为条件，车辆属性和特权须另获授权。",
+        "sources": [
+          {
+            "title": "What is Android Automotive?",
+            "url": "https://source.android.com/docs/automotive/start/what_automotive"
+          },
+          {
+            "title": "Vehicle HAL overview",
+            "url": "https://source.android.com/docs/automotive/vhal"
+          },
+          {
+            "title": "Voice assistant integration flows",
+            "url": "https://source.android.com/docs/automotive/voice/voice_interaction_guide/integration_flows"
+          }
+        ],
+        "voice": {
+          "scores": [
+            1,
+            2,
+            5,
+            2,
+            1
+          ],
+          "reasons": [
+            "引入车内系统与轻量免屏首款明显不匹配",
+            "开源基座不包含已获许可的全部目标服务",
+            "有系统集成权时可控制完整有限任务流程",
+            "关键属性与特权仍需系统或OEM合作",
+            "需承担系统、硬件、接口和长期更新责任"
+          ],
+          "tag": "系统投入较重"
+        },
+        "panel": {
+          "scores": [
+            3,
+            2,
+            5,
+            2,
+            1
+          ],
+          "reasons": [
+            "可作为面板系统基础，仍需硬件和移植",
+            "AOSP不自动附送GAS、地图和内容账号",
+            "系统集成条件满足时可定制深度流程",
+            "系统合作与必要权限仍须逐项取得",
+            "自有系统路线的长期维护责任仍较重"
+          ],
+          "tag": "本机系统路线"
+        }
+      },
+      {
+        "id": "gas",
+        "name": "GAS",
+        "type": "AAOS授权服务层",
+        "confidence": "分类依据充分，具体商务未知；非体验实测",
+        "prerequisite": "需要AAOS及系统伙伴，与Google协商服务授权。GAS不是独立操作系统，报价未知不表示能力为0，分数也不与AAOS相加。",
+        "sources": [
+          {
+            "title": "Google GAS partner roles",
+            "url": "https://developers.google.com/cars"
+          },
+          {
+            "title": "AOSP GAS definition",
+            "url": "https://source.android.com/docs/automotive/start/what_automotive"
+          }
+        ],
+        "voice": {
+          "scores": null,
+          "reasons": [
+            "服务层需依附系统",
+            "可补充Google应用与服务",
+            "定制范围需合同和接口核实",
+            "需要系统伙伴和Google授权",
+            "责任及持续费用需项目确认"
+          ],
+          "tag": "服务层不计分"
+        },
+        "panel": {
+          "scores": null,
+          "reasons": [
+            "与AAOS集成后形成车内体验",
+            "可补充地图、助手和应用生态",
+            "不因授权自动取得全部车权",
+            "合同与设备条件仍须确认",
+            "按实际许可与伙伴分工核算"
+          ],
+          "tag": "服务层不计分"
+        }
+      },
+      {
+        "id": "aftermarket-android",
+        "name": "普通后装 Android",
+        "type": "具体设备与固件类别",
+        "confidence": "低：类别暂定，具体SKU与接口待核；非实测",
+        "prerequisite": "暂按可安装相容应用的商业面板评估，需锁定型号、系统、供电和安装方式。Android名称不证明AAOS、GAS或SDK已开放。",
+        "sources": [
+          {
+            "title": "ATOTO S8 Gen4 manual",
+            "url": "https://www.atotodirect.com/en-gb/pages/manual-460-en"
+          },
+          {
+            "title": "Carlinkit UHD product requirements",
+            "url": "https://www.carlinkit.com/uhd6225"
+          }
+        ],
+        "voice": {
+          "scores": [
+            2,
+            2,
+            4,
+            3,
+            2
+          ],
+          "reasons": [
+            "需要本机载体和配置，首期形态负担较多",
+            "可借本机组件，但不能默认复用手机全部任务",
+            "允许安装自有App时可定制较多流程",
+            "具体SDK、后台和音频接口仍需设备商确认",
+            "需管理型号、固件、批次及原车适配差异"
+          ],
+          "tag": "需具体型号"
+        },
+        "panel": {
+          "scores": [
+            4,
+            3,
+            4,
+            3,
+            2
+          ],
+          "reasons": [
+            "商业面板形态与固定显示目标较契合",
+            "可组合本机应用或已支持的手机互联",
+            "可自定义较多应用流程，仍受固件权限限制",
+            "商品和手册可查，关键系统接口尚待核实",
+            "长期固件、配件与批次维护仍由项目承担"
+          ],
+          "tag": "需具体型号"
+        }
+      },
+      {
+        "id": "phone-assistant",
+        "name": "手机系统助手",
+        "type": "现成任务入口",
+        "confidence": "中：具体调用流程有文档，目标组合未实测",
+        "prerequisite": "按选定手机与助手生态评估，需支持的按钮触发、权限、账号和音频路径。不能把一组设备行为外推全部手机。",
+        "sources": [
+          {
+            "title": "Avantree CK11 interactive guide",
+            "url": "https://avantree.com/pages/ck11-interactive-user-guide"
+          },
+          {
+            "title": "Roadtrip voice assistant activation",
+            "url": "https://support.avantree.com/hc/en-us/articles/38121800304793-Roadtrip-How-to-activate-the-voice-assistant-with-the-car-kit-Siri-Google-Assistant"
+          },
+          {
+            "title": "Gemini in your car",
+            "url": "https://support.google.com/gemini/answer/16735982?hl=en"
+          }
+        ],
+        "voice": {
+          "scores": [
+            5,
+            5,
+            1,
+            4,
+            4
+          ],
+          "reasons": [
+            "可由小外设调用已有助手，新增系统工作较少",
+            "借用已配置的手机任务和账号",
+            "主要调用既有流程，自定义与结果观测有限",
+            "已有具体调用说明，按钮和拾音仍需验证",
+            "减少自建服务，保留连接和平台变化支持"
+          ],
+          "tag": "轻量任务入口"
+        },
+        "panel": {
+          "scores": [
+            2,
+            5,
+            1,
+            4,
+            4
+          ],
+          "reasons": [
+            "助手本身不能替代面板和可见状态集成",
+            "可继续复用已有手机任务",
+            "确认界面、转交和状态仍主要由助手决定",
+            "手机侧可用性需核实，另选显示接入路线",
+            "继续复用平台服务但仍需支持连接变化"
+          ],
+          "tag": "需显示载体"
+        }
+      },
+      {
+        "id": "companion-app",
+        "name": "自有伴随 App",
+        "type": "手机自有任务流程",
+        "confidence": "中低：工程路线判断，任务接口和实现未验证",
+        "prerequisite": "只评估获准接口内的有限任务，手机计算可配免屏外设。第二阶段仍须明确投射或设备接口，上屏资格尚未获准。",
+        "sources": [
+          {
+            "title": "Android common intents",
+            "url": "https://developer.android.com/guide/components/intents-common"
+          },
+          {
+            "title": "Android Auto integration constraints",
+            "url": "https://developer.android.com/training/cars/platforms/android-auto"
+          },
+          {
+            "title": "AAOS app requirements",
+            "url": "https://developer.android.com/training/cars/platforms/automotive-os"
+          }
+        ],
+        "voice": {
+          "scores": [
+            4,
+            4,
+            5,
+            4,
+            3
+          ],
+          "reasons": [
+            "借手机计算，但需安装、权限与首次配置",
+            "可借现有任务组件，需开发和验证转交",
+            "可掌握自有有限任务的确认、取消与状态",
+            "手机侧主要使用公开接口和常规授权",
+            "需维护App、权限、任务接口和可选服务"
+          ],
+          "tag": "可控任务流程"
+        },
+        "panel": {
+          "scores": [
+            3,
+            4,
+            5,
+            3,
+            3
+          ],
+          "reasons": [
+            "需新增投射或设备接口，落实显示载体",
+            "复用已有手机任务组件，仍需适配",
+            "在授权范围内组织完整可见任务流程",
+            "新增类别、分发或设备接口核验",
+            "仍承担应用、服务与目标设备兼容支持"
+          ],
+          "tag": "须落实上屏"
+        }
+      }
+    ]
+  },
+  "market": {
+    "eu": {
+      "stock": 255999373,
+      "year": 2024,
+      "region": "EU27",
+      "petrol": 49.2,
+      "diesel": 38.4,
+      "age": 12.7,
+      "url": "https://www.acea.auto/files/ACEA_Report-%E2%80%93-Vehicles_on_European_roads_2026.pdf",
+      "pages": "5、11、15",
+      "published": "2026-01-15",
+      "limits": "车龄表保加利亚缺报。燃料比例已四舍五入；车龄和动力均不能代替互联入口缺口。"
+    },
+    "poland": {
+      "stock": 21161500,
+      "year": "2025年",
+      "age": 15.3,
+      "url": "https://www1.pzpm.org.pl/pl/content/download/11094/68148/file/Raport_2026_caly_lekki.pdf#page=25",
+      "stockUrl": "https://www1.pzpm.org.pl/pl/layout/set/print/content/download/2590/10563/file/Park_2025.pdf",
+      "limits": "CEP更新记录口径，排除archived，不等于每日实际在用量；包含不同动力，波兰属于EU，不能与EU加总。"
+    },
+    "china": {
+      "sedans": 197730000,
+      "year": 2025,
+      "url": "https://www.stats.gov.cn/sj/zxfb/202602/t20260228_1962662.html",
+      "limits": "民用轿车分类，不等于EU乘用车；未取得同口径燃油与互联缺口细分，不加入EU情景分母。"
+    },
+    "defaults": {
+      "gap": 10,
+      "compatible": 50,
+      "purchase": 1
+    },
+    "assumptionLimits": "缺口比例为汽柴油车辆中的条件比例；适配率是在缺口车辆中的条件比例；购买率是在适配人群中的年度条件比例。不假设三者统计独立，均无本项目实测数据。",
+    "channelExample": {
+      "shops": 20,
+      "qualifiedLeadsPerMonth": 30,
+      "conversionPercent": 5,
+      "months": 12,
+      "annualUnits": 360,
+      "kind": "演算示例，非伙伴实际经营参数"
+    }
+  }
+}

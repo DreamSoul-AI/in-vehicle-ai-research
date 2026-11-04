@@ -16,11 +16,12 @@ from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 
 import markdown
 from bs4 import BeautifulSoup, Comment
+from tools.decision_content import render_scores, render_market, validate_decision
 
 SITE = Path(__file__).resolve().parent
 DIST = SITE / "dist"
 CONTENT = SITE / "content"
-VERSION = "platform-comparison-20261105"
+VERSION = "ratings-market-20261105"
 CHAPTER_IDS = dict(zip("一二三四五六七", ["roadmap", "platforms", "products", "starter", "business", "next", "sources"]))
 
 
@@ -117,6 +118,8 @@ def local_link(url: str) -> str:
         return url
     if "车载智能化 产品样本" in url:
         return "data/products.json"
+    if "车载智能化 评分与市场" in url:
+        return "data/decision.json"
     if "来源索引" in url:
         return "references.html"
     if "通用调研大纲" in url:
@@ -161,7 +164,38 @@ def platform_comparison(soup: BeautifulSoup) -> None:
         table["aria-label"] = "现有平台使用能力对比" if identity == "platform-usage-table" else "现有平台开发与商业条件对比"
 
 
-def render_markdown(text: str, blocks: list[dict], manifest: dict, equations: list[dict]) -> str:
+def fold_platform_evidence(soup: BeautifulSoup) -> None:
+    heading = soup.find("h2", string=re.compile("现有平台横向对比"))
+    if heading is None:
+        return
+    details = soup.new_tag("details", attrs={"class": "research-evidence", "id": "platform-evidence"})
+    summary = soup.new_tag("summary")
+    summary.string = "展开完整平台对照、七张详情卡片与依据"
+    details.append(summary)
+    heading.insert_before(details)
+    node = heading
+    while node is not None:
+        if node is not heading and getattr(node, "name", None) == "h2":
+            break
+        following = node.next_sibling
+        details.append(node)
+        node = following
+
+
+def attach_decisions(soup: BeautifulSoup, decision: dict) -> None:
+    if not soup.find(id="platform-scores") and not soup.find(id="market-size"):
+        return
+    payload = soup.new_tag("script", type="application/json", id="decision-data")
+    payload.string = json.dumps(decision, ensure_ascii=False).replace("<", "\\u003c")
+    soup.body.append(payload)
+    soup.head.append(soup.new_tag("script", src=version_url("decision.js"), defer=True))
+    soup.head.append(soup.new_tag("link", rel="stylesheet", href=version_url("decision.css")))
+    soup.body.append(BeautifulSoup('<dialog id="score-dialog" aria-labelledby="score-detail-title"><div class="dialog-bar"><h2 id="score-detail-title">评分依据</h2><button id="score-close" class="diagram-close" aria-label="关闭评分详情">×</button></div><div id="score-detail-content"></div></dialog>', "html.parser"))
+
+
+def render_markdown(text: str, blocks: list[dict], manifest: dict, equations: list[dict], decision: dict) -> str:
+    text = re.sub(r"<!-- score-summary:start -->[\s\S]*?<!-- score-summary:end -->", lambda _: render_scores(decision), text)
+    text = re.sub(r"<!-- market-summary:start -->[\s\S]*?<!-- market-summary:end -->", lambda _: render_market(decision), text)
     lookup = {block["code"].strip(): index for index, block in enumerate(blocks)}
     def replace_diagram(match: re.Match) -> str:
         index = lookup[match.group(1).strip()]
@@ -178,7 +212,10 @@ def render_markdown(text: str, blocks: list[dict], manifest: dict, equations: li
     rendered = markdown.markdown(text, extensions=["tables", "fenced_code"])
     soup = BeautifulSoup(rendered, "html.parser")
     platform_comparison(soup)
+    fold_platform_evidence(soup)
     for table in list(soup.find_all("table")):
+        if "score-table" in table.get("class", []):
+            continue
         attributes = {"class": "table-wrap"}
         if "platform-matrix" in table.get("class", []):
             attributes.update({"tabindex": "0", "role": "region", "aria-label": table["aria-label"] + "，可横向滚动"})
@@ -195,21 +232,26 @@ def viewer_markup() -> str:
     return '''<dialog id="diagram-dialog" class="diagram-dialog" aria-labelledby="diagram-view-title"><div class="dialog-bar"><h2 id="diagram-view-title">关系图</h2><button class="diagram-close" aria-label="关闭关系图">×</button></div><div class="diagram-view-tools"><button data-diagram-zoom="out" aria-label="缩小关系图">−</button><button data-diagram-zoom="reset">适合宽度</button><button data-diagram-zoom="in" aria-label="放大关系图">＋</button><span id="diagram-zoom-label">100%</span><a id="diagram-original" target="_blank" rel="noopener noreferrer">打开 SVG ↗</a></div><div class="diagram-view-scroll"><img id="diagram-view-image" alt="放大的关系图"></div></dialog>'''
 
 
-def standalone(body: str, title: str) -> str:
+def standalone(body: str, title: str, decision: dict) -> str:
     soup = BeautifulSoup(body, "html.parser")
     for heading in soup.find_all(re.compile("^h[1-5]$")):
         heading.name = "h" + str(min(int(heading.name[1]) + 1, 6))
-    return f'''<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{title} · 车载智能化研究</title><link rel="stylesheet" href="{version_url('style.css')}"><link rel="stylesheet" href="{version_url('report.css')}"><script src="{version_url('diagrams.js')}" defer></script></head><body><header class="topbar"><a class="brand" href="{version_url('index.html')}"><span class="brand-symbol"></span><b>DreamSoul</b><span>RESEARCH</span></a><a href="{version_url('index.html')}">返回研究主页 ↗</a></header><main class="research-content"><p class="eyebrow">IN-VEHICLE PRODUCTS / RESEARCH</p><h1>{title}</h1>{soup}</main>{viewer_markup()}</body></html>'''
+    page = BeautifulSoup(f'''<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{title} · 车载智能化研究</title><link rel="stylesheet" href="{version_url('style.css')}"><link rel="stylesheet" href="{version_url('report.css')}"><script src="{version_url('diagrams.js')}" defer></script></head><body><header class="topbar"><a class="brand" href="{version_url('index.html')}"><span class="brand-symbol"></span><b>DreamSoul</b><span>RESEARCH</span></a><a href="{version_url('index.html')}">返回研究主页 ↗</a></header><main class="research-content"><p class="eyebrow">IN-VEHICLE PRODUCTS / RESEARCH</p><h1>{title}</h1>{soup}</main>{viewer_markup()}</body></html>''', "html.parser")
+    attach_decisions(page, decision)
+    return str(page)
 
 
 def build(args: argparse.Namespace) -> None:
     CONTENT.mkdir(exist_ok=True)
-    for source, name in [(args.source, "research.md"), (args.outline, "outline.md")]:
+    for source, name in [(args.source, "research.md"), (args.outline, "outline.md"), (args.decision, "decision.json")]:
         if source:
             target = CONTENT / name
             if Path(source).resolve() != target.resolve():
                 shutil.copy2(source, target)
     text = (CONTENT / "research.md").read_text(encoding="utf-8")
+    decision = json.loads((CONTENT / "decision.json").read_text(encoding="utf-8"))
+    validate_decision(decision)
+    (DIST / "data/decision.json").write_text(json.dumps(decision, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     intro, chapters = chapters_from(text)
     blocks = source_blocks(text)
     manifest = prepare_diagrams(blocks)
@@ -230,7 +272,7 @@ def build(args: argparse.Namespace) -> None:
             # Existing source metadata and methods remain visible after the report's reference table.
             section.find("div", class_="report-body").clear()
         content = re.sub(r"^# [^\n]+\n", "", chapters[number], count=1)
-        body = BeautifulSoup(render_markdown(content, blocks, manifest, equations), "html.parser")
+        body = BeautifulSoup(render_markdown(content, blocks, manifest, equations, decision), "html.parser")
         for heading in body.find_all(re.compile("^h[2-5]$")):
             heading.name = "h" + str(min(int(heading.name[1]) + 1, 6))
         target = section.find("div", class_="report-body")
@@ -246,13 +288,14 @@ def build(args: argparse.Namespace) -> None:
         template.head.append(template.new_tag("link", rel="stylesheet", href=version_url("report.css")))
     if not template.find(id="diagram-dialog"):
         template.body.append(BeautifulSoup(viewer_markup(), "html.parser"))
+    attach_decisions(template, decision)
     (DIST / "index.html").write_text(str(template), encoding="utf-8")
-    full = render_markdown(intro, blocks, manifest, equations)
+    full = render_markdown(intro, blocks, manifest, equations, decision)
     for number in CHAPTER_IDS:
-        full += render_markdown(chapters[number], blocks, manifest, equations)
-    (DIST / "research.html").write_text(standalone(full, "车载智能化 产品与阶段路线"), encoding="utf-8")
+        full += render_markdown(chapters[number], blocks, manifest, equations, decision)
+    (DIST / "research.html").write_text(standalone(full, "车载智能化 产品与阶段路线", decision), encoding="utf-8")
     outline = (CONTENT / "outline.md").read_text(encoding="utf-8")
-    (DIST / "outline.html").write_text(standalone(render_markdown(outline, blocks, manifest, equations), "车载智能化 调研大纲"), encoding="utf-8")
+    (DIST / "outline.html").write_text(standalone(render_markdown(outline, blocks, manifest, equations, decision), "车载智能化 调研大纲", decision), encoding="utf-8")
     # The data shape did not change. Version the request with the page assets.
     app = DIST / "app.js"
     script = app.read_text(encoding="utf-8")
@@ -270,5 +313,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--source")
     parser.add_argument("--outline")
+    parser.add_argument("--decision")
     parser.add_argument("--prepare", action="store_true")
     build(parser.parse_args())

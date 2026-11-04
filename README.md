@@ -13,7 +13,9 @@
 - `dist/overview.html`：平台、技术与商业背景
 - `dist/references.html`：参考资料与阅读范围
 - `content/research.md`、`content/outline.md`：正式正文与大纲的网页发布副本，主页各节和完整正文从这里生成
-- 平台章节开头直接展示两张七行对照表，按使用能力和开发商业条件比较具名平台；七张可展开卡片从同一组表格生成，GAS服务层/Google built-in体验单独标识
+- 平台章节前台展示100分适配评分与短标签，可切换无屏助手/智能面板并调整权重；详细两张平台表及七张卡片保留在展开区
+- `content/decision.json`、`dist/data/decision.json`：评分原始值、权重、逐项理由、市场统计来源与演算参数；正式主数据位于上级 `车载智能化 评分与市场.json`
+- `dist/decision.js`、`dist/decision.css`、`tools/decision_content.py`：评分、市场量级与渠道情景的静态初值和交互，页面直接嵌入同一JSON以保持口径一致
 - `content/index.template.html`：页面结构及产品图鉴交互模板
 - `dist/diagrams/`：9张 Mermaid 图的 SVG、PNG、图源及渲染清单，其中平台部分4张
 - `build.py`、`tools/`：正文构建、图形渲染和发布文件校验
@@ -33,7 +35,7 @@ python -m http.server 8000 --bind 127.0.0.1 --directory dist
 当前工作区优先维护上级正式 Markdown，构建时使用 `--source` 和 `--outline` 同步到网页发布副本。独立检出网站仓库时可直接维护 `content/` 中的 Markdown。各节保留完整解释、表格、引用和图，首页另保留产品筛选、阶段选择和对比交互。
 
 ```powershell
-python build.py --source "../车载智能化 通用调研.md" --outline "../车载智能化 通用调研大纲.md" --prepare
+python build.py --source "../车载智能化 通用调研.md" --outline "../车载智能化 通用调研大纲.md" --decision "../车载智能化 评分与市场.json" --prepare
 node tools/render-diagrams.mjs --playwright "<现有 Playwright 模块路径>"
 python build.py
 python tools/check_site.py
@@ -48,12 +50,16 @@ Python 依赖版本见 `requirements-render.txt`。图形渲染使用固定 Merm
 
 修改产品记录时，先核对上级主数据、来源与日期，再更新网页副本。未公开价格不得填零，整车、组合包、软件和企业项目分别记录。来源图片仅作研究识别，不表示厂商合作或背书。
 
+评分是针对本项目阶段目标的文档判断，非体验或性能排名。单项1–5，总分按实际权重归一化，GAS服务层不独立计分，未知许可费不填0。面板和无屏的原始分、默认权重与采用条件分别维护。正式Markdown中的简表须与JSON一同更新。
+
+市场采用ACEA 2026报告中的2024 EU27乘用车数据，约2.24亿汽柴油车辆由已取整占比推算；波兰采用2025 PZPM更新记录，非实时在用普查。缺口、适配和购买比例无调查数据，所有结果均标为可修改的假设演算。渠道默认不填写实际规模，360台/年为明确标记的示例。网页计算不代表需求、合作方经营实绩或销量预测。
+
 # 四、托管
 主要发布入口为 GitHub Pages。源码仓库位于 `DreamSoul-AI/in-vehicle-ai-research`，保持私有，Pages 网页公开提供研究内容。
 
 `main` 保存完整网站源码，`gh-pages` 保存从 `dist/` 提取的静态发布文件，Pages 从 `gh-pages` 分支根目录提供网页。不需要安装依赖或构建，站内资源使用相对路径以适配项目 Pages 子路径。
 
-当前内容和图示版本为 `platform-comparison-20261105`，由 `build.py` 统一写入资源与正文链接。后续结构调整时更新构建脚本的 `VERSION`，再构建静态产物。
+当前内容和图示版本为 `ratings-market-20261105`，由 `build.py` 统一写入资源与正文链接。后续结构调整时更新构建脚本的 `VERSION`，再构建静态产物。
 
 完成修改和本地检查后，提交源码并发布：
 

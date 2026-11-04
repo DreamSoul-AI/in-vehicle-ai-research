@@ -8,10 +8,21 @@ from urllib.parse import unquote, urlsplit
 import xml.etree.ElementTree as ET
 
 from bs4 import BeautifulSoup
+from decision_content import validate_decision, weighted_score, market_estimates
 
 site = Path(__file__).resolve().parent.parent
 dist = site / "dist"
 source = (site / "content/research.md").read_text(encoding="utf-8")
+decision = json.loads((site / "content/decision.json").read_text(encoding="utf-8"))
+validate_decision(decision)
+assert decision == json.loads((dist / "data/decision.json").read_text(encoding="utf-8"))
+platforms_by_id = {item["id"]: item for item in decision["score"]["platforms"]}
+assert weighted_score(platforms_by_id["phone-assistant"]["voice"]["scores"], [30, 30, 10, 20, 10]) == 86
+assert weighted_score(platforms_by_id["companion-app"]["panel"]["scores"], [20, 20, 25, 20, 15]) == 74
+assert weighted_score(platforms_by_id["gas"]["voice"]["scores"], [30, 30, 10, 20, 10]) is None
+base, gap, sam, annual = market_estimates(decision["market"], {"gap": 10, "compatible": 50, "purchase": 1})
+assert abs(annual - 112127.725374) < 0.001
+assert market_estimates(decision["market"], {"gap": 0, "compatible": 50, "purchase": 1})[-1] == 0
 blocks = [match.group(1).strip() + "\n" for match in re.finditer(r"```mermaid\s*\n([\s\S]*?)```", source)]
 manifest = json.loads((dist / "diagrams/manifest.json").read_text(encoding="utf-8"))
 assert len(blocks) == len(manifest["diagrams"]) == 9
@@ -41,6 +52,14 @@ for name in ["index.html", "research.html"]:
         assert figure.find("button", attrs={"data-diagram-src": True})
         assert len(figure.find_all("a")) == 3
     assert soup.find("math"), name
+    assert soup.find(id="platform-scores") and soup.find(id="market-size"), name
+    assert soup.find(id="platform-evidence").name == "details" and not soup.find(id="platform-evidence").has_attr("open")
+    assert json.loads(soup.find(id="decision-data").string) == decision
+    assert len(soup.select("#score-rows > tr")) == 7
+    for row in soup.select("#score-rows > tr"):
+        assert all(len(cell.get_text(strip=True)) <= 9 for cell in row.select("td")), row.get_text()
+    assert soup.select_one("#market-annual-result").get_text() == "11.2万台/年"
+    assert soup.select_one("#channel-result").get_text() == "渠道真实参数待填"
     platform_tables = soup.select("table.platform-matrix")
     assert len(platform_tables) == 2, name
     cards = soup.select("article.platform-card")
@@ -87,4 +106,7 @@ assert sum(p["phase"] in ["voice", "panel"] for p in data["products"]) == 16
 canonical = site.parent / "车载智能化 通用调研.md"
 if canonical.exists():
     assert canonical.read_text(encoding="utf-8") == source
-print(json.dumps({"mermaidSources": 9, "svg": 9, "png": 9, "platformFigures": 4, "platformMatrices": 2, "platformCards": 7, "localLinks": checked_links, "sourceHashesMatch": True}))
+canonical_decision = site.parent / "车载智能化 评分与市场.json"
+if canonical_decision.exists():
+    assert decision == json.loads(canonical_decision.read_text(encoding="utf-8"))
+print(json.dumps({"mermaidSources": 9, "platformRatings": 6, "serviceLayersUnrated": 1, "marketAnnualExample": round(annual), "channelExample": 360, "localLinks": checked_links, "sourceHashesMatch": True}))
