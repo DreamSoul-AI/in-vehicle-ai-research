@@ -33,10 +33,10 @@
       const value = total(item[stage].scores, current);
       const number = value === null ? '<span class="score-na">关联项</span>' : '<span class="score-number">' + Math.round(value) + '</span><span class="score-track"><i style="width:' + value + '%"></i></span>';
       const cells = item[stage].scores === null ? Array(5).fill("—") : item[stage].scores;
-      return '<tr><th scope="row"><button class="score-platform" data-score-platform="' + esc(item.id) + '">' + esc(item.name) + '</button><small>' + esc(item.type) + '</small></th><td>' + number + '</td>' + cells.map((value) => '<td class="score-dimension">' + value + '</td>').join("") + '<td><span class="score-tag">' + esc(item[stage].tag) + '</span></td></tr>';
+      return '<tr><th scope="row"><button class="score-platform" data-score-platform="' + esc(item.id) + '">' + esc(item.name) + '</button><small>' + esc(item.type) + '</small></th><td class="score-company"><a target="_blank" rel="noopener noreferrer" href="' + esc(safeLink(item.companyUrl)) + '" title="' + esc(item.companyLegal) + '">' + esc(item.company) + '</a></td><td>' + number + '</td>' + cells.map((value) => '<td class="score-dimension">' + value + '</td>').join("") + '<td><span class="score-tag">' + esc(item[stage].tag) + '</span></td></tr>';
     }).join("");
     document.querySelectorAll("[data-weight-share]").forEach((node) => { node.textContent = Math.round(current[Number(node.dataset.weightShare)] / sum(current) * 100) + "%"; });
-    document.getElementById("score-takeaway").textContent = stage === "voice" ? "首款先验证手机助手入口；需要自定义流程时，再增加伴随App。" : "面板阶段：CarPlay / Android Auto是成熟基线；自有App需明确上屏载体。";
+    document.getElementById("score-takeaway").textContent = stage === "voice" ? "Apple Siri、Google Gemini按手机与语言分别验证；具体外设兼容需单独确认。" : "面板比较Apple CarPlay与Google Android Auto；ATOTO S84G209P是明确的后装车机参照。";
     status.textContent = "当前权重合计" + sum(current) + "，总分按实际权重归一化；单项仍为1–5分。";
   }
 
@@ -52,8 +52,10 @@
     const value = valid ? total(item[stage].scores, current) : null;
     const values = item[stage].scores;
     const displayValue = values === null ? "不单独计分" : !valid ? "权重待修正" : Math.round(value) + '<small> / 100</small>';
+    const companyMarkup = '<p class="score-company-detail"><b>公司：</b><a target="_blank" rel="noopener noreferrer" href="' + esc(safeLink(item.companyUrl)) + '">' + esc(item.companyLegal) + '</a><br><b>对应关系：</b>' + esc(item.companyRole) + (item.companyNotes ? '<br>' + esc(item.companyNotes) : '') + '</p>';
     document.getElementById("score-detail-title").textContent = item.name + " · " + score.stages[stage].label;
     document.getElementById("score-detail-content").innerHTML = '<p class="score-detail-number">' + displayValue + '</p><p><b>采用条件：</b>' + esc(item.prerequisite) + '</p><p class="decision-note">判断依据：' + esc(item.confidence) + '；尚未进行目标组合实测。</p>' + (values === null ? '<p>GAS提供授权服务层，依附AAOS与系统伙伴，不作为独立完整方案参与总分排名。</p>' : '<dl class="score-reasons">' + score.dimensions.map((dimension, index) => '<div><dt>' + esc(dimension.label) + ' <b>' + values[index] + '/5</b></dt><dd>' + esc(item[stage].reasons[index]) + '</dd></div>').join("") + '</dl>') + '<h3>直接依据</h3><ul>' + item.sources.map((source) => '<li><a target="_blank" rel="noopener noreferrer" href="' + esc(safeLink(source.url)) + '">' + esc(source.title) + ' ↗</a></li>').join("") + '</ul><p class="decision-note">分值是目标和条件下的研究判断，非厂商认可、真实用户评价或独立性能测量。</p>';
+    document.getElementById("score-detail-content").insertAdjacentHTML("afterbegin", companyMarkup);
     dialog.showModal();
   }
 

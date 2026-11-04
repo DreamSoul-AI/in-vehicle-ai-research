@@ -26,7 +26,7 @@ flowchart TB
 
 | **扩展关系** | **可复用的资产** | **必须新增或重新验证** | **推进依据** |
 |---|---|---|---|
-| 轻量助手到面板 | 已验证任务、确认与取消规则、部分音频适配、客户问题和支持经验 | 显示交互、安装供电、系统与固件、触控回退。投射屏是否允许自有软件另核 | 固定地图、状态或确认确有增量价值，安装和售后负担可承担 |
+| 轻量助手到面板 | 已验证任务、确认与取消规则、部分音频适配、客户问题和支持经验 | 显示交互、安装供电、系统与固件、触控回退。投射屏的具体品牌型号与平台功能另核 | 固定地图、状态或确认确有增量价值，安装和售后负担可承担 |
 | 面板到记录预警 | 适用的显示、电源、固定方式及渠道流程 | 摄像头位置、标定、视频存储、感知与误报漏报、数据管理 | 目标场景的记录或提示价值成立，限制能被理解 |
 | 记录预警到运动辅助 | 经确认适用的安装、设备管理和服务流程 | 车型授权接口、实时控制、接管与失效处置、安全团队和持续验证 | 特定车型和功能范围明确，具备专业合作与交付条件 |
 | 已有产品到模型能力 | 任务词表、合法知识、工具接口、故障分类和评测样例 | 模型与语音许可、算力或云费、语言评测、不确定输出控制和版本维护 | 相同任务下优于规则或现有助手，增量收益覆盖新增成本 |
@@ -39,176 +39,161 @@ flowchart TB
 本研究不预设销量、BOM、期限或融资额。推进依据应来自实际任务完成、用户复用、供应报价、支持负担和现金需求，不能仅由路线图或旧车存量推导。
 
 # 二、平台与载体
-首款语音助手与第二阶段面板，需要分别选择任务执行、界面和音频的接入方式。判断一套方案，先标清三件事：**任务在哪里执行、交互界面在哪里、麦克风与声音经过哪里。** 同一辆燃油车可能只有收音机，也可能已有成熟手机互联；动力类型不足以确定产品入口。以下为截至2026年11月5日的资料核查与研究判断，未完成手机或实车测试。
+比较对象直接采用现有平台名和具体产品型号，并列明对应公司。Apple Siri、Google Gemini是手机助手；Apple CarPlay、Google Android Auto是手机互联平台；AAOS是Google主导的AOSP汽车系统基座；GAS是Google授权服务。ATOTO S84G209P则是具体后装车机，不代表整个Android后装市场。以下均为公开资料判断，未进行手机或实车测试。
 
-## （一）路线适配评分
+## （一）现有平台与产品适配评分
 <!-- score-summary:start -->
-评分针对本项目两阶段目标，不是平台性能、用户评价或投资收益排名。单项1–5，总分100；分差不超过5分按同档理解，未知不计零。
+评分对象全部为现有平台或具体产品。公司和平台对应关系可直接追到官方资料；分数针对本项目采用现成方案的适配度，非平台性能排名。
 
-| **平台 / 路线** | **无屏助手** | **智能面板** | **首期角色** |
-|---|---:|---:|---|
-| CarPlay | 60 | 72 | 需屏幕入口 |
-| Android Auto | 60 | 72 | 需屏幕入口 |
-| AAOS（AOSP） | 38 | 56 | 系统投入较重 |
-| GAS | — | — | 服务层，需系统伙伴 |
-| 普通后装 Android | 48 | 66 | 需具体型号 |
-| 手机系统助手 | 86 | 61 | 轻量任务入口 |
-| 自有伴随 App | 80 | 74 | 可控任务流程 |
+| **平台 / 具体型号** | **公司** | **无屏助手** | **智能面板** |
+|---|---|---:|---:|
+| Apple CarPlay | Apple | 64 | 74 |
+| Google Android Auto | Google | 64 | 74 |
+| AAOS（AOSP） | Google | 34 | 44 |
+| Google GAS | Google | — | — |
+| Apple Siri | Apple | 88 | 66 |
+| Google Gemini | Google | 70 | 63 |
+| ATOTO S84G209P | Aotule | 54 | 66 |
 
-五维依次为部署匹配、任务复用、流程自主、接入可得、维护易度。首期权重30/30/10/20/10%，面板期20/20/25/20/15%。加权总分＝100×各维分数与权重乘积之和÷(5×权重总和)。权重为研究取舍，可调整；提高流程自主的重要性可能改变排序。
+五维依次为部署匹配、任务复用、可配置性、接入可得、维护易度；可配置性只计已有设置、偏好与厂商支持入口。首期权重30/30/10/20/10%，面板期20/20/25/20/15%。总分＝100×各维分数与权重乘积之和÷(5×权重总和)。分差不超过5分按同档理解，未知不填0，GAS服务层不独立计总分。
 
-评分依据为本报告已核实的平台机制，原始分、每维理由、采用前提和直接来源保存于 [评分与市场数据](<车载智能化 评分与市场.json>)。自有伴随App是拟建路线；第二阶段仍需落实投射或设备接口。GAS依附AAOS与伙伴授权，不与独立路线竞争总分。未验证的许可报价不作零成本或低能力处理。
+新分值按采用现成方案重审，不预设本项目已有手机软件或系统集成权。Siri需支持的手机、语言和外设；Gemini通用车载蓝牙按钮兼容未证；ATOTO S84G209P为双DIN拆装车机。原分、逐维理由、公司主体与直接来源见 [评分与市场数据](<车载智能化 评分与市场.json>)。
+
 <!-- score-summary:end -->
 
 ## （二）现有平台横向对比
-这组比较回答同一个问题：**要给传统车辆增加导航、通话、媒体和少操作的语音入口，现有平台已经提供什么，我们还要开发与交付什么？** CarPlay、Android Auto属于手机投射；AAOS属于车内操作系统；GAS是AAOS可选的授权服务层；普通后装Android是一组具体设备与固件。手机助手和自有伴随App是首款无屏产品可直接比较的任务入口。它们可以组合，不能按一个“开放度总分”互相替代。
+比较共同任务：在传统车辆上使用导航、通话、媒体与简单语音入口。公司字段表示品牌、产品发行或项目主导方，实际地区服务合同与销售主体仍按相应条款核对；不同层次的对象可以组合，不是七套可互换的操作系统。
 
-### 使用能力：同样的车内任务，设备和依赖有什么差别
-表中“离线”按任务与具体应用判断，不以有蓝牙、可运行本机App或有离线地图，就认定整条语音任务离线。手机、账号、地区和软件版本也属于产品条件。平台名称链接指向主要官方依据，具体权限和来源范围见后文。
+### 使用能力
+名称链接指向对应平台或型号，公司链接指向官方主体依据。离线按具体任务、设备与语言核查。
 
 | **平台 / 方案** | **主要任务与入口** | **应用在哪里运行** | **手机与屏幕条件** | **离线范围** |
 |---|---|---|---|---|
-| [Apple CarPlay](https://developer.apple.com/carplay/)<br>手机投射 | 地图、音频、电话、消息及受支持类别；Siri与车内控件交互 | 以iPhone应用和服务为基础，在相容车内界面呈现；接收端不是任意App安装环境 | 需要相容iPhone和CarPlay车辆或接收设备；有线/无线按设备核验 | 部分地图、已下载内容及Siri请求可按应用、语言、设备条件工作；不保证完整语音链离线 |
-| [Android Auto](https://developer.android.com/training/cars/platforms/android-auto)<br>手机投射 | 导航、媒体及受支持通信等类别；车内模板、按键和支持的语音入口 | 常见驾驶应用以Android手机服务提供车内界面；停车类别和运行方式另核 | 需要相容Android手机与车辆/后装接收端；有线和无线条件分别核验 | 按地图、媒体和助手功能分别核验；官方设置条件包含数据套餐，不能承诺整体离线 |
-| [Android Automotive OS](https://source.android.com/docs/automotive/start/what_automotive)<br>车内操作系统 | 本机应用、音频与车内系统整合；地图、语音和商店需具体实现 | 应用直接运行于车内硬件，系统本身不要求手机作为主机 | 本机应用不必依赖手机；通信任务按实现另核；需适配AAOS的硬件与系统，可另接收Android Auto | 能运行本机代码不等于已具备离线语音；取决于集成的识别、地图、内容和执行组件 |
-| [GAS / Google built-in](https://source.android.com/docs/automotive/start/what_automotive)<br>服务层与集成体验 | 在AAOS上提供获授权的Google地图、应用和车载服务，具体组合按车型地区 | Google built-in是集成体验，GAS是其授权服务层；两者均不是另一个可替换的OS | 本机运行不靠手机投射；通话、短信仍按官方流程配对手机；依赖相应车辆/系统 | 部分Assistant任务、预下载地图可离线；Play、实时交通等需要网络，不能外推全部Gemini会话 |
-| [普通后装 Android](https://www.atotodirect.com/en-gb/pages/manual-460-en)<br>设备与固件类别 | 本机导航、媒体、设备设置及扩展App；部分机型另有CarPlay/Android Auto | App运行于具体车机/盒子；例如ATOTO S8 Gen4有本机App与手机互联 | 本机功能可不以手机为主机；联网可用热点或具体机型SIM；部分设置仍需手机 | 本地媒体等按App配置；S8 Gen4的DriveChat明确需联网，不能当作整类产品的离线助手 |
-| [手机系统助手](https://support.avantree.com/hc/en-us/articles/50767188774937-How-to-Make-a-Call-by-Voice-Command)<br>已有任务入口 | 按具体助手复用导航、通话、媒体等；外设可提供按键、固定和音频入口 | 手机与其服务；Siri、Gemini等的任务、锁屏及语言支持并不相同 | 需要手机；不要求新增显示屏；外设和原车音响按蓝牙/AUX等组合 | 部分固定任务可能有设备端能力；按助手、语言与任务确认，不能从按键触发推导离线 |
-| [自有手机伴随 App](https://developer.apple.com/documentation/appintents)<br>自有任务流程 | 自己组织地点/设备配置、有限任务、确认、取消与故障反馈；调用已授权接口 | 自有App在手机运行，识别与服务按实际方案选手机、云或固定规则 | 需要手机；可先服务无屏外设，后续上屏需再满足对应平台条件 | 由所选识别、规则、地图和执行接口决定；可设计有限离线流程，但本研究未验证 |
+| [Apple CarPlay](https://developer.apple.com/carplay/)<br>[Apple](https://www.apple.com/legal/intellectual-property/trademark/appletmlist.html)<br>手机投射 | iPhone导航、音频、电话、消息；Siri及车内控件 | iPhone应用与Apple车内交互框架 | 相容iPhone与CarPlay接收设备；有线/无线按机型 | 地图、下载内容和Siri任务分别核，不保证整链离线 |
+| [Google Android Auto](https://developer.android.com/training/cars/platforms/android-auto)<br>[Google](https://play.google.com/store/apps/details?id=com.google.android.projection.gearhead&hl=en)<br>手机投射 | 相容导航、媒体、通信；支持的车内语音入口 | 以Android手机应用服务提供车内界面 | 受支持Android手机与接收设备；当前要求按组合核对 | 按App和助手任务核查；数据套餐条件不等于本机离线系统 |
+| [Android Automotive OS](https://source.android.com/docs/automotive/start/what_automotive)<br>[Google / AOSP](https://source.android.com/docs/setup/about)<br>车内系统基座 | 本机应用、音频与车内系统整合；服务需集成 | 车内硬件；由车厂或设备商形成具体系统 | 本机运行不靠手机投射；通信等另核 | 取决于安装的地图、语音和执行组件 |
+| [Google GAS / Google built-in](https://source.android.com/docs/automotive/start/what_automotive)<br>[Google](https://developers.google.com/cars)<br>服务层与集成体验 | 获授权的Google地图、应用及车载服务 | GAS为服务集合，Google built-in为集成体验 | 依赖相应车内系统；通话、短信按官方流程配对手机 | 部分Assistant任务、预下载地图可离线；不外推全部Gemini会话 |
+| [ATOTO S8 Gen4 S84G209P](https://www.atotodirect.com/de-us/products/atoto-s84g209p-9inch-double-din-car-stereo-eu)<br>[Aotule](https://www.atotodirect.com/en-gb/pages/about-atoto)<br>具体后装车机 | 本机导航、媒体、DriveChat及CarPlay/Android Auto | 该型号的Android 13 / AICE UI 13系统 | 双DIN拆装及线束适配；投射需手机，DriveChat设置用厂商SSHub | 收音机/本地媒体按功能；DriveChat明确需联网 |
+| [Apple Siri](https://support.apple.com/en-ie/guide/iphone/iph0aa8c80e6/27/ios/27)<br>[Apple](https://www.apple.com/legal/intellectual-property/trademark/appletmlist.html)<br>现有手机助手 | Apple支持的电话、导航、媒体等语音任务 | iPhone与Apple相关服务 | 相容iPhone、语言和设置；具体按键及拾音另核 | 受设备、语言与任务限制，不等于完整离线助手 |
+| [Google Gemini](https://support.google.com/gemini/answer/14554984?hl=en)<br>[Google](https://play.google.com/store/apps/details?id=com.google.android.apps.bard&hl=en)<br>现有手机助手 | Google支持的问答及通信、地图、媒体任务 | Android手机与Google服务 | 需相容手机、Google官方软件/默认助手设置；目标车载外设待核 | 相容外设方案有联网要求；不据蓝牙连接推导离线 |
 
-### 开发与商业条件：谁提供入口，我们实际承担什么
-表中“切入判断”为针对本课题的研究建议。**应用上屏、制造接收硬件、集成车内系统是三种不同工作。** 不把消费者使用平台、开发者会员、硬件认证和商业服务许可混成一个价格，也不把没有取得报价写成零成本。
+### 接入、责任与采用条件
+这里分别核查现成使用入口、平台公开开发规则和设备接口，不能从“可安装应用”推导已取得系统或车辆控制权。
 
-| **平台 / 方案** | **应用与硬件接入** | **车辆权限边界** | **费用与交付责任** | **我们的切入判断** |
+| **平台 / 方案** | **应用与硬件接入** | **车辆权限边界** | **费用与交付责任** | **采用判断** |
 |---|---|---|---|---|
-| [Apple CarPlay](https://developer.apple.com/carplay/)<br>手机投射 | 自有App需符合类别、申请相应entitlement并接受分发审核；接收硬件另走MFi及设备合作 | 公开框架按类别/权限提供能力；普通CarPlay接入不等于任意车控，车厂功能另有合作条件 | App会员、开发维护、接收硬件及相关许可分开计；本轮未取得硬件项目完整报价 | 适合第二阶段复用iPhone应用生态；第一款无屏蓝牙外设不必先开发CarPlay接收端 |
-| [Android Auto](https://developer.android.com/training/cars/platforms/android-auto)<br>手机投射 | 应用按类别使用服务/模板并满足车载质量与分发条件；接收硬件需与相应方案商核查 | 可按权限读取部分车况，依赖车型与API；不由投射推导通用车辆写入或控制 | App、硬件、内容/网络和维护分别计；本轮未取得接收方案完整商业条件 | 与CarPlay按手机客群并排选择；适合手机应用上屏，不能把接收屏当作AAOS |
-| [Android Automotive OS](https://source.android.com/docs/automotive/start/what_automotive)<br>车内操作系统 | 可开发车内App或集成AOSP系统；前者服从目标分发与权限，后者需硬件/系统伙伴 | VHAL由系统/车厂实现；部分权限须系统预装和授予，普通App安装不等于取得车辆接口 | AOSP代码基座开放免费；硬件、移植、更新、测试及服务另计，GAS不自动包含 | 作为本机应用与深集成路线评估；没有具体系统伙伴时，不列为首款外设的前置工程 |
-| [GAS / Google built-in](https://source.android.com/docs/automotive/start/what_automotive)<br>服务层与集成体验 | GAS由汽车OEM选择授权集成；第三方车内App仍走目标Google Play/平台类别规则 | 获得Google服务不代表第三方App得到全部车厂权限或运动控制能力 | 商业许可及服务条件另核；本轮未取得适用于本项目的GAS报价，不能按AOSP免费推导 | 用于理解原厂生态和应用分发；不是渠道商能给任意旧车直接加装的通用软件包 |
-| [普通后装 Android](https://www.atotodirect.com/en-gb/pages/manual-460-en)<br>设备与固件类别 | 逐SKU/固件核自有App安装、商店/预装、后台、音频和更新；系统级能力需ODM合作 | 车机设置、方向盘/功放适配与CAN相关能力依具体设备；不承诺跨车型通用车控 | 整机、线束/面框、安装、可选服务、固件和售后分别核价；承担机型差异 | 第二阶段可寻找可采购的合作载体；先取得样机和接口证据，再判断软件可控程度 |
-| [手机系统助手](https://support.avantree.com/hc/en-us/articles/50767188774937-How-to-Make-a-Call-by-Voice-Command)<br>已有任务入口 | 选相容按键/蓝牙方案调用既有助手；标准蓝牙是否涉及MFi按实际采用技术判断 | 通常执行手机任务；不能据此承诺原车车控，也不能保证外设麦克风用于助手录音 | 外设、配对/售后与目标手机适配为主要新增责任；内容、数据或高级服务可能另费 | 首款优先验证基线：让固定、触发、重连与反馈更可靠，先证明比手机直接使用有增量 |
-| [自有手机伴随 App](https://developer.apple.com/documentation/appintents)<br>自有任务流程 | iOS/Android分别核接口、权限、锁屏、后台和分发；上CarPlay/Android Auto需另满足规则 | 只能执行自身实现和已授权动作；App Intents使自有动作可被系统发现，不会授予任意其他App或车辆权限 | 自行承担App维护、地图/语音/API许可、账号与可选云服务；避免为无收益流程增加成本 | 系统助手确有任务缺口时再增加；优先统一有限流程，首期不要求自研通用模型 |
+| [Apple CarPlay](https://developer.apple.com/carplay/)<br>[Apple](https://www.apple.com/legal/intellectual-property/trademark/appletmlist.html)<br>手机投射 | 使用相容接收设备和已有iPhone应用；新增App类别授权与MFi接收硬件是不同路径 | 普通CarPlay不提供任意车控；车厂集成另核 | 接收设备、手机、内容与相关许可分别计 | 面板阶段的iPhone生态基线 |
+| [Google Android Auto](https://developer.android.com/training/cars/platforms/android-auto)<br>[Google](https://play.google.com/store/apps/details?id=com.google.android.projection.gearhead&hl=en)<br>手机投射 | 使用相容接收设备和受支持手机应用；类别、质量与分发规则明确 | 部分车况读取依API、权限和车型；不等于通用控制 | 设备、手机、数据、内容和兼容支持另计 | 面板阶段的Android生态基线 |
+| [Android Automotive OS](https://source.android.com/docs/automotive/start/what_automotive)<br>[Google / AOSP](https://source.android.com/docs/setup/about)<br>车内系统基座 | 采用已有AAOS具体系统需核车厂/设备商服务与配置 | VHAL与系统特权由具体实现及授权决定 | AOSP代码基座开放；整机、移植、维护和服务不自动免费 | 先找明确系统伙伴，不当作零售车机 |
+| [Google GAS / Google built-in](https://source.android.com/docs/automotive/start/what_automotive)<br>[Google](https://developers.google.com/cars)<br>服务层与集成体验 | GAS由汽车OEM选择授权；不是给任意旧车下载的完整套件 | Google服务许可不等于全部车厂权限 | 具体商业许可和车型服务套餐待核 | 关联服务项，不独立计总分 |
+| [ATOTO S8 Gen4 S84G209P](https://www.atotodirect.com/de-us/products/atoto-s84g209p-9inch-double-din-car-stereo-eu)<br>[Aotule](https://www.atotodirect.com/en-gb/pages/about-atoto)<br>具体后装车机 | 现有FindApps、ZLINK、DriveChat/SSHub；公开第三方SDK/API未核得 | 已公开摄像头与按键适配，不等于开放底盘控制 | 整机、线束/面框、拆装、可选服务及售后分别核价 | 比较具体车机，先核型号与安装 |
+| [Apple Siri](https://support.apple.com/en-ie/guide/iphone/iph0aa8c80e6/27/ios/27)<br>[Apple](https://www.apple.com/legal/intellectual-property/trademark/appletmlist.html)<br>现有手机助手 | 相容车辆Siri Eyes Free；Roadtrip官方另有调用Siri的旋钮步骤 | 调用手机任务，未因此取得通用车控；助手麦克风路由要验证 | 外设、手机适配与服务条件分别承担 | 首款可验证入口，限定语言与设备 |
+| [Google Gemini](https://support.google.com/gemini/answer/14554984?hl=en)<br>[Google](https://play.google.com/store/apps/details?id=com.google.android.apps.bard&hl=en)<br>现有手机助手 | Google确认相容耳机及Android Auto入口；不能外推所有车载蓝牙套件 | 默认助手及任务权限有条件，不是车辆控制接口 | 官方软件、账号、联网及目标配件兼容另核 | Android候选入口，先验证车载外设 |
 
-补充依据：[Apple CarPlay指南](https://developer.apple.com/download/files/CarPlay-Developer-Guide.pdf)、[MFi FAQ](https://mfi.apple.com/en/faqs)、[Android车载应用类别](https://developer.android.com/training/cars)、[Google built-in离线说明](https://support.google.com/built-in/answer/11013995?hl=en)、[车内通话条件](https://support.google.com/built-in/answer/9927598?hl=en)、[Gemini手机任务与限制](https://support.google.com/gemini/answer/14579631?hl=en)、[Car Hardware API](https://developer.android.com/training/cars/apps/library/car-hardware-api)、[VHAL](https://source.android.com/docs/automotive/vhal)、[AAOS助手集成](https://source.android.com/docs/automotive/voice/voice_interaction_guide/integration_flows)、[Android运行时权限](https://developer.android.com/training/permissions/requesting)、[后台限制](https://developer.android.com/develop/background-work/background-tasks/bg-work-restrictions)及[跨App任务接口](https://developer.android.com/guide/components/intents-common)。Apple Developer Program公开为US$99/会员年，Google Play开发者账号注册公开为US$25一次性；这是发布账号口径，不能代替CarPlay/Android Auto接收硬件许可、GAS授权或项目总成本。[Apple会员详情](https://developer.apple.com/programs/whats-included/)、[Play账号注册](https://support.google.com/googleplay/android-developer/answer/6112435?hl=en)
+Apple对应Apple Inc.。Google Gemini和Android Auto的官方发行者为Google LLC；AAOS由Google主导AOSP、车厂/设备商集成，并非Google独家销售的统一成品。ATOTO官网披露品牌归属**Shenzhen Aotule Technology Co., Ltd.**，其全资子公司**HK Auto Smart Technology Co., Limited**获授权负责全球运营销售；本次未确认S84G209P具体型号的法定制造主体。[Apple商标清单](https://www.apple.com/legal/intellectual-property/trademark/appletmlist.html)、[Gemini发行者](https://play.google.com/store/apps/details?id=com.google.android.apps.bard&hl=en)、[Android Auto发行者](https://play.google.com/store/apps/details?id=com.google.android.projection.gearhead&hl=en)、[AOSP项目说明](https://source.android.com/docs/setup/about)、[ATOTO公司说明](https://www.atotodirect.com/en-gb/pages/about-atoto)
 
 <!-- platform-comparison-cards -->
 
 <a id="platform-choice"></a>
 
-### 对首款和面板路线的直接判断
-**先比较任务入口，再比较上屏方式。** 对没有好用互联入口、接受手机随车的用户，先验证“既有手机助手＋简单外设”；如果明确缺少可控的确认、配置和反馈流程，再研究伴随App。两者都能作为小型语音助手路线，不要求先拥有CarPlay平台或一套车内OS。
+### 选择落到平台与具体设备
+第一阶段按手机系统和支持语言，分别验证Apple Siri、Google Gemini与具体车载外设。Avantree Roadtrip和CK11资料明确写Siri / Google Assistant，不能把旧Google Assistant名称直接替换成已验证的Gemini兼容。[Roadtrip官方说明](https://support.avantree.com/hc/en-us/articles/38121800304793-Roadtrip-How-to-activate-the-voice-assistant-with-the-car-kit-Siri-Google-Assistant)、[CK11官方说明](https://support.avantree.com/hc/en-us/articles/50767188774937-How-to-Make-a-Call-by-Voice-Command)
 
-需要持续显示地图、候选和状态时，把第二阶段拆成两条：复用手机应用生态，比较CarPlay与Android Auto及相容接收设备；需要自己运行和管理本机软件，再比较具体后装Android设备与AAOS系统合作。GAS是服务集成条件，不能作为这两条路线之外的独立零售替代项。
+第二阶段需要固定地图和可见状态时，再按iPhone/Android客群比较CarPlay、Android Auto及明确接收设备；ATOTO S84G209P是本机软件与拆装车机的具体参照。AAOS与GAS用于理解系统集成和服务许可条件。CarPlay Ultra仍是原厂深度集成边界，不能把其车控功能写给普通CarPlay或后装接收屏。
 
-CarPlay Ultra单独保留为原厂深度集成边界，不将其仪表、空调等能力写给普通CarPlay或任意后装接收屏。[Apple Ultra发布说明](https://www.apple.com/newsroom/2025/05/carplay-ultra-the-next-generation-of-carplay-begins-rolling-out-today/)
+## （三）平台、公司与执行位置
+Apple Siri在iPhone及相关服务环境处理请求；Google Gemini需要Google提供的手机软件与相应设置。本课题采用这些既有能力，外设负责相容的触发、固定与音频入口。Google已公开相容耳机的按键/触控入口，以及Gemini in Android Auto的屏幕与方向盘入口；这些证据都不能替代目标车载音箱的兼容测试。[Apple车内Siri](https://support.apple.com/en-ie/guide/iphone/iph0aa8c80e6/27/ios/27)、[Gemini相容耳机](https://support.google.com/gemini/answer/15456140?hl=en)、[Gemini车内条件](https://support.google.com/gemini/answer/16735982?hl=en)
 
-平台可用地区、助手语言与离线语言分别核验；系统能显示波兰语，不足以证明Siri或车载语音以波兰语完成目标任务。[Apple功能可用性](https://www.apple.com/ios/feature-availability/) 以上为阶段选择建议，最终仍以目标手机、固件、账号、车辆和完整任务验证为准。
-
-
-## （三）手机助手、投射界面与车内系统各管什么
-手机系统助手已有导航、电话和媒体等能力。首款小外设可以通过按键调用它，让手机负责理解和服务，外设负责固定入口、提示与相容音频。Avantree CK11就提供呼出手机助手的按钮。这条路线减少首期自建服务，但助手设置、支持语言、锁屏和账号条件仍由手机环境决定，产品要明确支持的组合。[Avantree CK11语音指南](https://support.avantree.com/hc/en-us/articles/50767188774937-How-to-Make-a-Call-by-Voice-Command)
-
-自有伴随App是另一种控制程度：在手机内保存常用地点、设备配置，组织确认和取消，调用获准的导航、通话或媒体接口。它有利于形成一致流程，但“系统助手能做”不代表“自有App也能做”。应先核对每项执行接口、后台运行和音频权限。不要为了拥有自己的对话界面，先承担一套没有额外用户收益的识别、账号和云服务。
-
-**CarPlay与Android Auto是手机应用进入相容车内界面的路径。** 它们不是向任意接收屏安装自有系统的通用接口。CarPlay应用经对应授权与iOS应用分发，当前类别也包含语音对话。Android Auto以手机应用和受支持类别为基础，车端展示面向驾驶的界面；实际车辆运行还要求可信安装来源。已有屏幕入口适合复用地图、媒体和交互生态，但不会自动取得原车全部功能。[Apple CarPlay开发入口](https://developer.apple.com/carplay/)、[Apple CarPlay指南](https://developer.apple.com/download/files/CarPlay-Developer-Guide.pdf)、[Android Auto概览](https://developer.android.com/training/cars/platforms/android-auto)
-
-**AAOS是在车内硬件运行的汽车系统，GAS是车厂可另行授权集成的Google服务集合。** Google built-in是在AAOS基础上集成相应Google应用和服务的产品路线。AAOS与Android Auto还可同时存在：一台车内系统可以既运行本机应用，又接收手机投射。[AOSP平台定义](https://source.android.com/docs/automotive/start/what_automotive)、[AAOS应用概览](https://developer.android.com/training/cars/platforms/automotive-os)
-
-普通后装“Android车机”必须按具体固件判断，不能仅凭商品名称认定AAOS、GAS或原厂车辆接口均可用。ATOTO S8 Gen4能运行本机应用，也提供手机互联，但它的DriveChat明确需要联网。能安装应用、可以离线听本地媒体和语音任务完全离线，是不同事实。[ATOTO S8 Gen4手册](https://www.atotodirect.com/en-gb/pages/manual-460-en)
-
-下图用于区分执行位置与授权角色，箭头表示管理或接入关系，不代表车辆数据自动开放。分析示意，依据Apple、Google、AOSP与MFi资料。
+CarPlay与Android Auto把受支持手机应用带到相容车内界面。AAOS则在车内硬件运行，GAS可由汽车OEM另行授权集成。ATOTO S84G209P的Android 13/AICE UI 13与本机软件是具体厂商实现，不能仅凭Android名称认定AAOS或GAS均已具备。图中实线表示平台归属、实现或投射关系，虚线表示需要授权或具体集成的关系，不代表全部车辆数据已开放。
 
 ```mermaid
-%% title: 平台角色与任务执行位置
-%% 图1 平台角色与执行位置。分析示意，非进程图，箭头表示管理或接入关系。
+%% title: 平台、具体产品与公司关系
+%% 分析示意；实线表示提供、实现或投射，虚线表示授权或具体系统集成条件。
 %% 来源 https://developer.apple.com/carplay/
-%% 来源 https://developer.android.com/training/cars/platforms/android-auto
+%% 来源 https://source.android.com/docs/setup/about
 %% 来源 https://source.android.com/docs/automotive/start/what_automotive
-%% 来源 https://mfi.apple.com/en/faqs
+%% 来源 https://www.atotodirect.com/en-gb/pages/about-atoto
 flowchart TB
-  PLATFORM["平台方<br/>类别、框架与分发规则"]
-  APP["应用开发者<br/>任务流程与执行接口"]
-  subgraph PHONE["手机执行环境"]
-    SYSTEM["系统助手"]
-    OWN["自有伴随 App"]
-    PROJECT["CarPlay / Android Auto<br/>手机应用"]
+  APPLE["Apple Inc."]
+  GOOGLE["Google LLC<br/>主导 AOSP 项目"]
+  AOTULE["Aotule 品牌方<br/>HK Auto Smart 全球运营销售"]
+  subgraph PHONE["手机与相应服务"]
+    SIRI["Apple Siri"]
+    GEMINI["Google Gemini"]
+    CP["Apple CarPlay"]
+    AA["Google Android Auto"]
   end
-  subgraph VEHICLE["车内设备环境"]
-    RECEIVER["投射接收屏<br/>显示、输入与音频"]
-    NATIVE["AAOS / 后装本机应用<br/>系统与权限分别核对"]
+  subgraph CAR["车内设备与系统"]
+    SCREEN["相容投射接收设备<br/>逐品牌型号核对"]
+    AAOS["Android Automotive OS<br/>由车厂或设备商具体集成"]
+    ATOTO["ATOTO S8 Gen4 S84G209P<br/>具体 Android 替换车机"]
   end
-  DEVICE["设备商 / ODM<br/>硬件、固件与认证"]
-  OEM["车厂<br/>原车接口与系统授权"]
-  CHANNEL["渠道 / 安装商<br/>适配、交付与支持"]
-  PLATFORM --> APP
-  PLATFORM --> SYSTEM
-  APP --> OWN
-  APP --> PROJECT
-  PROJECT -->|"投射交互"| RECEIVER
-  APP --> NATIVE
-  DEVICE --> RECEIVER
-  DEVICE --> NATIVE
-  OEM -.->|"按车型和权限提供"| NATIVE
-  CHANNEL -.->|"服务于实际设备组合"| VEHICLE
+  GAS["Google GAS<br/>授权应用与服务集合"]
+  OEM["车厂 / 系统伙伴"]
+  APPLE --> SIRI
+  APPLE --> CP
+  GOOGLE --> GEMINI
+  GOOGLE --> AA
+  GOOGLE --> AAOS
+  GOOGLE --> GAS
+  GAS -.->|"可选授权集成"| AAOS
+  OEM -.-> AAOS
+  CP -->|"投射交互"| SCREEN
+  AA -->|"投射交互"| SCREEN
+  AOTULE --> ATOTO
 ```
 
-## （四）三种接入路线，先比较控制程度和新增责任
-| **路线** | **任务和界面** | **可以获得的价值** | **新增责任与限制** |
+## （四）三种具体接入路径
+| **路径** | **现有平台与公司** | **可获得的价值** | **先核什么** |
 |---|---|---|---|
-| 调用现有系统助手 | 手机执行，按键和声音交互 | 较快验证少量日常任务与固定入口 | 依赖手机助手行为，不能承诺任意自定义唤醒、流程和麦克风路由 |
-| 自有手机伴随App | 手机运行自己的有限流程，按需联网 | 可统一常用配置、确认、故障反馈与设备管理 | 自行处理权限、服务接口、账号、后台与系统变化 |
-| 屏幕与车机集成 | 手机投射，或设备本机应用，两者分别选 | 增加地图、任务状态和触控回退，扩大可整合服务 | 应用上屏/分发、显示交互、设备接口、启动与维护责任增加 |
+| iPhone无屏入口 | Apple Siri / Apple | 复用支持的手机任务 | 配件触发、语言、锁屏与拾音 |
+| Android无屏候选 | Google Gemini / Google | 复用Google手机助手 | 目标车载外设兼容与任务差异 |
+| 固定车内界面 | CarPlay / Apple；Android Auto / Google；ATOTO S84G209P / Aotule | 地图显示、状态和触控回退 | 接收协议或本机应用、安装及联网 |
 
-三条路线可以组合，但不能把它们当成同一授权的自然升级。自有App可以先服务免屏外设，之后再增加合规的车内界面；也可以直接与已有Android设备商合作。第二阶段是否需要本机应用，取决于任务和系统整合收益，不能只由“想摆脱手机”决定。
-
-下图把同一导航、电话或媒体任务画成三种执行路径，虚线代表按任务才需要的云服务。分析示意，不代表已实现的DreamSoul架构。
+它们是现有方案的接入选择。无屏助手不必先获得CarPlay接收端资格；增加屏幕也不会自动得到全部系统权限。图中虚线指明尚待验证的车载外设条件，网络依赖按具体任务判断。
 
 ```mermaid
-%% title: 三种任务接入路线
-%% 图2 三种任务接入路线。分析示意，实线为任务/反馈，虚线为可选依赖。
-%% 来源 https://support.avantree.com/hc/en-us/articles/50767188774937-How-to-Make-a-Call-by-Voice-Command
-%% 来源 https://developer.apple.com/carplay/
-%% 来源 https://developer.android.com/training/cars/platforms/android-auto
-%% 来源 https://source.android.com/docs/automotive/start/what_automotive
-flowchart LR
-  subgraph A["路线一：调用系统助手"]
-    A1["设备按键或手机入口"] --> A2["手机系统助手"]
-    A2 --> A3["支持的手机任务"]
+%% title: 三种现有平台接入路径
+%% 分析示意；Gemini目标车载外设入口待核，不代表所有蓝牙套件兼容。
+%% 来源 https://support.apple.com/en-ie/guide/iphone/iph0aa8c80e6/27/ios/27
+%% 来源 https://support.google.com/gemini/answer/15456140?hl=en
+%% 来源 https://support.google.com/gemini/answer/16735982?hl=en
+%% 来源 https://www.atotodirect.com/en-gb/pages/manual-460-en
+flowchart TB
+  subgraph A["路径一：Apple Siri / Apple"]
+    A1["相容外设或车辆按键"] --> A2["iPhone 上的 Siri"]
+    A2 --> A3["Apple 支持的手机任务"]
   end
-  subgraph B["路线二：自有伴随 App"]
-    B1["设备触发与输入"] --> B2["手机 App<br/>有限流程与确认"]
-    B2 --> B3["已获授权的任务接口"]
+  subgraph B["路径二：Google Gemini / Google"]
+    B1["手机或相容入口<br/>目标车载套件待核"] -.-> B2["Android 手机的 Gemini"]
+    B2 --> B3["Google 支持的手机任务"]
   end
-  subgraph C["路线三：屏幕与车机集成"]
-    C1["车内触控或语音入口"] --> C2{"执行环境"}
-    C2 -->|"手机投射"| C3["相容的手机应用"]
-    C2 -->|"本机运行"| C4["车内应用与设备接口"]
+  subgraph C["路径三：固定车内界面"]
+    C1{"采用哪种现有产品"}
+    C1 -->|"手机投射"| C2["Apple CarPlay<br/>Google Android Auto"]
+    C1 -->|"具体本机车机"| C3["ATOTO S84G209P / Aotule<br/>现有厂商应用与设置"]
   end
-  CLOUD["网络、账号与内容服务<br/>按具体任务需要"]
-  RESULT["导航、电话或媒体任务完成<br/>反馈、失败或取消"]
-  CLOUD -.-> A2
-  CLOUD -.-> B2
-  CLOUD -.-> C3
-  CLOUD -.-> C4
+  SERVICE["账号、语言与联网条件<br/>按平台和具体任务需要"]
+  RESULT["导航、电话或媒体结果<br/>完成、失败、取消与恢复"]
+  SERVICE -.-> A2
+  SERVICE -.-> B2
+  SERVICE -.-> C2
+  SERVICE -.-> C3
   A3 --> RESULT
   B3 --> RESULT
+  C2 --> RESULT
   C3 --> RESULT
-  C4 --> RESULT
 ```
 
-## （五）四类硬件载体，对应四种安装拓扑
-| **载体** | **典型连接** | **适用车辆与代价** |
+## （五）四类载体与具体产品不同
+| **载体** | **已研究例子** | **安装与前提** |
 |---|---|---|
-| 免屏外设/小音箱 | 固定、供电，连接手机；自带扬声器或接原车音响 | 不先要求原车有屏，重点验证触发、拾音、重连和音频 |
-| 独立屏 | 支架和车充，连接手机，再选择原车音频路径 | 保留原车机。要核对视野、固定、供电和声音去向，后摄另增布线 |
-| 替换车机 | 拆换主机，接常电、ACC、地线、扬声器及车型配件 | 增加本机应用与整合能力，也承担面框、原车功放、按键和线束适配 |
-| 原车屏升级盒 | 接原车已有相容投射协议的数据USB口 | 复用屏幕与音响，但不能仅凭USB口给完全无相容接口的车增加入口 |
+| 免屏小外设 | Avantree CK11 / Roadtrip | 固定、供电、手机及音频适配 |
+| 独立屏 | Carpuride W903 | 支架、车充、手机与原车音频 |
+| 替换车机 | ATOTO S84G209P | 双DIN拆换，面框/线束/ACC与原车功能适配 |
+| 原车屏升级盒 | Ottocast P3 Pro / Carlinkit Tbox UHD | 先有相容原车有线投射接口，不能只靠USB口 |
 
-W903说明独立屏可以采用配套车充、AUX/FM/蓝牙等声音路径；选装后摄需要布线。ATOTO手册则明确常电与ACC接错会影响休眠和启动。Carlinkit Tbox UHD的产品条件要求原厂有线CarPlay或Android Auto，商城还列出后装主机及仅无线协议的排除项。这些是不同载体的实际边界，不能用一句“免拆即插即用”统称。[W903官网](https://carpuride.com/products/carpuride-w903-portable-smart-multimedia-dashboard-console-with-front-camera)、[ATOTO手册](https://www.atotodirect.com/en-gb/pages/manual-460-en)、[Carlinkit条件](https://www.carlinkit.com/uhd6225)、[Carlinkit商城条件](https://carlinkitmall.com/collections/wireless-carplay-adapter/products/carlinkit-tbox-uhd-android-13-carplay-ai-box-with-hdmi-output)
-
-“免拆”只是安装特征。独立屏仍可能需要调整音源、管理外露线缆、处理原车断电后USB持续供电；替换车机也不能按屏幕大小就判断适配。渠道应先记录车辆现有接口与保留功能，再匹配设备和安装套餐。
-
-下图按车辆条件选择载体，保留不新增硬件的手机基线，不把购买大屏作为必然终点。分析示意，适配判断仍需逐车型验证。
+载体是安装分类，不是统一平台。ATOTO手册提醒常电与ACC接错会影响休眠与启动；原车屏升级盒则须逐型号核原车协议及排除项。渠道应先记录车辆现有接口和保留功能，再匹配具体品牌型号。[ATOTO手册](https://www.atotodirect.com/en-gb/pages/manual-460-en)、[Carlinkit条件](https://www.carlinkit.com/uhd6225)、[W903官网](https://carpuride.com/products/carpuride-w903-portable-smart-multimedia-dashboard-console-with-front-camera)
 
 ```mermaid
 %% title: 硬件载体与安装选型
@@ -231,21 +216,17 @@ flowchart TB
   VALIDATE --> DECIDE["增量收益与支持成本是否成立<br/>允许保留手机方案或当前阶段"]
 ```
 
-## （六）听得见音乐，不代表助手用对了麦克风
-音频必须分成“下行播放”和“上行拾音”核查。手机、外设和原车可能各有麦克风，按下设备按钮只是激活，不足以证明请求音频来自设备。CK11官方故障排查还要求手机保持在附近、手机麦克风无遮挡，是核对实际输入的具体提醒。[Avantree CK11语音指南](https://support.avantree.com/hc/en-us/articles/50767188774937-How-to-Make-a-Call-by-Voice-Command)
+## （六）音乐播放与助手拾音分开验证
+手机、外设和原车可能各有麦克风。按下设备按钮不证明Apple Siri或Google Gemini使用了外设麦克风；CK11官方排查要求手机靠近且手机麦克风无遮挡，是具体型号的反例。[CK11语音指南](https://support.avantree.com/hc/en-us/articles/50767188774937-How-to-Make-a-Call-by-Voice-Command)
 
-| **链路** | **解决什么** | **不能由此推出什么** |
+| **链路** | **主要作用** | **还需核实** |
 |---|---|---|
-| HFP免提 | 手机与免提设备之间的语音连接、相关电话控制 | 系统助手或自有App必定使用外设麦克风，或与其他音源同时工作 |
-| A2DP音频分发 | 将媒体等音频从源设备送至蓝牙接收端 | 已有反向麦克风通道。播放成功不能验证录音 |
-| AUX输出至车机输入 | 把外设或手机的模拟声音送入原车音响 | 这条输出线能读取原车麦克风或控制车机音量 |
-| FM发射至收音机 | 让无AUX的音响也能播放外设声音 | 已解决拾音、切换音源、频点干扰和当地使用条件 |
+| HFP | 免提语音与电话相关控制 | 助手是否选用外设麦克风 |
+| A2DP | 媒体音频播放 | 不提供反向录音保证 |
+| AUX | 模拟声音送入原车音响 | 不读取原车麦克风 |
+| FM | 将声音送入收音机 | 拾音、音源切换及频点干扰 |
 
-HFP与A2DP的职责见[Bluetooth HFP简介](https://www.bluetooth.com/specifications/specs/hands-free-profile-1-10/)和[Android蓝牙配置](https://developer.android.com/develop/connectivity/bluetooth/profiles)；AUX、FM是W903公开的实际输出方式，表中产品含义为分析判断。上述链路可按产品组合，不保证所有手机和车机同时支持。
-
-应用还需协同音频焦点。Android车载麦克风API要求先获录音许可与音频焦点，失去焦点就停止录音。来电、音乐、导航与助手会改变当前会话，应测试从唤起、听取、播报到恢复音乐的全过程，而非只验一次配对或播放。[Google车载麦克风说明](https://developer.android.com/training/cars/apps/library/car-microphone)
-
-下图展示输入候选与输出分支，虚线表示需系统选择和实测的可选路径。它是路由集合，不表示可同时占用全部麦克风和音源。
+上述职责依据[Bluetooth HFP简介](https://www.bluetooth.com/specifications/specs/hands-free-profile-1-10/)及[Android蓝牙配置](https://developer.android.com/develop/connectivity/bluetooth/profiles)。来电、音乐、导航和助手会改变音频焦点，应用录音也有权限与失焦停止条件。应在具体Apple/Google手机、固件和设备组合上验证完整任务与恢复。[Google车载麦克风](https://developer.android.com/training/cars/apps/library/car-microphone)
 
 ```mermaid
 %% title: 音频与麦克风路径
@@ -285,17 +266,18 @@ flowchart LR
   SESSION --> FM
 ```
 
-## （七）平台权限、分发和合作由谁承担
-应用开发者负责任务接口和反馈，平台方管理应用类别与分发，设备商管理固件、驱动和配件，车厂决定原厂车辆接口，渠道承担相应安装和支持。代理销售、给App安装权限和取得系统集成权限不是一件事。
+## （七）平台许可与设备合作分别核对
+Apple管理CarPlay类别与框架；Google管理Android Auto支持类别、分发和Google服务；设备商负责具体固件、驱动和配件；车厂决定相应原厂车辆接口。平台代理、应用安装和系统集成不是同一权限。
 
-CarPlay硬件接收端涉及MFi技术；仅使用iOS支持的标准蓝牙配置的外设，不应自动套用同一项目要求。选择ODM或现成设备时，应明确谁负责具体型号认证、授权和更新，不能只检查品牌有没有连接iPhone的产品。[Apple MFi FAQ](https://mfi.apple.com/en/faqs)
+CarPlay接收硬件涉及MFi；仅使用iOS支持的标准蓝牙配置的配件，不自动套用相同MFi要求。ATOTO现有FindApps、ZLINK、DriveChat/SSHub说明了厂商提供的功能，不证明第三方已取得其公开SDK或全部系统权限。[MFi FAQ](https://mfi.apple.com/en/faqs)、[ATOTO手册](https://www.atotodirect.com/en-gb/pages/manual-460-en)
 
-车内原生软件也有权限层次。AAOS的部分系统特权需要OEM预装并明确授予，用户点击同意不能替代。VHAL是车厂可实现的属性接口，不是对所有应用开放的车控总线。Android Auto也有按权限提供的部分车辆读取API，不能反向推广成通用写入。首两阶段应优先使用可授权的导航、电话和媒体任务，后续车辆信息及运动控制再分别论证。[AAOS助手集成](https://source.android.com/docs/automotive/voice/voice_interaction_guide/integration_flows)、[VHAL定义](https://source.android.com/docs/automotive/vhal)、[Car Hardware API](https://developer.android.com/training/cars/apps/library/car-hardware-api)
+AAOS的VHAL由具体系统/车厂实现，部分特权需要系统预装和授予；Android Auto也有受条件约束的部分车况读取API。上述均不能推广为通用车辆写入、转向或制动接口。[VHAL](https://source.android.com/docs/automotive/vhal)、[AAOS集成](https://source.android.com/docs/automotive/voice/voice_interaction_guide/integration_flows)、[车况API](https://developer.android.com/training/cars/apps/library/car-hardware-api)
 
-## （八）首款如何选择，第二阶段如何承接
-本轮建议先选定一个手机系统、少量已核接口和一种音频组合，用手机原有方案作基线，再比较免屏外设是否减少操作。现有助手已能满足任务时，优先验证按键、固定、重连和反馈；确有流程缺口再引入伴随App。用户需要持续看到路线、候选或状态时，才比较独立屏与车机集成的收益。
+## （八）首款与面板分别验证
+首款先选择明确的Apple Siri或Google Gemini手机环境、具体外设和一种音频组合，与手机直接使用比较任务成功、重试、需看手机次数及支持成本。目标语言须在平台支持范围内；界面能显示波兰语，不证明Siri已支持该语言的语音任务。[Apple功能清单](https://www.apple.com/ios/feature-availability/)
 
-选择依据应是完整任务成功、误执行、需看手机次数、上车恢复和支持成本。外置麦克风若没有实际进入录音链路，就不能作为拾音改善卖点；增加屏幕后，任务状态、确认和取消要在语音与界面之间一致。可复用的是经过验证的任务和服务经验，每种新载体仍要验证安装、供电和软件维护。后续记录、预警、运动辅助及更强模型各有新条件，不由平台上屏或设备销量自动取得。
+用户确需固定显示时，再选择相容CarPlay/Android Auto接收设备或ATOTO S84G209P等明确本机产品。依次验证安装、供电、连接、现有应用和软件更新，不由增加屏幕或设备销量推导后续驾驶辅助能力。
+
 
 # 三、按阶段竞品比较
 ## （一）首期直接竞品与历史经验
@@ -319,7 +301,7 @@ ATOTO 官方手册明确 DriveChat 处理命令和回答需要联网，不能因
 
 # 四、首款小型语音助手功能与工程
 ## （一）先限制任务，再补全使用过程
-候选任务可从常用地点导航、常用联系人通话、已有媒体控制中选择。Google 官方分别提供这些任务的 Android Auto 操作路径，构成现成能力基线，但不证明自有 App 或蓝牙按键自动取得相同权限。自有产品需要先确认执行接口，再决定支持范围。[Google 导航](https://support.google.com/androidauto/answer/6348322?hl=en)、[电话](https://support.google.com/androidauto/answer/6348066?hl=en)、[媒体](https://support.google.com/androidauto/answer/6348327?hl=en)
+候选任务可从常用地点导航、常用联系人通话、已有媒体控制中选择。Google官方分别提供Android Auto中的导航、通话和媒体路径，构成现成能力基线。首款外设仍应分别核对Apple Siri、Google Gemini或所选厂商助手的支持，不能由语音按钮推定取得同样权限。[Google 导航](https://support.google.com/androidauto/answer/6348322?hl=en)、[电话](https://support.google.com/androidauto/answer/6348066?hl=en)、[媒体](https://support.google.com/androidauto/answer/6348327?hl=en)
 
 以“去公司”为例，首次停车配置时选择地图应用并保存地点，完成一次实际导航。日常上车后，设备恢复供电和连接，用户按键得到短提示，说出指令，系统确认必要参数并交给导航。若无法取得最终状态，只能提示请求已转交，不能把识别成功或应用打开称为导航完成。拨号则核对联系人与号码、音频和挂断后的恢复，媒体任务核对目标应用及实际播放状态。
 
@@ -349,7 +331,7 @@ flowchart TD
 
 参数确认后仍需重新核查参数和所需权限。未取得权限时退出当前任务，停车后按所选手机的流程处理配置。
 
-首期可优先使用按键和少量单轮命令，允许手机助手完成识别与执行。若需要自有流程，可用现成识别、规则和许可接口。长对话、长期记忆、多乘员识别和通用车控应按增量价值另行评估。
+首期可优先使用按键和少量单轮命令，由已选Apple Siri或Google Gemini完成其支持的识别与执行；具体配件、语言、锁屏和音频行为逐项确认。长对话、长期记忆、多乘员识别和通用车控应按增量价值另行评估。
 
 ## （二）把工程职责分到实际可控的环节
 | **环节** | **需要负责的结果** | **不能默认取得的条件** |
@@ -431,7 +413,7 @@ flowchart TD
   E -->|是| G[一线支持按设备与版本复现]
   G --> H{定位责任环节}
   H -->|硬件或固件| I[供应方换修或修复]
-  H -->|配置或自有软件| J[渠道或软件方处理]
+  H -->|配置或平台软件| J[渠道或软件方处理]
   H -->|外部服务| K[核实账号 接口或服务变化]
   I --> L[复测并反馈给用户]
   J --> L
@@ -500,9 +482,9 @@ Cerence CaLLM Edge 的原始公告可作为企业嵌入式模型集成参考，�
 | Garmin：[Speak Plus 发布](https://www.garmin.com/en-US/newsroom/press-release/automotive/2018-the-new-garmin-speak-plus-with-amazon-alexa-brings-amazon-alexa-to-a-vehicle-and-adds-a-built-in-dash-cam/) | 2018-01-08 | 语音、摄像和预警组合及历史价格。当前供货与业务成效未知 |
 | Apple：[CarPlay 概览](https://developer.apple.com/carplay/)、[开发指南](https://developer.apple.com/download/files/CarPlay-Developer-Guide.pdf)、[MFi FAQ](https://mfi.apple.com/en/faqs) | 概览和 FAQ 滚动，指南2026-10-13 | 平台位置、应用类别、语音与录音、硬件接收端条件。未取得具体应用审核或硬件授权 |
 | Google：[Android Auto](https://developer.android.com/training/cars/platforms/android-auto)、[AAOS 概览](https://source.android.com/docs/automotive/start/what_automotive) | 页面更新2026-10-22、2026-09-30 | 手机投射、车内系统和 GAS 的区别。不能由此确认后装商品的认证或开放接口 |
-| Google：[导航](https://support.google.com/androidauto/answer/6348322?hl=en)、[电话](https://support.google.com/androidauto/answer/6348066?hl=en)、[媒体](https://support.google.com/androidauto/answer/6348327?hl=en) | 滚动更新 | 平台现成任务与依赖。不是自有 App 权限保证 |
+| Google：[导航](https://support.google.com/androidauto/answer/6348322?hl=en)、[电话](https://support.google.com/androidauto/answer/6348066?hl=en)、[媒体](https://support.google.com/androidauto/answer/6348327?hl=en) | 滚动更新 | 平台现成任务与依赖。不保证具体外设获得相同任务权限 |
 | Bluetooth SIG：[HFP 1.10 简介](https://www.bluetooth.com/specifications/specs/hands-free-profile-1-10/)，Google：[蓝牙配置](https://developer.android.com/develop/connectivity/bluetooth/profiles) | 规范版本1.10，开发页滚动 | 通话与音乐配置的区别。未深入协议全文或验证具体手机路由 |
-| Carpuride：[W903 商品页](https://carpuride.com/products/carpuride-w903-portable-smart-multimedia-dashboard-console-with-front-camera) | 滚动更新 | 默认 SKU、价格、独立屏和相机任务。未证实可安装任意自有助手 |
+| Carpuride：[W903 商品页](https://carpuride.com/products/carpuride-w903-portable-smart-multimedia-dashboard-console-with-front-camera) | 滚动更新 | 默认 SKU、价格、独立屏和相机任务。未证实可安装任意第三方助手 |
 | Carlinkit：[UHD 产品页](https://www.carlinkit.com/uhd6225)，ATOTO：[S8 Gen4 手册](https://www.atotodirect.com/en-gb/pages/manual-460-en) | 滚动更新，ATOTO 对应 S84G209P | 升级盒接口条件、DriveChat 联网和车机接线。不同地区配置不能互相套用 |
 | Garmin：[X110 用户手册](https://www8.garmin.com/manuals/webhelp/GUID-93747543-12A8-453C-9896-32070F5B0710/EN-US/Dash_Cam_X110_OM_EN-US.pdf) | ©2024 | 安装、记录、驾驶提醒及限制。未取得当前可核官网价或实车效果 |
 | Mobileye：[8 Connect 手册](https://static.mobileye.com/manual/me8/Mobileye%208%20connect%20%E2%80%93%20User%20manual.pdf)、[后装业务公告](https://ir.mobileye.com/news-releases/news-release-details/mobileye-wind-down-aftermarket-solutions-unit) | 手册未明示日期，公告2024-03-18 | 预警责任边界及业务收缩原因。历史支持资料不代表重新开放后装销售 |
@@ -537,9 +519,9 @@ Cerence CaLLM Edge 的原始公告可作为企业嵌入式模型集成参考，�
 
 | **资料** | **版本/日期** | **实际阅读范围与价值** |
 |---|---|---|
-| [App Intents](https://developer.apple.com/documentation/appintents) | 滚动框架文档 | 实际读取官方Markdown的Overview与系统集成说明；自有App动作可被系统发现，不赋予任意跨App或车控权限 |
+| [App Intents](https://developer.apple.com/documentation/appintents) | 滚动框架文档 | 实际读取官方Markdown的Overview与系统集成说明；应用动作可被系统发现，不赋予任意跨App或车控权限 |
 | [Android运行时权限](https://developer.android.com/training/permissions/requesting) | 滚动文档 | 沙箱、运行时授权和拒绝后回退；未运行示例 |
-| [Android后台限制](https://developer.android.com/develop/background-work/background-tasks/bg-work-restrictions) | 2026-10-21更新 | 系统及用户后台限制、厂商差异；不保证伴随App常驻 |
+| [Android后台限制](https://developer.android.com/develop/background-work/background-tasks/bg-work-restrictions) | 2026-10-21更新 | 系统及用户后台限制、厂商差异；不保证第三方应用常驻 |
 | [Android跨App任务接口](https://developer.android.com/guide/components/intents-common) | 滚动文档 | 隐式Intent、目标App存在性与任务分工；不将调用接口当成功执行证明 |
 | [Apple会员详情](https://developer.apple.com/programs/whats-included/) | 滚动费用页 | Pricing and fees的US$99/会员年；不扩写为CarPlay接收端授权费 |
 | [Google Play账号注册](https://support.google.com/googleplay/android-developer/answer/6112435?hl=en) | 滚动帮助页 | US$25一次性发布账号注册费；不替代GAS或硬件授权 |
@@ -558,3 +540,14 @@ Cerence CaLLM Edge 的原始公告可作为企业嵌入式模型集成参考，�
 | [ACEA 2026报告](https://www.acea.auto/files/ACEA_Report-%E2%80%93-Vehicles_on_European_roads_2026.pdf) | 2026-01-15，统计2024 | 第5、11、15页，EU乘用车、车龄、动力及脚注；无互联缺口调查 |
 | [PZPM 2025存量表](https://www1.pzpm.org.pl/pl/layout/set/print/content/download/2590/10563/file/Park_2025.pdf)及[2026/27年鉴](https://www1.pzpm.org.pl/pl/content/download/11094/68148/file/Raport_2026_caly_lekki.pdf) | 2026-05-13、2026-09-17，统计2025 | 存量第1页及年鉴23–28页；更新记录与平均车龄，不等于实时在用普查 |
 | [国家统计局2025公报](https://www.stats.gov.cn/sj/zxfb/202602/t20260228_1962662.html) | 2026-02-28，统计2025 | 原始HTML汽车保有量段落；民用轿车，不与EU分类相加 |
+
+### 平台与公司主体核查
+访问日2026年11月5日。公司字段表示已核实的品牌、发行或项目主导关系，不替代地区合同服务方或具体型号制造主体。
+
+| **官方资料** | **阅读范围与边界** |
+|---|---|
+| [Apple商标清单](https://www.apple.com/legal/intellectual-property/trademark/appletmlist.html) | Siri、CarPlay条目与Apple Inc.归属表述 |
+| [Gemini官方发行页](https://play.google.com/store/apps/details?id=com.google.android.apps.bard&hl=en)及[Android Auto官方发行页](https://play.google.com/store/apps/details?id=com.google.android.projection.gearhead&hl=en) | 产品身份、Google LLC发行者；不采用商店旧描述判断当前最低系统 |
+| [AOSP项目说明](https://source.android.com/docs/setup/about)及[GAS说明](https://developers.google.com/cars) | Google主导开源项目、设备商集成与Google服务授权分别核查 |
+| [ATOTO公司说明](https://www.atotodirect.com/en-gb/pages/about-atoto)及[联系主体](https://www.atotodirect.com/en-gb/pages/contact) | 英国页公司关系与经营联络主体；未确认S84G209P铭牌制造商 |
+| [Gemini相容耳机](https://support.google.com/gemini/answer/15456140?hl=en)及[Gemini车内帮助](https://support.google.com/gemini/answer/16735982?hl=en) | 相容设备、触发与Android Auto条件；不外推所有车载蓝牙套件 |

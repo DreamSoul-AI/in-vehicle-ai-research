@@ -17,8 +17,10 @@ decision = json.loads((site / "content/decision.json").read_text(encoding="utf-8
 validate_decision(decision)
 assert decision == json.loads((dist / "data/decision.json").read_text(encoding="utf-8"))
 platforms_by_id = {item["id"]: item for item in decision["score"]["platforms"]}
-assert weighted_score(platforms_by_id["phone-assistant"]["voice"]["scores"], [30, 30, 10, 20, 10]) == 86
-assert weighted_score(platforms_by_id["companion-app"]["panel"]["scores"], [20, 20, 25, 20, 15]) == 74
+assert set(platforms_by_id) == {"carplay", "android-auto", "aaos", "gas", "siri", "gemini", "atoto-s84g209p"}
+assert weighted_score(platforms_by_id["siri"]["voice"]["scores"], [30, 30, 10, 20, 10]) == 88
+assert weighted_score(platforms_by_id["gemini"]["voice"]["scores"], [30, 30, 10, 20, 10]) == 70
+assert weighted_score(platforms_by_id["carplay"]["panel"]["scores"], [20, 20, 25, 20, 15]) == 74
 assert weighted_score(platforms_by_id["gas"]["voice"]["scores"], [30, 30, 10, 20, 10]) is None
 base, gap, sam, annual = market_estimates(decision["market"], {"gap": 10, "compatible": 50, "purchase": 1})
 assert abs(annual - 112127.725374) < 0.001
@@ -58,6 +60,10 @@ for name in ["index.html", "research.html"]:
     assert len(soup.select("#score-rows > tr")) == 7
     for row in soup.select("#score-rows > tr"):
         assert all(len(cell.get_text(strip=True)) <= 9 for cell in row.select("td")), row.get_text()
+        item = platforms_by_id[row.find("button")["data-score-platform"]]
+        company = row.select_one(".score-company a")
+        assert company.get_text() == item["company"] and company["href"] == item["companyUrl"]
+    assert not re.search(r"自有\s*(?:伴随\s*)?App|自有手机|自有语音|companion-app|phone-assistant|aftermarket-android", str(soup), re.I), name
     assert soup.select_one("#market-annual-result").get_text() == "11.2万台/年"
     assert soup.select_one("#channel-result").get_text() == "渠道真实参数待填"
     platform_tables = soup.select("table.platform-matrix")

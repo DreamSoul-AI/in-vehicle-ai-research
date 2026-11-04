@@ -21,7 +21,7 @@ from tools.decision_content import render_scores, render_market, validate_decisi
 SITE = Path(__file__).resolve().parent
 DIST = SITE / "dist"
 CONTENT = SITE / "content"
-VERSION = "ratings-market-20261105"
+VERSION = "named-platforms-20261105"
 CHAPTER_IDS = dict(zip("一二三四五六七", ["roadmap", "platforms", "products", "starter", "business", "next", "sources"]))
 
 
@@ -149,12 +149,13 @@ def platform_comparison(soup: BeautifulSoup) -> None:
             raise ValueError("Platform rows must use the same order and labels")
         parts = user[0].get_text("|", strip=True).split("|")
         name, category = parts[0], parts[-1]
+        company_link = user[0].find_all("a")[1]
         fields = [("执行位置", user[2]), ("手机与屏幕", user[3])]
         details = [("离线范围", user[4]), ("应用与硬件接入", developer[1]), ("车辆权限边界", developer[2]), ("费用与交付责任", developer[3]), ("我们的切入判断", developer[4])]
         def field_list(items: list) -> str:
             return "<dl>" + "".join("<div><dt>" + label + "</dt><dd>" + cell.decode_contents() + "</dd></div>" for label, cell in items) + "</dl>"
         card_class = "platform-card platform-service" if category == "服务层与集成体验" else "platform-card"
-        cards.append('<article class="' + card_class + '"><p class="platform-category">' + f"{index:02d} / " + html.escape(category) + '</p><h4>' + html.escape(name) + '</h4><p class="platform-purpose">' + user[1].decode_contents() + '</p>' + field_list(fields) + '<details><summary>查看离线、接入与切入点</summary>' + field_list(details) + '<p class="platform-card-source">依据：' + str(user[0].find("a")) + '</p></details></article>')
+        cards.append('<article class="' + card_class + '"><p class="platform-category">' + f"{index:02d} / " + html.escape(category) + '</p><h4>' + html.escape(name) + '</h4><p class="platform-company">公司：' + str(company_link) + '</p><p class="platform-purpose">' + user[1].decode_contents() + '</p>' + field_list(fields) + '<details><summary>查看离线、接入与切入点</summary>' + field_list(details) + '<p class="platform-card-source">依据：' + str(user[0].find("a")) + '</p></details></article>')
     markup = '<section class="platform-overview" aria-label="七类现有平台速览"><h4>按平台展开查看</h4><div class="platform-grid">' + "".join(cards) + '</div></section>'
     marker.replace_with(BeautifulSoup(markup, "html.parser"))
     tables[0].insert_before(BeautifulSoup('<nav class="platform-jumps" aria-label="平台对照表"><a href="#platform-usage-table">使用能力对比 ↓</a><a href="#platform-access-table">开发与商业条件对比 ↓</a><a href="#platform-choice">产品切入判断 ↓</a></nav><p class="matrix-hint">两张表使用相同的七个对象；窄屏可横向滑动，平台名称列固定显示。</p>', "html.parser"))

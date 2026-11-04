@@ -10,6 +10,8 @@ def validate_decision(data):
         weights = score["stages"][stage]["weights"]
         assert len(weights) == 5 and sum(weights) == 100
         for platform in score["platforms"]:
+            assert all(platform.get(field) for field in ["company", "companyLegal", "companyRole", "companyUrl"])
+            assert platform["companyUrl"].startswith("https://")
             values = platform[stage]["scores"]
             if values is not None:
                 assert len(values) == 5 and all(isinstance(value, int) and 1 <= value <= 5 for value in values)
@@ -53,7 +55,8 @@ def score_rows(score, stage):
         value = weighted_score(item[stage]["scores"], weights)
         meter = '<span class="score-na">关联项</span>' if value is None else f'<span class="score-number">{value:.0f}</span><span class="score-track"><i style="width:{value}%"></i></span>'
         cells = ["—"] * 5 if value is None else [str(value) for value in item[stage]["scores"]]
-        result.append('<tr><th scope="row"><button class="score-platform" data-score-platform="' + escape(item["id"]) + '">' + escape(item["name"]) + '</button><small>' + escape(item["type"]) + '</small></th><td>' + meter + '</td>' + ''.join('<td class="score-dimension">' + value + '</td>' for value in cells) + '<td><span class="score-tag">' + escape(item[stage]["tag"]) + '</span></td></tr>')
+        company = '<td class="score-company"><a href="' + escape(item["companyUrl"], quote=True) + '" title="' + escape(item["companyLegal"], quote=True) + '" target="_blank" rel="noopener noreferrer">' + escape(item["company"]) + '</a></td>'
+        result.append('<tr><th scope="row"><button class="score-platform" data-score-platform="' + escape(item["id"]) + '">' + escape(item["name"]) + '</button><small>' + escape(item["type"]) + '</small></th>' + company + '<td>' + meter + '</td>' + ''.join('<td class="score-dimension">' + value + '</td>' for value in cells) + '<td><span class="score-tag">' + escape(item[stage]["tag"]) + '</span></td></tr>')
     return ''.join(result)
 
 
@@ -65,12 +68,12 @@ def render_scores(data):
     inputs = ''.join('<label>' + escape(item["label"]) + '<input type="number" min="0" max="100" step="1" value="' + str(weights[index]) + '" data-score-weight="' + str(index) + '" aria-label="' + escape(item["label"]) + '权重"></label>' for index, item in enumerate(dimensions))
     anchors = ''.join('<li><b>' + escape(item["label"]) + '</b>：' + escape(item["anchor"]) + '</li>' for item in dimensions)
     return '''<section class="decision-panel" id="platform-scores" aria-label="平台路线适配评分">
-<div class="decision-heading"><span class="decision-kicker">先看结论</span><h3>哪条路线更适合当前阶段？</h3><p>按本项目目标评分，满分100。点击平台查看逐项理由。</p></div>
+<div class="decision-heading"><span class="decision-kicker">现有平台与产品</span><h3>先看名字、公司与采用条件</h3><p>按采用现成方案的目标评分，满分100。点击名称查看理由，点击公司查看官方依据。</p></div>
 <div class="decision-stage" role="group" aria-label="评分目标"><button data-score-stage="voice" aria-pressed="true">首款 · 无屏语音助手</button><button data-score-stage="panel" aria-pressed="false">第二阶段 · 智能面板</button></div>
-<p class="decision-takeaway" id="score-takeaway">首款先验证手机助手入口；需要自定义流程时，再增加伴随App。</p>
-<div class="score-table-wrap" tabindex="0" role="region" aria-label="路线评分表，可横向滚动"><table class="score-table"><thead><tr><th>平台 / 路线</th><th>适配分</th>''' + columns + '''<th>采用建议</th></tr></thead><tbody id="score-rows">''' + score_rows(score, "voice") + '''</tbody></table></div>
+<p class="decision-takeaway" id="score-takeaway">Apple Siri、Google Gemini按手机与语言分别验证；具体外设兼容需单独确认。</p>
+<div class="score-table-wrap" tabindex="0" role="region" aria-label="路线评分表，可横向滚动"><table class="score-table"><thead><tr><th>平台 / 具体型号</th><th>公司</th><th>适配分</th>''' + columns + '''<th>采用建议</th></tr></thead><tbody id="score-rows">''' + score_rows(score, "voice") + '''</tbody></table></div>
 <p class="decision-note">单项1–5分，高分更适配。研究判断，非实测排名；相差≤5分按同档理解。GAS依附系统伙伴，不单独计分。</p>
-<details class="decision-details"><summary>评分标准、权重与不确定性</summary><div class="weight-controls">''' + inputs + '''</div><button class="text-button" id="score-reset">恢复该阶段默认权重</button><p id="score-input-status" role="status">默认权重合计100%；修改后自动归一化。</p><ul>''' + anchors + '''</ul><p>1分：本目标下需较多新增条件；3分：可行但有明显约束；5分：公开路径与目标高度吻合。2、4分为中间档。未知保持未知，未取得报价不计为零分。分差同档是阅读规则，不是统计置信区间。</p><p>依据公开文档与本项目假设。伴随App为拟建路线，前提是有限任务接口可实现；面板路线还需屏幕载体。调整自主流程等权重可能改变顺序。具体配置、语言和实车表现尚待验证。</p></details>
+<details class="decision-details"><summary>评分标准、权重与不确定性</summary><div class="weight-controls">''' + inputs + '''</div><button class="text-button" id="score-reset">恢复该阶段默认权重</button><p id="score-input-status" role="status">默认权重合计100%；修改后自动归一化。</p><ul>''' + anchors + '''</ul><p>1分：本目标下需较多新增条件；3分：可行但有明显约束；5分：公开路径与目标高度吻合。2、4分为中间档。未知保持未知，未取得报价不计为零分。分差同档是阅读规则，不是统计置信区间。</p><p>仅比较已存在的平台与具体产品，按现成配置和公开合作入口评估，不预设本项目已开发手机软件或已取得系统权限。“可配置性”只计已有偏好、设置与厂商支持入口，旧版“流程自主”分数不直接沿用。具体手机、语言、设备和实车表现仍待验证。</p></details>
 <p class="decision-links"><a href="#platform-evidence">展开平台依据 ↓</a> · <a href="#market-size">查看市场量级 ↓</a></p></section>'''
 
 

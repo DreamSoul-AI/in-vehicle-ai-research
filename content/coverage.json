@@ -1,11 +1,11 @@
 {
   "roadmap": {
-    "textCharacters": 1607,
+    "textCharacters": 1611,
     "diagrams": 1,
     "tables": 1
   },
   "platforms": {
-    "textCharacters": 11937,
+    "textCharacters": 9165,
     "diagrams": 4,
     "tables": 6
   },
@@ -15,7 +15,7 @@
     "tables": 2
   },
   "starter": {
-    "textCharacters": 1473,
+    "textCharacters": 1509,
     "diagrams": 2,
     "tables": 1
   },
@@ -30,8 +30,8 @@
     "tables": 0
   },
   "sources": {
-    "textCharacters": 3654,
+    "textCharacters": 4002,
     "diagrams": 0,
-    "tables": 4
+    "tables": 5
   }
 }
