@@ -152,7 +152,7 @@ function showStage(id) {
 }
 async function initialize() {
   try {
-    const response = await fetch("data/products.json?v=platform-comparison-20261105");
+    const response = await fetch("data/products.json?v=ratings-market-20261105");
     if (!response.ok) throw new Error(`数据返回 ${response.status}`);
     const data = await response.json();
     if (!Array.isArray(data.products) || !Array.isArray(data.stages))
@@ -184,6 +184,9 @@ async function initialize() {
   } catch (e) {
     $("result-count").textContent = "产品资料未载入，请刷新或阅读完整调研。";
     console.error(e);
+  } finally {
+    document.documentElement.dataset.researchReady = "true";
+    document.dispatchEvent(new Event("research-ready"));
   }
 }
 ["search", "phase", "status-filter"].forEach((id) =>
@@ -257,6 +260,6 @@ const observer = new IntersectionObserver(
   { rootMargin: "-15% 0px -65% 0px" },
 );
 document
-  .querySelectorAll("main section[id]")
+  .querySelectorAll("main > .research-section[id]")
   .forEach((s) => observer.observe(s));
 initialize();
