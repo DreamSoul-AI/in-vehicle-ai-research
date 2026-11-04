@@ -21,6 +21,32 @@
 .report-body td a { font-size: 11px; }
 .report-body .table-wrap { margin: 22px 0; }
 .product-analysis { margin-top: 36px; }
+.platform-jumps { display: flex; flex-wrap: wrap; gap: 10px; margin: 22px 0 12px; }
+.platform-jumps a { border: 1px solid #b5c7e3; border-radius: 5px; padding: 7px 12px; background: var(--soft); font-size: 12px; text-decoration: none; }
+.matrix-hint { color: var(--muted); font-size: 12px; }
+.platform-matrix { min-width: 980px; table-layout: fixed; }
+.platform-matrix th:first-child, .platform-matrix td:first-child { position: sticky; left: 0; width: 165px; background: #f3f7fc; z-index: 1; border-right: 1px solid #d4deed; }
+.platform-matrix th:first-child { z-index: 2; }
+.platform-matrix th { color: var(--ink); }
+.platform-matrix td:first-child { font-weight: 600; }
+.platform-matrix td:first-child a { font-size: 13px; }
+.platform-matrix { scroll-margin-top: 90px; }
+#platform-choice { scroll-margin-top: 100px; }
+.platform-overview { margin: 34px 0; }
+.platform-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-top: 18px; }
+.platform-card { padding: 22px; border: 1px solid var(--line); border-top: 3px solid var(--blue); border-radius: 8px; background: white; }
+.platform-service { border-top-color: #a67a13; background: #fffcf3; }
+.platform-card .platform-category { margin: 0 0 7px; color: var(--muted); font-size: 11px; letter-spacing: .04em; }
+.platform-card h4, .platform-card h5 { margin: 0 0 12px; font-size: 21px; line-height: 1.5; }
+.platform-card .platform-purpose { font-size: 13px; margin: 0 0 15px; }
+.platform-card dl { margin: 0; font-size: 12px; }
+.platform-card dl > div { border-top: 1px solid var(--line); padding: 10px 0; }
+.platform-card dt { font-size: 11px; color: var(--muted); margin-bottom: 3px; }
+.platform-card dd { margin: 0; line-height: 1.85; }
+.platform-card details { border-top: 1px solid var(--line); margin-top: 5px; padding-top: 13px; }
+.platform-card summary { cursor: pointer; color: var(--blue); font-size: 12px; font-weight: 600; }
+.platform-card details dl { margin-top: 12px; }
+.platform-card .platform-card-source { font-size: 11px; }
 .research-diagram {
   margin: 27px 0;
   border: 1px solid var(--line);
@@ -104,6 +130,10 @@
 .diagram-view-scroll { max-height: 72vh; overflow: auto; border: 1px solid var(--line); background: white; }
 .diagram-view-scroll img { display: block; width: 100%; max-width: none; height: auto; }
 @media (max-width: 500px) {
+  .platform-grid { grid-template-columns: 1fr; }
+  .platform-card { padding: 19px; }
+  .platform-matrix { min-width: 1020px; }
+  .platform-matrix th:first-child, .platform-matrix td:first-child { width: 130px; }
   .diagram-scroll img { min-width: var(--diagram-min); }
   .report-body { font-size: 13px; line-height: 1.95; }
   .report-body h3 { font-size: 18px; margin-top: 25px; padding-top: 17px; }
@@ -117,6 +147,10 @@
   .diagram-view-tools button { padding: 5px 9px; }
 }
 @media print {
+  .platform-jumps, .matrix-hint { display: none; }
+  .platform-matrix { min-width: 0; table-layout: auto; }
+  .platform-matrix th:first-child, .platform-matrix td:first-child { position: static; width: auto; }
+  .platform-card { break-inside: avoid; }
   .diagram-actions, .diagram-dialog { display: none !important; }
   .diagram-scroll { overflow: visible; }
   .diagram-scroll img { min-width: 0; max-width: 100%; }
