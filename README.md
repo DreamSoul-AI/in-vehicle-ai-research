@@ -34,6 +34,8 @@ python -m http.server 8000 --bind 127.0.0.1 --directory dist
 
 `main` 保存完整网站源码，`gh-pages` 保存从 `dist/` 提取的静态发布文件，Pages 从 `gh-pages` 分支根目录提供网页。不需要安装依赖或构建，站内资源使用相对路径以适配项目 Pages 子路径。
 
+阶段结构改版使用 `product-stages-20261105` 作为资源与正文的统一版本参数。后续调整数据结构或交互时，同步更新 HTML 中的资源及站内正文链接、`app.js` 的数据请求参数。
+
 完成修改和本地检查后，提交源码并发布：
 
 ```powershell
