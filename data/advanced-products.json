@@ -1,0 +1,1349 @@
+{
+  "asOf": "2026-11-05",
+  "method": "公开原始资料核查；未安装软件、运行模型或实车验证",
+  "products": [
+    {
+      "id": "car-nebula-luna",
+      "name": "Car Nebula Launcher / Luna",
+      "maker": "Car Nebula；Google Play 开发者 Ahmed Khaled Mohamed Abdo Abdelhady（埃及）",
+      "kind": "后装 Android 车机软件 / 本地 LLM 开发者声明",
+      "status": "零售软件：Google Play 可安装；未安装实测",
+      "compute": "Android 车机运行。应用最低 Android 8、3 GB RAM、四核；推荐 Android 10+、6–8 GB、UNISOC A7862。这是整款应用要求，不能视为离线 LLM 保证配置。",
+      "model": "Luna；商店正文明确声明 on-device LLM support。模型家族、参数量、量化、推理框架及权重分发方式未公开。",
+      "functions": [
+        "读取实时 OBD 数据并回答用车问题",
+        "语音交互；离线导航；仪表与媒体控制",
+        "选配 ELM327 OBD 适配器、USB 摄像头"
+      ],
+      "offline": [
+        "开发者声明：合适设备上 Luna 可离线；官网列基础语音 AI、导航及 OBD 为离线能力",
+        "地图需要预下载；尚无已核硬件型号上的 ASR→LLM→TTS 断网实测"
+      ],
+      "online": [
+        "增强回答、TomTom 搜索及云同步；联网 Google Maps 与本地地图应分别理解"
+      ],
+      "price": {
+        "display": "免费安装，含应用内购买；AI 语音列入升级功能，未获得金额",
+        "currency": null,
+        "scope": "官网及 Google Play；商店实际返回 Germany (English)，访问日 2026-11-05。不能将免费离线导航等同于免费离线 AI。",
+        "card": "免费安装 · AI 升级价未公开"
+      },
+      "sources": [
+        {
+          "title": "Car Nebula Google Play 产品说明",
+          "url": "https://play.google.com/store/apps/details?hl=en-US&id=com.khaledisim.carlauncher",
+          "date": "2026-10-24 更新",
+          "access": "2026-11-05",
+          "scope": "针对性阅读 About、Luna、App support；支撑开发者、本地 LLM 声明及上架，不是独立验证。"
+        },
+        {
+          "title": "Car Nebula 官网功能与离线 FAQ",
+          "url": "https://carnebula.com/",
+          "date": "滚动页；列版本 5.7.20",
+          "access": "2026-11-05",
+          "scope": "针对性阅读技术要求、How It Works、离线 FAQ；支撑基础离线范围与配件要求。"
+        },
+        {
+          "title": "Car Nebula Requirements",
+          "url": "https://carnebula.com/requirements",
+          "date": "滚动页",
+          "access": "2026-11-05",
+          "scope": "阅读全部可提取正文；区分应用门槛与未披露的 LLM 门槛。"
+        },
+        {
+          "title": "Car Nebula Upgrade",
+          "url": "https://carnebula.com/upgrade",
+          "date": "滚动页",
+          "access": "2026-11-05",
+          "scope": "阅读全部可提取正文；AI 语音升级、试用与可取消，页面未返回金额。"
+        }
+      ],
+      "image": {
+        "url": "https://play-lh.googleusercontent.com/xgpPK6e-tqjPSXcEhAiYGbgRJtXapVsv1-Y54LxitnqH2_JGlzfbphuwpRKsuPvS846Q1nzqE2dIVOtA28sw-w%3Dw526-h296",
+        "sourceUrl": "https://play.google.com/store/apps/details?hl=en-US&id=com.khaledisim.carlauncher",
+        "credit": "Car Nebula / Google Play 官方商店截图",
+        "local": "assets/products/car-nebula-luna.png"
+      },
+      "limits": [
+        "公开声明达到车端本地 LLM 层，但尚缺模型包、运行日志和完整离线语音链路证据。",
+        "未核波兰语、本地 LLM 特定设备兼容表、模型与地图总体占用、热稳定性。",
+        "未核 IAP 金额、离线模型是否另收费及订阅终止后的模型可用性；销量与留存未知。"
+      ],
+      "segment": "aftermarket",
+      "evidence": "local_llm",
+      "stageLabel": "可安装 · 开发者声明",
+      "obtainable": true,
+      "coreEligible": true
+    },
+    {
+      "id": "geely-galaxy-m9-black-gold-7b",
+      "name": "吉利银河 M9 210km 四驱黑金智曜版 / AI BOX",
+      "maker": "吉利银河",
+      "kind": "原厂高配车型，本地大模型借鉴案例，非后装商品",
+      "status": "当前官方专属产品页与 M9 在售配置页均列出该版本，可订购。已核实在售声明，未核实每项功能的交付软件版本或逐项断网表现。",
+      "powertrain": "插电式混合动力 PHEV",
+      "compute": "官方称 AI BOX 超级智脑。M9 系列车机为高通 8295P，但该专属页未披露 AI BOX 的确切 SoC、RAM、带宽和功耗。页面中的 NVIDIA DRIVE Thor-U / 700 TOPS 属于 H7 辅助驾驶方案，不移作 AI BOX 的规格。",
+      "model": "官方明确：端侧部署 70 亿参数量模型，即 7B。家族名称、checkpoint、量化位宽、上下文长度、运行时和可分配 RAM 未公开。",
+      "functions": [
+        "Eva 全场景 Agent",
+        "熟人迎宾与哨兵片段筛选",
+        "起步、下车风险提醒",
+        "视觉温控建议与儿童守护"
+      ],
+      "offline": [
+        "有明确 7B 模型本地部署证据",
+        "专属产品页没有承诺上述所有功能全程离线，也没有给出离线任务清单或准确率"
+      ],
+      "online": [
+        "哨兵图文发送手机 App 依赖车外通信链路",
+        "在线问答、检索及第三方服务的具体端云切分未公开"
+      ],
+      "price": {
+        "display": "中国区该款限时先享整车指导价 ¥259,800；AI BOX 或 Eva 单独售价未公开",
+        "currency": "CNY",
+        "scope": "吉利官方黑金智曜版产品页，访问日 2026-11-05。整车价，不是 7B 模型、算力盒或助手价格。",
+        "card": "¥259,800 / 具体款整车"
+      },
+      "sources": [
+        {
+          "title": "吉利银河 M9 黑金智曜版官方车型页",
+          "url": "https://www.galaxy-geely.com/M9Edition",
+          "date": "滚动更新，未标明更新日",
+          "access": "2026-11-05",
+          "scope": "吉利官方产品页，针对性阅读车型价格、AI BOX 7B 本地部署、主动服务，以及单列的 H7 / Thor-U 辅助驾驶部分。"
+        },
+        {
+          "title": "吉利银河 M9 官方车型页",
+          "url": "https://www.galaxy-geely.com/M9",
+          "date": "滚动更新，未标明更新日",
+          "access": "2026-11-05",
+          "scope": "核对 210km 四驱黑金智曜版、PHEV 动力、单列 AI BOX 配置和限时整车价格。"
+        }
+      ],
+      "image": {
+        "url": "https://dm30webimages.geely.com/GeelyPromotion/AYINHE/M9/Edition/2026/0417/kv.pc.jpg",
+        "sourceUrl": "https://www.galaxy-geely.com/M9Edition",
+        "credit": "吉利银河官方 M9 黑金智曜版产品页主图",
+        "local": "assets/products/geely-galaxy-m9-black-gold-7b.jpg"
+      },
+      "limits": [
+        "官方 7B 本地部署声明足以确认车上有本地模型，不足以确认完整 Agent 离线",
+        "本轮没有 一手资料正文证明模型就是 Qwen，也不采用第三方 200 TOPS / 特定芯片转载数字",
+        "不能把智驾芯片的 700 TOPS 当作座舱 LLM 算力",
+        "原厂高配 PHEV，只能借鉴能力与架构，不作为传统油车后装盒的直接同类售价"
+      ],
+      "segment": "oem",
+      "evidence": "local_llm",
+      "stageLabel": "原厂在售声明",
+      "obtainable": true,
+      "coreEligible": true
+    },
+    {
+      "id": "xpeng-g7-2026-ultra-vlm",
+      "name": "2026 小鹏 G7 602 Max 旗舰版 + Ultra 智能升级包",
+      "maker": "小鹏汽车",
+      "kind": "原厂选装座舱与辅助驾驶组合包，非独立后装 AI 产品",
+      "status": "2026 官方在售配置表列出该选装包。2025 官方经营公告已称 G7 本地部署 VLM。G7 当前配置脚注仍说明小 P 管家部分功能随 OTA 更新。",
+      "powertrain": "本条选择 602 Max 旗舰版，为纯电动 BEV；同系列另有增程车型，不混用价格与动力类型",
+      "compute": "G7 配置表列高通 SA8295P。Ultra 包包含 1 颗座舱图灵 AI 芯片，厂商口径有效算力 750 TOPS；另有 2 颗辅助驾驶图灵芯片合计 1500 TOPS，不能合计成座舱 LLM 性能。RAM 和整机功耗未披露。",
+      "model": "小鹏图灵 VLM 模型。厂商经营公告明确车端部署，具体参数、量化和 checkpoint 未公开。辅助驾驶 VLA 与座舱 VLM 分开看。",
+      "functions": [
+        "小 P 管家与主动服务",
+        "全场景自由对话",
+        "本地对话和离线导航",
+        "面容 ID"
+      ],
+      "offline": [
+        "配置表明确本地对话离线可用，并另列离线导航",
+        "本地 VLM 不等于所有小 P 管家、百科、音乐或其他服务断网可用"
+      ],
+      "online": [
+        "配置表列有账号云同步、OTA 和远程服务",
+        "具体在线问答与外部内容服务依赖需按实际功能确认"
+      ],
+      "price": {
+        "display": "中国区整车建议零售价 ¥195,800 + Ultra 包 ¥20,000 = ¥215,800（按官网标价相加，未计其他选装或优惠）；VLM 单独售价未公开",
+        "currency": "CNY",
+        "scope": "2026 G7 602 Max 旗舰版中国区滚动配置页。¥20,000 是含智驾、座舱硬件和功能的组合包价，不是单颗座舱芯片、单独助手或后装盒价格。",
+        "card": "¥215,800 / 整车 + 组合包"
+      },
+      "sources": [
+        {
+          "title": "2026 小鹏 G7 参数配置表",
+          "url": "https://www.xiaopeng.com/g7_2026/configuration.html",
+          "date": "2026 款滚动配置页，未标明更新日",
+          "access": "2026-11-05",
+          "scope": "小鹏官方，针对性阅读 602 Max 旗舰版能源与价格、座舱、本地对话和导航、Ultra / Ultra SE 包及脚注 17–18。"
+        },
+        {
+          "title": "小鹏汽车 2025 年第二季度经营技术进展公告",
+          "url": "https://www.xiaopeng.com/news/company_news/5493.html",
+          "date": "页面 2025-08-20，正文公告 2025-08-19",
+          "access": "2026-11-05",
+          "scope": "小鹏官方，针对性阅读 G7 交付、本地 VLA + VLM、座舱专用芯片与模型推送时序。用于确认厂商车端部署声明，不当作断网实测。"
+        }
+      ],
+      "image": null,
+      "limits": [
+        "Ultra SE ¥12,000 只列 2 颗辅助驾驶芯片等，不可当作同等 VLM 座舱方案",
+        "2025 已上市与 2026 当前包配置均有证据，具体每项 VLM 功能的 OTA 完成状态仍需车辆软件版本核对",
+        "750 / 1500 / 2250 TOPS 为厂商有效算力口径，不是可直接与其他芯片排名的 LLM 实测",
+        "未取得 VLM 断网任务、时延、功耗和多语种实车数据"
+      ],
+      "segment": "oem",
+      "evidence": "local_llm",
+      "stageLabel": "在售配置 · 部分 OTA",
+      "obtainable": true,
+      "coreEligible": true
+    },
+    {
+      "id": "xpeng-g6-2026-ultra-vlm",
+      "name": "2026 小鹏 G6 625 Max 科技版 + Ultra 智能升级包",
+      "maker": "小鹏汽车",
+      "kind": "原厂选装组合包，非独立后装 AI 产品",
+      "status": "2026 官方在售配置表列出小鹏图灵 VLM 与座舱专用芯片。未取得本条车型逐功能 OTA 版本与独立断网实测。",
+      "powertrain": "本条选择 625 Max 科技版，为纯电动 BEV；同系列增程款另列",
+      "compute": "基础座舱芯片 MT8676。Ultra 包列 1 颗座舱图灵 AI 芯片，厂商有效算力 750 TOPS；另有 2 颗辅助驾驶芯片合计 1500 TOPS。RAM、量化、功耗未披露。",
+      "model": "小鹏图灵 VLM 模型，配座舱专属图灵芯片。车型配置没有给出确切参数和离线执行图。小鹏 2025 经营公告的车端 VLM 架构作背景，不代替本车实测。",
+      "functions": [
+        "小 P 管家",
+        "主动服务和自由对话",
+        "本地对话与离线导航",
+        "面容 ID"
+      ],
+      "offline": [
+        "本车型配置表明确本地对话离线可用、离线导航",
+        "没有逐项承诺 VLM 所有主动服务离线"
+      ],
+      "online": [
+        "云同步、OTA、App 远程操作等需要相应网络",
+        "其他 Agent 任务的端云切分未在配置表说明"
+      ],
+      "price": {
+        "display": "中国区整车建议零售价 ¥176,800 + Ultra 包 ¥20,000 = ¥196,800（官网标价相加）；VLM 单独售价未公开",
+        "currency": "CNY",
+        "scope": "2026 G6 625 Max 科技版中国区配置页。整车加硬件/软件组合选装价，不是 AI 助手订阅或后装价。",
+        "card": "¥196,800 / 整车 + 组合包"
+      },
+      "sources": [
+        {
+          "title": "2026 小鹏 G6 参数配置表",
+          "url": "https://www.xiaopeng.com/g6_2026/configuration.html",
+          "date": "2026 款滚动配置页，未标明更新日",
+          "access": "2026-11-05",
+          "scope": "小鹏官方，针对性阅读 625 Max 科技版价格能源、MT8676、离线对话与导航、Ultra 选装包及脚注 18。"
+        },
+        {
+          "title": "小鹏汽车 2025 年第二季度经营技术进展公告",
+          "url": "https://www.xiaopeng.com/news/company_news/5493.html",
+          "date": "页面 2025-08-20，正文公告 2025-08-19",
+          "access": "2026-11-05",
+          "scope": "仅作为小鹏图灵车端 VLM 架构与专属座舱算力的背景，不推导 G6 全功能已交付。"
+        }
+      ],
+      "image": null,
+      "limits": [
+        "同名 Ultra 包不代表不同年款车型的底层车机芯片相同",
+        "本地对话是配置表独立功能，不能未经证据全部归因于 VLM",
+        "原厂一体集成，不表示 2 万元选装方案能直接改装给传统油车"
+      ],
+      "segment": "oem",
+      "evidence": "local_llm",
+      "stageLabel": "原厂在售配置",
+      "obtainable": true,
+      "coreEligible": true
+    },
+    {
+      "id": "cerence-callm-edge",
+      "name": "Cerence CaLLM Edge",
+      "maker": "Cerence AI",
+      "kind": "B2B嵌入式汽车语言模型",
+      "status": "面向车企客户提供；模型目录标为Preview，权重非公开下载；非零售成品",
+      "compute": "部署在汽车主机；初版公告未列具体SoC或总RAM；后续有Modalix和NVIDIA DRIVE AGX参考演示，不能替代客户硬件规格",
+      "model": "2024年初版：Phi-3系列汽车数据微调，3.8B、4k上下文、4-bit；后续多模态版本不应沿用初版参数作统一规格",
+      "functions": [
+        "车内指令理解",
+        "POI与导航相关对话",
+        "多轮对话"
+      ],
+      "offline": "厂商明确提供embedded-only部署；车辆功能执行仍取决于客户已接入接口",
+      "online": "也提供混合或云优先架构；实时信息和外部服务须按具体方案接入",
+      "price": {
+        "display": "未取得公开授权报价",
+        "currency": null,
+        "scope": "B2B模型、移植、运行许可及支持，非硬件零售价",
+        "card": "授权报价未公开"
+      },
+      "sources": [
+        {
+          "title": "Cerence：Embedded Small Language Model发布",
+          "url": "https://investors.cerence.com/news-events/press-releases/detail/114/cerence-introduces-pioneering-embedded-small-language-model-purpose-built-for-automotive",
+          "date": "2024-11-13",
+          "access": "2026-11-05",
+          "scope": "初版规格、嵌入式/混合部署、客户供给"
+        },
+        {
+          "title": "Microsoft Foundry：Cerence-CaLLM-Edge",
+          "url": "https://ai.azure.com/catalog/models/Cerence-CaLLM-Edge",
+          "date": "滚动页面；Version 1",
+          "access": "2026-11-05",
+          "scope": "专有模型、非公开下载、联系获取、Preview状态"
+        },
+        {
+          "title": "Cerence与SiMa.ai边缘合作",
+          "url": "https://investors.cerence.com/news-events/press-releases/detail/349/cerence-ai-and-sima-ai-partner-to-power-next-gen-conversational-ai-at-the-edge",
+          "date": "2025-09-04",
+          "access": "2026-11-05",
+          "scope": "Modalix运行的展示与合作，不是后装零售交付"
+        }
+      ],
+      "limits": [
+        "未获得可公开复现的同车端到端实测",
+        "没有统一公开内存需求或指定SoC清单",
+        "初版SLM不是一套开箱即用的完整语音和车控整机",
+        "未核实是否向小规模后装项目供货及其最低商务条件"
+      ],
+      "image": null,
+      "segment": "b2b",
+      "evidence": "local_llm",
+      "stageLabel": "企业客户入口",
+      "obtainable": true,
+      "coreEligible": true
+    },
+    {
+      "id": "cerence-xui",
+      "name": "Cerence xUI",
+      "maker": "Cerence AI",
+      "kind": "B2B端云混合汽车助手平台",
+      "status": "面向OEM和Tier 1；有客户选用与2026年部署计划；未核实特定车型实际交付版本",
+      "compute": "客户车内计算加云服务；曾展示NVIDIA DRIVE AGX及MediaTek Dimensity Auto路线；无统一公开SoC/RAM配置",
+      "model": "CaLLM模型家族含边缘SLM和云端LLM；当前未发现可单独标价购买的统一“xUI边缘款”SKU",
+      "functions": [
+        "跨域多轮对话",
+        "多座位交互",
+        "专用任务Agent",
+        "品牌内容及语音定制",
+        "实时搜索集成"
+      ],
+      "offline": "平台宣称包含离线边缘能力；具体离线任务和车型接口须在客户配置中逐项核实",
+      "online": "实时搜索、第三方API及云端推理属于混合架构组成，不能把整个xUI归类为全离线",
+      "price": {
+        "display": "项目报价未公开",
+        "currency": null,
+        "scope": "平台许可、定制、集成及服务，非车主买断价",
+        "card": "项目报价未公开"
+      },
+      "sources": [
+        {
+          "title": "Cerence xUI平台",
+          "url": "https://www.cerence.com/platforms/cerence-xui",
+          "date": "滚动页面；未标发布日期",
+          "access": "2026-11-05",
+          "scope": "平台客户、混合架构、定制与在线搜索"
+        },
+        {
+          "title": "Cerence与MediaTek/NVIDIA多模态合作",
+          "url": "https://investors.cerence.com/news-events/press-releases/detail/98/cerence-ai-and-mediatek-partner-to-introduce-multi-modal-language-models-running-on-the-edge-built-on-nvidia",
+          "date": "2025-04-23",
+          "access": "2026-11-05",
+          "scope": "边缘多模态模型、参考设计和演示状态"
+        },
+        {
+          "title": "Geely选择Cerence xUI",
+          "url": "https://investors.cerence.com/news-events/press-releases/detail/363/geely-auto-selects-cerence-xui-to-power-its-next-gen-llm-powered-in-car-ai-experience",
+          "date": "2026-01-05",
+          "access": "2026-11-05",
+          "scope": "客户及海外车型计划，不是所有地区已交付证明"
+        },
+        {
+          "title": "Cerence xUI与Azure/NVIDIA",
+          "url": "https://investors.cerence.com/news-events/press-releases/detail/364/cerence-xui-leveraging-nvidia-ai-enterprise-and-running-on-microsoft-azure-drives-strong-traction-with-automakers",
+          "date": "2026-01-05",
+          "access": "2026-11-05",
+          "scope": "云端基础设施和客户选用范围"
+        }
+      ],
+      "limits": [
+        "不能以2024版CaLLM Edge参数代表所有xUI项目",
+        "车窗、空调与摄像头等能力依赖OEM实际授权和接口",
+        "本轮没有核实量产车型配置、离线任务清单或按台合同价格"
+      ],
+      "image": null,
+      "segment": "b2b",
+      "evidence": "hybrid",
+      "stageLabel": "企业平台与客户项目",
+      "obtainable": true,
+      "coreEligible": true
+    },
+    {
+      "id": "carwatch-pi-prototype",
+      "name": "CarWatch（Raspberry Pi 5 车载原型）",
+      "maker": "ThinkOffApp / CarWatch 开源项目",
+      "kind": "开源 DIY 原型 / 车内本地 LLM 技术参照",
+      "status": "作者车内演示与开源发布；非零售成品",
+      "compute": "当前 main 的参考设备为 Raspberry Pi 5、16 GB，连接 OBD 适配器与车内音频；手机可作界面，不是主推理设备。",
+      "model": "当前 main：Qwen3.6-35B-A3B、Unsloth UD-Q3_K_S、llama.cpp；whisper.cpp ASR、Piper TTS、本地说明书 RAG。v0.4.0 发行页单独支撑车内离线语音演示，不能把当前 main 的全部模型配置倒填该版本。",
+      "functions": [
+        "结合 OBD 数据与车主手册回答问题",
+        "以车内扬声器播报；作者展示停放的 E-Class 断网问答"
+      ],
+      "offline": [
+        "作者声明 STT→模型→TTS 在 Pi 上运行；OBD 和已存手册可离线",
+        "证据为作者说明和演示，本次未执行代码或复现"
+      ],
+      "online": [
+        "车厂云数据、远程访问及更新另需联网；不能将云车辆状态标成新鲜离线读数"
+      ],
+      "price": {
+        "display": "无零售整机报价；需自行采购与装配",
+        "currency": null,
+        "scope": "开源软件/DIY 构建；不把作者材料预算视为可购买成品价。",
+        "card": "DIY 原型 · 无整机报价"
+      },
+      "sources": [
+        {
+          "title": "CarWatch README 与架构（当前 main）",
+          "url": "https://github.com/ThinkOffApp/CarWatch",
+          "date": "滚动 main",
+          "access": "2026-11-05",
+          "scope": "针对性阅读模型、Architecture、Local vs online、FAQ；仅文档阅读，未审计代码、未跑模型。"
+        },
+        {
+          "title": "CarWatch v0.4.0 发行说明",
+          "url": "https://github.com/ThinkOffApp/CarWatch/releases/tag/v0.4.0",
+          "date": "页面显示 8 月 28 日；未显年份",
+          "access": "2026-11-05",
+          "scope": "针对性阅读演示环境、voice loop、grounded answers；tag v0.4.0 / short commit d9a08dc。"
+        },
+        {
+          "title": "CarWatch 项目网站",
+          "url": "https://carwatch.dev/",
+          "date": "滚动页；图片注记 2026-08-25",
+          "access": "2026-11-05",
+          "scope": "阅读项目定位与车内设备图；区分作者的 proven / built / enabled 标签。"
+        }
+      ],
+      "image": {
+        "url": "https://carwatch.dev/rig.jpg",
+        "sourceUrl": "https://carwatch.dev/",
+        "credit": "CarWatch / ThinkOffApp 官方项目原型照片",
+        "local": "assets/products/carwatch-pi-prototype.jpg"
+      },
+      "limits": [
+        "主分支与 v0.4.0 的监听模式、配置会变；不能拼成一个固定零售型号。",
+        "没有本次独立断网、车内噪声、冷启动、散热、功耗或量产可靠性验证。",
+        "AGPL-3.0 代码与模型各自许可需分别检查；未核商用方案或规模交付。"
+      ],
+      "segment": "reference",
+      "evidence": "local_llm",
+      "stageLabel": "作者车内原型",
+      "obtainable": true,
+      "coreEligible": true
+    },
+    {
+      "id": "comma-four-openpilot",
+      "name": "comma four / openpilot 0.11.2",
+      "maker": "comma.ai",
+      "kind": "零售后装驾驶辅助设备；邻接任务模型，不是语言助手",
+      "status": "官网列购买入口与车型线束选择；软件版本以官方2026-10-23发布为参照。未采购或实车验证。",
+      "compute": "风挡固定设备，Snapdragon 845 MAX、3颗摄像头及CAN FD；实际适用车型、年款、配置和线束逐项核查。",
+      "model": "openpilot道路感知、轨迹及驾驶员监测神经模型；非座舱对话LLM。未以通用语言模型参数衡量驾驶能力。",
+      "functions": [
+        "兼容车型的车道居中与自适应巡航",
+        "驾驶员监测；始终要求监督与准备接管"
+      ],
+      "offline": [
+        "模型在车内设备执行；首次设置、软件更新和各联网功能另有依赖",
+        "本轮未实测完整断网边界，不把本地推理等同于数据从不上传"
+      ],
+      "online": [
+        "软件OTA、远程定位及视频云存储需网络；默认驾驶数据上传及选择应核对",
+        "美国Prime $24/月含数据，国际Lite $14/月不含SIM；非驾驶模型购买价"
+      ],
+      "price": {
+        "display": "US$999 官网展示价；线束选项及运税按车型与地区确认",
+        "currency": "USD",
+        "scope": "2026-11-05美国官网页面；已有线束可减$50，国际运费另计。不是座舱助手价格。",
+        "card": "US$999 / 驾驶辅助设备"
+      },
+      "sources": [
+        {
+          "title": "comma four 官方商店",
+          "url": "https://comma.ai/shop/comma-four",
+          "date": "滚动页面",
+          "access": "2026-11-05",
+          "scope": "购买展示价、线束与交付条件"
+        },
+        {
+          "title": "openpilot 产品与技术说明",
+          "url": "https://comma.ai/openpilot",
+          "date": "2026-10-23版本入口；网页滚动",
+          "access": "2026-11-05",
+          "scope": "本地设备与神经模型、SoC、能力及监督要求"
+        },
+        {
+          "title": "openpilot 官方README",
+          "url": "https://github.com/commaai/openpilot",
+          "date": "master滚动",
+          "access": "2026-11-05",
+          "scope": "设备安装、软件、许可及默认数据上传；未执行源码"
+        },
+        {
+          "title": "comma connect 服务",
+          "url": "https://comma.ai/connect",
+          "date": "滚动页面",
+          "access": "2026-11-05",
+          "scope": "联网服务与Prime/Lite价目；不代表本地驾驶收费"
+        },
+        {
+          "title": "NHTSA PE26007 启动原件",
+          "url": "https://static.nhtsa.gov/odi/inv/2026/INOA-PE26007-17274.pdf",
+          "date": "2026-09-21",
+          "access": "2026-11-05",
+          "scope": "监管调查启动，不代表缺陷或因果最终认定"
+        }
+      ],
+      "limits": [
+        "只能用于核对过的车辆与功能，驾驶员持续负责",
+        "驾驶模型产品不能当作对话音箱的技术或商业连续性证明",
+        "NHTSA已有调查启动原件，后续状态未核实"
+      ],
+      "image": {
+        "url": "https://comma.ai/_app/immutable/assets/four_screen_on.WrrTderw.png",
+        "sourceUrl": "https://comma.ai/shop/comma-four",
+        "credit": "comma.ai 官方商品图；后装驾驶辅助设备",
+        "local": "assets/products/comma-four-openpilot.png"
+      },
+      "segment": "reference",
+      "evidence": "local_task",
+      "stageLabel": "零售驾驶辅助设备",
+      "obtainable": true,
+      "coreEligible": true
+    },
+    {
+      "id": "carbox-launcher",
+      "name": "CarBox Launcher / CarBox Assistant",
+      "maker": "CarBox Launcher；配套 Companion 的 Google Play 开发者 Roberto Ferrari（意大利）",
+      "kind": "后装 Android 车机软件 / 本地习惯记忆与任务助手",
+      "status": "零售软件：官网 APK 入口及 Companion 商店入口可见；未安装实测",
+      "compute": "安装于 Android 车机或 Android car box；未查到具体 SoC、内存下限。Companion 另装 Android 手机。",
+      "model": "未披露模型、权重或推理框架；本地习惯档案不证明使用 LLM，亦不足确认神经网络。",
+      "functions": [
+        "语音打开应用、媒体与系统操作、拨号和导航意图",
+        "按时间与习惯产生建议；自定义指令短语"
+      ],
+      "offline": [
+        "开发者对习惯记忆与主动建议声明在设备端、无需云；自定义触发短语存于本地",
+        "未确认 ASR 全程离线，不能将该模块的无云声明扩成全部语音离线"
+      ],
+      "online": [
+        "高级功能需 CarBox 账号与授权；联网应用各自仍需网络",
+        "拨号由手机执行，Companion 通过 Wi-Fi / Bluetooth 连接车机"
+      ],
+      "price": {
+        "display": "€15 终身 Launcher 授权；15 天试用；Companion 免费",
+        "currency": "EUR",
+        "scope": "官方全球英语页面，2026-11-05；Ko-fi 捐赠后按相同账号邮箱激活，非硬件售价。",
+        "card": "€15 / 终身软件授权"
+      },
+      "sources": [
+        {
+          "title": "CarBox Launcher 官方功能及许可",
+          "url": "https://www.carboxlauncher.com/",
+          "date": "滚动页",
+          "access": "2026-11-05",
+          "scope": "针对性阅读 Assistant、Adaptive memory、Proactive suggestions、Companion、Lifetime；无云范围限相关模块。"
+        },
+        {
+          "title": "CarBox Launcher 官方下载",
+          "url": "https://www.carboxlauncher.com/download.html",
+          "date": "滚动页；版本值未返回",
+          "access": "2026-11-05",
+          "scope": "阅读 APK 安装对象、账号与试用条款；未下载 APK。"
+        },
+        {
+          "title": "CarBox Companion Google Play",
+          "url": "https://play.google.com/store/apps/details?id=com.ferra.carboxcompanion.app",
+          "date": "2026-10-25 更新",
+          "access": "2026-11-05",
+          "scope": "针对性阅读开发者及 Companion 功能；支撑手机端桥接，不能证明车机端 LLM。"
+        }
+      ],
+      "image": {
+        "url": "https://www.carboxlauncher.com/assets/img/dual-panel.png",
+        "sourceUrl": "https://www.carboxlauncher.com/",
+        "credit": "CarBox Launcher 官方界面截图",
+        "local": "assets/products/carbox-launcher.png"
+      },
+      "limits": [
+        "应列本地任务能力对照，不能列已证实本地 LLM。",
+        "未核断网 ASR、波兰语、长期授权验证要求及确切 Launcher 版本；未做源码审计。",
+        "销量、留存、推荐准确性未知。"
+      ],
+      "segment": "aftermarket",
+      "evidence": "unknown",
+      "stageLabel": "可取得软件",
+      "obtainable": true,
+      "coreEligible": false
+    },
+    {
+      "id": "atoto-ci-viald13-glow",
+      "name": "ATOTO CI-VIALD13 / Glow",
+      "maker": "ATOTO",
+      "kind": "零售独立硬件 / 嵌入式离线命令交互，LLM 未证",
+      "status": "零售产品有报价；美国官网当前 Unavailable / backordered",
+      "compute": "13.7 × 4 英寸 LED 标牌及语音控制；识别芯片、RAM、算法未披露。",
+      "model": "官方称 offline command；只证实离线命令交互，未证实神经模型、具体识别器或大模型。",
+      "functions": [
+        "以离线语音命令触发文字、图案或动画显示",
+        "蓝牙应用编辑内容"
+      ],
+      "offline": [
+        "官网 Features 明确说明离线命令控制；不能推广成自由问答或开放词汇语音识别"
+      ],
+      "online": [
+        "初次软件获取及更新需求未完整核验；日常命令无需互联网是厂商声明"
+      ],
+      "price": {
+        "display": "US$78.90（标示原价 US$94.90）",
+        "currency": "USD",
+        "scope": "美国官网 CI-VIALD13，2026-11-05；缺货/待补货，非即时交付承诺。",
+        "card": "US$78.90 · 当前缺货"
+      },
+      "sources": [
+        {
+          "title": "ATOTO CI-VIALD13 产品页",
+          "url": "https://www.atotodirect.com/products/ci-viald13-scrolling-advertising-led-signs",
+          "date": "滚动页",
+          "access": "2026-11-05",
+          "scope": "针对性阅读型号、价格、库存、Features；规格表误列 S8Gen2 车机，未采纳其中 UIS9863 / 2 GB 等字段。"
+        }
+      ],
+      "image": null,
+      "limits": [
+        "代表成熟的窄任务离线交互，不代表可聊天的车载 AI 音箱。",
+        "同页规格表与标牌产品明显错配，无法用来确认算力。",
+        "未核波兰语、噪声表现及固定指令总量；不作道路使用或安装适法性结论。"
+      ],
+      "segment": "aftermarket",
+      "evidence": "unknown",
+      "stageLabel": "有报价 · 当前缺货",
+      "obtainable": false,
+      "coreEligible": false
+    },
+    {
+      "id": "cami-companion-unverified",
+      "name": "CAMI 伴驾精灵（o2 标准版零售线索；JoyInside 版本另待核）",
+      "maker": "上海复通数字科技有限公司",
+      "kind": "独立车载 AI 机器人 / 端侧声明待核",
+      "status": "官方电商入口已核；具体 SKU 的交付、价格及端侧链路未核",
+      "compute": "公开官网未披露对应 SKU 的 SoC、RAM 或模型运行设备。",
+      "model": "官网介绍语音模型、车态感知与情绪记忆；未给出本地模型名称或离线条件。JoyInside 的端侧说法仅找到宣传型媒体线索，未与 o2 SKU 建立映射。",
+      "functions": [
+        "官网宣传车况提醒、用车问答、聊天与行程规划"
+      ],
+      "offline": [
+        "未知：未查到明确断网功能表或端到端车内推理证据"
+      ],
+      "online": [
+        "未知：未查到各功能的云端、手机与车端分工"
+      ],
+      "price": {
+        "display": "未核实",
+        "currency": "CNY",
+        "scope": "中国官网链接京东/天猫；京东品牌列表见 o2 标准版，单品页未返回可读价格。未采用促销聚合价。",
+        "card": "价格未核实"
+      },
+      "sources": [
+        {
+          "title": "CAMI 官方产品及商城入口",
+          "url": "https://www.hicami.com/",
+          "date": "滚动页",
+          "access": "2026-11-05",
+          "scope": "针对性阅读产品模块、官方商店入口及页脚主体；不支撑模型本地部署。"
+        },
+        {
+          "title": "京东 CAMI 品牌列表与 o2 标准版条目",
+          "url": "https://www.jd.com/brand/131524d04857a35a0343.html",
+          "date": "滚动页",
+          "access": "2026-11-05",
+          "scope": "针对性阅读到 CAMI o2 标准版条目；复访失败，单品 100257453737 只返回浏览器升级壳，价格、硬件和库存未核。"
+        }
+      ],
+      "image": null,
+      "limits": [
+        "o2 标准版、o2 MAX、o1 与 JoyInside 不可视为同一型号；不转移配置或本地模型声明。",
+        "适合作为直接商业形态线索，尚不能列为已证实端侧产品。",
+        "未核价格、订阅、安装链路、地区语言、销量和留存。"
+      ],
+      "segment": "aftermarket",
+      "evidence": "unknown",
+      "stageLabel": "零售线索 · 待核",
+      "obtainable": false,
+      "coreEligible": false
+    },
+    {
+      "id": "ottocast-p3-pro-online-control",
+      "name": "Ottocast OttoAibox P3 Pro（对照）",
+      "maker": "Ottocast",
+      "kind": "零售 Android AI Box / 本地 LLM 未证对照",
+      "status": "官网零售报价与购买入口；未购机实测",
+      "compute": "具体产品页：Snapdragon 6225、8 GB / 128 GB、Android 13 / OttoDrive 3.0；需原厂有线 CarPlay 或 Android Auto。",
+      "model": "Gemini / ChatGPT 集成声明；未披露车端模型、权重或离线推理框架。",
+      "functions": [
+        "语音启动应用、导航和媒体控制；无线投屏与 Android 应用"
+      ],
+      "offline": [
+        "未查到本地 LLM 或完整断网语音证据；不得由 AI Box 名称推断"
+      ],
+      "online": [
+        "AI Voice 有服务包与按查询计费；各联网应用另有数据需求"
+      ],
+      "price": {
+        "display": "US$219 含税；AI 服务扩展 US$7.90 / 1,000 queries 起",
+        "currency": "USD",
+        "scope": "官网 USD / North America 页面，2026-11-05；FAQ 另写默认 3 个月/1,000 conversation rounds，且要求另购服务包的说明并存，实际激活条款待确认。",
+        "card": "US$219 / 硬件"
+      },
+      "sources": [
+        {
+          "title": "Ottocast P3 Pro 产品页及 AI Voice FAQ",
+          "url": "https://www.ottocast.com/products/ottoaibox-p3-pro-carplay-ai-box",
+          "date": "滚动页",
+          "access": "2026-11-05",
+          "scope": "针对性阅读具体产品硬件、USD 售价、Compare 与 FAQ；留存服务包/默认额度的条款冲突，不据此证明离线。"
+        }
+      ],
+      "image": null,
+      "limits": [
+        "该 SKU 依赖既有有线投屏系统，不能自动覆盖没有 CarPlay / Android Auto 的老车。",
+        "只作商业与命名对照，不能列为已证实端侧 LLM 竞品。",
+        "计费 query 与 conversation round 口径不同；地区与设备可能影响额度。"
+      ],
+      "segment": "aftermarket",
+      "evidence": "unknown",
+      "stageLabel": "官网零售入口",
+      "obtainable": true,
+      "coreEligible": false
+    },
+    {
+      "id": "geely-galaxy-m9-eva",
+      "name": "吉利银河 M9 / Eva（2025 年首发平台）",
+      "maker": "吉利银河 / ECARX",
+      "kind": "原厂座舱，非后装商品",
+      "status": "ECARX 2025-09-17 宣布随 M9 全球上市量产。当前官网仍列在售车型。公告不等于已做独立断网实测。",
+      "powertrain": "插电式混合动力 PHEV，非传统纯燃油车",
+      "compute": "ECARX Pikes 计算平台、Cloudpeak 软件平台，高通 SA8295P。车机 RAM、模型专用内存和整机功耗未披露。",
+      "model": "Eva / Flyme Auto 2 多模态与语音模型体系。基础平台公告没有给出确切模型家族、参数量、量化格式或运行时。不得沿用黑金智曜版 7B AI BOX 配置。",
+      "functions": [
+        "自然语音交互",
+        "跨座舱显示与车辆电子电气架构协同",
+        "多模态 AI Agent"
+      ],
+      "offline": [
+        "供应商明确声明有车端 AI 和可在离线情境响应的端到端语音交互",
+        "未逐项披露哪些问答、记忆或车控任务完全离线"
+      ],
+      "online": [
+        "全场景 Agent 中各任务的云端依赖未在该量产公告逐项说明"
+      ],
+      "price": {
+        "display": "中国区 M9 系列当前限时先享整车指导价 ¥173,800–259,800，低价款不等于带 7B AI BOX；助手或平台单独售价未公开",
+        "currency": "CNY",
+        "scope": "滚动官网整车系列价，访问日 2026-11-05。不是 Eva 软件、AI 模块或后装设备价格。",
+        "card": "¥173,800–259,800 / 系列整车"
+      },
+      "sources": [
+        {
+          "title": "ECARX Powers Global Launch of Geely Galaxy M9, Delivering a Next-Generation AI Cockpit Experience",
+          "url": "https://ir.ecarxgroup.com/news-releases/news-release-details/ecarx-powers-global-launch-geely-galaxy-m9-delivering-next",
+          "date": "2025-09-17",
+          "access": "2026-11-05",
+          "scope": "ECARX 官方量产公告，针对性阅读第 7–9 段。证明 SA8295P、平台、车端离线语音声明，不证明全部 Agent 功能离线。"
+        },
+        {
+          "title": "吉利银河 M9 官方车型页",
+          "url": "https://www.galaxy-geely.com/M9",
+          "date": "滚动更新，未标明更新日",
+          "access": "2026-11-05",
+          "scope": "吉利官方产品页，针对性阅读车机、EM-P 插混、当前车型与指导价及非全系标配说明。"
+        }
+      ],
+      "image": {
+        "url": "https://dm30webimages.geely.com/GeelyPromotion/AYINHE/M9/point/xiao.png",
+        "sourceUrl": "https://www.galaxy-geely.com/M9",
+        "credit": "吉利银河官方 M9 车型图片；网站导航小图",
+        "local": "assets/products/geely-galaxy-m9-eva.png"
+      },
+      "limits": [
+        "只把离线语音作为已披露离线范围，不把所有 Eva 对话、记忆、多模态与用车服务写成完全离线",
+        "基础款和黑金智曜版必须分开，7B AI BOX 不能下放到全系",
+        "没有同条件延迟、断网任务成功率、车载热稳态或功耗实测",
+        "原厂车控和传感器权限不能视为后装可取得"
+      ],
+      "segment": "oem",
+      "evidence": "unknown",
+      "stageLabel": "原厂量产声明",
+      "obtainable": true,
+      "coreEligible": false
+    },
+    {
+      "id": "mercedes-c-class-liquid-ai-plan",
+      "name": "Mercedes-Benz C-Class ICE（北美 MY25–26、MBUX 3）/ Liquid AI",
+      "maker": "Mercedes-Benz / Liquid AI",
+      "kind": "原厂合作与量产计划，非已核实交付的后装商品",
+      "status": "2026-04-23 官方公告，目标 2026 年下半年首次量产。本轮未查得完成量产或具体 OTA 开始交付的官方凭据，继续标为计划。",
+      "powertrain": "公告车型脚注明确列为 C-Class ICE，燃油车型；不表示没有轻混配置",
+      "compute": "目标车内运行，MBUX 3 / MBUX 4 为北美首批范围。该公告未披露对应 C-Class 的确切推理 SoC、RAM、量化和功耗。",
+      "model": "Liquid Foundation Models（LFM）家族。精确型号、参数和上下文未披露。不能套用 Liquid 浏览器模拟汽车演示的 LFM2.5-Audio-1.5B。",
+      "functions": [
+        "计划在车内执行语音、语言与推理",
+        "与既有云端大模型能力互补"
+      ],
+      "offline": [
+        "公告将车上运行与无网络场景作为合作价值",
+        "尚无本条车型已交付的离线任务边界和实测数据"
+      ],
+      "online": [
+        "明确是补充云端架构，并非取消云端大模型"
+      ],
+      "price": {
+        "display": "Liquid AI 座舱能力或模块售价未公开；本轮未核准该地区具体款型当前整车价",
+        "currency": null,
+        "scope": "北美 MBUX 合作公告，没有独立可采购的软件或模块报价。",
+        "card": "项目价格未公开"
+      },
+      "sources": [
+        {
+          "title": "Mercedes-Benz: Next Generation in-car intelligence",
+          "url": "https://group.mercedes-benz.com/technology/innovation/collaboration/liquid-ai.html",
+          "date": "2026-04-23",
+          "access": "2026-11-05",
+          "scope": "Mercedes-Benz Group 官方合作公告，阅读车内模型目标、北美 MBUX 3/4、H2 2026 计划及车型年款脚注。"
+        }
+      ],
+      "image": null,
+      "limits": [
+        "是本地模型方向的具体燃油车型线索，不能列成已量产交付的本地 LLM",
+        "合作公告的精确模型未披露，不以其他 Liquid 模型卡或模拟演示补空",
+        "同 MBUX 大版本或 C-Class 名称不等于所有市场、所有年款自动支持"
+      ],
+      "segment": "oem",
+      "evidence": "local_llm",
+      "stageLabel": "量产目标 · 未确认完成",
+      "obtainable": false,
+      "coreEligible": false
+    },
+    {
+      "id": "bmw-ix3-alexa-plus",
+      "name": "BMW iX3 / Intelligent Personal Assistant + Alexa+",
+      "maker": "BMW / Amazon",
+      "kind": "原厂座舱助手，端云架构对照，非已证明完整本地 LLM",
+      "status": "BMW 现行页面说明自 2026 年 5 月底开始向已有 iX3 OTA 推出，先德国与美国；2026 下半年逐步扩至部分 OS 9 / OS X 车型。比年初仅预告的状态更进一步。",
+      "powertrain": "纯电动 BEV",
+      "compute": "BMW Panoramic iDrive / Operating System X。该助手公告未给出精确车机 SoC、模型 RAM 或运行图。",
+      "model": "Alexa Custom Assistant / 部分 Alexa+ 能力。精确基础模型、车内与云端推理分工未在产品公告公开。",
+      "functions": [
+        "自然多轮对话和车内功能操作",
+        "多停靠点路线",
+        "知识问答",
+        "可绑定个人 Amazon 账号使用音乐等服务"
+      ],
+      "offline": [
+        "未在本轮 primary 正文找到完整离线 LLM 或逐任务离线范围的明确承诺"
+      ],
+      "online": [
+        "账号及内容服务集成明确存在",
+        "不能仅凭助手入口在车机就认定其大模型在车上运行"
+      ],
+      "price": {
+        "display": "本轮产品公告未公开助手独立售价；未核准该地区当前整车价及可能服务套餐条件",
+        "currency": null,
+        "scope": "德国/美国初始市场的 OTA 产品公告，不是独立后装产品报价。",
+        "card": "助手独立价未公开"
+      },
+      "sources": [
+        {
+          "title": "BMW: Milestone in in-car speech interaction thanks to AI integration",
+          "url": "https://www.bmwgroup.com/en/news/general/2026/alexa.html",
+          "date": "页面日期 2026-01-05，正文含 2026 年 5 月底 OTA 进展，更新日未标明",
+          "access": "2026-11-05",
+          "scope": "BMW Group 官方产品文章，针对性阅读 iX3 / OS X、功能、当前 OTA 时序和首发市场。发布日期与滚动正文状态分开保留。"
+        }
+      ],
+      "image": {
+        "url": "https://www.bmwgroup.com/en/news/general/2026/alexa/_jcr_content/main/newsarticle.coreimg.jpeg/1780908816857/header-newssite-artikel-ipa-jan26.jpeg",
+        "sourceUrl": "https://www.bmwgroup.com/en/news/general/2026/alexa.html",
+        "credit": "BMW Group 官方 iX3 智能个人助理产品配图",
+        "local": "assets/products/bmw-ix3-alexa-plus.jpg"
+      },
+      "limits": [
+        "已开始 OTA 不等于所有市场和所有 iX3 已得到功能",
+        "缺少模型执行位置证据，应列为架构未公开的原厂对照，不进入确定本地模型组",
+        "未把 BMW 或 Amazon 的其他研发演示归给本车型"
+      ],
+      "segment": "oem",
+      "evidence": "unknown",
+      "stageLabel": "厂商称已开始 OTA",
+      "obtainable": true,
+      "coreEligible": false
+    },
+    {
+      "id": "nio-et7-2024-nomi-gpt-cn",
+      "name": "2024 蔚来 ET7 行政版 / NOMI GPT（中国区）",
+      "maker": "蔚来 / 百度智能云（中国区合作案例）",
+      "kind": "原厂端云助手对照，非已证明纯本地 LLM",
+      "status": "蔚来官方记录 2024-04-12 已向 Banyan 用户推送 NOMI GPT，2024 ET7 于 4 月 30 日在中国开始交付。不是仅发布的概念。",
+      "powertrain": "纯电动 BEV",
+      "compute": "本轮已读车型及 NOMI 来源未核准本条具体款型的推理 SoC / RAM，不以 ADAS 芯片或第三方参数表补齐。",
+      "model": "NOMI GPT，蔚来官方称车云多模态模型。中国区百度智能云案例明确大模型云端服务与端云多模态，不能写成纯端侧大模型。",
+      "functions": [
+        "百科、出行与学习创作问答",
+        "情绪与氛围灯交互",
+        "车辆使用知识",
+        "多乘员自然语音"
+      ],
+      "offline": [
+        "本轮来源未列完整离线任务范围",
+        "没有足够证据把 NOMI GPT 通用生成问答列为车内独立运行"
+      ],
+      "online": [
+        "中国区合作案例明确使用大模型云端服务",
+        "欧洲历史公告另用 Azure OpenAI，不能把中国与欧洲后端混为同一配置"
+      ],
+      "price": {
+        "display": "历史发布价：中国区 2024 ET7 行政版整车 ¥428,000 起（2024 年 4 月）；不是 2026 年当前报价，NOMI GPT 单独售价未公开",
+        "currency": "CNY",
+        "scope": "蔚来 2024 年 4 月官方月报的整车起价，只作历史配置定位，不作当前购买报价。",
+        "card": "历史 ¥428,000 起 / 整车"
+      },
+      "sources": [
+        {
+          "title": "NIO: What's New with NIO in April?",
+          "url": "https://us.nio.com/news/20240503001",
+          "date": "页面显示 2024-05-01",
+          "access": "2026-11-05",
+          "scope": "蔚来官方月报，针对性阅读 2024 ET7 行政版交付、历史价格，以及 4 月 12 日 NOMI GPT 正式车云推送段落。"
+        },
+        {
+          "title": "百度智能云客户案例：蔚来汽车",
+          "url": "https://cloud.baidu.com/customer/case/weilai.html",
+          "date": "未标明发布日期",
+          "access": "2026-11-05",
+          "scope": "合作方官方案例，阅读大模型云端服务、端云多模态、NT2.0/2.2 和功能段落。不能当作当前全部车辆或全部区域的部署数量。"
+        },
+        {
+          "title": "NIO ET7 官方产品页",
+          "url": "https://www.nio.com/et7",
+          "date": "滚动产品页，未标明更新日",
+          "access": "2026-11-05",
+          "scope": "车型、NOMI 交互和产品图片。滚动页内容不用于覆盖 2024 历史配置与价格。"
+        },
+        {
+          "title": "NIO Nederland: NOMI verrijkt met GPT-software",
+          "url": "https://www.nio.com/nl_NL/news/nomiverrijktmetgptsoftware",
+          "date": "2024-04-05",
+          "access": "2026-11-05",
+          "scope": "仅用于欧洲区域差异：Azure OpenAI 与当时欧洲 OTA 计划。不是中国区架构或本地模型证据。"
+        }
+      ],
+      "image": {
+        "url": "https://cdn-udp-public.eu.nio.com/www-nio/cdn-static/mynio/nextjs/images/et7-2024/digital-platform/digital-platform-item-2-mobile.jpg",
+        "sourceUrl": "https://www.nio.com/et7",
+        "credit": "蔚来官方 ET7 产品页 NOMI / 数字座舱配图",
+        "local": "assets/products/nio-et7-2024-nomi-gpt-cn.jpg"
+      },
+      "limits": [
+        "端云模型中的端侧能力不等于全部基础模型本地执行",
+        "中国、欧洲后端与推送时序分开，未宣称波兰可用",
+        "历史整车价格与滚动产品功能不能拼为一个当前购买配置"
+      ],
+      "segment": "oem",
+      "evidence": "cloud",
+      "stageLabel": "历史已交付版本",
+      "obtainable": true,
+      "coreEligible": false
+    },
+    {
+      "id": "li-auto-i8-2025-mindgpt-agent",
+      "name": "理想 i8（2025 年交付版本）/ 理想同学 MindGPT Agent",
+      "maker": "理想汽车",
+      "kind": "原厂 Agent 能力对照，模型执行位置未核准",
+      "status": "2025 中期报告明确 i8 于 2025-08-20 开始交付，2025 年报描述 Agent 工具、记忆等能力。不能据此声称所有能力已完全离线。",
+      "powertrain": "纯电动 BEV，i8 不与理想 L 系列增程车型混用",
+      "compute": "本轮 primary 正文未核准该交付版本的座舱 SoC / RAM / 模型专用算力。智驾 VLA 与 MindGPT 座舱 Agent 分开。",
+      "model": "自研 MindGPT 驱动的理想同学 Agent。模型确切 checkpoint、参数、量化、运行时及车上/云端分工未在所读年报段落披露。",
+      "functions": [
+        "理解复杂请求与工具调用",
+        "个性化记忆",
+        "外部服务联动",
+        "使用相机扫描停车二维码等车上场景"
+      ],
+      "offline": [
+        "本轮 primary 来源没有给出 MindGPT 大模型完全本地执行或离线任务清单的证据"
+      ],
+      "online": [
+        "部分 Agent 任务涉及外部服务",
+        "模型主推理位置仍未核准，不能据工具调用或车内入口断言全部在云端或车端"
+      ],
+      "price": {
+        "display": "历史价格：中国区 2025 中报列 i8 整车 ¥339,800；不是 2026 当前报价，MindGPT Agent 单独售价未公开",
+        "currency": "CNY",
+        "scope": "2025 中报对应当时交付版本的整车价，用于历史产品定位。未采用第三方 2026 改款报价。",
+        "card": "历史 ¥339,800 / 整车"
+      },
+      "sources": [
+        {
+          "title": "Li Auto 2025 Interim Report",
+          "url": "https://ir.lixiang.com/system/files-encrypted/nasdaq_kms/assets/2025/09/08/4-59-02/2025%20Interim%20Report.pdf",
+          "date": "2025-09（中期报告）",
+          "access": "2026-11-05",
+          "scope": "理想官方中报，针对性阅读 PDF 第 7 页 i8 动力、交付、价格与 Agent 段落。"
+        },
+        {
+          "title": "Li Auto 2025 Annual Report / Form 20-F",
+          "url": "https://ir.lixiang.com/static-files/fb9e1598-72c6-4d7e-8a5a-b125a759104b",
+          "date": "2026-04-10（提交日）",
+          "access": "2026-11-05",
+          "scope": "理想官方年报，针对性阅读 PDF 第 78–80 页产品及 MindGPT Agent 的工具、记忆、相机任务。未披露完整本地模型规格。"
+        }
+      ],
+      "image": null,
+      "limits": [
+        "自研模型和车上 Agent 均不能自动推导为车内本地模型",
+        "为避免串配，不套用理想 Livis 眼镜、开源 MindGPT 模型卡、智驾模型或其他年款座舱参数",
+        "历史价格明确不当作当前购车或单独 AI 模块报价"
+      ],
+      "segment": "oem",
+      "evidence": "unknown",
+      "stageLabel": "历史已交付版本",
+      "obtainable": true,
+      "coreEligible": false
+    },
+    {
+      "id": "tesla-model-y-amd-grok-us",
+      "name": "Tesla Model Y（符合 AMD 条件的车辆）/ Grok",
+      "maker": "Tesla / Grok",
+      "kind": "原厂联网大模型助手对照，不是离线本地模型",
+      "status": "Tesla 现行支持页给出可使用功能、车机与软件门槛。基础功能要求 AMD 处理器、软件 2025.26 或更新及联网。地区和车辆实际资格仍按 Tesla 为准。",
+      "powertrain": "纯电动 BEV",
+      "compute": "官方条件是 AMD 处理器，但支持页未给出具体 CPU / GPU 型号、模型可用 RAM 或本地推理资源。",
+      "model": "Grok。确切模型版本、参数和服务器运行配置未披露。车上有交互入口，不代表大模型权重在车辆上运行。",
+      "functions": [
+        "语音对话和知识问答",
+        "导航与音乐等请求",
+        "部分车辆功能操作，包括温度或手套箱等（按现行支持页）"
+      ],
+      "offline": [
+        "官方明确必须联网，无法把 Grok 列为离线本地助手"
+      ],
+      "online": [
+        "Premium Connectivity 或 Wi-Fi",
+        "基础 Grok 当前不要求单独账号或订阅；Connectors / Bot 有更高版本和账号条件，Bot 另需 SuperGrok"
+      ],
+      "price": {
+        "display": "美国联网费可选 Premium Connectivity $9.99/月或 $99/年，另税，也可用 Wi-Fi；不是 Grok 模型购买价，车辆另购",
+        "currency": "USD",
+        "scope": "美国 Tesla 支持页。基础 Grok 当前无额外账号/订阅门槛，不能扩写为所有高级 Grok 服务永久免费，也不能套用为波兰报价。",
+        "card": "联网 $9.99/月起 / 美国"
+      },
+      "sources": [
+        {
+          "title": "Tesla Support: Grok",
+          "url": "https://www.tesla.com/support/grok",
+          "date": "滚动支持页，未标明更新日",
+          "access": "2026-11-05",
+          "scope": "Tesla 官方，针对性阅读基本功能、软件 / AMD 条件、必须联网、基础订阅，以及 Connectors / Bot 差异。"
+        },
+        {
+          "title": "Tesla Support: Connectivity",
+          "url": "https://www.tesla.com/support/connectivity",
+          "date": "滚动支持页，未标明更新日",
+          "access": "2026-11-05",
+          "scope": "Tesla 官方美国连接服务价格和 Wi-Fi 条件。不用连接服务可售国家表推导 Grok 的区域可用性。"
+        }
+      ],
+      "image": null,
+      "limits": [
+        "不是车载本地 LLM 量产证据",
+        "Grok 功能滚动更新，不能沿用早期只支持导航的旧口径",
+        "软件 2025.26 是基本资格，Connectors / Bot 还要求 2026.26 等额外条件",
+        "美国支持页不证明所有区域、语言、年款都可用"
+      ],
+      "segment": "oem",
+      "evidence": "cloud",
+      "stageLabel": "可用功能 · 有条件",
+      "obtainable": true,
+      "coreEligible": false
+    },
+    {
+      "id": "soundhound-oasys-edge",
+      "name": "SoundHound OASYS Edge",
+      "maker": "SoundHound AI",
+      "kind": "B2B嵌入式语言模型与多Agent架构",
+      "status": "2026年9月发布；公告计划2026年末部署，当前有演示；本轮未取得已完成量产交付证明",
+      "compute": "在车辆或设备本地硬件执行；未公开具体SoC、RAM、功耗和量化精度",
+      "model": "围绕专用任务的专有语言模型，可定制大小与配置；未披露名称和参数量",
+      "functions": [
+        "模糊意图理解",
+        "本地多Agent编排",
+        "座舱功能协调",
+        "本地知识及路线相关请求"
+      ],
+      "offline": "厂商宣称可本地理解与编排；须有对应本地数据、工具和车辆设备条件，尚无本轮独立实测",
+      "online": "实时在线信息和预约等外部服务按步骤交给云，不能把整个服务链视为失网可用",
+      "price": {
+        "display": "未公开方案报价",
+        "currency": null,
+        "scope": "B2B部署与定制；不是消费者可买的盒子价格",
+        "card": "方案报价未公开"
+      },
+      "sources": [
+        {
+          "title": "SoundHound：OASYS Edge发布",
+          "url": "https://soundhound.gcs-web.com/news-releases/news-release-details/soundhound-ai-introduces-oasys-edge-bringing-fully-embedded",
+          "date": "2026-09-24",
+          "access": "2026-11-05",
+          "scope": "架构、可配置模型与预告部署时间"
+        },
+        {
+          "title": "SoundHound：OASYS Edge机制说明",
+          "url": "https://www.soundhound.com/resource/introducing-oasys-edge",
+          "date": "2026-09-24",
+          "access": "2026-11-05",
+          "scope": "本地专用模型、设备条件与在线服务分工"
+        }
+      ],
+      "limits": [
+        "本地执行为厂商声明，不是低价后装设备实测",
+        "未公开完整语音链路资源和模型包",
+        "品牌已有其他汽车业务不证明OASYS Edge已装车",
+        "隐私与合规营销陈述不替代具体项目合规判定"
+      ],
+      "image": {
+        "url": "https://cdn.prod.website-files.com/6a345261bd44760540d30e34/6ab52728b6fc5979dae06422_OASYS%20Edge%20Cover-1.avif",
+        "sourceUrl": "https://www.soundhound.com/resource/introducing-oasys-edge",
+        "credit": "SoundHound AI 官方文章配图；仅作方案示意",
+        "local": "assets/products/soundhound-oasys-edge.avif"
+      },
+      "segment": "b2b",
+      "evidence": "local_llm",
+      "stageLabel": "部署预告 · 有演示",
+      "obtainable": false,
+      "coreEligible": false
+    },
+    {
+      "id": "nxp-genai-flow",
+      "name": "NXP eIQ GenAI Flow",
+      "maker": "NXP Semiconductors",
+      "kind": "可评估的嵌入式开发流水线；非零售车载助手",
+      "status": "公开开发文档与演示包；英语且默认一小时会话，生产扩展需申请",
+      "compute": "i.MX95高性能建议8GB以上RAM；i.MX93轻量建议2GB以上；i.MX95 B0 NPU需指定BSP和至少3GB CMA",
+      "model": "示例含Whisper/Moonshine、Danube-500M q8/q4、RAG和TTS；低配有no-LLM配置，不能一概记为大模型运行",
+      "functions": [
+        "本地语音唤醒与识别",
+        "本地资料检索",
+        "可选语言生成",
+        "语音播报"
+      ],
+      "offline": "提供本地模型及知识库流水线；i.MX95厂商示例平均首音频3.27秒、平均内存4794MB，属于开发板特定任务数据",
+      "online": "模型与资源预置后可本地处理示例；实时导航、车控、通信及商业服务未随演示实现",
+      "price": {
+        "display": "未取得量产授权与支持报价",
+        "currency": null,
+        "scope": "软件开发参考，不含EVK板价；评估演示不能视为无条件商用许可",
+        "card": "量产许可与支持待报价"
+      },
+      "sources": [
+        {
+          "title": "NXP eIQ GenAI Flow产品与基准",
+          "url": "https://www.nxp.com/design/design-center/software/embedded-software/eiq-genai-flow-conversational-ai-software-pipeline-on-edge-devices:GEN-AI-FLOW",
+          "date": "滚动页面；未标统一发布日期",
+          "access": "2026-11-05",
+          "scope": "流水线、具体开发板配置和端到端基准"
+        },
+        {
+          "title": "NXP GenAI Flow固定提交README",
+          "url": "https://github.com/nxp-appcodehub/dm-eiq-genai-flow-demonstrator/blob/4440c4a979b251742e97b27543af5b09cbab96c9/eiq_genai_flow/README.md",
+          "date": "commit 4440c4a，2026-08-24",
+          "access": "2026-11-05",
+          "scope": "内存建议、演示限制、加密模型与NPU条件；原文快照已保存"
+        }
+      ],
+      "limits": [
+        "平均占用不是整机最低RAM或完整系统工作集保证",
+        "英语演示和20个医疗问题基准不能推导车内多语言表现",
+        "模型包为加密格式，具体生产用法需与NXP核对",
+        "未完成车辆接口、车载整机和长时验证"
+      ],
+      "image": null,
+      "segment": "reference",
+      "evidence": "local_llm",
+      "stageLabel": "开发评估示例",
+      "obtainable": true,
+      "coreEligible": false
+    },
+    {
+      "id": "qualcomm-auto-local-llm",
+      "name": "Qualcomm SA8775P本地LLM部署资产",
+      "maker": "Qualcomm Technologies",
+      "kind": "汽车SoC与模型部署工具；非现成助手产品",
+      "status": "官方已公开SA8775P模型资产条目和汽车部署教程；Auto QAIRT SDK需客户渠道获取",
+      "compute": "Qwen3-4B资产表列SA8775P、w4a16、QAIRT 2.50；教程建议3B以上模型12GB以上RAM，7B以上或4096上下文16GB以上，须按设备调整",
+      "model": "此记录限定Qwen3-4B部署示例，不代表该SoC只支持此模型或已附带语音、记忆、车控产品",
+      "functions": [
+        "设备本地文本推理",
+        "目标设备编译及运行",
+        "开发者定制模型配置"
+      ],
+      "offline": "模型与运行时就位后执行本地推理；未提供本轮可确认的SA8775P整车端到端语音性能",
+      "online": "开发时需取得SDK及模型资源；应用所需实时信息和外部工具另行接入",
+      "price": {
+        "display": "SoC、汽车SDK及项目支持报价未取得",
+        "currency": null,
+        "scope": "开发与授权条件；模型许可证不替代汽车SDK许可",
+        "card": "芯片与 SDK 报价未取得"
+      },
+      "sources": [
+        {
+          "title": "Qualcomm Qwen3-4B模型资产",
+          "url": "https://huggingface.co/qualcomm/Qwen3-4B",
+          "date": "滚动模型卡；QAIRT 2.50资产",
+          "access": "2026-11-05",
+          "scope": "SA8775P资产、精度、运行时和模型许可；该SoC未列本轮所读性能表数据"
+        },
+        {
+          "title": "Qualcomm LLM设备部署固定提交教程",
+          "url": "https://github.com/qualcomm/ai-hub-apps/blob/71e3f9e8729a374d4fb1473709b9d26237645c71/tutorials/llm_on_genie/README.md",
+          "date": "commit 71e3f9e，2026-10-28",
+          "access": "2026-11-05",
+          "scope": "内存建议、Auto QAIRT、目标设备配置及虚拟机运行条件；原文快照已保存"
+        }
+      ],
+      "limits": [
+        "SDK、固件和芯片匹配须核实，不能由手机Snapdragon模型包直接外推车机",
+        "当前模型卡提示Genie将退役并引导GenieX，生产项目需固定运行时路线",
+        "教程内存建议不是所有量化小模型的理论下限",
+        "通用芯片算力不自动开放车辆业务接口"
+      ],
+      "image": null,
+      "segment": "reference",
+      "evidence": "local_llm",
+      "stageLabel": "开发资产 · SDK 有条件",
+      "obtainable": true,
+      "coreEligible": false
+    },
+    {
+      "id": "lantronix-ride-sx4",
+      "name": "Lantronix Ride SX 4.0 ADP",
+      "maker": "Lantronix（Qualcomm SA8255P / SA8775P）",
+      "kind": "可订购汽车开发板；非零售助手",
+      "status": "官方商店有订购入口，所有ADP订单须Qualcomm批准；不预装软件",
+      "compute": "SA8255P或SA8775P；产品页列LPDDR5 3×12GB、两块128GB UFS 3.1；需核对最终采购配置",
+      "model": "未预装模型或助手；可作为取得相应SDK后的开发载体",
+      "functions": [
+        "汽车芯片测试与调试",
+        "座舱应用开发",
+        "音频显示与车辆接口开发"
+      ],
+      "offline": "硬件本身不能证明离线助手功能，须安装和集成软件后验证",
+      "online": "是否联网取决于开发应用与可选通信卡；不含现成在线助手服务",
+      "price": {
+        "display": "$4,999.00（商店展示价，币种未核定）",
+        "currency": null,
+        "scope": "开发平台页面价，须选SoC及审批；税运、软件和最终配置另核，不是量产BOM",
+        "card": "$4,999 / 开发板 · 币种待核"
+      },
+      "sources": [
+        {
+          "title": "Lantronix Ride SX 4.0官方产品规格",
+          "url": "https://www.lantronix.com/products/ride-sx-4-0-automotive-development-platform/",
+          "date": "滚动页面；未标发布日期",
+          "access": "2026-11-05",
+          "scope": "SoC、内存、存储、接口、无预装软件及审批条件"
+        },
+        {
+          "title": "Lantronix Ride SX4.0官方商店",
+          "url": "https://estore.lantronix.com/products/sa8775p-automotive-development-platform",
+          "date": "滚动商店价格",
+          "access": "2026-11-05",
+          "scope": "展示价格与下单审批；页面美元符号未单独确定ISO币种"
+        }
+      ],
+      "limits": [
+        "开发板可买不等于现成AI车载音箱可买",
+        "页面价格不能外推后装模块量产成本",
+        "无预装软件，须另外取得运行环境及模型",
+        "整机车载安装和认证未由开发板购买替代"
+      ],
+      "image": {
+        "url": "https://estore.lantronix.com/cdn/shop/files/Ride-SX-4.0-_-high-res-labels_medium.jpg?v=1695075358",
+        "sourceUrl": "https://estore.lantronix.com/products/sa8775p-automotive-development-platform",
+        "credit": "Lantronix 官方开发板商品图；非消费成品",
+        "local": "assets/products/lantronix-ride-sx4.jpg"
+      },
+      "segment": "reference",
+      "evidence": "unknown",
+      "stageLabel": "开发板 · 订单须审批",
+      "obtainable": true,
+      "coreEligible": false
+    },
+    {
+      "id": "liquid-cockpit-cookbook",
+      "name": "Liquid Audio Car Cockpit参考演示",
+      "maker": "Liquid AI / Liquid4All",
+      "kind": "公开模型与模拟座舱原型；非量产车或B2B整机",
+      "status": "官方cookbook可取得示例；本轮只阅读，未运行",
+      "compute": "示例支持macOS arm64、Ubuntu arm64/x64及WSL2，以llama.cpp本地推理；未给出特定汽车SoC或整机RAM指标",
+      "model": "LFM2.5-Audio-1.5B负责STT/TTS，另配LFM2-1.2B-Tool；不能把组合演示说成单一音频模型已经独立完成全部工具能力",
+      "functions": [
+        "语音输入输出",
+        "工具调用",
+        "模拟座舱状态变化"
+      ],
+      "offline": "README称模型本地运行；座舱为网页mockup，用WebSocket模拟消息交互，未验证真实CAN或车辆执行",
+      "online": "本地示例不需要持续云推理；下载、构建和实际导航/通信服务需分别处理",
+      "price": {
+        "display": "可取得公开模型；商业许可有条件",
+        "currency": null,
+        "scope": "模型卡为LFM Open License v1.0，年收入1000万美元门槛与再分发条件须核对；不含汽车项目支持报价",
+        "card": "公开模型 · 商业许可有条件"
+      },
+      "sources": [
+        {
+          "title": "Liquid Audio Car Cockpit固定提交README",
+          "url": "https://github.com/Liquid4All/cookbook/blob/3d0cbcb7dc40b690e3e4996c5b78e4d3020f8232/examples/audio-car-cockpit/README.md",
+          "date": "commit 3d0cbcb，2026-10-27",
+          "access": "2026-11-05",
+          "scope": "双模型、mockup、运行平台及本地推理；原文快照已保存"
+        },
+        {
+          "title": "Liquid LFM2.5-Audio-1.5B模型卡",
+          "url": "https://huggingface.co/LiquidAI/LFM2.5-Audio-1.5B",
+          "date": "滚动模型卡",
+          "access": "2026-11-05",
+          "scope": "公开模型结构、当前英语支持、许可"
+        },
+        {
+          "title": "LFM Open License v1.0",
+          "url": "https://huggingface.co/LiquidAI/LFM2.5-Audio-1.5B/blob/main/LICENSE",
+          "date": "许可证v1.0；文件未标发布日期",
+          "access": "2026-11-05",
+          "scope": "定义、再分发及商业使用限制第1/4/5条"
+        }
+      ],
+      "limits": [
+        "模型卡当前标明英语，不能推定波兰语量产可用",
+        "公开演示不证明汽车硬件兼容或车控权限",
+        "没有证据该公开双模型就是Mercedes合作项目配置",
+        "模型可下载不等于可对任意规模客户无条件转授权"
+      ],
+      "image": null,
+      "segment": "reference",
+      "evidence": "local_llm",
+      "stageLabel": "本地模拟原型",
+      "obtainable": true,
+      "coreEligible": false
+    }
+  ]
+}
