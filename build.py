@@ -15,12 +15,12 @@ from pathlib import Path
 from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 
 import markdown
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, Comment
 
 SITE = Path(__file__).resolve().parent
 DIST = SITE / "dist"
 CONTENT = SITE / "content"
-VERSION = "detailed-diagrams-20261105"
+VERSION = "platform-comparison-20261105"
 CHAPTER_IDS = dict(zip("一二三四五六七", ["roadmap", "platforms", "products", "starter", "business", "next", "sources"]))
 
 
@@ -128,6 +128,39 @@ def local_link(url: str) -> str:
     return url
 
 
+def platform_comparison(soup: BeautifulSoup) -> None:
+    """Build platform cards from the two research tables, preserving one fact source."""
+    marker = soup.find(string=lambda node: isinstance(node, Comment) and node.strip() == "platform-comparison-cards")
+    if marker is None:
+        return
+    tables = list(reversed(marker.find_all_previous("table", limit=2)))
+    if len(tables) != 2:
+        raise ValueError("Platform comparison requires usage and access tables")
+    usage = [row.find_all("td", recursive=False) for row in tables[0].select("tbody > tr")]
+    access = [row.find_all("td", recursive=False) for row in tables[1].select("tbody > tr")]
+    if len(usage) != 7 or len(access) != 7 or any(len(row) != 5 for row in usage + access):
+        raise ValueError("Expected seven named platforms and five comparable fields per table")
+    cards = []
+    for index, (user, developer) in enumerate(zip(usage, access), 1):
+        if user[0].get_text(strip=True) != developer[0].get_text(strip=True):
+            raise ValueError("Platform rows must use the same order and labels")
+        parts = user[0].get_text("|", strip=True).split("|")
+        name, category = parts[0], parts[-1]
+        fields = [("执行位置", user[2]), ("手机与屏幕", user[3])]
+        details = [("离线范围", user[4]), ("应用与硬件接入", developer[1]), ("车辆权限边界", developer[2]), ("费用与交付责任", developer[3]), ("我们的切入判断", developer[4])]
+        def field_list(items: list) -> str:
+            return "<dl>" + "".join("<div><dt>" + label + "</dt><dd>" + cell.decode_contents() + "</dd></div>" for label, cell in items) + "</dl>"
+        card_class = "platform-card platform-service" if category == "服务层与集成体验" else "platform-card"
+        cards.append('<article class="' + card_class + '"><p class="platform-category">' + f"{index:02d} / " + html.escape(category) + '</p><h4>' + html.escape(name) + '</h4><p class="platform-purpose">' + user[1].decode_contents() + '</p>' + field_list(fields) + '<details><summary>查看离线、接入与切入点</summary>' + field_list(details) + '<p class="platform-card-source">依据：' + str(user[0].find("a")) + '</p></details></article>')
+    markup = '<section class="platform-overview" aria-label="七类现有平台速览"><h4>按平台展开查看</h4><div class="platform-grid">' + "".join(cards) + '</div></section>'
+    marker.replace_with(BeautifulSoup(markup, "html.parser"))
+    tables[0].insert_before(BeautifulSoup('<nav class="platform-jumps" aria-label="平台对照表"><a href="#platform-usage-table">使用能力对比 ↓</a><a href="#platform-access-table">开发与商业条件对比 ↓</a><a href="#platform-choice">产品切入判断 ↓</a></nav><p class="matrix-hint">两张表使用相同的七个对象；窄屏可横向滑动，平台名称列固定显示。</p>', "html.parser"))
+    for table, identity in zip(tables, ["platform-usage-table", "platform-access-table"]):
+        table["id"] = identity
+        table["class"] = ["platform-matrix"]
+        table["aria-label"] = "现有平台使用能力对比" if identity == "platform-usage-table" else "现有平台开发与商业条件对比"
+
+
 def render_markdown(text: str, blocks: list[dict], manifest: dict, equations: list[dict]) -> str:
     lookup = {block["code"].strip(): index for index, block in enumerate(blocks)}
     def replace_diagram(match: re.Match) -> str:
@@ -144,8 +177,12 @@ def render_markdown(text: str, blocks: list[dict], manifest: dict, equations: li
     text = re.sub(r"\$([A-Za-z][^$\n]*?)\$", inline_math, text)
     rendered = markdown.markdown(text, extensions=["tables", "fenced_code"])
     soup = BeautifulSoup(rendered, "html.parser")
+    platform_comparison(soup)
     for table in list(soup.find_all("table")):
-        table.wrap(soup.new_tag("div", attrs={"class": "table-wrap"}))
+        attributes = {"class": "table-wrap"}
+        if "platform-matrix" in table.get("class", []):
+            attributes.update({"tabindex": "0", "role": "region", "aria-label": table["aria-label"] + "，可横向滚动"})
+        table.wrap(soup.new_tag("div", attrs=attributes))
     for link in soup.find_all("a", href=True):
         link["href"] = version_url(local_link(link["href"]))
         if link["href"].startswith("http"):

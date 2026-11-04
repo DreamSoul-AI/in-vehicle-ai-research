@@ -5,9 +5,9 @@
     "tables": 1
   },
   "platforms": {
-    "textCharacters": 3989,
+    "textCharacters": 10800,
     "diagrams": 4,
-    "tables": 3
+    "tables": 5
   },
   "products": {
     "textCharacters": 1708,
@@ -30,8 +30,8 @@
     "tables": 0
   },
   "sources": {
-    "textCharacters": 2572,
+    "textCharacters": 3366,
     "diagrams": 0,
-    "tables": 2
+    "tables": 3
   }
 }

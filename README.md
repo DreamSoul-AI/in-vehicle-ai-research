@@ -13,6 +13,7 @@
 - `dist/overview.html`：平台、技术与商业背景
 - `dist/references.html`：参考资料与阅读范围
 - `content/research.md`、`content/outline.md`：正式正文与大纲的网页发布副本，主页各节和完整正文从这里生成
+- 平台章节开头直接展示两张七行对照表，按使用能力和开发商业条件比较具名平台；七张可展开卡片从同一组表格生成，GAS服务层/Google built-in体验单独标识
 - `content/index.template.html`：页面结构及产品图鉴交互模板
 - `dist/diagrams/`：9张 Mermaid 图的 SVG、PNG、图源及渲染清单，其中平台部分4张
 - `build.py`、`tools/`：正文构建、图形渲染和发布文件校验
@@ -52,7 +53,7 @@ Python 依赖版本见 `requirements-render.txt`。图形渲染使用固定 Merm
 
 `main` 保存完整网站源码，`gh-pages` 保存从 `dist/` 提取的静态发布文件，Pages 从 `gh-pages` 分支根目录提供网页。不需要安装依赖或构建，站内资源使用相对路径以适配项目 Pages 子路径。
 
-当前内容和图示版本为 `detailed-diagrams-20261105`，由 `build.py` 统一写入资源与正文链接。后续结构调整时更新构建脚本的 `VERSION`，再构建静态产物。
+当前内容和图示版本为 `platform-comparison-20261105`，由 `build.py` 统一写入资源与正文链接。后续结构调整时更新构建脚本的 `VERSION`，再构建静态产物。
 
 完成修改和本地检查后，提交源码并发布：
 
