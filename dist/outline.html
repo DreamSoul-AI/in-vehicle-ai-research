@@ -1,4 +1,4 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>车载智能化 调研大纲 · 车载智能化研究</title><link rel="stylesheet" href="style.css?v=product-stages-20261105"></head><body><header class="topbar"><a class="brand" href="index.html?v=product-stages-20261105"><span class="brand-symbol"></span><b>DreamSoul</b><span>RESEARCH</span></a><a href="index.html?v=product-stages-20261105">返回研究主页 ↗</a></header><main class="research-content"><p class="eyebrow">IN-VEHICLE PRODUCTS / RESEARCH</p><h1>车载智能化 调研大纲</h1><p>整理日期：2026年11月5日。用途：支持 DreamSoul 判断传统车辆智能化的产品起点、经营可行性及后续投入顺序。研究主线为免屏、免拆的小型车载语音助手或音箱，向智能面板和辅助驾驶按条件扩展，再研究通用大模型能力。</p>
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>车载智能化 调研大纲 · 车载智能化研究</title><link rel="stylesheet" href="style.css?v=detailed-diagrams-20261105"><link rel="stylesheet" href="report.css?v=detailed-diagrams-20261105"><script src="diagrams.js?v=detailed-diagrams-20261105" defer></script></head><body><header class="topbar"><a class="brand" href="index.html?v=detailed-diagrams-20261105"><span class="brand-symbol"></span><b>DreamSoul</b><span>RESEARCH</span></a><a href="index.html?v=detailed-diagrams-20261105">返回研究主页 ↗</a></header><main class="research-content"><p class="eyebrow">IN-VEHICLE PRODUCTS / RESEARCH</p><h1>车载智能化 调研大纲</h1><p>整理日期：2026年11月5日。用途：支持 DreamSoul 判断传统车辆智能化的产品起点、经营可行性及后续投入顺序。研究主线为免屏、免拆的小型车载语音助手或音箱，向智能面板和辅助驾驶按条件扩展，再研究通用大模型能力。</p>
 <p>首款允许使用手机、云服务、固定命令及现成语音组件，不将车内本地 LLM 作为立项或验收前提。范围以存量燃油车为重点，按车机、音频接口、手机和用户任务划分客群。波兰仅作为待核实的区域渠道案例。动态资料记录访问日，历史价、当前销售线索、实际采购交付、应用维护及服务状态分别核验。</p>
 <h2>一、产品起点与渐进路线</h2>
 <h3>（一）首款产品服务谁、解决什么</h3>
@@ -13,19 +13,29 @@
 <li>用 Mermaid 表示附带验证条件的四阶段扩展关系，注明不是技术上的强制同序，保留长期独立经营或合作的选择</li>
 </ul>
 <p><strong>证据与产出</strong>：原始产品说明、用户与渠道资料。形成客群划分和阶段关系图。首期目标用户、关键任务及产品外形尚待验证。</p>
-<h2>二、现有平台和三种承载路径</h2>
-<h3>（一）现成手机能力和车载生态</h3>
+<h2>二、平台与载体</h2>
+<p>核心问题：任务在哪里执行、界面在哪里、麦克风与声音经过哪里，平台和各合作角色分别开放什么？</p>
+<h3>（一）手机助手、投射界面与车内系统</h3>
 <ul>
-<li>梳理 Siri、Google 车内助手及应用，区分平台现成功能与自有第三方产品的接入权限</li>
-<li>说明 CarPlay、Android Auto、AAOS 及后装 Android 主机的角色，车内屏幕不代表自有计算或车控权限</li>
+<li>区分系统助手、自有伴随 App、CarPlay、Android Auto、AAOS、GAS 与普通后装 Android</li>
+<li>解释任务、界面、车厂接口与分发的职责，使用平台角色图</li>
 </ul>
-<h3>（二）三种载体的适用条件</h3>
+<h3>（二）三种任务接入路线</h3>
 <ul>
-<li>比较手机加原车音频、小型免屏语音外设、后装智能面板的安装与使用负担</li>
-<li>核查手机依赖、充电供电、固定、麦克风、蓝牙音乐与免提、AUX/FM 等输入输出路径</li>
-<li>区分投射接收屏和可独立安装应用的面板，不把 USB 口或蓝牙名称当作兼容保证</li>
+<li>比较调用系统助手、自有手机流程与屏幕/车机集成，说明可控程度和新增责任</li>
+<li>使用任务路径图展示执行位置和按需云依赖</li>
 </ul>
-<p><strong>证据与产出</strong>：平台文档、协议简介、具体型号说明书。形成连接和依赖比较表。候选设备、手机版本、真实音频路由及地区服务待核。</p>
+<h3>（三）硬件、安装和音频</h3>
+<ul>
+<li>比较免屏外设、独立屏、替换车机与原车屏升级盒，画出安装选型图</li>
+<li>分清 HFP、A2DP、AUX、FM、投射录音和实际麦克风路由，使用音频图与 CK11 反例</li>
+</ul>
+<h3>（四）权限、合作角色与首款选择</h3>
+<ul>
+<li>核查平台类别、分发、系统权限、MFi 角色与实际设备接口</li>
+<li>把选择依据落到完整任务、支持成本、恢复和可控范围
+<strong>证据与产出</strong>：平台原始指南、具体设备手册与合作公开规则。四张图保留 Mermaid、SVG 与 PNG，对未知权限和手机/车辆表现保留边界。</li>
+</ul>
 <h2>三、按阶段竞品比较</h2>
 <h3>（一）首期直接竞品与历史经验</h3>
 <ul>
@@ -84,4 +94,4 @@
 <p><strong>证据与产出</strong>：功能手册、车辆支持条件、企业披露及模型/平台许可。形成资产迁移和阶段决策表。控制接口、专业团队、道路数据和安全验证资源尚待确认。</p>
 <h2>七、参考资料</h2>
 <p>按首款产品与音频、平台与面板、商业与服务、辅助驾驶及后续模型分类维护。正式来源记录标题、责任方、版本或发布日期、访问日期、阅读范围和使用边界，正文保留就近名称链接。历史材料、当前供货及未核线索分别标明。</p>
-<p><strong>交付与方法</strong>：正文、大纲、竞品数据和原始来源相互对应。先用公开材料形成可复查分析，再按已选用户、设备和任务设计实测。没有执行的安装、采购、渠道联系、模型与实车测试不写成完成。本轮不因研究建议而自动进入开发或发布产品承诺。</p></main></body></html>
+<p><strong>交付与方法</strong>：正文、大纲、竞品数据和原始来源相互对应。先用公开材料形成可复查分析，再按已选用户、设备和任务设计实测。没有执行的安装、采购、渠道联系、模型与实车测试不写成完成。本轮不因研究建议而自动进入开发或发布产品承诺。</p></main><dialog id="diagram-dialog" class="diagram-dialog" aria-labelledby="diagram-view-title"><div class="dialog-bar"><h2 id="diagram-view-title">关系图</h2><button class="diagram-close" aria-label="关闭关系图">×</button></div><div class="diagram-view-tools"><button data-diagram-zoom="out" aria-label="缩小关系图">−</button><button data-diagram-zoom="reset">适合宽度</button><button data-diagram-zoom="in" aria-label="放大关系图">＋</button><span id="diagram-zoom-label">100%</span><a id="diagram-original" target="_blank" rel="noopener noreferrer">打开 SVG ↗</a></div><div class="diagram-view-scroll"><img id="diagram-view-image" alt="放大的关系图"></div></dialog></body></html>

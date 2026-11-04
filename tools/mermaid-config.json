@@ -1,0 +1,32 @@
+{
+  "startOnLoad": false,
+  "securityLevel": "strict",
+  "theme": "base",
+  "fontFamily": "Microsoft YaHei, PingFang SC, sans-serif",
+  "themeVariables": {
+    "fontSize": "18px",
+    "primaryColor": "#EAF1FF",
+    "primaryTextColor": "#231815",
+    "primaryBorderColor": "#0056EE",
+    "secondaryColor": "#FFF5BF",
+    "tertiaryColor": "#F4F7FC",
+    "lineColor": "#53647C",
+    "clusterBkg": "#F8FAFF",
+    "clusterBorder": "#AABDE0",
+    "edgeLabelBackground": "#FFFFFF"
+  },
+  "flowchart": {
+    "htmlLabels": false,
+    "curve": "basis",
+    "nodeSpacing": 35,
+    "rankSpacing": 50,
+    "padding": 18,
+    "useMaxWidth": false
+  },
+  "sequence": {
+    "useMaxWidth": false,
+    "wrap": true,
+    "actorMargin": 45,
+    "messageMargin": 35
+  }
+}
