@@ -1,17 +1,19 @@
-车载端侧 AI 研究网页。内容包含竞品图鉴、筛选搜索、最多三项对比、离线与技术证据、进入机会及原始资料。配色和信息呈现沿用桌面智能硬件研究网页。
+车载智能化研究网页。以小型语音助手为起点，逐步研究智能面板、辅助驾驶相关产品与后续大模型。功能、连接、安装、服务与经营条件优先。配色和信息呈现沿用桌面智能硬件研究网页。
 
 在线阅读：[GitHub Pages](https://dreamsoul-ai.github.io/in-vehicle-ai-research/)。源码：[DreamSoul-AI/in-vehicle-ai-research](https://github.com/DreamSoul-AI/in-vehicle-ai-research)。
 
 # 一、内容与目录
 - `dist/index.html`：研究网页主入口
 - `dist/app.js`、`dist/style.css`：交互与响应式样式
-- `dist/data/products.json`：23个样本的网页数据，默认核心视图为8项本地模型线索
-- `dist/assets/products/`：10张官方来源配图，出处保留在产品记录中
-- `dist/research.html`：竞品与切入分析
+- `dist/data/products.json`：23个分阶段样本，默认展示16项语音和面板参照
+- `dist/assets/products/`：当前产品与历史专项的官方来源配图，出处保留在产品记录中
+- `dist/research.html`：当前产品与阶段路线调研
+- `dist/outline.html`：当前调研大纲
+- `dist/advanced.html`、`dist/data/advanced-products.json`：此前本地模型专项补充
 - `dist/overview.html`：平台、技术与商业背景
 - `dist/references.html`：参考资料与阅读范围
 
-正式研究和结构化主数据位于上级目录。网页数据与主数据的区别为增加本地配图路径。厂商声明、交付状态、离线范围与研究判断分别记录，开发演示和驾驶辅助模型不视为零售座舱助手。
+正式研究和结构化主数据位于上级目录。当前主数据为上级的 `车载智能化 产品样本.json`，正文和大纲采用同一课题前缀。此前 `燃油车端侧 AI` 文件保留为模型专题。网页数据与主数据的区别为增加本地配图路径。厂商声明、交付状态、离线范围与研究判断分别记录，开发演示和驾驶辅助模型不视为零售座舱助手。
 
 # 二、本地预览
 本项目为静态 HTML、CSS、JavaScript，无安装和构建步骤。在此目录运行：

@@ -1,101 +1,265 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>竞品与切入分析 · 车载端侧 AI</title><link rel="stylesheet" href="style.css"></head><body><header class="topbar"><a class="brand" href="index.html"><span class="brand-symbol"></span><b>DreamSoul</b><span>RESEARCH</span></a><a href="index.html#products">返回产品图鉴 ↗</a></header><main class="research-content"><p class="eyebrow">IN-VEHICLE AI / RESEARCH</p><h1>竞品与切入分析</h1><p>信息截止与访问日：2026年11月5日。范围：真正具有车内本地模型线索的后装软件、原厂车型及企业方案，并以开发参考和联网产品明确边界。所有技术与交付状态均基于公开资料，未安装、采购或做实车断网验证。</p>
-<p><strong>深入核查改变了原先的竞品判断：后装软件已有明确声明本地 LLM 的可安装产品，原厂车型也有绑定具体配置的 7B 与 VLM。</strong> 当前能公开确认的技术细节与价格并不完整，不能将其表述为已完成独立验证的全离线音箱市场。</p>
-<p>本次结构化整理23个样本，其中默认核心视图选取8项本地模型线索，其余用来区分部署计划、工具、硬件及联网对照。这些数字描述研究样本，不代表行业数量、销量或市场份额。逐项完整记录见 <a href="data/products.json">产品样本</a>，交互式产品图鉴见 <a href="index.html">网页入口</a>。</p>
-<h2>一、核心产品与技术证据</h2>
-<p>下表的“本地”仅针对所列模型和任务。车内运行大模型、有一项离线功能、完整语音任务断网完成是不同主张。</p>
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>车载智能化 产品与阶段路线 · 车载智能化研究</title><link rel="stylesheet" href="style.css"></head><body><header class="topbar"><a class="brand" href="index.html"><span class="brand-symbol"></span><b>DreamSoul</b><span>RESEARCH</span></a><a href="index.html">返回研究主页 ↗</a></header><main class="research-content"><p class="eyebrow">IN-VEHICLE PRODUCTS / RESEARCH</p><h1>车载智能化 产品与阶段路线</h1><p>整理日期：2026年11月5日。面向 DreamSoul 的产品与经营判断，以存量燃油车的轻量智能化为起点，研究小型语音外设、智能面板、辅助驾驶及后续大模型能力。资料采用官方产品页、手册、平台文档和原始业务披露的针对性阅读，未进行采购、手机激活或实车测试。</p>
+<p><strong>首款产品可以先是一件免屏、免拆的小外设：让少量车内高频任务更容易完成，语音识别和任务执行允许依赖手机、云服务或固定规则。</strong> 蓝牙免提产品的官网已有当前销售线索，未验证采购交付。其公开价格和功能可作竞争参照。DreamSoul 需要验证的购买理由，是更少配置、更可靠的连接、明确的反馈，或针对某类用户更好完成任务。车内本地大模型可作为后续增量能力，首期价值应能独立成立。</p>
+<h2>一、产品起点与渐进路线</h2>
+<h3>（一）先按车辆接口和使用困难选择用户</h3>
+<p>“传统燃油车”覆盖的实际条件差别很大。没有蓝牙或 AUX 的车辆，需要外设自带扬声器或另行提供音频传输。已有基础蓝牙的车辆，可能只缺少便捷触发入口。已有稳定 CarPlay 或 Android Auto 的车辆，原本已能完成导航、电话和媒体等任务，增加外设的购买理由更弱。燃油类型本身无法说明具体智能化缺口。</p>
+<p>首期宜从一个明确组合入手，例如“没有成熟手机互联、希望免拆安装、接受手机联网的日常通勤用户”。这是待验证客群假设。需要访谈和任务观察确认：开车时实际卡在哪一步，已有手机助手为什么没有解决，用户愿意为减少哪些操作付费。波兰仅作为区域渠道案例，客群、渠道条件和采购需求均待核实。</p>
+<h3>（二）每阶段先建立独立价值</h3>
 <div class="table-wrap"><table>
 <thead>
 <tr>
-<th><strong>具体产品</strong></th>
-<th><strong>可获得状态与价格口径</strong></th>
-<th><strong>模型与技术要点</strong></th>
-<th><strong>尚不能确认的关键条件</strong></th>
+<th><strong>阶段</strong></th>
+<th><strong>独立产品目标</strong></th>
+<th><strong>进入下一阶段前要取得的证据</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Car Nebula Launcher / Luna</td>
-<td>可安装 · 开发者声明。免费安装 · AI 升级价未公开</td>
-<td>Luna；商店正文明确声明 on-device LLM support。模型家族、参数量、量化、推理框架及权重分发方式未公开。</td>
-<td>公开声明达到车端本地 LLM 层，但尚缺模型包、运行日志和完整离线语音链路证据。未核波兰语、本地 LLM 特定设备兼容表、模型与地图总体占用、热稳定性。未核 IAP 金额、离线模型是否另收费及订阅终止后的模型可用性；销量与留存未知。 <a href="https://play.google.com/store/apps/details?hl=en-US&amp;id=com.khaledisim.carlauncher" rel="noopener noreferrer" target="_blank">Car Nebula Google Play 产品说明</a></td>
+<td>轻量语音助手或音箱</td>
+<td>少量任务的一键触发、免提和短反馈</td>
+<td>相比手机直接操作，真实任务更容易完成，用户持续使用，交付和售后成本可承担</td>
 </tr>
 <tr>
-<td>吉利银河 M9 210km 四驱黑金智曜版 / AI BOX</td>
-<td>原厂在售声明。¥259,800 / 具体款整车</td>
-<td>官方明确：端侧部署 70 亿参数量模型，即 7B。家族名称、checkpoint、量化位宽、上下文长度、运行时和可分配 RAM 未公开。</td>
-<td>官方 7B 本地部署声明足以确认车上有本地模型，不足以确认完整 Agent 离线；本轮没有 一手资料正文证明模型就是 Qwen，也不采用第三方 200 TOPS / 特定芯片转载数字；不能把智驾芯片的 700 TOPS 当作座舱 LLM 算力；原厂高配 PHEV，只能借鉴能力与架构，不作为传统油车后装盒的直接同类售价 <a href="https://www.galaxy-geely.com/M9Edition" rel="noopener noreferrer" target="_blank">吉利银河 M9 黑金智曜版官方车型页</a></td>
+<td>智能面板</td>
+<td>固定显示地图、媒体及任务状态，提供触控或实体回退</td>
+<td>屏幕解决的具体问题足以覆盖新增硬件、安装、维护和驾驶交互负担</td>
 </tr>
 <tr>
-<td>2026 小鹏 G7 602 Max 旗舰版 + Ultra 智能升级包</td>
-<td>在售配置 · 部分 OTA。¥215,800 / 整车 + 组合包</td>
-<td>小鹏图灵 VLM 模型。厂商经营公告明确车端部署，具体参数、量化和 checkpoint 未公开。辅助驾驶 VLA 与座舱 VLM 分开看。</td>
-<td>Ultra SE ¥12,000 只列 2 颗辅助驾驶芯片等，不可当作同等 VLM 座舱方案；2025 已上市与 2026 当前包配置均有证据，具体每项 VLM 功能的 OTA 完成状态仍需车辆软件版本核对；750 / 1500 / 2250 TOPS 为厂商有效算力口径，不是可直接与其他芯片排名的 LLM 实测；未取得 VLM 断网任务、时延、功耗和多语种实车数据 <a href="https://www.xiaopeng.com/g7_2026/configuration.html" rel="noopener noreferrer" target="_blank">2026 小鹏 G7 参数配置表</a></td>
+<td>记录和风险提示</td>
+<td>视频记录、事件回看、有限条件下的驾驶预警</td>
+<td>提示有用且可理解，安装标定、误报漏报和维护边界清楚</td>
 </tr>
 <tr>
-<td>2026 小鹏 G6 625 Max 科技版 + Ultra 智能升级包</td>
-<td>原厂在售配置。¥196,800 / 整车 + 组合包</td>
-<td>小鹏图灵 VLM 模型，配座舱专属图灵芯片。车型配置没有给出确切参数和离线执行图。小鹏 2025 经营公告的车端 VLM 架构作背景，不代替本车实测。</td>
-<td>同名 Ultra 包不代表不同年款车型的底层车机芯片相同；本地对话是配置表独立功能，不能未经证据全部归因于 VLM；原厂一体集成，不表示 2 万元选装方案能直接改装给传统油车 <a href="https://www.xiaopeng.com/g6_2026/configuration.html" rel="noopener noreferrer" target="_blank">2026 小鹏 G6 参数配置表</a></td>
+<td>车辆运动辅助</td>
+<td>在明确车型和工作条件下辅助转向或纵向控制</td>
+<td>获得车辆接口、感知和控制能力，以及独立的安全验证和交付体系</td>
 </tr>
 <tr>
-<td>Cerence CaLLM Edge</td>
-<td>企业客户入口。授权报价未公开</td>
-<td>2024年初版：Phi-3系列汽车数据微调，3.8B、4k上下文、4-bit；后续多模态版本不应沿用初版参数作统一规格</td>
-<td>未获得可公开复现的同车端到端实测；没有统一公开内存需求或指定SoC清单；初版SLM不是一套开箱即用的完整语音和车控整机；未核实是否向小规模后装项目供货及其最低商务条件 <a href="https://investors.cerence.com/news-events/press-releases/detail/114/cerence-introduces-pioneering-embedded-small-language-model-purpose-built-for-automotive" rel="noopener noreferrer" target="_blank">Cerence：Embedded Small Language Model发布</a></td>
-</tr>
-<tr>
-<td>Cerence xUI</td>
-<td>企业平台与客户项目。项目报价未公开</td>
-<td>CaLLM模型家族含边缘SLM和云端LLM；当前未发现可单独标价购买的统一“xUI边缘款”SKU</td>
-<td>不能以2024版CaLLM Edge参数代表所有xUI项目；车窗、空调与摄像头等能力依赖OEM实际授权和接口；本轮没有核实量产车型配置、离线任务清单或按台合同价格 <a href="https://www.cerence.com/platforms/cerence-xui" rel="noopener noreferrer" target="_blank">Cerence xUI平台</a></td>
-</tr>
-<tr>
-<td>CarWatch（Raspberry Pi 5 车载原型）</td>
-<td>作者车内原型。DIY 原型 · 无整机报价</td>
-<td>当前 main：Qwen3.6-35B-A3B、Unsloth UD-Q3_K_S、llama.cpp；whisper.cpp ASR、Piper TTS、本地说明书 RAG。v0.4.0 发行页单独支撑车内离线语音演示，不能把当前 main 的全部模型配置倒填该版本。</td>
-<td>主分支与 v0.4.0 的监听模式、配置会变；不能拼成一个固定零售型号。没有本次独立断网、车内噪声、冷启动、散热、功耗或量产可靠性验证。AGPL-3.0 代码与模型各自许可需分别检查；未核商用方案或规模交付。 <a href="https://github.com/ThinkOffApp/CarWatch" rel="noopener noreferrer" target="_blank">CarWatch README 与架构（当前 main）</a></td>
-</tr>
-<tr>
-<td>comma four / openpilot 0.11.2</td>
-<td>零售驾驶辅助设备。US$999 / 驾驶辅助设备</td>
-<td>openpilot道路感知、轨迹及驾驶员监测神经模型；非座舱对话LLM。未以通用语言模型参数衡量驾驶能力。</td>
-<td>只能用于核对过的车辆与功能，驾驶员持续负责；驾驶模型产品不能当作对话音箱的技术或商业连续性证明；NHTSA已有调查启动原件，后续状态未核实 <a href="https://comma.ai/shop/comma-four" rel="noopener noreferrer" target="_blank">comma four 官方商店</a></td>
+<td>后续大模型能力</td>
+<td>改善自然表达、知识问答或任务组合</td>
+<td>增量任务价值超过算力、服务、许可、可靠性和长期维护成本</td>
 </tr>
 </tbody>
 </table></div>
-<h2>二、五项必须区分的产品事实</h2>
-<h3>（一）Car Nebula 已是直接的软件竞品</h3>
-<p>Car Nebula 的 Luna 在官方 Google Play 正文明确声明 on-device LLM 与离线支持，且有安装入口。因此，“给旧车增加本地模型”已经有后装软件参与者。需要与其比较的是稳定完成哪些任务、在什么车机上可用，以及额外集成的价值。<a href="https://play.google.com/store/apps/details?hl=en-US&amp;id=com.khaledisim.carlauncher" rel="noopener noreferrer" target="_blank">Car Nebula 商店</a></p>
-<p>官网最低 Android 8、3GB 和推荐6–8GB是整款应用要求，不是完整离线语音模型的保证配置。具体模型、权重、量化和 ASR→LLM→TTS 断网路径未披露。免费安装、免费导航与付费 AI 升级也要分开，尚未取得实际 AI 升级金额。<a href="https://carnebula.com/requirements" rel="noopener noreferrer" target="_blank">Car Nebula 配置</a>、<a href="https://carnebula.com/upgrade" rel="noopener noreferrer" target="_blank">升级功能</a></p>
-<h3>（二）M9 黑金智曜版给出了具体本地参数规模</h3>
-<p>吉利专属产品页明确把7B端侧模型与黑金智曜版 AI BOX 绑定，该款整车限时先享指导价25.98万元。基础 M9 的较低系列起价不能代表同样含7B盒子。模型家族、量化、RAM及AI BOX芯片仍未公开，辅助驾驶部分的 Thor-U 算力不能挪作该座舱模型规格。网页所列整车价格仅用于车型定位。<a href="https://www.galaxy-geely.com/M9Edition" rel="noopener noreferrer" target="_blank">M9 黑金智曜版</a></p>
-<h3>（三）小鹏的离线项目和组合包需要分别理解</h3>
-<p>G7 车端 VLM 有官方说明，2026 G7/G6 Ultra 配置又列出专用座舱图灵芯片、本地对话离线可用及离线导航。2万元 Ultra 包包含多项硬件和功能，不是单独模型、芯片或后装助手价格。具体主动服务仍需核对 OTA 和外部数据依赖。<a href="https://www.xiaopeng.com/news/company_news/5493.html" rel="noopener noreferrer" target="_blank">小鹏技术进展</a>、<a href="https://www.xiaopeng.com/g7_2026/configuration.html" rel="noopener noreferrer" target="_blank">G7 配置</a>、<a href="https://www.xiaopeng.com/g6_2026/configuration.html" rel="noopener noreferrer" target="_blank">G6 配置</a></p>
-<h3>（四）有开发基础，仍需要完成产品整合</h3>
-<p>CaLLM Edge 面向企业，NXP、Qualcomm 提供开发路径，公开 Liquid 座舱示例则模拟车辆控制。它们可以用于评估买组件或自行组合，不能当作已完成后装整机的采购清单。OASYS Edge 和 Mercedes–Liquid 的未来部署目标，也不能因目标时间临近或已到便自动升级为交付事实。逐项 SDK、许可、状态与来源见产品样本。</p>
-<h3>（五）离线命令、记忆与驾驶模型各有意义</h3>
-<p>CarBox 的本地习惯档案、ATOTO Glow 的离线固定命令，不足证明使用生成式大模型。comma four 则在设备上运行驾驶模型，官网显示999美元，但它处理的是车辆运动辅助任务。该类设备说明“车上模型”并不限于语言模型，不能直接用于证明座舱音箱通向智驾的连续性。<a href="https://www.carboxlauncher.com/" rel="noopener noreferrer" target="_blank">CarBox</a>、<a href="https://www.atotodirect.com/products/ci-viald13-scrolling-advertising-led-signs" rel="noopener noreferrer" target="_blank">ATOTO Glow</a>、<a href="https://comma.ai/shop/comma-four" rel="noopener noreferrer" target="_blank">comma four</a></p>
-<h2>三、价格、离线与状态的统一比较方式</h2>
-<p>产品数据分别维护零售软件、后装硬件、整车、选装组合包、企业项目与开发板的报价口径。未公开标记为未公开，不记为零，不按整车价格替模型排性价比。历史车价、商城缺货、配套订阅和币种未核定保留原有限定。</p>
-<p>离线能力按三个层次记录：模型执行位置、单项功能是否可本地完成、完整任务是否仍依赖网络或手机。没有逐环节资料时，不把“本地模型”扩写为“所有任务离线”，也不把本地数据储存当作推理位置证据。</p>
-<p>交付状态另列可安装、在售配置、企业客户入口、部署计划、作者车内原型与模拟原型。厂商声明和独立实测分开。本次全部为公开材料核查，未取得跨产品可比的噪声、长时热稳态、延迟、功耗、销量或留存数据。</p>
-<h2>四、我们可以从哪里切入</h2>
-<h3>（一）优先验证：面向固定后装设备的本地任务模块</h3>
-<p><strong>新增竞品削弱了“只要能本地聊天就有差异”的判断。</strong> 更值得验证的是：与能开放系统和音频接口的后装厂商合作，在固定设备上稳定完成少量车内任务。候选包括本地手册与车型资料、常用信息、可授权的媒体或车辆数据操作，而非一次性覆盖所有车控与服务。</p>
-<p>与 Luna 等软件相比，可能的差异是较低配置负担、车内噪声与通话抢占下的完整成功率、可审计的本地数据流、指定语言或车辆服务，以及可持续固件与售后。这些仍是研究假设，需用同设备、同任务和同网络条件比较，不能预先称为壁垒。</p>
-<h3>（二）备选形态：控制交互的独立设备</h3>
-<p>独立音箱或计算盒可以控制麦克风、按键、模型和更新，但同时承担车载电源、启动、待机、散热、音频连接、库存与质保。应在比较成熟硬件搭载方案后，再判断新增整机是否值得。模型能放进开发板，尚不足以解释车主为什么额外购买、安装和长期维护。</p>
-<h3>（三）商业与长期路线</h3>
-<p>先比较按设备软件授权、集成服务和硬件套餐，分别核算长期支持成本。公开企业方案可以作为组件或潜在合作选择，尚未获得其实际报价、再分发权或客户准入条件。波兰渠道只作为选定产品后的区域核验案例。</p>
-<p>座舱原厂方案的本地模型、摄像头、车辆接口和服务整合不能整套搬到传统燃油车。后续若进入驾驶提示或运动控制，必须重新验证所需数据、接口、安全与责任能力。前一阶段业务应能独立解释用户价值与单位经济。</p>
-<h3>（四）最有价值的下一轮证据</h3>
-<ol>
-<li>固定一款候选 Android 车机和软件版本，对 Car Nebula 的本地声明做断网分环节验证，核对模型文件、内存、启动及误执行</li>
-<li>用相同任务比较现有方案与自有模块的收益，并观察真实用户再次主动使用，取得实际付费与安装成本证据</li>
-<li>取得目标硬件与固件接口、模型和 SDK 分发许可、供应与售后条件，再形成完整产品预算</li>
-<li>若考虑独立设备，单独证明拾音与交互收益足以抵消新增整机成本，不用未核实的低价 BOM 支撑投资回报</li>
-</ol>
-<p>这些是后续验证建议，本次未进行采购、安装、联系厂商或发布公司产品承诺。</p>
-<h2>五、参考资料与证据边界</h2>
-<p>每个样本的型号、功能、价格、离线范围、技术方案及对应来源，统一记录在 <a href="data/products.json">产品样本</a> 的 sources 字段。网页产品详情提供相同原始资料入口及阅读范围。旧平台与工程依据见 <a href="overview.html">通用调研</a>，新增记录并入 <a href="references.html">来源索引</a>。</p>
-<p>本次不是全行业普查，没有将开发者声明等同于独立性能验证，也没有以未查到某字段推定产品不支持。具体软件、车型、配置、地区和时间共同限定结论。第三方图片仅用于研究识别，不表示合作或背书。</p></main></body></html>
+<p>下面按四阶段产品方向组织分析，第三阶段拆为记录预警与车辆运动辅助。每次扩展都需验证新增价值和投入条件，第四阶段为后续选择。</p>
+<p>产品扩展分析示意：语音助手与智能面板可以积累任务、客户、安装与支持经验。记录预警、运动辅助和大模型扩展分别需要新增能力及独立验证。箭头不表示自动升级。</p>
+<p>图中顺序用于表达产品扩展方向，不是技术上的强制同序。大模型能力可按实际需求独立评估，无须先完成车辆运动辅助。用户量也不会自动转化为后续技术能力。</p>
+<p>前两阶段可以复用用户任务、手机适配、语音反馈、设备管理及渠道服务经验。记录提示新增摄像、视频存储、标定和感知评测。运动控制进一步新增实时控制、车辆适配和安全验证。各阶段均可选择长期独立经营或与专业企业合作。</p>
+<h2>二、现有平台和三种承载路径</h2>
+<h3>（一）手机、投射平台与车内操作系统的位置</h3>
+<p>CarPlay 和 Android Auto 主要把手机应用体验带到兼容车机，手机仍承担相应应用和服务。第三方开发受到应用类别、界面和审核条件约束。Apple 当前开发指南已列出语音对话应用类别，起点为 iOS 26.4，并有相应 entitlement 和音频规则。这意味着存在特定接入路径，不能推广为任意应用可常驻监听或控制车辆。<a href="https://developer.apple.com/carplay/" rel="noopener noreferrer" target="_blank">Apple CarPlay</a>、<a href="https://developer.apple.com/download/files/CarPlay-Developer-Guide.pdf" rel="noopener noreferrer" target="_blank">CarPlay 开发指南</a>、<a href="https://developer.android.com/training/cars/platforms/android-auto" rel="noopener noreferrer" target="_blank">Android Auto 开发文档</a></p>
+<p>AAOS 是运行在车内硬件上的 Android 汽车操作系统。Google Automotive Services 是可选择授权的一组服务，两者不能等同。商品名称中的“Android 车机”也不足以证明使用 AAOS 或带有 Google built-in。后装 Android 面板能否安装自有软件、后台收音和取得车内信息，需要按具体系统、权限和接口核验。<a href="https://source.android.com/docs/automotive/start/what_automotive" rel="noopener noreferrer" target="_blank">AAOS 官方概览</a></p>
+<p>对首款蓝牙语音外设，接入手机现有助手可以减少独立服务建设。若选择自有 App 和语音流程，则需另行取得识别、联系人、导航或媒体等执行能力。平台自带助手能完成某项任务，不等于自有 App 获得同等权限。开发 CarPlay 硬件接收端还涉及 MFi 项目，与普通蓝牙外设是不同工作范围。<a href="https://mfi.apple.com/en/faqs" rel="noopener noreferrer" target="_blank">Apple MFi 常见问题</a></p>
+<h3>（二）三种承载路径的依赖</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th><strong>承载路径</strong></th>
+<th><strong>安装与计算</strong></th>
+<th><strong>音频及连接条件</strong></th>
+<th><strong>适合验证什么</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>手机加原车音频</td>
+<td>手机固定与供电，手机运行助手或 App</td>
+<td>原车蓝牙音乐、免提或 AUX，按具体任务选择。没有相容接口时需其他输出</td>
+<td>最少新增硬件的任务与付费假设，也构成外设必须超过的基线</td>
+</tr>
+<tr>
+<td>免屏小外设或音箱</td>
+<td>夹装或粘贴，电池充电或车载供电。计算可在手机或云端</td>
+<td>自带扬声器可减少原车依赖。接原车音响仍需匹配蓝牙、AUX 或 FM，助手麦克风路由另核</td>
+<td>按钮、拾音、重连、静音和短反馈是否降低操作负担</td>
+</tr>
+<tr>
+<td>后装智能面板</td>
+<td>独立屏可支架安装，替换车机需要拆装。投射屏与可运行应用的面板分别判断</td>
+<td>除手机与音频，还涉及显示、启动、触控、线束及车型配件。摄像头增加布线</td>
+<td>哪些任务因固定屏幕或本机应用而更好完成</td>
+</tr>
+</tbody>
+</table></div>
+<p>蓝牙通话与音乐播放使用不同的配置和链路。HFP 提供免提相关能力，A2DP 用于音频分发，二者的存在也不能证明任意手机 App 都能按预想使用外置麦克风。<a href="https://www.bluetooth.com/specifications/specs/hands-free-profile-1-10/" rel="noopener noreferrer" target="_blank">Bluetooth HFP 规范简介</a>、<a href="https://developer.android.com/develop/connectivity/bluetooth/profiles" rel="noopener noreferrer" target="_blank">Android 蓝牙配置文档</a></p>
+<p>“免拆”描述安装方式，仍需解决供电、稳固固定、音量、重连和手机配置。FM 方案需要设置频点并检查当地使用条件。原车正收听其他音源时，导航或助手能否及时播报也应验证。包装和商品说明应写明这些前提，减少把接口不兼容误判为语音能力不足。</p>
+<h2>三、按阶段竞品比较</h2>
+<h3>（一）首期直接竞品与历史经验</h3>
+<p>以下价格均保留时间、地区和具体型号。当前商品页有库存标识仅说明可见销售状态，尚未下单确认交付，不能作为波兰含税、运费和售后的套餐报价。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th><strong>产品与阶段</strong></th>
+<th><strong>能力和依赖</strong></th>
+<th><strong>价格及状态</strong></th>
+<th><strong>对产品判断的价值</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Avantree CK11，小型免提音箱</td>
+<td>遮阳板夹装、自带扬声器、手机蓝牙和手机助手</td>
+<td>官网 titanium 当前 US$44.99，标 In Stock</td>
+<td>是免拆首款的直接参照。官方指南明确语音命令使用手机麦克风，不能据设备有麦克风宣传已改善助手拾音。<a href="https://avantree.com/products/ck11-hands-free-bluetooth-for-car" rel="noopener noreferrer" target="_blank">CK11 商品页</a>、<a href="https://avantree.com/pages/ck11-interactive-user-guide" rel="noopener noreferrer" target="_blank">CK11 指南</a></td>
+</tr>
+<tr>
+<td>Avantree Roadtrip，小音箱与 FM</td>
+<td>自带扬声器，支持将手机音频送入收音机，长按旋钮两秒调用手机助手</td>
+<td>官网当前 US$64.99，标 In Stock</td>
+<td>通过安装、音频和操作入口形成价值。助手说明仍要求手机助手启用、蓝牙和网络条件。<a href="https://avantree.com/products/roadtrip-handsfree-bluetooth-speaker-for-cars" rel="noopener noreferrer" target="_blank">Roadtrip 商品页</a>、<a href="https://support.avantree.com/hc/en-us/articles/38121800304793-Roadtrip-How-to-activate-the-voice-assistant-with-the-car-kit-Siri-Google-Assistant" rel="noopener noreferrer" target="_blank">助手激活说明</a></td>
+</tr>
+<tr>
+<td>Echo Auto 第 2 代，历史语音入口</td>
+<td>专用拾音和固定配件，经手机 Alexa App 接入服务与车内音响</td>
+<td>2022年美国发布价 US$54.99。本轮美国购买框显示不可用，现价未取得</td>
+<td>展示手机加专用外设的路径。历史价格、支持页保留和当日服务可用是三件事。<a href="https://press.aboutamazon.com/2022/9/amazon-introduces-four-new-echo-devices-plus-upgrades-to-echo-studio-audio" rel="noopener noreferrer" target="_blank">Amazon 发布公告</a>、<a href="https://www.amazon.com/dp/B09X27YPS1" rel="noopener noreferrer" target="_blank">美国商品页</a></td>
+</tr>
+<tr>
+<td>Garmin Speak Plus，历史组合产品</td>
+<td>手机数据连接 Alexa，同时加入行车记录和风险提示</td>
+<td>2018年公告建议零售价 US$229.99，当前供货未核</td>
+<td>可观察语音与摄像任务的组合，其功能不证明可转向、制动或已经形成成功业务。<a href="https://www.garmin.com/en-US/newsroom/press-release/automotive/2018-the-new-garmin-speak-plus-with-amazon-alexa-brings-amazon-alexa-to-a-vehicle-and-adds-a-built-in-dash-cam/" rel="noopener noreferrer" target="_blank">Garmin 发布公告</a></td>
+</tr>
+</tbody>
+</table></div>
+<p>这些产品说明首期能够围绕硬件入口和手机能力构建，未证明新进入者有足够需求。比较时应把手机直接使用、普通免提设备和成熟投射平台一并纳入，考察从上车到完成任务的全过程。Roav VIVA、JBL Smartbase 等历史型号可用于补充形态和服务依赖，不能以历史发布信息代替当前采购证据。</p>
+<h3>（二）后续阶段使用不同参照</h3>
+<p>第二阶段可比较 Carpuride W903 这类独立投射屏、ATOTO S8 Gen4 这类替换车机，以及 Ottocast、Carlinkit 原车屏升级盒。W903 默认 SKU 当前官网 US$219.99，主要说明固定屏与记录任务的组合。升级盒通常先要求相容有线手机互联接口，完全无屏的旧车无法直接套用这一入口。<a href="https://carpuride.com/products/carpuride-w903-portable-smart-multimedia-dashboard-console-with-front-camera" rel="noopener noreferrer" target="_blank">W903 商品页</a>、<a href="https://www.carlinkit.com/uhd6225" rel="noopener noreferrer" target="_blank">Carlinkit UHD 产品条件</a></p>
+<p>ATOTO 官方手册明确 DriveChat 处理命令和回答需要联网，不能因其运行 Android 就写成完整离线语音。由此可见，第二阶段的关键问题仍是任务和系统整合，不必先建设本地大模型。<a href="https://www.atotodirect.com/en-gb/pages/manual-460-en" rel="noopener noreferrer" target="_blank">ATOTO S8 Gen4 手册</a></p>
+<p>第三阶段的参考应拆为 Garmin Dash Cam 等记录预警设备、Mobileye 历史后装预警系统，以及 comma 的车型适配运动辅助。Cerence 等企业语音或模型方案属于后续集成参考，开发板、PC 演示和预告产品另列，不能与现售小音箱混成同一采购价格榜。</p>
+<h2>四、首款小型语音助手功能与工程</h2>
+<h3>（一）围绕三类任务筛选首款范围</h3>
+<p>建议从常用地点导航、常用联系人通话、已有媒体控制中，选择少量经过用户验证的任务。Google 当前 Android Auto 文档分别说明这些功能已有平台路径，意味着它们是成熟需求，也是自有产品面临的竞争基线。媒体还取决于相容应用、账号及可能的订阅。<a href="https://support.google.com/androidauto/answer/6348322?hl=en" rel="noopener noreferrer" target="_blank">Google 导航说明</a>、<a href="https://support.google.com/androidauto/answer/6348066?hl=en" rel="noopener noreferrer" target="_blank">电话说明</a>、<a href="https://support.google.com/androidauto/answer/6348327?hl=en" rel="noopener noreferrer" target="_blank">媒体说明</a></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th><strong>候选任务</strong></th>
+<th><strong>首期可以怎样收敛</strong></th>
+<th><strong>应验证的完整结果</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>常用地点导航</td>
+<td>先配置家、公司等少量地点，歧义时确认</td>
+<td>手机或车机实际进入正确导航，用户听到明确反馈。路线计算和实时交通按服务依赖说明</td>
+</tr>
+<tr>
+<td>常用联系人通话</td>
+<td>优先已配置联系人，重名确认，允许取消</td>
+<td>正确号码拨出，通话音频可用，结束后恢复原任务</td>
+</tr>
+<tr>
+<td>已有媒体控制</td>
+<td>播放、暂停和切换等有限动作，先限定支持应用</td>
+<td>指定应用实际响应，账号、音源和播放状态一致。车载功放音量控制另行核验</td>
+</tr>
+</tbody>
+</table></div>
+<p>首期应明确完成、确认、取消、超时和失败反馈。自由聊天、长期记忆、多用户识别、通用车辆控制可以后续评估。短信等涉及更多确认和权限的任务，宜在已有流程稳定后单独论证。</p>
+<h3>（二）从最少依赖的实现开始</h3>
+<p>产品可以先用按钮调用手机助手，外设负责触发和音频。若需要自有流程，可使用现成语音识别、有限意图和授权任务接口。固定任务不必先经过生成式模型。下面是自有流程的分析示意，具体能力需逐项取得平台许可并验证。</p>
+<p>产品扩展分析示意：语音助手与智能面板可以积累任务、客户、安装与支持经验。记录预警、运动辅助和大模型扩展分别需要新增能力及独立验证。箭头不表示自动升级。</p>
+<p>手机可能同时连接原车、外设和其他蓝牙设备。来电、导航播报、音乐和助手录音的抢占顺序需要实机检查。锁屏、后台限制、助手切换、网络中断和账号退出也可能改变行为。CK11 的例子尤其说明，通话麦克风可用与助手实际使用哪只麦克风应分开核验。<a href="https://support.avantree.com/hc/en-us/articles/50767188774937-How-to-Make-a-Call-by-Voice-Command" rel="noopener noreferrer" target="_blank">CK11 语音拨号说明</a></p>
+<h3>（三）首期工程与验证重心</h3>
+<p>先以现成外设或 ODM 样品比较任务效果，再决定是否定制硬件。定制可涉及按钮、安装、扬声器、充电、拾音和固件，也将增加质量管理与售后责任。现成商品支持 Siri 不能证明提供自有软件的 SDK，软件合作要单独取得接口、升级和商业条款。</p>
+<p>验证应覆盖三类现场条件：停车与行驶噪声下能否完成任务，日常上下车能否可靠重连，手机和音源变化后能否恢复。记录每次成功、误执行、需看手机及人工重试的原因，同时比较手机直接使用。物理静音、取消和故障提示应能被用户理解。尚未取得的识别率、BOM、续航、车规等级与开发工期均保留未知。</p>
+<h2>五、商业、渠道与经营可行性</h2>
+<h3>（一）收入模式与成本责任要对应</h3>
+<p>首期可比较三种经营方式：销售已验证功能的硬件套餐，向设备商或渠道授权软件与集成能力，以及在确有持续价值时提供可选联网服务。普通免提和系统助手形成低价基线，订阅需要额外持续价值。硬件购买、首次激活、持续使用及持续付费应分别统计。</p>
+<p>以下为分析用的单机贡献关系，全部变量采用同一币种、同一税务和结算口径，不填入未经报价或经营验证的数字。</p>
+<p>单机贡献 = 实际到账收入 − 设备成本 − 交付成本 − 售后成本 − 持续服务成本。固定投入另算。</p>
+<p>其中 <code>C</code> 为单机贡献，<code>P_net</code> 按扣除税费、渠道扣点和促销后实际到账的硬件及配套服务净收入计量，预测时也沿用这一口径。其余成本依次为设备采购、物流交付、退换与支持、对应服务期的网络或 API 等成本。渠道扣点已在净收入中反映，不再作为成本重复扣除。收入和服务成本必须使用相同期间。研发、模具、认证、固定人员等固定投入另算，库存、账期和渠道回款再形成现金需求。正的单机贡献不能单独证明公司整体盈利。</p>
+<p>经营投入评估可以先看可复用软件和真实任务是否形成优势，再看硬件投入是否必要。手机助手依赖可能减少首期建设成本，也带来平台变化风险。自建 App 和云服务扩大可控性，同时增加运维、账号、权限和数据责任。未来本地模型若能解决断网、延迟或服务成本问题，再核算新增硬件与维护代价。</p>
+<h3>（二）渠道需要提供什么证据</h3>
+<p>免拆产品可通过电商、自助配置、汽配门店或经销商销售。门店只有在帮助选择接口、配置手机、演示和售后方面产生价值，才有理由获得对应毛利。车队渠道可能要求批量部署、设备管理和责任边界，会改变首期产品范围。渠道数量与意向不能直接换算为终端销量。</p>
+<p>波兰区域渠道案例待核实的内容包括具体客群和车型接口分布、可触达用户、销售安装与售后能力、采购及结算条件，以及波兰语任务效果、手机服务、配送税费和本地合规。当前没有当地成交、用户留存、退货、采购承诺或付费意愿的直接证据。</p>
+<p>进入下一阶段的经营依据应包括真实激活和复用、任务相对基线的改善、售后原因、单位贡献及现金承受能力。样本大小和目标值需根据实际业务确定，公开资料不足以支持预设销量、融资额或交付期限。</p>
+<h2>六、辅助驾驶和后续大模型演进</h2>
+<h3>（一）记录预警与运动控制分别立项</h3>
+<p>Garmin Dash Cam X110 手册将碰撞和车道提醒作为有工作条件的信息提示，驾驶员仍负责驾驶。Mobileye 8 Connect 手册也明确其预警系统不能替代驾驶控制。摄像头安装、视野和标定本身已增加新的工程工作。<a href="https://www8.garmin.com/manuals/webhelp/GUID-93747543-12A8-453C-9896-32070F5B0710/EN-US/Dash_Cam_X110_OM_EN-US.pdf" rel="noopener noreferrer" target="_blank">Garmin X110 手册</a>、<a href="https://static.mobileye.com/manual/me8/Mobileye%208%20connect%20%E2%80%93%20User%20manual.pdf" rel="noopener noreferrer" target="_blank">Mobileye 8 Connect 手册</a></p>
+<p>comma 的适配按车型、年份、配置和线束区分，官方安全说明要求驾驶员关注并能接管。它适合研究车辆运动辅助的入口条件，无法证明任意燃油车都能升级，也不能从其能力推定自动驾驶。<a href="https://docs.comma.ai/CARS/" rel="noopener noreferrer" target="_blank">comma 车辆支持</a>、<a href="https://docs.comma.ai/concepts/safety/" rel="noopener noreferrer" target="_blank">comma 安全说明</a></p>
+<p>商业上同样存在反证。Mobileye 于2024年3月宣布收缩后装解决方案业务，解释为原厂集成 ADAS 增长压缩后装机会，且该业务近年未能带来正利润。其商用车原厂业务继续，这一公告不能扩大为全部 Mobileye 退出或所有后装机会消失，但足以要求重新核算细分需求。<a href="https://ir.mobileye.com/news-releases/news-release-details/mobileye-wind-down-aftermarket-solutions-unit" rel="noopener noreferrer" target="_blank">Mobileye 后装业务公告</a></p>
+<p>前两阶段的用户和渠道可以帮助发现问题、提供服务，却不能替代道路感知数据、车辆授权接口、控制专业团队和安全验证资金。燃油车与新能源车均要按具体电子架构和车型条件评估，动力类型不是从辅助驾驶到自动驾驶的充分条件。</p>
+<h3>（二）按增量任务引入大模型</h3>
+<p>后续可研究更自然的表达、车主手册问答、有限任务组合以及多模态。但应先确认固定规则或现成助手无法满足的具体需求，再比较云 API、手机模型、车内模型和端云混合。选择车内推理时，才进一步检查算力、内存、热管理、启动、噪声、模型许可、语言和更新机制。</p>
+<p>首期可沉淀任务词表、确认规则、故障分类及经授权的评测数据。后续使用生成式模型时，仍需把不确定语言输出与实际任务执行分开，参数核验、权限和取消机制持续有效。语音对话能力不能作为车辆转向或制动决策的充分依据。企业模型方案、开发工具和演示原型在补充专题中分别标注成熟度，按具体可获得条件评估。</p>
+<h2>七、参考资料</h2>
+<p>以下均于2026年11月5日访问。针对性阅读范围与边界如下，当前销售、价格和服务条件仍须在采购前复核。完整逐项产品记录见 <a href="data/products.json">产品样本</a>，阅读范围见 <a href="references.html">来源索引</a>。引用产品资料说明厂商功能及条件，不构成独立性能或业务效果验证。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th><strong>责任方与资料</strong></th>
+<th><strong>版本或日期</strong></th>
+<th><strong>阅读范围与价值边界</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Avantree：<a href="https://avantree.com/products/ck11-hands-free-bluetooth-for-car" rel="noopener noreferrer" target="_blank">CK11 商品页</a>、<a href="https://avantree.com/pages/ck11-interactive-user-guide" rel="noopener noreferrer" target="_blank">交互指南</a>、<a href="https://support.avantree.com/hc/en-us/articles/50767188774937-How-to-Make-a-Call-by-Voice-Command" rel="noopener noreferrer" target="_blank">语音拨号</a></td>
+<td>商品页滚动，指南更新2026-10-30，拨号更新2026-10-05</td>
+<td>具体 SKU、价与库存、安装、助手和麦克风依赖。未购机或验证锁屏路由</td>
+</tr>
+<tr>
+<td>Avantree：<a href="https://avantree.com/products/roadtrip-handsfree-bluetooth-speaker-for-cars" rel="noopener noreferrer" target="_blank">Roadtrip 商品页</a>、<a href="https://support.avantree.com/hc/en-us/articles/38121800304793-Roadtrip-How-to-activate-the-voice-assistant-with-the-car-kit-Siri-Google-Assistant" rel="noopener noreferrer" target="_blank">助手激活</a></td>
+<td>商品页滚动，支持更新2026-09-03</td>
+<td>当前价与库存、音箱/FM、按钮和手机前提。商品续航描述有差异，正文不采用统一续航承诺</td>
+</tr>
+<tr>
+<td>Amazon：<a href="https://press.aboutamazon.com/2022/9/amazon-introduces-four-new-echo-devices-plus-upgrades-to-echo-studio-audio" rel="noopener noreferrer" target="_blank">Echo Auto 第 2 代发布</a>、<a href="https://www.amazon.com/dp/B09X27YPS1" rel="noopener noreferrer" target="_blank">美国购买页</a></td>
+<td>公告2022-09-28，购买页滚动</td>
+<td>历史形态、依赖、发布价及当前购买框。未验证账户激活和当日全部服务</td>
+</tr>
+<tr>
+<td>Garmin：<a href="https://www.garmin.com/en-US/newsroom/press-release/automotive/2018-the-new-garmin-speak-plus-with-amazon-alexa-brings-amazon-alexa-to-a-vehicle-and-adds-a-built-in-dash-cam/" rel="noopener noreferrer" target="_blank">Speak Plus 发布</a></td>
+<td>2018-01-08</td>
+<td>语音、摄像和预警组合及历史价格。当前供货与业务成效未知</td>
+</tr>
+<tr>
+<td>Apple：<a href="https://developer.apple.com/carplay/" rel="noopener noreferrer" target="_blank">CarPlay 概览</a>、<a href="https://developer.apple.com/download/files/CarPlay-Developer-Guide.pdf" rel="noopener noreferrer" target="_blank">开发指南</a>、<a href="https://mfi.apple.com/en/faqs" rel="noopener noreferrer" target="_blank">MFi FAQ</a></td>
+<td>概览和 FAQ 滚动，指南2026-10-13</td>
+<td>平台位置、应用类别、语音与录音、硬件接收端条件。未取得具体应用审核或硬件授权</td>
+</tr>
+<tr>
+<td>Google：<a href="https://developer.android.com/training/cars/platforms/android-auto" rel="noopener noreferrer" target="_blank">Android Auto</a>、<a href="https://source.android.com/docs/automotive/start/what_automotive" rel="noopener noreferrer" target="_blank">AAOS 概览</a></td>
+<td>页面更新2026-10-22、2026-09-30</td>
+<td>手机投射、车内系统和 GAS 的区别。不能由此确认后装商品的认证或开放接口</td>
+</tr>
+<tr>
+<td>Google：<a href="https://support.google.com/androidauto/answer/6348322?hl=en" rel="noopener noreferrer" target="_blank">导航</a>、<a href="https://support.google.com/androidauto/answer/6348066?hl=en" rel="noopener noreferrer" target="_blank">电话</a>、<a href="https://support.google.com/androidauto/answer/6348327?hl=en" rel="noopener noreferrer" target="_blank">媒体</a></td>
+<td>滚动更新</td>
+<td>平台现成任务与依赖。不是自有 App 权限保证</td>
+</tr>
+<tr>
+<td>Bluetooth SIG：<a href="https://www.bluetooth.com/specifications/specs/hands-free-profile-1-10/" rel="noopener noreferrer" target="_blank">HFP 1.10 简介</a>，Google：<a href="https://developer.android.com/develop/connectivity/bluetooth/profiles" rel="noopener noreferrer" target="_blank">蓝牙配置</a></td>
+<td>规范版本1.10，开发页滚动</td>
+<td>通话与音乐配置的区别。未深入协议全文或验证具体手机路由</td>
+</tr>
+<tr>
+<td>Carpuride：<a href="https://carpuride.com/products/carpuride-w903-portable-smart-multimedia-dashboard-console-with-front-camera" rel="noopener noreferrer" target="_blank">W903 商品页</a></td>
+<td>滚动更新</td>
+<td>默认 SKU、价格、独立屏和相机任务。未证实可安装任意自有助手</td>
+</tr>
+<tr>
+<td>Carlinkit：<a href="https://www.carlinkit.com/uhd6225" rel="noopener noreferrer" target="_blank">UHD 产品页</a>，ATOTO：<a href="https://www.atotodirect.com/en-gb/pages/manual-460-en" rel="noopener noreferrer" target="_blank">S8 Gen4 手册</a></td>
+<td>滚动更新，ATOTO 对应 S84G209P</td>
+<td>升级盒接口条件、DriveChat 联网和车机接线。不同地区配置不能互相套用</td>
+</tr>
+<tr>
+<td>Garmin：<a href="https://www8.garmin.com/manuals/webhelp/GUID-93747543-12A8-453C-9896-32070F5B0710/EN-US/Dash_Cam_X110_OM_EN-US.pdf" rel="noopener noreferrer" target="_blank">X110 用户手册</a></td>
+<td>©2024</td>
+<td>安装、记录、驾驶提醒及限制。未取得当前可核官网价或实车效果</td>
+</tr>
+<tr>
+<td>Mobileye：<a href="https://static.mobileye.com/manual/me8/Mobileye%208%20connect%20%E2%80%93%20User%20manual.pdf" rel="noopener noreferrer" target="_blank">8 Connect 手册</a>、<a href="https://ir.mobileye.com/news-releases/news-release-details/mobileye-wind-down-aftermarket-solutions-unit" rel="noopener noreferrer" target="_blank">后装业务公告</a></td>
+<td>手册未明示日期，公告2024-03-18</td>
+<td>预警责任边界及业务收缩原因。历史支持资料不代表重新开放后装销售</td>
+</tr>
+<tr>
+<td>comma：<a href="https://docs.comma.ai/CARS/" rel="noopener noreferrer" target="_blank">车辆支持</a>、<a href="https://docs.comma.ai/concepts/safety/" rel="noopener noreferrer" target="_blank">安全说明</a></td>
+<td>滚动更新</td>
+<td>车型配置适配与驾驶员责任。未安装、刷写或进行道路验证</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>仍需补充的决策证据</strong>：首期客群与任务观察、候选手机和外设的实际音频路由、供应与软件授权报价、波兰渠道及服务资料、用户复用和售后数据，以及各后续阶段的独立投入条件。现有公开资料能支持分清形态、依赖和风险，尚不能给出需求规模、量产成本或投资回报结论。</p></main></body></html>
