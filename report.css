@@ -1,0 +1,124 @@
+.report-body {
+  font-size: 14px;
+  line-height: 1.95;
+  overflow-wrap: anywhere;
+}
+.report-body h3 {
+  margin: 34px 0 15px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  font-size: 20px;
+  line-height: 1.65;
+}
+.report-body h4 { font-size: 17px; margin: 25px 0 12px; }
+.report-body p { margin: 13px 0; }
+.report-body ul, .report-body ol { padding-left: 23px; }
+.report-body li { margin: 8px 0; }
+.report-body strong { color: var(--ink); }
+.report-body table { font-size: 12px; }
+.report-body th { font-size: 11px; }
+.report-body td, .report-body th { padding: 15px 13px; }
+.report-body td a { font-size: 11px; }
+.report-body .table-wrap { margin: 22px 0; }
+.product-analysis { margin-top: 36px; }
+.research-diagram {
+  margin: 27px 0;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  overflow: hidden;
+  background: #fff;
+}
+.diagram-scroll { overflow: auto; padding: 18px; background: #fff; }
+.diagram-scroll picture { display: block; }
+.diagram-scroll img {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  max-width: var(--diagram-width);
+  height: auto;
+  margin: auto;
+}
+.research-diagram figcaption {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 15px 18px 8px;
+  background: var(--paper);
+  font-size: 12px;
+}
+.research-diagram figcaption span { color: var(--muted); font-size: 11px; }
+.diagram-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  padding: 6px 18px 15px;
+  background: var(--paper);
+  align-items: center;
+}
+.diagram-actions a, .diagram-actions button { font-size: 11px; }
+.comparison-details, .source-details {
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  margin: 25px 0;
+}
+.comparison-details > summary, .source-details > summary {
+  cursor: pointer;
+  color: var(--blue);
+  font-size: 13px;
+  font-weight: 600;
+}
+.comparison-details .inline-comparison { margin-top: 15px; }
+.formula-image {
+  overflow: auto;
+  padding: 22px;
+  background: var(--warm);
+  border-radius: 8px;
+  margin: 23px 0;
+}
+.formula-image math { font-size: 18px; min-width: 640px; }
+.inline-math { font-style: italic; white-space: nowrap; }
+.inline-math sub { font-style: normal; }
+.diagram-dialog { width: min(1350px, 96vw); max-height: 94vh; }
+.diagram-dialog .dialog-bar { margin-bottom: 14px; }
+.diagram-dialog .dialog-bar h2 { font-size: 19px; }
+.diagram-close { border: 0; background: none; color: var(--muted); font-size: 30px; cursor: pointer; }
+.diagram-view-tools {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 9px;
+  padding: 10px 0 15px;
+  font-size: 12px;
+}
+.diagram-view-tools button {
+  border: 1px solid #b5c7e3;
+  border-radius: 5px;
+  background: var(--soft);
+  color: var(--blue);
+  padding: 5px 12px;
+  min-width: 35px;
+}
+.diagram-view-tools span { color: var(--muted); margin: 0 8px; }
+.diagram-view-tools a { margin-left: auto; }
+.diagram-view-scroll { max-height: 72vh; overflow: auto; border: 1px solid var(--line); background: white; }
+.diagram-view-scroll img { display: block; width: 100%; max-width: none; height: auto; }
+@media (max-width: 500px) {
+  .diagram-scroll img { min-width: var(--diagram-min); }
+  .report-body { font-size: 13px; line-height: 1.95; }
+  .report-body h3 { font-size: 18px; margin-top: 25px; padding-top: 17px; }
+  .diagram-scroll { padding: 10px; }
+  .research-diagram figcaption { padding: 13px 14px 7px; }
+  .diagram-actions { padding: 6px 14px 14px; gap: 10px 15px; }
+  .diagram-actions a, .diagram-actions button { font-size: 10px; }
+  .diagram-dialog { padding: 15px; }
+  .diagram-dialog .dialog-bar h2 { font-size: 16px; }
+  .diagram-view-tools { gap: 7px; font-size: 11px; }
+  .diagram-view-tools button { padding: 5px 9px; }
+}
+@media print {
+  .diagram-actions, .diagram-dialog { display: none !important; }
+  .diagram-scroll { overflow: visible; }
+  .diagram-scroll img { min-width: 0; max-width: 100%; }
+  .research-diagram { break-inside: avoid; }
+}

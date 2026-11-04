@@ -1,0 +1,30 @@
+%% title: 三种任务接入路线
+%% 图2 三种任务接入路线。分析示意，实线为任务/反馈，虚线为可选依赖。
+%% 来源 https://support.avantree.com/hc/en-us/articles/50767188774937-How-to-Make-a-Call-by-Voice-Command
+%% 来源 https://developer.apple.com/carplay/
+%% 来源 https://developer.android.com/training/cars/platforms/android-auto
+%% 来源 https://source.android.com/docs/automotive/start/what_automotive
+flowchart LR
+  subgraph A["路线一：调用系统助手"]
+    A1["设备按键或手机入口"] --> A2["手机系统助手"]
+    A2 --> A3["支持的手机任务"]
+  end
+  subgraph B["路线二：自有伴随 App"]
+    B1["设备触发与输入"] --> B2["手机 App<br/>有限流程与确认"]
+    B2 --> B3["已获授权的任务接口"]
+  end
+  subgraph C["路线三：屏幕与车机集成"]
+    C1["车内触控或语音入口"] --> C2{"执行环境"}
+    C2 -->|"手机投射"| C3["相容的手机应用"]
+    C2 -->|"本机运行"| C4["车内应用与设备接口"]
+  end
+  CLOUD["网络、账号与内容服务<br/>按具体任务需要"]
+  RESULT["导航、电话或媒体任务完成<br/>反馈、失败或取消"]
+  CLOUD -.-> A2
+  CLOUD -.-> B2
+  CLOUD -.-> C3
+  CLOUD -.-> C4
+  A3 --> RESULT
+  B3 --> RESULT
+  C3 --> RESULT
+  C4 --> RESULT

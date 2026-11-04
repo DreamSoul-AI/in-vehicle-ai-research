@@ -1667,6 +1667,111 @@
       "date": "2018-07-26",
       "access": "2026-11-05",
       "scope": "阅读蓝牙设备、手机App及远场DSP分工。历史方案说明，不证明本项目可获得同等商务条件。"
+    },
+    {
+      "title": "Apple CarPlay开发入口",
+      "url": "https://developer.apple.com/carplay/",
+      "date": "滚动页，未标更新日",
+      "access": "2026-11-05",
+      "scope": "Apps、entitlement入口、automaker apps，区分应用、接收端和车厂合作"
+    },
+    {
+      "title": "Apple CarPlay指南",
+      "url": "https://developer.apple.com/download/files/CarPlay-Developer-Guide.pdf",
+      "date": "2026-10-13",
+      "access": "2026-11-05",
+      "scope": "复核项目已保存官方PDF提取文本的类别、entitlement与App Store发布段落。本次网页重取因文件过大失败，未声称全文重读"
+    },
+    {
+      "title": "Android Auto概览",
+      "url": "https://developer.android.com/training/cars/platforms/android-auto",
+      "date": "滚动文档",
+      "access": "2026-11-05",
+      "scope": "手机执行、类别、启动其他App、trusted stores，说明投射与分发边界"
+    },
+    {
+      "title": "AOSP平台定义",
+      "url": "https://source.android.com/docs/automotive/start/what_automotive",
+      "date": "2026-09-30更新",
+      "access": "2026-11-05",
+      "scope": "Android Auto/AAOS差异和GAS可选择授权，避免混淆系统名称"
+    },
+    {
+      "title": "AAOS应用概览",
+      "url": "https://developer.android.com/training/cars/platforms/automotive-os",
+      "date": "2026-10-22更新",
+      "access": "2026-11-05",
+      "scope": "Google built-in、与投射共存、应用差异，区分车内原生环境"
+    },
+    {
+      "title": "Apple MFi FAQ",
+      "url": "https://mfi.apple.com/en/faqs",
+      "date": "滚动页",
+      "access": "2026-11-05",
+      "scope": "技术清单、标准蓝牙例外、开发/ODM/品牌/销售角色，说明责任不能互换"
+    },
+    {
+      "title": "AAOS助手集成",
+      "url": "https://source.android.com/docs/automotive/voice/voice_interaction_guide/integration_flows",
+      "date": "2026-09-24更新",
+      "access": "2026-11-05",
+      "scope": "触发、系统特权和预装更新，证明原厂集成需要OEM参与"
+    },
+    {
+      "title": "VHAL定义",
+      "url": "https://source.android.com/docs/automotive/vhal",
+      "date": "2026-09-24更新",
+      "access": "2026-11-05",
+      "scope": "车厂实现属性及读写/订阅抽象，不推断具体车辆已有权限"
+    },
+    {
+      "title": "Car Hardware API",
+      "url": "https://developer.android.com/training/cars/apps/library/car-hardware-api",
+      "date": "2026-09-08更新",
+      "access": "2026-11-05",
+      "scope": "CarInfo权限、数据可用性及车型依赖，避免绝对声称投射不能读车辆信息"
+    },
+    {
+      "title": "Google车载麦克风",
+      "url": "https://developer.android.com/training/cars/apps/library/car-microphone",
+      "date": "2026-09-08更新",
+      "access": "2026-11-05",
+      "scope": "录音许可、焦点及失焦停止，支撑会话协作边界"
+    },
+    {
+      "title": "CK11语音指南",
+      "url": "https://support.avantree.com/hc/en-us/articles/50767188774937-How-to-Make-a-Call-by-Voice-Command",
+      "date": "2026-10-05更新",
+      "access": "2026-11-05",
+      "scope": "手机助手呼出、设置及手机麦克风排查，只用于具体型号的入口与反例"
+    },
+    {
+      "title": "W903官网",
+      "url": "https://carpuride.com/products/carpuride-w903-portable-smart-multimedia-dashboard-console-with-front-camera",
+      "date": "滚动商品页",
+      "access": "2026-11-05",
+      "scope": "复用本轮已读的供电、音频、手机投射和后摄布线正文，未更新价格判断"
+    },
+    {
+      "title": "ATOTO S8 Gen4手册",
+      "url": "https://www.atotodirect.com/en-gb/pages/manual-460-en",
+      "date": "滚动手册",
+      "access": "2026-11-05",
+      "scope": "复用已读接口、DriveChat联网、休眠和方向盘适配段落"
+    },
+    {
+      "title": "Carlinkit条件",
+      "url": "https://www.carlinkit.com/uhd6225",
+      "date": "滚动页面",
+      "access": "2026-11-05",
+      "scope": "复用已读的原厂有线协议、USB与排除项，不套用到其他盒子型号"
+    },
+    {
+      "title": "商城条件",
+      "url": "https://carlinkitmall.com/collections/wireless-carplay-adapter/products/carlinkit-tbox-uhd-android-13-carplay-ai-box-with-hdmi-output",
+      "date": "滚动页面",
+      "access": "2026-11-05",
+      "scope": "复用已读的原厂有线协议、USB与排除项，不套用到其他盒子型号"
     }
   ]
 }
