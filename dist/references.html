@@ -1,0 +1,217 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>参考资料与阅读范围 · 车载端侧 AI</title><link rel="stylesheet" href="style.css"></head><body><header class="topbar"><a class="brand" href="index.html"><span class="brand-symbol"></span><b>DreamSoul</b><span>RESEARCH</span></a><a href="index.html#products">返回产品图鉴 ↗</a></header><main class="research-content"><p class="eyebrow">IN-VEHICLE AI / RESEARCH</p><h1>参考资料与阅读范围</h1><p>信息截至2026年11月5日。以下记录来源的责任方、版本日期、实际阅读范围、课题价值与适用边界。所有条目均按正文用途评价，不设置统一质量排名。性能、许可、价格与地区条件在实施前复核。</p>
+<h2>一、平台与授权</h2>
+<p>访问日期均为2026年11月5日。下列均为责任方直接发布的主来源，阅读状态为针对性阅读，未进行源码或实车验证。网页版本可能继续变化。中文概述仅用于标明本课题价值，正文保留实际论证。</p>
+<h3>（一）Apple 平台及硬件授权</h3>
+<ul>
+<li><strong>Apple CarPlay 开发指南</strong>：Apple，《CarPlay Developer Guide》，PDF，版本日期2026年10月13日。<a href="https://developer.apple.com/download/files/CarPlay-Developer-Guide.pdf" rel="noopener noreferrer" target="_blank">官方 PDF</a>。已下载原文件，70页，针对性阅读印刷页3—8、12—15、27、30及67，重点为应用位置、类别、语音约束、授权、录音与分发。价值：核实语音对话类别最低 iOS 26.4 与具体录音条件。边界：未阅读全文，没有获准应用或实车证据。<code>pypdf研究留存材料primaryContentSections</code>，已保留 JSON。范围：Overview、App ID、profile、entitlement 文件和类别表。价值：核实申请与审核机制。边界：类别表未覆盖最新 PDF 的全部类别，不能单凭旧表排除新能力</li>
+<li><strong>Apple CarPlay 开发者入口</strong>：Apple，《CarPlay》，官方平台页，滚动更新，发布日期未标明。<a href="https://developer.apple.com/carplay/" rel="noopener noreferrer" target="_blank">页面</a>。范围：Apps、CarPlay for automakers、CarPlay Ultra、Automaker apps、MFi 链接。价值：分清普通应用与车辆系统集成的角色。边界：平台概览不是所有车型的能力承诺</li>
+<li><strong>Apple WWDC26 CarPlay 更新</strong>：Apple，Chris，《Rev up your CarPlay app》，WWDC26 视频及官方转录，页面未标明具体发布日期。<a href="https://developer.apple.com/videos/play/wwdc2026/212/" rel="noopener noreferrer" target="_blank">视频与转录</a>。范围：6:45之后的语音模板、音频会话和发起导航电话段，以及导航路线分享段。价值：确认 iOS 27 模板扩展并识别它与录音授权的区别。边界：未观看完整视频，未运行示例，无法由模板更新推导特定应用获准</li>
+<li><strong>Apple MFi 常见问题</strong>：Apple，《Frequently Asked Questions》，许可计划公开说明，滚动更新，发布日期未标明。<a href="https://mfi.apple.com/en/faqs" rel="noopener noreferrer" target="_blank">页面</a>。范围：Program Overview、角色、加入条件、费用公开边界、Who needs/does not need to join。价值：分清接收硬件、ODM、品牌及应用开发的授权责任。边界：没有登录保密资料，未核实某一厂商或型号的认证</li>
+</ul>
+<h3>（二）Google 平台、语音及车辆接口</h3>
+<ul>
+<li><strong>Android Auto 概览</strong>：Google，《Android Auto overview》，官方开发文档，页面更新2026年10月22日。<a href="https://developer.android.com/training/cars/platforms/android-auto" rel="noopener noreferrer" target="_blank">页面</a>。范围：简介、应用声明、停车应用及 Trusted stores。价值：核实手机应用与接收主机关系及真实车辆分发条件。边界：未据此判断目标应用具体上架资格</li>
+<li><strong>AAOS 平台定义</strong>：Google / AOSP，《What is Android Automotive?》，官方架构文档，更新2026年9月30日。<a href="https://source.android.com/docs/automotive/start/what_automotive" rel="noopener noreferrer" target="_blank">页面</a>。范围：平台定义、Android Auto 比较、GAS。价值：区分车内操作系统、手机投射与服务授权。边界：SDV 新架构部分只作范围识别，未展开其安全能力</li>
+<li><strong>Google 车载应用设计入口</strong>：Google，《Create apps》，官方设计文档，更新2024年12月10日。<a href="https://developers.google.com/cars/design/create-apps/about-create-apps" rel="noopener noreferrer" target="_blank">页面</a>。范围：交付方式及应用分类。价值：核实 Google built-in 的 AAOS 加 GAS 组成关系。边界：页面规模数字未用于正文，具体能力回到更新的开发文档</li>
+<li><strong>AAOS 应用概览</strong>：Google，《Android Automotive OS overview》，官方开发文档，滚动页。<a href="https://developer.android.com/training/cars/platforms/automotive-os" rel="noopener noreferrer" target="_blank">页面</a>。范围：简介、用户体验限制、硬件特征、Google Play 特征要求。价值：确认车内应用及 Google 服务环境，提示车型和行车限制。边界：没有据此认定后装 Android 盒子等同 AAOS</li>
+<li><strong>Android for Cars 概览</strong>：Google，《Android for Cars overview》，官方开发文档，更新2026年10月22日。<a href="https://developer.android.com/training/cars" rel="noopener noreferrer" target="_blank">页面</a>。范围：Android Auto、AAOS、Supported app categories 和系统服务协作。价值：检查当前公开类别与分发限制。边界：未列出独立通用对话类别不等于证明任何语音交互都禁止</li>
+<li><strong>车载麦克风 API</strong>：Google，《Record from the car microphone》，官方开发文档，更新2026年9月8日。<a href="https://developer.android.com/training/cars/apps/library/car-microphone" rel="noopener noreferrer" target="_blank">页面</a>。范围：权限、录音和音频焦点全部正文，未运行示例。价值：确认应用内拾音的可用接口与焦点条件。边界：不证明默认助手或常驻唤醒资格</li>
+<li><strong>Google 应用内语音流程</strong>：Google，《Communicate with the app by voice》，官方设计文档，更新2024年7月23日。<a href="https://developers.google.com/cars/design/create-apps/sample-flows/communicate-with-voice" rel="noopener noreferrer" target="_blank">页面</a>。范围：语音输入说明与 Sample flow。价值：解释点击麦克风后应用处理的交互路径。边界：示例不代表所有应用类别均可分发</li>
+<li><strong>Google Car Hardware APIs</strong>：Google，《Car Hardware APIs》，官方开发文档，更新2026年9月8日。<a href="https://developer.android.com/training/cars/apps/library/car-hardware-api" rel="noopener noreferrer" target="_blank">页面</a>。范围：Requirements、CarInfo 权限表及可用性说明、CarSensors 的 OEM 依赖与 AAOS 限制。价值：纠正“投射应用完全无车辆信息”的过度概括。边界：读接口不证明写入权限或每车数据齐全</li>
+<li><strong>AOSP VHAL 概览</strong>：Google / AOSP，《Vehicle HAL (VHAL) overview》，官方架构文档，更新2026年9月24日。<a href="https://source.android.com/docs/automotive/vhal" rel="noopener noreferrer" target="_blank">页面</a>。范围：接口定义及 Android 版本差异。价值：说明车辆功能需由具体实现接到属性层。边界：未展开各属性实现和安全控制</li>
+<li><strong>AOSP 语音助手集成流程</strong>：Google / AOSP，《Integration flows》，官方系统集成文档，更新2026年9月24日。<a href="https://source.android.com/docs/automotive/voice/voice_interaction_guide/integration_flows" rel="noopener noreferrer" target="_blank">页面</a>。范围：助手选择、Hotword、PTT、Permissions、Distribution。价值：说明常驻语音与 OEM 系统合作的关系。边界：文档的参考集成不能保证目标车型支持 DSP 或全部权限</li>
+<li><strong>Google Gemini 车内使用说明</strong>：Google，《Chat with Gemini in your car》，官方帮助，滚动更新，发布日期未标明。<a href="https://support.google.com/gemini/answer/16735982?hl=en" rel="noopener noreferrer" target="_blank">页面</a>。范围：所需条件、Android Auto 与 Google built-in、唤醒入口、Live、地区语言及安全边界。价值：界定现有平台助手的用户体验基线。边界：帮助页没有披露完整推理位置及离线机制，不能据此归入车内本地大模型</li>
+</ul>
+<h3>（三）后装设备角色的厂商证据</h3>
+<ul>
+<li><strong>CarlinKit 产品及服务目录</strong>：CarlinKit，《Products &amp; Service》，厂商目录，滚动更新，发布日期未标明。<a href="https://www.carlinkit.com/products_list.html" rel="noopener noreferrer" target="_blank">页面</a>。范围：无线连接升级、Android Tbox、后装 Android 主机互联设备的分类与摘要。价值：证明“转接器”包含不同角色。边界：仅用于分类，不用作具体型号性能、认证或兼容保证</li>
+<li><strong>CarlinKit Tbox basic</strong>：CarlinKit，《Tbox basic》，厂商产品说明与规格，型号 CPC200-basic，滚动更新，发布日期未标明。<a href="https://www.carlinkit.com/ibox" rel="noopener noreferrer" target="_blank">页面</a>。范围：Overview、Tech Specs，特别是 Android 系统及原车接入前提。价值：以具体设备说明车内独立计算与原有互联条件可以同时存在。边界：均属厂商声明，未实测，未证明本地 AI 模型、开放算力接口或全部兼容性</li>
+</ul>
+<h3>（四）候选与未纳入资料</h3>
+<p>Apple 单页 JavaScript 文档的 Markdown 链接被浏览工具拒绝解析，已用同源公开数据补足。最新指南 PDF 超过浏览工具解析上限，已从官方地址下载并抽取重点页。UNECE 法规线索属于其他专题，未用于本章结论。第三方 CarPlay 新闻只用于发现线索，没有作为技术依据。HiCar、CarLife 未展开，不影响本章对主要平台角色的判断。</p>
+<h2>二、车载端侧 AI</h2>
+<p>访问日期统一为2026年11月5日。以下均实际打开并针对性阅读，非全部全文精读。滚动网页及仓库尚未固定 commit 的条目应在选型和实施前固定版本。来源索引记录资料的独特用途，性能均保留厂商与测试条件属性。</p>
+<h3>模型、语音与运行时</h3>
+<ul>
+<li><a href="https://huggingface.co/Qwen/Qwen3-ASR-0.6B" rel="noopener noreferrer" target="_blank">Qwen3-ASR 模型卡</a>：Qwen Team，《Qwen3-ASR-0.6B》，官方模型卡，滚动更新，首次发布日期本次未核查。阅读 Introduction、Released Models、Quickstart、Evaluation 入口。价值：确认本地及流式识别、Polish 支持与 Apache 2.0 标签。边界：其高并发吞吐不是车内设备单请求延迟，未实测噪声和波兰语地名</li>
+<li><a href="https://huggingface.co/Qwen/Qwen3-1.7B" rel="noopener noreferrer" target="_blank">Qwen3-1.7B 模型卡</a>：Qwen Team，《Qwen3-1.7B》，官方模型卡，滚动更新，首次发布日期本次未核查。阅读 Model Overview、思考模式开关、Agentic Use 及许可标签。价值：提供1.7B文本模型、非思考交互和工具接入的可评估实例。边界：未验证车载硬件、工具执行及波兰语效果</li>
+<li><a href="https://huggingface.co/Qwen/Qwen3.5-0.8B" rel="noopener noreferrer" target="_blank">Qwen3.5-0.8B 模型卡</a>：Qwen Team，《Qwen3.5-0.8B》，官方模型卡，卡内引用为2026年2月，页面滚动更新。阅读模型类型、Model Overview、许可、使用和限制。价值：确认小型图文模型的视觉编码器与语言模型参数口径，避免把0.8B当整套内存。边界：未做部署、量化兼容和车内视觉验证</li>
+<li><a href="https://github.com/OHF-Voice/piper1-gpl" rel="noopener noreferrer" target="_blank">Piper 引擎</a>：Open Home Foundation/OHF-Voice，《piper1-gpl》，官方仓库 main，滚动更新。阅读 README 与 GPL-3.0 标签。价值：确认当前本地 TTS 引擎身份、API入口和许可。边界：未固定 commit、未完成分发与依赖许可审查</li>
+<li><a href="https://github.com/OHF-Voice/piper1-gpl/blob/main/docs/VOICES.md" rel="noopener noreferrer" target="_blank">Piper 语音说明</a>：OHF-Voice，《Voices》，官方仓库文档 main。阅读语种、模型格式和逐音色许可提示。价值：确认 pl_PL 及语音模型需独立阅读 MODEL_CARD。边界：文档含个人使用与研究用途说明，商业场景需进一步核实</li>
+<li><a href="https://huggingface.co/rhasspy/piper-voices/blob/main/pl/pl_PL/gosia/medium/MODEL_CARD" rel="noopener noreferrer" target="_blank">Gosia 模型卡</a>：Rhasspy/Michael Hansen，《Model card for gosia (medium)》，官方音色仓库，页面显示修订 e9ef9dd，更新日期未核查。阅读整个275字节模型卡。价值：确认波兰语音色、采样率与数据集 CC0 标注。边界：数据集许可标注不等于对引擎、衍生关系和商业权利完成全面核验</li>
+<li><a href="https://github.com/ggml-org/llama.cpp" rel="noopener noreferrer" target="_blank">llama.cpp 说明</a>：ggml-org，《llama.cpp》，官方仓库 master，滚动更新。阅读 Description、Supported backends、README许可标签。价值：确认跨硬件本地推理、量化与后端候选。边界：未固定 commit、未测试任一车机或模型组合</li>
+</ul>
+<h3>嵌入式硬件与完整流水线</h3>
+<ul>
+<li><a href="https://github.com/qualcomm/ai-hub-apps/blob/release/tutorials/llm_on_genie/README.md" rel="noopener noreferrer" target="_blank">Qualcomm Genie 设备部署</a>：Qualcomm，《LLM On-Device Deployment》，官方仓库 release 分支，滚动更新。阅读 Prerequisites、Step 1、Android (Automotive)、预编译资产匹配段。价值：确认汽车 Auto QAIRT 的获取与设备版本匹配门槛。边界：未取得SDK、授权或目标汽车平台访问权</li>
+<li><a href="https://www.nxp.com/products/i.MX95" rel="noopener noreferrer" target="_blank">NXP i.MX95 产品规格</a>：NXP，《i.MX 95 Applications Processor Family》，官方产品页，滚动更新。阅读处理器、内存、音频、连接、操作系统及温度口径。价值：提供车内嵌入式处理器的真实接口与系统能力参照。边界：SoC能力不等于整机、车辆授权或产品认证，Ta与Tj不可混用</li>
+<li><a href="https://www.nxp.com/design/design-center/software/embedded-software/eiq-genai-flow-conversational-ai-software-pipeline-on-edge-devices:GEN-AI-FLOW" rel="noopener noreferrer" target="_blank">NXP GenAI Flow 基准</a>：NXP，《eIQ GenAI Flow: Conversational AI Software Pipeline on Edge Devices》，官方软件页，滚动更新。阅读 Features、System Requirements、Benchmark及指标定义。价值：提供同一配置的首音频、内存和LLM速度，显示完整体验与生成速度的差异。边界：厂商EVK基准，WER只测20个医疗问题，不是车内语音测试</li>
+<li><a href="https://github.com/nxp-appcodehub/dm-eiq-genai-flow-demonstrator/blob/main/eiq_genai_flow/README.md" rel="noopener noreferrer" target="_blank">NXP GenAI Flow 开发说明</a>：NXP AppCodeHub，《eIQ GenAI Flow》，官方示例 main，滚动更新，文中部署指向 release/v3.1。阅读 Overview、硬件分层、Demonstrator Limitations、BSP与NPU条件。价值：补足英语、一小时会话、加密模型和i.MX95 B0/BSP/CMA条件。边界：演示及生产许可不混同，未取得量产包</li>
+<li><a href="https://www.ti.com/document-viewer/lit/html/SSZT278/GUID-792AFBFE-665D-4C33-80B3-4D7105C3820B" rel="noopener noreferrer" target="_blank">TI 汽车音频架构</a>：Texas Instruments/Krunal Maniar，《4 Audio Trends Transforming the Automotive Industry》，技术文章 SSZT278，2020年7月。阅读车内通信、免提语音及音频Hub部分。价值：解释车载拾音与音频处理是独立工程层。边界：历史架构解释，不作当前产品推荐或最新语音性能依据</li>
+</ul>
+<h3>汽车方案成熟度</h3>
+<ul>
+<li><a href="https://investors.cerence.com/news-events/press-releases/detail/114/cerence-introduces-pioneering-embedded-small-language-model-purpose-built-for-automotive" rel="noopener noreferrer" target="_blank">Cerence CaLLM Edge</a>：Cerence，《Cerence Introduces Pioneering Embedded Small Language Model, Purpose-Built for Automotive》，企业原始公告，2024年11月13日。阅读规格、嵌入式与混合部署和目标客户。价值：提供面向汽车的3.8B/4k/4-bit方案事实。边界：厂商宣称与产品供应，不构成后装性能实测或车型交付清单</li>
+<li><a href="https://soundhound.gcs-web.com/news-releases/news-release-details/soundhound-ai-introduces-oasys-edge-bringing-fully-embedded" rel="noopener noreferrer" target="_blank">SoundHound OASYS Edge</a>：SoundHound AI，《SoundHound AI Introduces OASYS Edge, Bringing Fully Embedded Agentic Voice AI to Vehicles and Smart Devices》，企业原始公告，2026年9月24日。阅读本地代理、部署方式及Availability。价值：确认新一代全本地代理商业方案与公布的实施阶段。边界：公告安排2026年末部署，本次未核实具体客户量产完成或硬件实测</li>
+<li><a href="https://www.intel.com/content/www/us/en/newsroom/news/corporate/postcard-from-auto-shanghai-intel-modelbest-deliver-personalized-llm.html" rel="noopener noreferrer" target="_blank">Intel ModelBest 车内演示</a>：Intel，《Postcard from Auto Shanghai: Intel, ModelBest Deliver a Personalized LLM》，企业原始展会报道，2025年4月23日。阅读GUI智能体与车内离线语音、SDV SoC/Arc段。价值：表明GUI代理可在汽车计算平台展示本地路径。边界：展会演示，不证明通用后装即插即用或批量交付</li>
+</ul>
+<h3>补充阅读与未采纳</h3>
+<ul>
+<li><a href="https://investors.cerence.com/news-events/press-releases/detail/104/cerence-ai-debuts-xui-its-hybrid-llm-based-platform-advancing-the-fully-agentic-in-car-experience" rel="noopener noreferrer" target="_blank">Cerence xUI 发布</a>：Cerence，2025年3月13日原始公告，已读边云架构和proof-of-concept段。用于识别xUI为混合架构及合作/概念验证，正文未再展开，避免与CaLLM条目重复</li>
+<li>Cerence旧域名的CaLLM公告地址跳转为新闻列表，未用列表代替正文，已定位并采用investors新URL</li>
+</ul>
+<h2>三、竞品与产品证据</h2>
+<p>访问日期统一为2026年11月5日。以下均实际打开网页或 PDF 并针对性阅读，未做产品实测。动态商城页发布日期通常未标明，价格只代表所读页面。技术结论优先官方说明，商店买家反馈只作个案。表中主体指发布方，未经工商或合同核验的品牌不擅自补法人名称。</p>
+<h3>一、后装产品与车辆信息配件</h3>
+<h4>（一）OTTOCAST P3</h4>
+<ul>
+<li>标题与责任方：<a href="https://www.ottocast.com/products/ottoaibox-p3-carplay-ai-box" rel="noopener noreferrer" target="_blank">OttoAibox P3 CarPlay AI Box</a>，OTTOCAST，官方产品与价格页，滚动更新</li>
+<li>阅读范围：标题、价格、Before You Buy、Android／CloudSIM、版本选项、服务条款摘要。页面 HTML 标题仍含 PICASOU 2 Pro，但实际正文为 P3，按正文识别</li>
+<li>支撑：USD 189、页面含税、Android 12、原厂有线 CarPlay、排除 Android Auto-only 与无线-only、CloudSIM 数据另购</li>
+<li>边界：正文未取得 RAM／CPU 表与本地大模型说明，不能跨用 P3 Pro 或 i3 规格。价格选项默认北美，其他地区交付待核</li>
+</ul>
+<h4>（二）CarlinKit UHD 规格与官方链接商店</h4>
+<ul>
+<li>标题与责任方：<a href="https://www.carlinkit.com/uhd660" rel="noopener noreferrer" target="_blank">Tbox UHD (660)</a>，CarlinKit，官方产品规格页，日期未标明</li>
+<li>阅读范围：Overview、Conditions of use、Tech Specs、地区、连接及商店入口</li>
+<li>支撑：CPC200-Tbox UHD、SDM660、Android 13、4＋64／8＋128 GB、5 W，原厂有线 CarPlay 或有线 Android Auto，区域版差异</li>
+<li>价值与边界：用于确认载体确为本地 Android 算力，但未披露随设备交付的本地大模型。不能以此推定新款 Ultra 或 SM6225 版本参数</li>
+<li>商店来源：<a href="https://carlinkitmall.com/collections/wireless-carplay-adapter/products/carlinkit-tbox-uhd-android-13-carplay-ai-box-with-hdmi-output" rel="noopener noreferrer" target="_blank">Carlinkit Tbox UHD Android 13 CarPlay AI Box with HDMI Output</a>，由上述厂商页面 Click to buy 跳转。阅读选项、价格、适配和Customer Reviews，滚动页</li>
+<li>具体选项：SP-TBOX-218HDEAU-OVA-BW，EAU 8＋128 GB／SDM660，选项行显示 USD 219。页面同时出现 USD 195、From USD 199 和相互矛盾的库存文本，因此保留报价不确定，不声称有现货</li>
+<li>用户反馈：Rafal Sobczuk 报告 RAV4 中地图／Spotify 可用且特定流媒体信任问题，Esa Laurikkala 报告卡顿与部分应用不可安装。身份、版本及复现未独立核验，不计算满意率和销量</li>
+<li>补充主体入口：<a href="https://www.carlinkit.com/company_profile.html" rel="noopener noreferrer" target="_blank">CarlinKit Company Info</a>，阅读品牌及ODM/OEM定位，不采用累计用户或日产量等未经独立核验的营销数字</li>
+</ul>
+<h4>（三）CARPURIDE W903</h4>
+<ul>
+<li>标题与责任方：<a href="https://carpuride.com/products/carpuride-w903-portable-smart-multimedia-dashboard-console-with-front-camera" rel="noopener noreferrer" target="_blank">CARPURIDE W903 Portable Smart Multimedia Dashboard Console with Front Camera and DVR Function</a>，Carpuride，SKU 903，官方产品页，滚动更新</li>
+<li>阅读范围：基础903与903＋backup camera选项、价格、Description、兼容提醒、音频、TF、供电及连接说明</li>
+<li>支撑：USD 219.99、结算USD、9.3英寸、5 V／2 A、手机语音、四路音频路径，TF主要存摄像数据</li>
+<li>边界：同页前摄4K／1080P、扬声器8Ω2W／4Ω5W表述不一致。未将这些冲突参数用于排行。未确认屏内本地大模型或独立离线导航</li>
+</ul>
+<h4>（四）ATOTO S8 Gen4</h4>
+<ul>
+<li>标题与责任方：<a href="https://www.atotodirect.com/en-us/products/atoto-s84g2d7pb-7inch-double-din-car-stereo-eu" rel="noopener noreferrer" target="_blank">ATOTO S84G2D7PB 7 inch 2 DIN Android Car Radio</a>，ATOTO，官方欧洲商品页，滚动更新</li>
+<li>阅读范围：商品价与缺货状态、Specifications、地区标识、配送与付费功能线索</li>
+<li>支撑：页面地区Austria／EUR，EUR 365.90，S8Gen4-Pro、MT8768、Android 13、4＋64 GB、无线CP／AA</li>
+<li>说明书：<a href="https://www.atotodirect.com/en-gb/pages/manual-460-en" rel="noopener noreferrer" target="_blank">S8 Gen4 User Manual-V2</a>，ATOTO，滚动电子手册。针对性阅读适用型号及旧 A7 对应关系、第7章DriveChat，尤其7.3、7.4</li>
+<li>价值：7.4明确DriveChat需联网处理命令与生成AI回复，纠正“带ChatGPT的车机必然本地推理”推断。SSHub账号、手机配置、可选高级模型付费也有说明</li>
+<li>边界：初始SKU列表写S84G2D7P，但硬件章节与A7映射明确含S84G2D7PB。未核定高级功能实际月价、当期模型名单或车型安装套件</li>
+<li>排除串版：另读S8 Lite manual-498后改用与Gen4对应的manual-460，Lite参数未套入该SKU</li>
+</ul>
+<h4>（五）Garmin DriveSmart 76</h4>
+<ul>
+<li>标题与责任方：<a href="https://www8.garmin.com/manuals/webhelp/GUID-6E5DFD2E-EEE4-4EF3-89BC-AACD1B4936C7/EN-US/DriveSmart_66-76-86_with_Alexa_OM_EN-US.pdf" rel="noopener noreferrer" target="_blank">Garmin DriveSmart 66/76/86 Owner’s Manual</a>，Garmin，官方PDF，2024年8月v11系列手册</li>
+<li>阅读范围：正文第2至9页安装、连接与GPS，第12至16页语音，第26至30页路线，第48至49页地图更新，第53页监听与音频处理。工具抽取全PDF不代表已读全本</li>
+<li>价值：第53页说明请求音频发至Garmin Drive／Alexa应用，不能把导航器存在与本地语音理解等同。Alexa与实时服务手机依赖见第12页</li>
+<li>对应价格来源：<a href="https://www.westmarine.com/garmin-garmin-drivesmart-76-20676136.html" rel="noopener noreferrer" target="_blank">Garmin DriveSmart 76，010-02470-00</a>，美国West Marine自己的商品报价页，USD 299.99、缺货。只用于商家报价与库存页面状态，技术边界取官方手册</li>
+<li>边界：Garmin直营价格未核实。不同地图地区、Alexa语言、欧版SKU不能混用。支持FAQ打开时只返回框架，未把检索摘要当已读正文</li>
+</ul>
+<h4>（六）Echo Auto</h4>
+<ul>
+<li>标题与责任方：<a href="https://press.aboutamazon.com/2022/9/amazon-introduces-four-new-echo-devices-plus-upgrades-to-echo-studio-audio" rel="noopener noreferrer" target="_blank">Amazon Introduces Four New Echo Devices Plus Upgrades to Echo Studio Audio</a>，Amazon.com Inc.，2022年9月28日官方公告</li>
+<li>阅读范围：Echo Auto与Pricing and Availability段。支撑五麦克风、安装设计与历史USD54.99，不作2026年现价</li>
+<li>当前支持：<a href="https://digprjsurvey.amazon.co.uk/csad/help/node/GGQNAZAQA5KAMVKH" rel="noopener noreferrer" target="_blank">Support for Echo Auto</a>，Amazon，滚动支持页。阅读第2代安装、设置、软件更新、故障入口</li>
+<li>手机与音频路径：<a href="https://digprjsurvey.amazon.com/csad/help/node/GHRYQ6GHE4A5TUD2" rel="noopener noreferrer" target="_blank">Which Echo Device Do I Have?</a>，阅读Echo Auto段；<a href="https://digprjsurvey.amazon.co.uk/csad/help/node/GXZGNDER75CREMGR" rel="noopener noreferrer" target="_blank">Music or Media Not Playing with Echo Auto</a>，阅读蓝牙音乐／仅通话／AUX分流</li>
+<li>固件依据：<a href="https://digprjsurvey.amazon.co.uk/csad/help/node/GMB5FVUB6REAVTXY" rel="noopener noreferrer" target="_blank">Alexa Device Software Versions</a>，Amazon，滚动列表。Echo Auto第2代列100991435。仅证明条目仍在，不保证之后持续更新或每项服务可用</li>
+<li>销售疑云：<a href="https://www.androidauthority.com/amazon-echo-auto-2nd-gen-unavailable-3716806/" rel="noopener noreferrer" target="_blank">Has the Amazon Echo Auto reached the end of the road?</a>，Aamir Siddiqui／Android Authority，2026年9月29日。阅读“不可购买”观察及等待Amazon澄清段。只用于销售状态线索，不把作者推测作为官方停产／停服声明</li>
+</ul>
+<h4>（七）OBDLink MX+</h4>
+<ul>
+<li>标题与责任方：<a href="https://www.obdlink.com/products/obdlink-mxp/" rel="noopener noreferrer" target="_blank">OBDLink MX+</a>，OBD Solutions LLC，官方商品与规格页，滚动更新</li>
+<li>阅读范围：价格、车辆兼容、支持平台、诊断功能、规格和固件更新</li>
+<li>支撑：美国USD139.95、蓝牙诊断配件与手机／电脑应用、配套应用及更新、不同车型增强协议范围</li>
+<li>价值：提供“车辆信息服务”任务的已有付费替代品，未宣称本地通用模型。美国1996年兼容规则不能直接套用全球车辆，非美车型需要核对对应清单</li>
+<li>排除：lp/mxp-1营销页有大量模板残留，因此未将它用于正式技术依据，改用正式产品页</li>
+</ul>
+<h3>二、原厂与方案商</h3>
+<h4>（一）ECARX Galaxy M9</h4>
+<ul>
+<li>标题与责任方：<a href="https://ir.ecarxgroup.com/news-releases/news-release-details/ecarx-powers-global-launch-geely-galaxy-m9-delivering-next" rel="noopener noreferrer" target="_blank">ECARX Powers Global Launch of Geely Galaxy M9, Delivering a Next-Generation AI Cockpit Experience</a>，ECARX Holdings Inc.，2025年9月17日官方投资者公告</li>
+<li>阅读范围：正文Pikes／Cloudpeak、SA8295P、本地AI与离线端到端语音、Eva量产与车辆E/E集成，以及前瞻声明</li>
+<li>价值：真正车内本地AI的已推出车型厂商证据。没有给出本地模型参数、全部离线任务、延迟或断网实测，不推定所有Eva功能完整离线。未用整车预订数证明助手销量或留存</li>
+</ul>
+<h4>（二）Cerence xUI 与吉利</h4>
+<ul>
+<li><a href="https://www.cerence.com/platforms/cerence-xui" rel="noopener noreferrer" target="_blank">Cerence xUI</a>，Cerence，滚动官方产品页。针对性阅读云边混合、OEM/Tier1客户、模块化部署及实时信息。平台能力与具体车型交付分开</li>
+<li><a href="https://investors.cerence.com/news-events/press-releases/detail/363/geely-auto-selects-cerence-xui-to-power-its-next-gen-llm-powered-in-car-ai-experience" rel="noopener noreferrer" target="_blank">Geely Auto Selects Cerence xUI to Power its Next-Gen, LLM-Powered In-Car AI Experience</a>，Cerence Inc.，2026年1月5日。阅读合作、功能及计划2026年4月起Galaxy M9部署海外体验段</li>
+<li>边界：不以计划日期已过推定每地区交付，不与中国版2025年ECARX公告拼成统一软硬件配置。B2B授权价格未知</li>
+</ul>
+<h4>（三）BMW 与 Mercedes-Benz</h4>
+<ul>
+<li><a href="https://www.bmwgroup.com/de/news/allgemein/2026/alexa.html" rel="noopener noreferrer" target="_blank">Meilenstein bei der Sprachinteraktion durch KI Integration im Fahrzeug – erstmals auf Deutsch</a>，BMW Group，页面标注2026年1月5日，当前正文含4月及5月推广更新，未单列更新日。阅读Alexa+、iX3、OS9／X、德国／美国和个人Amazon账号条件。证明原厂整合与地区推广陈述，不证明全本地推理</li>
+<li><a href="https://group.mercedes-benz.com/technology/innovation/collaboration/liquid-ai.html" rel="noopener noreferrer" target="_blank">Next Generation in-car intelligence</a>，Mercedes-Benz，2026年4月23日官方合作说明。阅读北美第三／四代MBUX、本地LFM、首次量产目标2026年下半年及页下注车型范围</li>
+<li>边界：Mercedes来源是合作及目标公告，本轮未找到量产完成的后续证明。两家助手均无可与后装硬件直接比价的统一零售SKU</li>
+</ul>
+<h3>三、失败案例</h3>
+<ul>
+<li><a href="https://newsroom.spotify.com/2022-02-22/car-thing-from-spotify-is-now-officially-available-in-the-u-s/" rel="noopener noreferrer" target="_blank">Car Thing From Spotify Is Now Officially Available in the U.S.</a>，Spotify，2022年2月22日官方公告。阅读USD89.99、Premium与手机移动数据依赖，以及界面和语音功能，作为历史产品定义与价格依据</li>
+<li><a href="https://techcrunch.com/2024/12/09/spotify-car-thing-units-are-officially-disabled/" rel="noopener noreferrer" target="_blank">Spotify has disabled Car Thing streaming devices</a>：Lauren Forristal，TechCrunch，2024年12月9日。仅确认停用日期。</li>
+<li><a href="https://support.spotify.com/us/article/car-thing-discontinued/" rel="noopener noreferrer" target="_blank">原Spotify停用FAQ</a>：本轮实际打开为无法找到页面，不作为已读官方公告。论坛及诉讼引用可追溯历史入口，但未以它们替代当前官方正文</li>
+</ul>
+<h3>四、尚未解决的问题</h3>
+<ul>
+<li>代表后装产品实际终端销量、活跃、留存、退货、供应连续性及完整售后成本</li>
+<li>候选SKU在目标车型、手机、语言、音频路径及断网条件下的功能与稳定性</li>
+<li>各地区合同销售主体、发票税费、安装套件、CloudSIM套餐及高级AI功能固定价格</li>
+<li>纯后装常驻车内设备上，随整机交付完整离线通用对话模型的可复查说明与独立实测</li>
+</ul>
+<h2>四、产品工程、商业与发展路径</h2>
+<p>访问日期统一为2026年11月5日。以下均针对性阅读，未进行产品、代码或实车验证。</p>
+<ul>
+<li><a href="https://www.edpb.europa.eu/system/files/documents/2021-03/edpb_guidelines_202001_connected_vehicles_v2.0_adopted_en.pdf" rel="noopener noreferrer" target="_blank">EDPB 联网车辆指南</a>：European Data Protection Board，Guidelines 01/2020 on processing personal data in the context of connected vehicles and mobility related applications，Version 2.0，2021年3月9日通过，监管指南。阅读2.3、2.4及本地处理相关段落。价值：解释车内处理、数据最小化与处理者责任，不能替代具体产品适用性审查</li>
+<li><a href="https://single-market-economy.ec.europa.eu/sectors/electrical-and-electronic-engineering-industries-eei/radio-equipment-directive-red_en" rel="noopener noreferrer" target="_blank">欧盟委员会 RED 说明</a>：European Commission DG GROW，Radio Equipment Directive，官方滚动说明。阅读范围、安全/EMC/频谱与RED网络安全/CRA过渡段落。价值：定位无线设备当前及过渡期核查要求，未核对具体设备认证或所有配套法规</li>
+<li><a href="https://www.acea.auto/publication/report-vehicles-on-european-roads-2026/" rel="noopener noreferrer" target="_blank">ACEA 欧洲道路车辆2026</a>：ACEA，Report – Vehicles on European roads 2026，2026年1月15日，行业协会统计出版物介绍。阅读网页Top Insights，未使用PDF中的国家表。价值：给2024年欧盟乘用车存量和可外接充电分类背景，不支撑改装购买率或本项目市场规模</li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1768267/000162828026005569/crnc-20251231.htm" rel="noopener noreferrer" target="_blank">Cerence 2026财年第一季度报告</a>：Cerence Inc.，Form 10-Q，季度截至2025年12月31日，2026年披露，具体提交日未提取。阅读MD&amp;A收入模式与成本类别段落。价值：按设备软件许可、联网及专业服务的直接商业先例，不证明本项目收入或该公司当前完整经营状态</li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1840856/000184085626000006/soun-20251231.htm" rel="noopener noreferrer" target="_blank">SoundHound 2025年度报告</a>：SoundHound AI Inc.，Form 10-K，年度截至2025年12月31日，2026年披露，具体提交日未提取。阅读MD&amp;A三支柱及交易收入披露。价值：区分交易分成愿景与报告期实际收入，不外推2026年所有产品状态</li>
+<li><a href="https://docs.comma.ai/CARS/" rel="noopener noreferrer" target="_blank">openpilot 支持车辆</a>：comma.ai，Supported Cars，官方滚动文档。阅读既有执行接口要求、支持表规则及限制，未逐个验证全车型。价值：解释接口及车型前提，不把车辆数量等同于波兰可用数量</li>
+<li><a href="https://comma.ai/support/vehicle-compatibility" rel="noopener noreferrer" target="_blank">comma 车型兼容核查</a>：comma.ai，How to check car compatibility，官方滚动指南。阅读车型、年款、地区、配置及线束流程。价值：说明跨地区同名车仍需核查，不证明任意目标车适用</li>
+<li><a href="https://docs.comma.ai/concepts/safety/" rel="noopener noreferrer" target="_blank">openpilot 安全说明</a>：comma.ai，Safety，官方滚动文档。阅读能力定义、监督、执行限制及测试声明。价值：说明厂商声明的驾驶辅助边界，不是第三方安全认证</li>
+<li><a href="https://static.nhtsa.gov/odi/inv/2026/INOA-PE26007-17274.pdf" rel="noopener noreferrer" target="_blank">NHTSA PE26007 启动文件</a>：NHTSA Office of Defects Investigation，ODI Resume PE26007，2026年9月21日，2页监管启动文件。阅读摘要、产品与调查目的，未据表中伤亡汇总作统计。价值：后装运动控制的实际监管事件，启动不等于因果或缺陷最终认定，后续状态未核实</li>
+</ul>
+<h2>八、车载本地模型竞品深化</h2>
+<p>访问日：2026年11月5日。以下为新增入口，与原有条目互补。产品字段及适用边界见产品样本，全部为公开材料核查。
+- <a href="https://play.google.com/store/apps/details?hl=en-US&amp;id=com.khaledisim.carlauncher" rel="noopener noreferrer" target="_blank">Car Nebula Google Play 产品说明</a>：2026-10-24 更新。阅读范围：针对性阅读 About、Luna、App support；支撑开发者、本地 LLM 声明及上架，不是独立验证。。适用边界：支撑对应样本所列声明，不构成独立性能或交付验证
+- <a href="https://carnebula.com/" rel="noopener noreferrer" target="_blank">Car Nebula 官网功能与离线 FAQ</a>：滚动页；列版本 5.7.20。阅读范围：针对性阅读技术要求、How It Works、离线 FAQ；支撑基础离线范围与配件要求。。适用边界：支撑对应样本所列声明，不构成独立性能或交付验证
+- <a href="https://carnebula.com/requirements" rel="noopener noreferrer" target="_blank">Car Nebula Requirements</a>：滚动页。阅读范围：阅读全部可提取正文；区分应用门槛与未披露的 LLM 门槛。。适用边界：支撑对应样本所列声明，不构成独立性能或交付验证
+- <a href="https://carnebula.com/upgrade" rel="noopener noreferrer" target="_blank">Car Nebula Upgrade</a>：滚动页。阅读范围：阅读全部可提取正文；AI 语音升级、试用与可取消，页面未返回金额。。适用边界：支撑对应样本所列声明，不构成独立性能或交付验证
+- <a href="https://www.galaxy-geely.com/M9Edition" rel="noopener noreferrer" target="_blank">吉利银河 M9 黑金智曜版官方车型页</a>：滚动更新，未标明更新日。阅读范围：吉利官方产品页，针对性阅读车型价格、AI BOX 7B 本地部署、主动服务，以及单列的 H7 / Thor-U 辅助驾驶部分。。适用边界：支撑对应样本所列声明，不构成独立性能或交付验证
+- <a href="https://www.galaxy-geely.com/M9" rel="noopener noreferrer" target="_blank">吉利银河 M9 官方车型页</a>：滚动更新，未标明更新日。阅读范围：吉利官方产品页，针对性阅读车机、EM-P 插混、当前车型与指导价及非全系标配说明。。适用边界：支撑对应样本所列声明，不构成独立性能或交付验证
+- <a href="https://www.xiaopeng.com/g7_2026/configuration.html" rel="noopener noreferrer" target="_blank">2026 小鹏 G7 参数配置表</a>：2026 款滚动配置页，未标明更新日。阅读范围：小鹏官方，针对性阅读 602 Max 旗舰版能源与价格、座舱、本地对话和导航、Ultra / Ultra SE 包及脚注 17–18。。适用边界：支撑对应样本所列声明，不构成独立性能或交付验证
+- <a href="https://www.xiaopeng.com/news/company_news/5493.html" rel="noopener noreferrer" target="_blank">小鹏汽车 2025 年第二季度经营技术进展公告</a>：页面 2025-08-20，正文公告 2025-08-19。阅读范围：仅作为小鹏图灵车端 VLM 架构与专属座舱算力的背景，不推导 G6 全功能已交付。。适用边界：支撑对应样本所列声明，不构成独立性能或交付验证
+- <a href="https://www.xiaopeng.com/g6_2026/configuration.html" rel="noopener noreferrer" target="_blank">2026 小鹏 G6 参数配置表</a>：2026 款滚动配置页，未标明更新日。阅读范围：小鹏官方，针对性阅读 625 Max 科技版价格能源、MT8676、离线对话与导航、Ultra 选装包及脚注 18。。适用边界：支撑对应样本所列声明，不构成独立性能或交付验证
+- <a href="https://ai.azure.com/catalog/models/Cerence-CaLLM-Edge" rel="noopener noreferrer" target="_blank">Microsoft Foundry：Cerence-CaLLM-Edge</a>：滚动页面；Version 1。阅读范围：专有模型、非公开下载、联系获取、Preview状态。适用边界：支撑对应样本所列声明，不构成独立性能或交付验证
+- <a href="https://investors.cerence.com/news-events/press-releases/detail/349/cerence-ai-and-sima-ai-partner-to-power-next-gen-conversational-ai-at-the-edge" rel="noopener noreferrer" target="_blank">Cerence与SiMa.ai边缘合作</a>：2025-09-04。阅读范围：Modalix运行的展示与合作，不是后装零售交付。适用边界：支撑对应样本所列声明，不构成独立性能或交付验证
+- <a href="https://investors.cerence.com/news-events/press-releases/detail/98/cerence-ai-and-mediatek-partner-to-introduce-multi-modal-language-models-running-on-the-edge-built-on-nvidia" rel="noopener noreferrer" target="_blank">Cerence与MediaTek/NVIDIA多模态合作</a>：2025-04-23。阅读范围：边缘多模态模型、参考设计和演示状态。适用边界：支撑对应样本所列声明，不构成独立性能或交付验证
+- <a href="https://investors.cerence.com/news-events/press-releases/detail/364/cerence-xui-leveraging-nvidia-ai-enterprise-and-running-on-microsoft-azure-drives-strong-traction-with-automakers" rel="noopener noreferrer" target="_blank">Cerence xUI与Azure/NVIDIA</a>：2026-01-05。阅读范围：云端基础设施和客户选用范围。适用边界：支撑对应样本所列声明，不构成独立性能或交付验证
+- <a href="https://github.com/ThinkOffApp/CarWatch" rel="noopener noreferrer" target="_blank">CarWatch README 与架构（当前 main）</a>：滚动 main。阅读范围：针对性阅读模型、Architecture、Local vs online、FAQ；仅文档阅读，未审计代码、未跑模型。。适用边界：支撑对应样本所列声明，不构成独立性能或交付验证
+- <a href="https://github.com/ThinkOffApp/CarWatch/releases/tag/v0.4.0" rel="noopener noreferrer" target="_blank">CarWatch v0.4.0 发行说明</a>：页面显示 8 月 28 日；未显年份。阅读范围：针对性阅读演示环境、voice loop、grounded answers；tag v0.4.0 / short commit d9a08dc。。适用边界：支撑对应样本所列声明，不构成独立性能或交付验证
+- <a href="https://carwatch.dev/" rel="noopener noreferrer" target="_blank">CarWatch 项目网站</a>：滚动页；图片注记 2026-08-25。阅读范围：阅读项目定位与车内设备图；区分作者的 proven / built / enabled 标签。。适用边界：支撑对应样本所列声明，不构成独立性能或交付验证
+- <a href="https://comma.ai/shop/comma-four" rel="noopener noreferrer" target="_blank">comma four 官方商店</a>：滚动页面。阅读范围：购买展示价、线束与交付条件。适用边界：支撑对应样本所列声明，不构成独立性能或交付验证
+- <a href="https://comma.ai/openpilot" rel="noopener noreferrer" target="_blank">openpilot 产品与技术说明</a>：2026-10-23版本入口；网页滚动。阅读范围：本地设备与神经模型、SoC、能力及监督要求。适用边界：支撑对应样本所列声明，不构成独立性能或交付验证
+- <a href="https://github.com/commaai/openpilot" rel="noopener noreferrer" target="_blank">openpilot 官方README</a>：master滚动。阅读范围：设备安装、软件、许可及默认数据上传；未执行源码。适用边界：支撑对应样本所列声明，不构成独立性能或交付验证
+- <a href="https://comma.ai/connect" rel="noopener noreferrer" target="_blank">comma connect 服务</a>：滚动页面。阅读范围：联网服务与Prime/Lite价目；不代表本地驾驶收费。适用边界：支撑对应样本所列声明，不构成独立性能或交付验证
+- <a href="https://www.carboxlauncher.com/" rel="noopener noreferrer" target="_blank">CarBox Launcher 官方功能及许可</a>：滚动页。阅读范围：针对性阅读 Assistant、Adaptive memory、Proactive suggestions、Companion、Lifetime；无云范围限相关模块。。适用边界：支撑对应样本所列声明，不构成独立性能或交付验证
+- <a href="https://www.carboxlauncher.com/download.html" rel="noopener noreferrer" target="_blank">CarBox Launcher 官方下载</a>：滚动页；版本值未返回。阅读范围：阅读 APK 安装对象、账号与试用条款；未下载 APK。。适用边界：支撑对应样本所列声明，不构成独立性能或交付验证
+- <a href="https://play.google.com/store/apps/details?id=com.ferra.carboxcompanion.app" rel="noopener noreferrer" target="_blank">CarBox Companion Google Play</a>：2026-10-25 更新。阅读范围：针对性阅读开发者及 Companion 功能；支撑手机端桥接，不能证明车机端 LLM。。适用边界：支撑对应样本所列声明，不构成独立性能或交付验证
+- <a href="https://www.atotodirect.com/products/ci-viald13-scrolling-advertising-led-signs" rel="noopener noreferrer" target="_blank">ATOTO CI-VIALD13 产品页</a>：滚动页。阅读范围：针对性阅读型号、价格、库存、Features；规格表误列 S8Gen2 车机，未采纳其中 UIS9863 / 2 GB 等字段。。适用边界：支撑对应样本所列声明，不构成独立性能或交付验证
+- <a href="https://www.hicami.com/" rel="noopener noreferrer" target="_blank">CAMI 官方产品及商城入口</a>：滚动页。阅读范围：针对性阅读产品模块、官方商店入口及页脚主体；不支撑模型本地部署。。适用边界：支撑对应样本所列声明，不构成独立性能或交付验证
+- <a href="https://www.jd.com/brand/131524d04857a35a0343.html" rel="noopener noreferrer" target="_blank">京东 CAMI 品牌列表与 o2 标准版条目</a>：滚动页。阅读范围：针对性阅读到 CAMI o2 标准版条目；复访失败，单品 100257453737 只返回浏览器升级壳，价格、硬件和库存未核。。适用边界：支撑对应样本所列声明，不构成独立性能或交付验证
+- <a href="https://www.ottocast.com/products/ottoaibox-p3-pro-carplay-ai-box" rel="noopener noreferrer" target="_blank">Ottocast P3 Pro 产品页及 AI Voice FAQ</a>：滚动页。阅读范围：针对性阅读具体产品硬件、USD 售价、Compare 与 FAQ；留存服务包/默认额度的条款冲突，不据此证明离线。。适用边界：支撑对应样本所列声明，不构成独立性能或交付验证
+- <a href="https://www.bmwgroup.com/en/news/general/2026/alexa.html" rel="noopener noreferrer" target="_blank">BMW: Milestone in in-car speech interaction thanks to AI integration</a>：页面日期 2026-01-05，正文含 2026 年 5 月底 OTA 进展，更新日未标明。阅读范围：BMW Group 官方产品文章，针对性阅读 iX3 / OS X、功能、当前 OTA 时序和首发市场。发布日期与滚动正文状态分开保留。。适用边界：支撑对应样本所列声明，不构成独立性能或交付验证
+- <a href="https://us.nio.com/news/20240503001" rel="noopener noreferrer" target="_blank">NIO: What's New with NIO in April?</a>：页面显示 2024-05-01。阅读范围：蔚来官方月报，针对性阅读 2024 ET7 行政版交付、历史价格，以及 4 月 12 日 NOMI GPT 正式车云推送段落。。适用边界：支撑对应样本所列声明，不构成独立性能或交付验证
+- <a href="https://cloud.baidu.com/customer/case/weilai.html" rel="noopener noreferrer" target="_blank">百度智能云客户案例：蔚来汽车</a>：未标明发布日期。阅读范围：合作方官方案例，阅读大模型云端服务、端云多模态、NT2.0/2.2 和功能段落。不能当作当前全部车辆或全部区域的部署数量。。适用边界：支撑对应样本所列声明，不构成独立性能或交付验证
+- <a href="https://www.nio.com/et7" rel="noopener noreferrer" target="_blank">NIO ET7 官方产品页</a>：滚动产品页，未标明更新日。阅读范围：车型、NOMI 交互和产品图片。滚动页内容不用于覆盖 2024 历史配置与价格。。适用边界：支撑对应样本所列声明，不构成独立性能或交付验证
+- <a href="https://www.nio.com/nl_NL/news/nomiverrijktmetgptsoftware" rel="noopener noreferrer" target="_blank">NIO Nederland: NOMI verrijkt met GPT-software</a>：2024-04-05。阅读范围：仅用于欧洲区域差异：Azure OpenAI 与当时欧洲 OTA 计划。不是中国区架构或本地模型证据。。适用边界：支撑对应样本所列声明，不构成独立性能或交付验证
+- <a href="https://ir.lixiang.com/system/files-encrypted/nasdaq_kms/assets/2025/09/08/4-59-02/2025%20Interim%20Report.pdf" rel="noopener noreferrer" target="_blank">Li Auto 2025 Interim Report</a>：2025-09（中期报告）。阅读范围：理想官方中报，针对性阅读 PDF 第 7 页 i8 动力、交付、价格与 Agent 段落。。适用边界：支撑对应样本所列声明，不构成独立性能或交付验证
+- <a href="https://ir.lixiang.com/static-files/fb9e1598-72c6-4d7e-8a5a-b125a759104b" rel="noopener noreferrer" target="_blank">Li Auto 2025 Annual Report / Form 20-F</a>：2026-04-10（提交日）。阅读范围：理想官方年报，针对性阅读 PDF 第 78–80 页产品及 MindGPT Agent 的工具、记忆、相机任务。未披露完整本地模型规格。。适用边界：支撑对应样本所列声明，不构成独立性能或交付验证
+- <a href="https://www.tesla.com/support/grok" rel="noopener noreferrer" target="_blank">Tesla Support: Grok</a>：滚动支持页，未标明更新日。阅读范围：Tesla 官方，针对性阅读基本功能、软件 / AMD 条件、必须联网、基础订阅，以及 Connectors / Bot 差异。。适用边界：支撑对应样本所列声明，不构成独立性能或交付验证
+- <a href="https://www.tesla.com/support/connectivity" rel="noopener noreferrer" target="_blank">Tesla Support: Connectivity</a>：滚动支持页，未标明更新日。阅读范围：Tesla 官方美国连接服务价格和 Wi-Fi 条件。不用连接服务可售国家表推导 Grok 的区域可用性。。适用边界：支撑对应样本所列声明，不构成独立性能或交付验证
+- <a href="https://www.soundhound.com/resource/introducing-oasys-edge" rel="noopener noreferrer" target="_blank">SoundHound：OASYS Edge机制说明</a>：2026-09-24。阅读范围：本地专用模型、设备条件与在线服务分工。适用边界：支撑对应样本所列声明，不构成独立性能或交付验证
+- <a href="https://github.com/nxp-appcodehub/dm-eiq-genai-flow-demonstrator/blob/4440c4a979b251742e97b27543af5b09cbab96c9/eiq_genai_flow/README.md" rel="noopener noreferrer" target="_blank">NXP GenAI Flow固定提交README</a>：commit 4440c4a，2026-08-24。阅读范围：内存建议、演示限制、加密模型与NPU条件；原文快照已保存。适用边界：支撑对应样本所列声明，不构成独立性能或交付验证
+- <a href="https://huggingface.co/qualcomm/Qwen3-4B" rel="noopener noreferrer" target="_blank">Qualcomm Qwen3-4B模型资产</a>：滚动模型卡；QAIRT 2.50资产。阅读范围：SA8775P资产、精度、运行时和模型许可；该SoC未列本轮所读性能表数据。适用边界：支撑对应样本所列声明，不构成独立性能或交付验证
+- <a href="https://github.com/qualcomm/ai-hub-apps/blob/71e3f9e8729a374d4fb1473709b9d26237645c71/tutorials/llm_on_genie/README.md" rel="noopener noreferrer" target="_blank">Qualcomm LLM设备部署固定提交教程</a>：commit 71e3f9e，2026-10-28。阅读范围：内存建议、Auto QAIRT、目标设备配置及虚拟机运行条件；原文快照已保存。适用边界：支撑对应样本所列声明，不构成独立性能或交付验证
+- <a href="https://www.lantronix.com/products/ride-sx-4-0-automotive-development-platform/" rel="noopener noreferrer" target="_blank">Lantronix Ride SX 4.0官方产品规格</a>：滚动页面；未标发布日期。阅读范围：SoC、内存、存储、接口、无预装软件及审批条件。适用边界：支撑对应样本所列声明，不构成独立性能或交付验证
+- <a href="https://estore.lantronix.com/products/sa8775p-automotive-development-platform" rel="noopener noreferrer" target="_blank">Lantronix Ride SX4.0官方商店</a>：滚动商店价格。阅读范围：展示价格与下单审批；页面美元符号未单独确定ISO币种。适用边界：支撑对应样本所列声明，不构成独立性能或交付验证
+- <a href="https://github.com/Liquid4All/cookbook/blob/3d0cbcb7dc40b690e3e4996c5b78e4d3020f8232/examples/audio-car-cockpit/README.md" rel="noopener noreferrer" target="_blank">Liquid Audio Car Cockpit固定提交README</a>：commit 3d0cbcb，2026-10-27。阅读范围：双模型、mockup、运行平台及本地推理；原文快照已保存。适用边界：支撑对应样本所列声明，不构成独立性能或交付验证
+- <a href="https://huggingface.co/LiquidAI/LFM2.5-Audio-1.5B" rel="noopener noreferrer" target="_blank">Liquid LFM2.5-Audio-1.5B模型卡</a>：滚动模型卡。阅读范围：公开模型结构、当前英语支持、许可。适用边界：支撑对应样本所列声明，不构成独立性能或交付验证
+- <a href="https://huggingface.co/LiquidAI/LFM2.5-Audio-1.5B/blob/main/LICENSE" rel="noopener noreferrer" target="_blank">LFM Open License v1.0</a>：许可证v1.0；文件未标发布日期。阅读范围：定义、再分发及商业使用限制第1/4/5条。适用边界：支撑对应样本所列声明，不构成独立性能或交付验证</p></main></body></html>

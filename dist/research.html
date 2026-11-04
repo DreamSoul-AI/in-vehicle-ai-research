@@ -1,0 +1,101 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>竞品与切入分析 · 车载端侧 AI</title><link rel="stylesheet" href="style.css"></head><body><header class="topbar"><a class="brand" href="index.html"><span class="brand-symbol"></span><b>DreamSoul</b><span>RESEARCH</span></a><a href="index.html#products">返回产品图鉴 ↗</a></header><main class="research-content"><p class="eyebrow">IN-VEHICLE AI / RESEARCH</p><h1>竞品与切入分析</h1><p>信息截止与访问日：2026年11月5日。范围：真正具有车内本地模型线索的后装软件、原厂车型及企业方案，并以开发参考和联网产品明确边界。所有技术与交付状态均基于公开资料，未安装、采购或做实车断网验证。</p>
+<p><strong>深入核查改变了原先的竞品判断：后装软件已有明确声明本地 LLM 的可安装产品，原厂车型也有绑定具体配置的 7B 与 VLM。</strong> 当前能公开确认的技术细节与价格并不完整，不能将其表述为已完成独立验证的全离线音箱市场。</p>
+<p>本次结构化整理23个样本，其中默认核心视图选取8项本地模型线索，其余用来区分部署计划、工具、硬件及联网对照。这些数字描述研究样本，不代表行业数量、销量或市场份额。逐项完整记录见 <a href="data/products.json">产品样本</a>，投资人网页见 <a href="index.html">网页入口</a>。</p>
+<h2>一、核心产品与技术证据</h2>
+<p>下表的“本地”仅针对所列模型和任务。车内运行大模型、有一项离线功能、完整语音任务断网完成是不同主张。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th><strong>具体产品</strong></th>
+<th><strong>可获得状态与价格口径</strong></th>
+<th><strong>模型与技术要点</strong></th>
+<th><strong>尚不能确认的关键条件</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Car Nebula Launcher / Luna</td>
+<td>可安装 · 开发者声明。免费安装 · AI 升级价未公开</td>
+<td>Luna；商店正文明确声明 on-device LLM support。模型家族、参数量、量化、推理框架及权重分发方式未公开。</td>
+<td>公开声明达到车端本地 LLM 层，但尚缺模型包、运行日志和完整离线语音链路证据。未核波兰语、本地 LLM 特定设备兼容表、模型与地图总体占用、热稳定性。未核 IAP 金额、离线模型是否另收费及订阅终止后的模型可用性；销量与留存未知。 <a href="https://play.google.com/store/apps/details?hl=en-US&amp;id=com.khaledisim.carlauncher" rel="noopener noreferrer" target="_blank">Car Nebula Google Play 产品说明</a></td>
+</tr>
+<tr>
+<td>吉利银河 M9 210km 四驱黑金智曜版 / AI BOX</td>
+<td>原厂在售声明。¥259,800 / 具体款整车</td>
+<td>官方明确：端侧部署 70 亿参数量模型，即 7B。家族名称、checkpoint、量化位宽、上下文长度、运行时和可分配 RAM 未公开。</td>
+<td>官方 7B 本地部署声明足以确认车上有本地模型，不足以确认完整 Agent 离线；本轮没有 一手资料正文证明模型就是 Qwen，也不采用第三方 200 TOPS / 特定芯片转载数字；不能把智驾芯片的 700 TOPS 当作座舱 LLM 算力；原厂高配 PHEV，只能借鉴能力与架构，不作为传统油车后装盒的直接同类售价 <a href="https://www.galaxy-geely.com/M9Edition" rel="noopener noreferrer" target="_blank">吉利银河 M9 黑金智曜版官方车型页</a></td>
+</tr>
+<tr>
+<td>2026 小鹏 G7 602 Max 旗舰版 + Ultra 智能升级包</td>
+<td>在售配置 · 部分 OTA。¥215,800 / 整车 + 组合包</td>
+<td>小鹏图灵 VLM 模型。厂商经营公告明确车端部署，具体参数、量化和 checkpoint 未公开。辅助驾驶 VLA 与座舱 VLM 分开看。</td>
+<td>Ultra SE ¥12,000 只列 2 颗辅助驾驶芯片等，不可当作同等 VLM 座舱方案；2025 已上市与 2026 当前包配置均有证据，具体每项 VLM 功能的 OTA 完成状态仍需车辆软件版本核对；750 / 1500 / 2250 TOPS 为厂商有效算力口径，不是可直接与其他芯片排名的 LLM 实测；未取得 VLM 断网任务、时延、功耗和多语种实车数据 <a href="https://www.xiaopeng.com/g7_2026/configuration.html" rel="noopener noreferrer" target="_blank">2026 小鹏 G7 参数配置表</a></td>
+</tr>
+<tr>
+<td>2026 小鹏 G6 625 Max 科技版 + Ultra 智能升级包</td>
+<td>原厂在售配置。¥196,800 / 整车 + 组合包</td>
+<td>小鹏图灵 VLM 模型，配座舱专属图灵芯片。车型配置没有给出确切参数和离线执行图。小鹏 2025 经营公告的车端 VLM 架构作背景，不代替本车实测。</td>
+<td>同名 Ultra 包不代表不同年款车型的底层车机芯片相同；本地对话是配置表独立功能，不能未经证据全部归因于 VLM；原厂一体集成，不表示 2 万元选装方案能直接改装给传统油车 <a href="https://www.xiaopeng.com/g6_2026/configuration.html" rel="noopener noreferrer" target="_blank">2026 小鹏 G6 参数配置表</a></td>
+</tr>
+<tr>
+<td>Cerence CaLLM Edge</td>
+<td>企业客户入口。授权报价未公开</td>
+<td>2024年初版：Phi-3系列汽车数据微调，3.8B、4k上下文、4-bit；后续多模态版本不应沿用初版参数作统一规格</td>
+<td>未获得可公开复现的同车端到端实测；没有统一公开内存需求或指定SoC清单；初版SLM不是一套开箱即用的完整语音和车控整机；未核实是否向小规模后装项目供货及其最低商务条件 <a href="https://investors.cerence.com/news-events/press-releases/detail/114/cerence-introduces-pioneering-embedded-small-language-model-purpose-built-for-automotive" rel="noopener noreferrer" target="_blank">Cerence：Embedded Small Language Model发布</a></td>
+</tr>
+<tr>
+<td>Cerence xUI</td>
+<td>企业平台与客户项目。项目报价未公开</td>
+<td>CaLLM模型家族含边缘SLM和云端LLM；当前未发现可单独标价购买的统一“xUI边缘款”SKU</td>
+<td>不能以2024版CaLLM Edge参数代表所有xUI项目；车窗、空调与摄像头等能力依赖OEM实际授权和接口；本轮没有核实量产车型配置、离线任务清单或按台合同价格 <a href="https://www.cerence.com/platforms/cerence-xui" rel="noopener noreferrer" target="_blank">Cerence xUI平台</a></td>
+</tr>
+<tr>
+<td>CarWatch（Raspberry Pi 5 车载原型）</td>
+<td>作者车内原型。DIY 原型 · 无整机报价</td>
+<td>当前 main：Qwen3.6-35B-A3B、Unsloth UD-Q3_K_S、llama.cpp；whisper.cpp ASR、Piper TTS、本地说明书 RAG。v0.4.0 发行页单独支撑车内离线语音演示，不能把当前 main 的全部模型配置倒填该版本。</td>
+<td>主分支与 v0.4.0 的监听模式、配置会变；不能拼成一个固定零售型号。没有本次独立断网、车内噪声、冷启动、散热、功耗或量产可靠性验证。AGPL-3.0 代码与模型各自许可需分别检查；未核商用方案或规模交付。 <a href="https://github.com/ThinkOffApp/CarWatch" rel="noopener noreferrer" target="_blank">CarWatch README 与架构（当前 main）</a></td>
+</tr>
+<tr>
+<td>comma four / openpilot 0.11.2</td>
+<td>零售驾驶辅助设备。US$999 / 驾驶辅助设备</td>
+<td>openpilot道路感知、轨迹及驾驶员监测神经模型；非座舱对话LLM。未以通用语言模型参数衡量驾驶能力。</td>
+<td>只能用于核对过的车辆与功能，驾驶员持续负责；驾驶模型产品不能当作对话音箱的技术或商业连续性证明；NHTSA已有调查启动原件，后续状态未核实 <a href="https://comma.ai/shop/comma-four" rel="noopener noreferrer" target="_blank">comma four 官方商店</a></td>
+</tr>
+</tbody>
+</table></div>
+<h2>二、五项必须区分的产品事实</h2>
+<h3>（一）Car Nebula 已是直接的软件竞品</h3>
+<p>Car Nebula 的 Luna 在官方 Google Play 正文明确声明 on-device LLM 与离线支持，且有安装入口。因此，“给旧车增加本地模型”已经有后装软件参与者。需要与其比较的是稳定完成哪些任务、在什么车机上可用，以及额外集成的价值。<a href="https://play.google.com/store/apps/details?hl=en-US&amp;id=com.khaledisim.carlauncher" rel="noopener noreferrer" target="_blank">Car Nebula 商店</a></p>
+<p>官网最低 Android 8、3GB 和推荐6–8GB是整款应用要求，不是完整离线语音模型的保证配置。具体模型、权重、量化和 ASR→LLM→TTS 断网路径未披露。免费安装、免费导航与付费 AI 升级也要分开，尚未取得实际 AI 升级金额。<a href="https://carnebula.com/requirements" rel="noopener noreferrer" target="_blank">Car Nebula 配置</a>、<a href="https://carnebula.com/upgrade" rel="noopener noreferrer" target="_blank">升级功能</a></p>
+<h3>（二）M9 黑金智曜版给出了具体本地参数规模</h3>
+<p>吉利专属产品页明确把7B端侧模型与黑金智曜版 AI BOX 绑定，该款整车限时先享指导价25.98万元。基础 M9 的较低系列起价不能代表同样含7B盒子。模型家族、量化、RAM及AI BOX芯片仍未公开，辅助驾驶部分的 Thor-U 算力不能挪作该座舱模型规格。网页所列整车价格仅用于车型定位。<a href="https://www.galaxy-geely.com/M9Edition" rel="noopener noreferrer" target="_blank">M9 黑金智曜版</a></p>
+<h3>（三）小鹏的离线项目和组合包需要分别理解</h3>
+<p>G7 车端 VLM 有官方说明，2026 G7/G6 Ultra 配置又列出专用座舱图灵芯片、本地对话离线可用及离线导航。2万元 Ultra 包包含多项硬件和功能，不是单独模型、芯片或后装助手价格。具体主动服务仍需核对 OTA 和外部数据依赖。<a href="https://www.xiaopeng.com/news/company_news/5493.html" rel="noopener noreferrer" target="_blank">小鹏技术进展</a>、<a href="https://www.xiaopeng.com/g7_2026/configuration.html" rel="noopener noreferrer" target="_blank">G7 配置</a>、<a href="https://www.xiaopeng.com/g6_2026/configuration.html" rel="noopener noreferrer" target="_blank">G6 配置</a></p>
+<h3>（四）有开发基础，仍需要完成产品整合</h3>
+<p>CaLLM Edge 面向企业，NXP、Qualcomm 提供开发路径，公开 Liquid 座舱示例则模拟车辆控制。它们可以用于评估买组件或自行组合，不能当作已完成后装整机的采购清单。OASYS Edge 和 Mercedes–Liquid 的未来部署目标，也不能因目标时间临近或已到便自动升级为交付事实。逐项 SDK、许可、状态与来源见产品样本。</p>
+<h3>（五）离线命令、记忆与驾驶模型各有意义</h3>
+<p>CarBox 的本地习惯档案、ATOTO Glow 的离线固定命令，不足证明使用生成式大模型。comma four 则在设备上运行驾驶模型，官网显示999美元，但它处理的是车辆运动辅助任务。该类设备说明“车上模型”并不限于语言模型，不能直接用于证明座舱音箱通向智驾的连续性。<a href="https://www.carboxlauncher.com/" rel="noopener noreferrer" target="_blank">CarBox</a>、<a href="https://www.atotodirect.com/products/ci-viald13-scrolling-advertising-led-signs" rel="noopener noreferrer" target="_blank">ATOTO Glow</a>、<a href="https://comma.ai/shop/comma-four" rel="noopener noreferrer" target="_blank">comma four</a></p>
+<h2>三、价格、离线与状态的统一比较方式</h2>
+<p>产品数据分别维护零售软件、后装硬件、整车、选装组合包、企业项目与开发板的报价口径。未公开标记为未公开，不记为零，不按整车价格替模型排性价比。历史车价、商城缺货、配套订阅和币种未核定保留原有限定。</p>
+<p>离线能力按三个层次记录：模型执行位置、单项功能是否可本地完成、完整任务是否仍依赖网络或手机。没有逐环节资料时，不把“本地模型”扩写为“所有任务离线”，也不把本地数据储存当作推理位置证据。</p>
+<p>交付状态另列可安装、在售配置、企业客户入口、部署计划、作者车内原型与模拟原型。厂商声明和独立实测分开。本次全部为公开材料核查，未取得跨产品可比的噪声、长时热稳态、延迟、功耗、销量或留存数据。</p>
+<h2>四、我们可以从哪里切入</h2>
+<h3>（一）优先验证：面向固定后装设备的本地任务模块</h3>
+<p><strong>新增竞品削弱了“只要能本地聊天就有差异”的判断。</strong> 更值得验证的是：与能开放系统和音频接口的后装厂商合作，在固定设备上稳定完成少量车内任务。候选包括本地手册与车型资料、常用信息、可授权的媒体或车辆数据操作，而非一次性覆盖所有车控与服务。</p>
+<p>与 Luna 等软件相比，可能的差异是较低配置负担、车内噪声与通话抢占下的完整成功率、可审计的本地数据流、指定语言或车辆服务，以及可持续固件与售后。这些仍是研究假设，需用同设备、同任务和同网络条件比较，不能预先称为壁垒。</p>
+<h3>（二）备选形态：控制交互的独立设备</h3>
+<p>独立音箱或计算盒可以控制麦克风、按键、模型和更新，但同时承担车载电源、启动、待机、散热、音频连接、库存与质保。应在比较成熟硬件搭载方案后，再判断新增整机是否值得。模型能放进开发板，尚不足以解释车主为什么额外购买、安装和长期维护。</p>
+<h3>（三）商业与长期路线</h3>
+<p>先比较按设备软件授权、集成服务和硬件套餐，分别核算长期支持成本。公开企业方案可以作为组件或潜在合作选择，尚未获得其实际报价、再分发权或客户准入条件。波兰渠道只作为选定产品后的区域核验案例。</p>
+<p>座舱原厂方案的本地模型、摄像头、车辆接口和服务整合不能整套搬到传统燃油车。后续若进入驾驶提示或运动控制，必须重新验证所需数据、接口、安全与责任能力。前一阶段业务应能独立解释用户价值与单位经济。</p>
+<h3>（四）最有价值的下一轮证据</h3>
+<ol>
+<li>固定一款候选 Android 车机和软件版本，对 Car Nebula 的本地声明做断网分环节验证，核对模型文件、内存、启动及误执行</li>
+<li>用相同任务比较现有方案与自有模块的收益，并观察真实用户再次主动使用，取得实际付费与安装成本证据</li>
+<li>取得目标硬件与固件接口、模型和 SDK 分发许可、供应与售后条件，再形成完整产品预算</li>
+<li>若考虑独立设备，单独证明拾音与交互收益足以抵消新增整机成本，不用未核实的低价 BOM 支撑投资回报</li>
+</ol>
+<p>这些是后续验证建议，本次未进行采购、安装、联系厂商或发布公司产品承诺。</p>
+<h2>五、参考资料与证据边界</h2>
+<p>每个样本的型号、功能、价格、离线范围、技术方案及对应来源，统一记录在 <a href="data/products.json">产品样本</a> 的 sources 字段。网页产品详情提供相同原始资料入口及阅读范围。旧平台与工程依据见 <a href="overview.html">通用调研</a>，新增记录并入 <a href="references.html">来源索引</a>。</p>
+<p>本次不是全行业普查，没有将开发者声明等同于独立性能验证，也没有以未查到某字段推定产品不支持。具体软件、车型、配置、地区和时间共同限定结论。第三方图片仅用于研究识别，不表示合作或背书。</p></main></body></html>

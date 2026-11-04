@@ -1,0 +1,498 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>平台、技术与商业背景 · 车载端侧 AI</title><link rel="stylesheet" href="style.css"></head><body><header class="topbar"><a class="brand" href="index.html"><span class="brand-symbol"></span><b>DreamSoul</b><span>RESEARCH</span></a><a href="index.html#products">返回产品图鉴 ↗</a></header><main class="research-content"><p class="eyebrow">IN-VEHICLE AI / RESEARCH</p><h1>平台、技术与商业背景</h1><p>信息截止与访问日期：2026年11月5日。对象：传统燃油车智能化及运行在车机或常驻后装设备上的端侧 AI。依据为官方平台资料、产品说明、模型与芯片资料、企业披露及监管原件，采用针对性阅读。波兰仅作为用户提供的渠道案例。</p>
+<p><strong>核心判断</strong>：厂商已披露车上本地 AI 的原厂量产集成案例，也有可组合的技术基础，值得验证其在存量车辆中的任务价值。现成车载平台、Android 盒子和独立导航设备的能力差别很大，实际进入条件取决于计算载体、音频路径、平台权限和车型接口。参见 <a href="https://ir.ecarxgroup.com/news-releases/news-release-details/ecarx-powers-global-launch-geely-galaxy-m9-delivering-next" rel="noopener noreferrer" target="_blank">ECARX 原厂集成公告</a>。</p>
+<ul>
+<li><strong>平台入口与模型部署位置分开判断。</strong> CarPlay、Android Auto 以手机应用为基础，取得车内界面不等于能向接收主机部署模型。CarPlay 已有第三方语音对话类别，仍需申请授权，录音、音频会话及车控各有条件。<a href="https://developer.apple.com/download/files/CarPlay-Developer-Guide.pdf" rel="noopener noreferrer" target="_blank">Apple 开发指南</a>、<a href="https://developer.android.com/training/cars/platforms/android-auto" rel="noopener noreferrer" target="_blank">Android Auto 概览</a>，具体条件见第一章</li>
+<li><strong>车上端侧 AI 要验证完整任务链。</strong> 本地识别、理解、工具执行和播报均有技术组件，但语言支持、模型速度与开发板基准不能替代车内噪声、热稳态、长期运行和误执行验证。详见第二章</li>
+<li><strong>后装软件已有本地 LLM 竞品声明。</strong> 深化核查发现可安装的 Car Nebula / Luna，开发者明确声明设备端 LLM，但具体模型和完整断网链路仍待验证。吉利 M9 黑金智曜版明确披露车端 7B，部分小鹏 Ultra 配置明确列出本地对话。主流互联盒的硬件与这些能力应分别判断。详见第四章及 <a href="research.html">竞品与切入分析</a></li>
+<li><strong>产品上优先比较本地语音任务模块的承载方式。</strong> 成熟后装硬件搭载与独立音箱均保留候选，围绕少量高频任务比较实际收益和全周期成本。商业上分别核算硬件、软件授权与持续服务，不预设交易分成能补贴成本。详见第三、五章</li>
+<li><strong>座舱业务进入智驾需要新的能力与责任体系。</strong> 可复用的渠道和运行经验应逐项核实，车辆运动控制接口、道路数据、安全验证及产业合作是独立门槛。“先油车、后新能源”保留为待验证的进入路径。详见第六章</li>
+</ul>
+<p>本报告完成公开资料调研与分析，未进行产品采购、实车或模型测试、渠道联系及非公开经营核验。未披露的销量、留存、成本和接口能力保留未知。各章区分厂商陈述、公开资料和研究判断，完整来源、版本与阅读范围见第七章及来源索引。</p>
+<h2>一、现有车载平台与生态</h2>
+<p>现有生态提供了两类入口：把手机应用投射到车内，或直接在车内设备运行应用。<strong>要实现车上本地推理，必须明确拥有哪台车内计算设备、应用部署权和音频接入权。</strong> 获得 CarPlay 或 Android Auto 的屏幕入口，只能证明互联能力。能否部署模型、持续拾音及调用车辆功能，需要分别核查。以下基于截至2026年11月5日针对性阅读的官方资料，未进行实车测试。</p>
+<h3>（一）平台路线与产业分工</h3>
+<p>CarPlay 应用随 iPhone 应用经 App Store 分发，iOS 管理车内界面。Android Auto 同样以手机应用为基础，通过车内主机呈现驾驶界面。AAOS 则在车内硬件运行，应用可以直接安装在车辆系统中。Google built-in 是基于 AAOS 并集成 Google 应用服务的路线，AAOS 开源本身不等于取得 GAS 授权。参见 <a href="https://developer.apple.com/download/files/CarPlay-Developer-Guide.pdf" rel="noopener noreferrer" target="_blank">Apple CarPlay 开发指南</a> 的“CarPlay apps”、<a href="https://developer.android.com/training/cars/platforms/android-auto" rel="noopener noreferrer" target="_blank">Android Auto 概览</a>、<a href="https://source.android.com/docs/automotive/start/what_automotive" rel="noopener noreferrer" target="_blank">AAOS 平台定义</a> 和 <a href="https://developers.google.com/cars/design/create-apps/about-create-apps" rel="noopener noreferrer" target="_blank">Google 车载应用设计入口</a>。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th><strong>路线</strong></th>
+<th><strong>主要应用环境</strong></th>
+<th><strong>第三方入口</strong></th>
+<th><strong>对车上本地 AI 的意义</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CarPlay 应用</td>
+<td>iPhone，车内提供显示与交互</td>
+<td>申请对应类别授权，提交 iOS 应用</td>
+<td>不能由应用上屏推导模型部署到接收主机</td>
+</tr>
+<tr>
+<td>Android Auto 应用</td>
+<td>Android 手机，与兼容主机连接</td>
+<td>受支持类别、汽车界面及分发要求</td>
+<td>适合比较现有体验，车内独立推理需另有载体</td>
+</tr>
+<tr>
+<td>AAOS 应用</td>
+<td>车辆的 Android 系统</td>
+<td>应用商店分发或车厂预装集成</td>
+<td>具备车内部署入口，资源和权限仍随车型而异</td>
+</tr>
+<tr>
+<td>Google built-in / Gemini</td>
+<td>Google 车载服务环境，或 Android Auto 手机入口</td>
+<td>Google 与车厂提供系统服务</td>
+<td>语音助手已进入平台基线，不能据其名称确认模型离线运行</td>
+</tr>
+<tr>
+<td>后装 Android 车机或计算盒</td>
+<td>具体设备自己的 Android 系统</td>
+<td>硬件厂商允许的安装、SDK 或系统合作</td>
+<td>可作为本地运行候选，需核查硬件与系统开放程度</td>
+</tr>
+</tbody>
+</table></div>
+<p>前三行依据见上文平台资料，Google built-in 的应用服务组成见 <a href="https://developer.android.com/training/cars/platforms/automotive-os" rel="noopener noreferrer" target="_blank">AAOS 应用概览</a>，后装盒子的独立 Android 环境可由 <a href="https://www.carlinkit.com/ibox" rel="noopener noreferrer" target="_blank">CarlinKit Tbox basic</a> 的规格及连接说明确认。表中对产品路径的含义为分析判断。</p>
+<p>下图是执行位置与接入权的分析示意。箭头表示交互或受授权的数据通道，不表示获得车辆运动控制能力。</p>
+<p>车内执行路径示意：手机应用经兼容主机投射。车内本地应用调用本地模型与工具，车辆接口按授权连接。该关系不表示取得车辆运动控制能力。</p>
+<p>平台方决定应用类别和框架，车厂决定原车系统、车辆接口及部分权限，后装厂商决定自身设备的部署条件，应用开发者在获得的范围内实现功能。几层角色可以合作，但其授权不能互相替代。</p>
+<h3>（二）开放能力与接入条件</h3>
+<p><strong>CarPlay 已开放第三方语音对话类别。</strong> Apple 2026年10月13日版指南将 voice-based conversational apps 的最低系统列为 iOS 26.4。应用须申请相应 entitlement，经 Apple 审核并配置签名，不能把“苹果支持此类别”当作具体应用已经获准。启动后的主要交互应为语音，仅在语音功能实际使用时保持音频会话，查询回答不应展示文本或图片。指南录音部分明确允许导航及语音对话应用结合 Voice Control 模板采集语音。<a href="https://developer.apple.com/download/files/CarPlay-Developer-Guide.pdf" rel="noopener noreferrer" target="_blank">Apple CarPlay 开发指南</a>，印刷页8、13—15、27、30。</p>
+<p>Apple 对授权申请、类别审核和 provisioning profile 的公开流程另见 <a href="https://developer.apple.com/documentation/carplay/requesting-carplay-entitlements" rel="noopener noreferrer" target="_blank">CarPlay 授权申请说明</a>。该网页的类别表与最新 PDF 覆盖范围不一致，不能因旧表没有语音类别就判定不支持。</p>
+<p><strong>麦克风、唤醒和后台须分别看待。</strong> Apple WWDC26 说明 iOS 27 将 Voice Control 模板扩展到所有应用类别，并给出语音会话的音频配置和通过 URL 发起导航、电话的机制。但模板可用性不能自动扩大录音许可，指南录音段仍只明确前述两类。当前材料也未证明第三方可替换 Siri、注册系统级常驻唤醒词，或在无主动语音交互时持续占用麦克风。把它做成始终监听的智能音箱，需要另行取得明确依据。<a href="https://developer.apple.com/videos/play/wwdc2026/212/" rel="noopener noreferrer" target="_blank">Apple WWDC26 CarPlay 更新</a>，语音模板与音频段。</p>
+<p>CarPlay 应用可处理自身业务并按支持的机制交给其他应用执行任务，模型本地或联网实现属于应用架构问题。公开 CarPlay 应用文档没有提供把任意 AI 运行时安装到接收主机的通用部署接口。车载本地计算若通过独立配件参与，应单独设计配件连接与数据路径。车辆功能集成则另属车厂合作范围：Apple 将车控应用列为 automaker apps，CarPlay Ultra 也依赖车辆内置系统，不能由语音应用授权推导通用车控权限。<a href="https://developer.apple.com/carplay/" rel="noopener noreferrer" target="_blank">Apple CarPlay 开发者入口</a>，车厂集成及附加能力段。</p>
+<p><strong>硬件接收端采用另一条授权路径。</strong> MFi 明确包含 CarPlay 技术，使用该技术开发硬件与开发 iOS 应用的职责不同。MFi 还区分开发者、制造商、ODM 与品牌方责任，技术许可及部分费用受保密协议约束。若产品仅使用标准蓝牙而不使用 MFi 技术，适用条件又不同。选择已有合作硬件时，要核实具体型号、授权责任和用途，不能凭“能连接 iPhone”判断。<a href="https://mfi.apple.com/en/faqs" rel="noopener noreferrer" target="_blank">Apple MFi 常见问题</a>，Program Overview、Who needs to join。</p>
+<p><strong>Android Auto 支持应用内录音，但受类别和音频焦点约束。</strong> Google 当前支持类别包括媒体、通信、导航、POI、IoT、天气等，未单列与 Apple 同名的通用语音对话类别。符合类别的应用可使用 <code>CarAudioRecord</code>，须请求录音权限，取得音频焦点，失去焦点时停止录音。Google 的交互示例是用户点击应用内麦克风，再把声音送给应用处理。由此可确认应用内语音入口，不能推导任意聊天应用都能上架或成为系统助手。<a href="https://developer.android.com/training/cars" rel="noopener noreferrer" target="_blank">Android for Cars 概览</a>、<a href="https://developer.android.com/training/cars/apps/library/car-microphone" rel="noopener noreferrer" target="_blank">车载麦克风 API</a>、<a href="https://developers.google.com/cars/design/create-apps/sample-flows/communicate-with-voice" rel="noopener noreferrer" target="_blank">Google 应用内语音流程</a>。</p>
+<p>Android Auto 也并非完全不能获得车辆信息。Car App API level 3 起的 <code>CarInfo</code> 提供部分车型、能源、速度和里程接口，须申请对应权限，数据可用性还依赖车厂与当前状态。部分数据对 Google Play 安装的 AAOS 应用存在额外限制。这些读取接口不构成通用写入能力。<a href="https://developer.android.com/training/cars/apps/library/car-hardware-api" rel="noopener noreferrer" target="_blank">Google Car Hardware APIs</a>。</p>
+<p><strong>AAOS 可做更深集成，关键是车厂及系统权限。</strong> VHAL 把车辆功能表示成可读、写或订阅的属性，由车厂实现。存在属性定义，不代表某辆车实现了它，或任意应用可调用它。<a href="https://source.android.com/docs/automotive/vhal" rel="noopener noreferrer" target="_blank">AOSP VHAL 概览</a>。常驻语音方面，AAOS 支持语音交互服务、DSP 热词检测和按钮入口，实际依赖 SoundTrigger HAL、硬件及系统集成。需要特权权限时，须由 OEM 预装并明确授权，用户点击同意不能授予该类权限。<a href="https://source.android.com/docs/automotive/voice/voice_interaction_guide/integration_flows" rel="noopener noreferrer" target="_blank">AOSP 语音助手集成流程</a>。</p>
+<p><strong>Gemini 已构成现有体验的比较对象。</strong> Google 官方列出 Android Auto 中的通话消息、导航、音乐及连续对话功能，支持语音、屏幕或方向盘按钮入口。Google built-in 路径还要求车内账号及助手设置，并受车辆软件、语言和地区条件限制。该帮助页未披露足以证明整套对话在车内离线推理的模型及执行路径，因此不能据此计入“车内本地模型”案例。<a href="https://support.google.com/gemini/answer/16735982?hl=en" rel="noopener noreferrer" target="_blank">Google Gemini 车内使用说明</a>。</p>
+<h3>（三）传统燃油车的升级路径</h3>
+<p>后装市场里的“盒子”至少包含两种不同角色。无线转接器改变有线互联的连接方式，独立 Android 盒子增加自身应用环境。CarlinKit 官方目录分别列出这两类产品以及给后装 Android 主机增加互联的设备，说明连接升级、接收能力与计算载体需要分别选型。<a href="https://www.carlinkit.com/products_list.html" rel="noopener noreferrer" target="_blank">CarlinKit 产品及服务目录</a>。</p>
+<p>Tbox basic 的厂商说明要求原车具有有线 CarPlay 或有线 Android Auto，设备自身运行 Android。由这一具体例子可见，现成盒子可能复用原车屏幕，却有既定接入前提，不能泛化为覆盖所有没有互联能力的老车。其 Android 规格能证明有本地计算载体，不能证明已有本地大模型、离线语音或开放 NPU 接口。<a href="https://www.carlinkit.com/ibox" rel="noopener noreferrer" target="_blank">CarlinKit Tbox basic</a>。</p>
+<p>据上述证据，可把接入选择按原车条件组织：已有互联主机时，比较应用入口与计算盒搭载；没有互联主机时，考察增加独立接收屏、替换车机或采用只接音频的独立设备。后两者的型号、安装、音频协作及模型部署需进入后续产品与工程评估。普通 Android 后装设备也不能仅凭 Android 名称认定为 AAOS 或 Google built-in，须核查具体系统和授权。</p>
+<p><strong>产品路径上的优先核验项</strong>是：目标设备能否安装和更新自有模型，能否稳定取得音频输入输出，应用是否可按预期运行，所需车辆信息是否有合法稳定接口，以及谁负责平台认证与长期维护。本章已经确认公共平台入口和若干具体限制，仍未确认目标应用授权、候选盒子的系统权限、任一车型兼容性与离线实车表现。</p>
+<h2>二、车载端侧 AI 技术</h2>
+<p><strong>车内本地推理已有厂商披露的原厂量产集成和嵌入式技术基础，后装产品仍需完成算力、音频、系统权限与服务的整合。</strong> ECARX 对 Galaxy M9 的量产公告明确列出 SA8295P 上的本地 AI 与离线语音，但未披露全部任务的离线边界。开源模型能够提供本地识别、理解和播报组件，也不代表组合后已达到车内稳定可用。<a href="https://ir.ecarxgroup.com/news-releases/news-release-details/ecarx-powers-global-launch-geely-galaxy-m9-delivering-next" rel="noopener noreferrer" target="_blank">ECARX Galaxy M9 原厂集成</a></p>
+<h3>（一）功能与系统架构</h3>
+<p>车上 AI 的最小完整链路是：采集语音，判断说话起止，识别内容，解释意图，读取本地知识或调用已授权工具，再合成并播放回复。NXP 的 eIQ GenAI Flow 已把唤醒、语音活动检测、识别、检索、语言生成和播报组织为嵌入式流水线，可作为机制参照。车辆接口、账号和服务接入仍由产品另外实现。<a href="https://github.com/nxp-appcodehub/dm-eiq-genai-flow-demonstrator/blob/main/eiq_genai_flow/README.md" rel="noopener noreferrer" target="_blank">NXP GenAI Flow 开发说明</a></p>
+<p>以下为分析示意。实线是数据与请求路径，虚线是可选外部依赖。工具权限校验是本研究提出的产品边界，不表示 NXP 示例已经提供同样的车载执行模块。</p>
+<p>车内执行路径示意：手机应用经兼容主机投射。车内本地应用调用本地模型与工具，车辆接口按授权连接。该关系不表示取得车辆运动控制能力。</p>
+<p>应按任务声明离线范围。手册检索、离线知识问答和已经接通的本地媒体控制可以设计成本地任务。实时路况、在线音乐、消息发送和实时网络信息则要检查各自数据与服务依赖。即使推理在车内，任务仍可能依赖手机网络、外部账号或地图包。</p>
+<p>对于“调低温度并播放某首歌”这类组合任务，应把模型产出的意图与实际执行分开：产品只暴露能够授权且可验证结果的工具，分别检查参数、当前状态和失败处理。查询、媒体操作、舒适功能及车辆运动控制使用不同能力边界。模型能生成一个控制请求，不证明有对应车辆接口。</p>
+<h3>（二）模型、芯片与推理部署</h3>
+<h4>1. 可组合的本地软件基础</h4>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th><strong>环节</strong></th>
+<th><strong>已核实的候选与能力</strong></th>
+<th><strong>对车载产品的限制</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>语音识别</td>
+<td>Qwen3-ASR-0.6B 官方模型卡列出流式与离线方式、波兰语等语言，权重标记 Apache 2.0</td>
+<td>通用识别能力和公开批处理吞吐不证明车内单用户延迟、地名准确率或噪声鲁棒性。<a href="https://huggingface.co/Qwen/Qwen3-ASR-0.6B" rel="noopener noreferrer" target="_blank">Qwen3-ASR 模型卡</a></td>
+</tr>
+<tr>
+<td>文本理解与工具调用</td>
+<td>Qwen3-1.7B 提供思考与非思考模式、工具调用接入，权重标记 Apache 2.0</td>
+<td>面向即时交互需控制输出长度和模式，并实测具体工具与语言。<a href="https://huggingface.co/Qwen/Qwen3-1.7B" rel="noopener noreferrer" target="_blank">Qwen3-1.7B 模型卡</a></td>
+</tr>
+<tr>
+<td>视觉扩展</td>
+<td>Qwen3.5-0.8B 提供图文输入，模型卡注明语言模型部分为 0.8B 参数，并包含视觉编码器</td>
+<td>名称中的 0.8B 不应直接当全模型内存。增加视觉须另计预处理、编码器与图像上下文。<a href="https://huggingface.co/Qwen/Qwen3.5-0.8B" rel="noopener noreferrer" target="_blank">Qwen3.5-0.8B 模型卡</a></td>
+</tr>
+<tr>
+<td>语音播报</td>
+<td>Piper 当前引擎提供本地 TTS，语音列表包含 pl_PL，Gosia 卡列出波兰语音及数据集 CC0</td>
+<td>当前引擎为 GPL-3.0，音色另有条款。商业分发须分开核查引擎、音色、训练来源与依赖。<a href="https://github.com/OHF-Voice/piper1-gpl" rel="noopener noreferrer" target="_blank">Piper 引擎</a>、<a href="https://github.com/OHF-Voice/piper1-gpl/blob/main/docs/VOICES.md" rel="noopener noreferrer" target="_blank">Piper 语音说明</a>、<a href="https://huggingface.co/rhasspy/piper-voices/blob/main/pl/pl_PL/gosia/medium/MODEL_CARD" rel="noopener noreferrer" target="_blank">Gosia 模型卡</a></td>
+</tr>
+<tr>
+<td>本地推理运行时</td>
+<td>llama.cpp 提供 C/C++ 推理、量化、CPU/GPU 等后端，当前列表包含 Snapdragon Hexagon 和 Adreno 路线</td>
+<td>具体模型、算子、驱动、固件及硬件必须组合核验，后端名称不构成目标汽车设备的性能保证。<a href="https://github.com/ggml-org/llama.cpp" rel="noopener noreferrer" target="_blank">llama.cpp 说明</a></td>
+</tr>
+</tbody>
+</table></div>
+<p>这些是可评估组件，尚未形成 DreamSoul 的车载选型。Piper 语音文档还保留个人使用与研究用途的说明，不能把仓库顶层或旧教程中的宽松许可概括为整套商用交付条件已解决。</p>
+<h4>2. 内存和系统代价</h4>
+<p>对全部按同一位宽存储的稠密权重，理想权重字节数可用以下估算。它是存储关系，不是设备最低内存保证：</p>
+<p>$$M_{\mathrm{weights}}\approx \frac{P b}{8},\qquad M_{\mathrm{runtime}}=M_{\mathrm{weights}}+M_{\mathrm{cache}}+M_{\mathrm{activations}}+M_{\mathrm{buffers}}+M_{\mathrm{other}}$$</p>
+<p>$P$ 为参数个数，$b$ 为每参数有效位数，$M$ 的单位均为字节。后四项分别包括上下文缓存、激活、计算缓冲，以及识别、播报、应用和系统的其他占用。量化元数据、混合精度和具体实现还会增加差异。</p>
+<p>例如，1.7B 参数按理想 4-bit 权重存储约为 0.85 GB，3.8B 参数约为 1.90 GB，GB 使用十进制。它们都不能推出一台 1 GB 或 2 GB 设备能运行完整语音助手。支持低位量化也不代表所有芯片上的该格式都更快，应核对目标后端与模型组合。</p>
+<p>算力接入存在真实平台条件。Qualcomm 官方本地 LLM 教程明确要求汽车设备使用 Auto QAIRT SDK，并通过其汽车业务联系获取，预编译资产还须匹配设备与 SDK 版本。手机 Snapdragon 可运行的模型包不能直接推定可部署到任意汽车 NPU。<a href="https://github.com/qualcomm/ai-hub-apps/blob/release/tutorials/llm_on_genie/README.md" rel="noopener noreferrer" target="_blank">Qualcomm Genie 设备部署</a></p>
+<p>NXP i.MX95 提供 Linux/Android、外部 LPDDR 内存、音频及 CAN FD 等接口，说明嵌入式处理器可以构成车内设备基础。但具有这些芯片接口，不代表已取得目标车辆的业务权限。<a href="https://www.nxp.com/products/i.MX95" rel="noopener noreferrer" target="_blank">NXP i.MX95 产品规格</a></p>
+<h4>3. 公开端到端基准揭示的约束</h4>
+<p>NXP 当前官方基准给出了完整对话链路，而非只报芯片 TOPS。其 i.MX95 19×19 EVK 配置为 whisper-small.en、RAG、Danube-500M-q8（NPU）与 TTS，平均首音频时间 3.27 秒、平均内存 4794 MB，LLM 首 token 0.28 秒、生成 11.55 token/秒。这组数字说明首 token 与真正听到回复之间存在明显差距。<a href="https://www.nxp.com/design/design-center/software/embedded-software/eiq-genai-flow-conversational-ai-software-pipeline-on-edge-devices:GEN-AI-FLOW" rel="noopener noreferrer" target="_blank">NXP GenAI Flow 基准</a></p>
+<p>该结果属于厂商开发板测试。页面的识别错误率只针对 20 个医疗问题，不能推广成车内识别质量。对应示例当前仅支持英语，并有一小时会话限制，汽车产品还要解决语言、持续运行和整机集成。<a href="https://www.nxp.com/design/design-center/software/embedded-software/eiq-genai-flow-conversational-ai-software-pipeline-on-edge-devices:GEN-AI-FLOW" rel="noopener noreferrer" target="_blank">NXP GenAI Flow 基准</a>、<a href="https://github.com/nxp-appcodehub/dm-eiq-genai-flow-demonstrator/blob/main/eiq_genai_flow/README.md" rel="noopener noreferrer" target="_blank">NXP GenAI Flow 开发说明</a></p>
+<h3>（三）车内语音与多模态体验</h3>
+<p><strong>车内体验首先取决于音频和任务链路是否可靠。</strong> TI 的汽车音频资料把麦克风布置、波束形成及音频处理作为免提通话与语音命令的组成部分，不能只靠更大的语言模型补偿输入失真。<a href="https://www.ti.com/document-viewer/lit/html/SSZT278/GUID-792AFBFE-665D-4C33-80B3-4D7105C3820B" rel="noopener noreferrer" target="_blank">TI 汽车音频架构</a></p>
+<p>对后装设备，建议分别测静车、城市道路、高速、开窗、播放音乐、导航插播、通话切换与多人说话。记录漏唤醒、误唤醒、打断后的残留播报及误执行。波兰语还应覆盖地址、地名、联系人、数字与英波混用，分别检验识别、意图理解和播报，避免把“模型列出波兰语”当作当地体验结论。</p>
+<p>评价延迟应从用户结束说话到听到有用回应。对于完全串行的近似链路，可表达为：</p>
+<p>$$T_{\mathrm{first\ audio}}\approx T_{\mathrm{endpoint}}+T_{\mathrm{ASR\ tail}}+T_{\mathrm{retrieve}}+T_{\mathrm{model\ first\ chunk}}+T_{\mathrm{tool}}+T_{\mathrm{TTS\ first\ chunk}}$$</p>
+<p>各 $T$ 的单位为秒，分别对应语音结束判断、识别尾部处理、检索、模型首段、必要工具及合成首段。流式和并行实现应测关键路径，不能把重叠环节重复相加。语音结束判断过长会让系统显得迟钝，输出过长则延长播报并占用音频通道。评价应同时报告中位数、较慢请求、任务完成时间及失败原因。</p>
+<p>多模态适合按任务引入，例如读取用户允许的静态画面或解释仪表信息。摄像头输入同时增加算力、存储、隐私和固定安装负担。通用视觉模型的场景描述不直接构成道路感知或驾驶控制能力，是否加入须由具体任务收益决定。</p>
+<h3>（四）技术成熟度与验证指标</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th><strong>方案证据</strong></th>
+<th><strong>可以确认到的状态</strong></th>
+<th><strong>不能据此推出的结论</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cerence CaLLM Edge</td>
+<td>2024年11月公告披露 Phi-3 系列微调、3.8B 参数、4k 上下文、4-bit，提供嵌入式独立或混合部署，面向车企客户</td>
+<td>并非通用后装下载包，也未给出本项目设备的车内任务基准。<a href="https://investors.cerence.com/news-events/press-releases/detail/114/cerence-introduces-pioneering-embedded-small-language-model-purpose-built-for-automotive" rel="noopener noreferrer" target="_blank">Cerence CaLLM Edge</a></td>
+</tr>
+<tr>
+<td>ECARX Galaxy M9</td>
+<td>2025年9月原厂集成公告说明本地 AI、离线语音及原厂量产集成</td>
+<td>没有披露全部问答、工具及车控任务的本地边界、模型规模或离线成功率。<a href="https://ir.ecarxgroup.com/news-releases/news-release-details/ecarx-powers-global-launch-geely-galaxy-m9-delivering-next" rel="noopener noreferrer" target="_blank">ECARX Galaxy M9 原厂集成</a></td>
+</tr>
+<tr>
+<td>SoundHound OASYS Edge</td>
+<td>2026年9月宣布车内本地语言模型代理架构，公告安排2026年末部署并提供演示</td>
+<td>公告与演示不能当作已完成量产、已装车数量或低价后装性能证据。<a href="https://soundhound.gcs-web.com/news-releases/news-release-details/soundhound-ai-introduces-oasys-edge-bringing-fully-embedded" rel="noopener noreferrer" target="_blank">SoundHound OASYS Edge</a></td>
+</tr>
+<tr>
+<td>Intel 与 ModelBest</td>
+<td>2025年上海车展展示车内本地 GUI 智能体，使用汽车 SDV SoC 和 Arc 图形能力</td>
+<td>展示不证明对普通燃油车可直接安装，真实车载界面权限仍须逐项目接入。<a href="https://www.intel.com/content/www/us/en/newsroom/news/corporate/postcard-from-auto-shanghai-intel-modelbest-deliver-personalized-llm.html" rel="noopener noreferrer" target="_blank">Intel ModelBest 车内演示</a></td>
+</tr>
+</tbody>
+</table></div>
+<p>由这些证据可推断，技术机会已从“能否把模型放进车内”转向“能否在可接受硬件与服务成本下，稳定完成目标车主的任务”。传统燃油车的后装产品可以从独立语音与信息服务开始评估，车辆功能以取得的接口权限扩展，不把原厂深度集成能力当作后装默认能力。</p>
+<p>后续最小验证应固定同一组任务，比较车内本地方案、手机已有助手和在线方案，保留断网、噪声、热稳态及冷启动条件。至少记录任务成功率、误执行、离线覆盖、首音频与完成延迟、峰值及稳态内存、整机输入功耗、温度和长时失败。单独报告用户数据是否出车、实时服务依赖及更新许可成本。当前未对样机、实车或模型执行测试。</p>
+<h2>三、产品场景与落地可行性</h2>
+<h3>（一）先确定车上本地 AI 增加的任务价值</h3>
+<p><strong>更值得验证的产品命题，是在存量车辆中提供稳定、低操作负担、部分失网仍可完成的语音任务。</strong> 仅增加问答入口，很容易与手机及原有车载助手重叠。是否值得加设备，应看用户实际完成了什么，以及每次启动、配对、安装和维护增加多少负担。这是由平台与技术边界得到的产品判断，尚无本项目用户实验支持。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th><strong>候选任务</strong></th>
+<th><strong>本地设备可承接的部分</strong></th>
+<th><strong>仍需取得的依赖或验证</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>媒体与常用指令</td>
+<td>本地识别、意图分类、选择已有媒体或触发受支持操作</td>
+<td>音乐服务授权、目标应用接口、原车音频及通话并发</td>
+</tr>
+<tr>
+<td>行程与地点</td>
+<td>收藏地点理解、离线资料问答、发起导航意图</td>
+<td>地图授权、实时路况、路线执行接口、地名识别和系统权限</td>
+</tr>
+<tr>
+<td>车辆使用与维护</td>
+<td>已授权车型手册检索、保养提醒、解释已读取信号</td>
+<td>手册与车型一致性、数据接口、结果准确性。涉及故障时应引导检查，避免用生成内容代替诊断</td>
+</tr>
+<tr>
+<td>个性化与陪伴</td>
+<td>本地偏好、记忆和对话，失网时保持部分体验</td>
+<td>多人共用、隐私删除、持续使用意愿及行车打扰</td>
+</tr>
+<tr>
+<td>车队工作任务</td>
+<td>结构化语音记录、车辆交接及任务信息整理</td>
+<td>企业系统接口、司机授权、管理者真实收益和合同范围</td>
+</tr>
+</tbody>
+</table></div>
+<p>这些任务可以共用语音链路，却具有不同的数据权限与付费理由。首期应选少量可验证的任务组合，分别比较手机已有方案、普通后装屏和车上本地 AI，记录任务成功与失败原因，而不以聊天轮数作为唯一收益。</p>
+<h3>（二）产品形态与车型适配</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th><strong>形态</strong></th>
+<th><strong>可能的进入优势</strong></th>
+<th><strong>决定成败的条件</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>独立音箱或语音模块</td>
+<td>可自带麦克风、按键和本地算力，减少对原车应用分发的依赖</td>
+<td>原车音响连接、配对和音频抢占，通话消息权限，供电与摆放；音箱本身不增加车辆控制接口</td>
+</tr>
+<tr>
+<td>后装 Android 盒子</td>
+<td>复用已有主机的显示与音频链路，软件可在固定型号上适配</td>
+<td>原车前置兼容条件、麦克风路径、内存和散热、固件稳定性。应按具体 SKU 核查</td>
+</tr>
+<tr>
+<td>独立后装屏或替换车机</td>
+<td>可面向缺少现有投射入口的车辆，整合显示与交互</td>
+<td>安装固定、线缆、车型面板、拾音、启动及售后成本</td>
+</tr>
+<tr>
+<td>向后装厂商提供软件模块</td>
+<td>复用已有硬件、安装网络和客户，不必同时承担所有整机环节</td>
+<td>获得系统与音频接口、固件支持和更新控制，约定适配费、按台授权及服务职责</td>
+</tr>
+</tbody>
+</table></div>
+<p>表中是分析者的方案分类，最终选择需结合第四章竞品及第五章经济性修正。<strong>当前更值得先比较成熟后装硬件搭载本地语音模块，与独立音箱两种路径。</strong> 前者有机会减少重复硬件建设，后者便于控制拾音与交互，但两者都未取得本项目的实际成本、稳定性和需求证据。</p>
+<h3>（三）车载交付与数据边界</h3>
+<p>工程验证需覆盖熄火待机、发动机启动和启停、电压波动、长期热负载、日晒、固定方式、手机断连、导航与通话抢占、升级中断及恢复。模型在开发板运行通过，只能证明相应运行条件下的算法链路。整机是否长期可靠，仍取决于供电、存储、外设、固件和安装条件。</p>
+<p>车辆信息与车辆控制应分开适配。读取接口、字段、更新频率和车型授权逐项确定，应用可获得部分数据不代表可写入总线。开放式生成模型的工具执行应通过白名单接口、参数检查、权限判断和明确失败反馈。行车安全相关的控制需求另立工程边界。</p>
+<p>在数据方面，EDPB《联网车辆指南》2.3及2.4节强调数据最小化，并建议可行时在车内处理数据，同时提示本地数据泄漏和后续处理风险。因此，本地推理可减少数据传输，却仍需核查遥测、日志、备份、模型服务和账号实际传输什么，以及处理者承担的义务。<a href="https://www.edpb.europa.eu/system/files/documents/2021-03/edpb_guidelines_202001_connected_vehicles_v2.0_adopted_en.pdf" rel="noopener noreferrer" target="_blank">EDPB 联网车辆指南</a></p>
+<p>面向欧盟的带无线通信设备，需核对 RED 及适用的安全、电磁兼容和频谱要求。欧盟委员会当前说明还区分已自2025年8月适用的部分 RED 网络安全要求，与2027年12月11日 CRA 主要义务及相关废止安排。应按产品角色、功能与投放日期核查，不能把已公布的过渡安排理解为当前已取消义务。<a href="https://single-market-economy.ec.europa.eu/sectors/electrical-and-electronic-engineering-industries-eei/radio-equipment-directive-red_en" rel="noopener noreferrer" target="_blank">欧盟委员会 RED 说明</a></p>
+<p>上述是交付前需要解决的适用性问题，尚未对某个具体 SKU、经营主体或安装方式完成合规判定。</p>
+<h2>四、竞品与市场格局</h2>
+<p><strong>深化核查补充</strong>：具体型号、功能、价格、离线边界与技术方案现已按23个样本整理，见 <a href="research.html">竞品与切入分析</a> 和 <a href="data/products.json">产品样本</a>。该补充将后装软件、具体原厂配置、企业方案与开发演示分开，以下仍保留连接与娱乐类基线比较。</p>
+<p>现有竞争主要分布在<strong>连接升级、独立导航与媒体、联网语音助手、原厂深度集成</strong>四类需求。对存量燃油车而言，首先要判断车辆是否已经具有可用的投射协议和屏幕，再比较新增算力与交互的价值。产品名称中的“AI Box”、Android 系统和运行聊天应用，都不能单独证明大模型在盒内推理。以下产品并非按销量排序，也不构成采购推荐。</p>
+<h3>（一）产品分类与代表厂商</h3>
+<h4>1. 后装产品比较</h4>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th><strong>产品与发布主体</strong></th>
+<th><strong>主要任务、规格与安装前提</strong></th>
+<th><strong>AI 位置与离线边界</strong></th>
+<th><strong>地区、价格与状态</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OTTOCAST OttoAibox P3</td>
+<td>保留原车屏，增加 Android 应用、无线手机互联及 HDMI 输出。Android 12，区域版本分北美和其他地区。必须已有原厂有线 CarPlay，Android Auto-only、无线 CarPlay-only 车辆不适用</td>
+<td>Android 在盒内运行。所读页面未公布本地语言模型、推理引擎或离线对话范围，CloudSIM 提供联网而非离线 AI</td>
+<td>国际站默认北美选项 USD 189，页面显示含税及加入购物车。CloudSIM 流量另购，套餐依地区与选项。依据：<a href="https://www.ottocast.com/products/ottoaibox-p3-carplay-ai-box" rel="noopener noreferrer" target="_blank">OTTOCAST P3</a></td>
+</tr>
+<tr>
+<td>CarlinKit CPC200-Tbox UHD，SDM660 版</td>
+<td>Android 13，SDM660，8 GB＋128 GB 选项，4G、Mini-HDMI。需要原厂有线 CarPlay 或有线 Android Auto，不能凭普通 USB 或蓝牙接入</td>
+<td>本地 Android 应用平台。公开规格未确认随设备交付本地大模型，是否离线取决于具体应用和预下载资源</td>
+<td>厂商链接商店的 EAU 8＋128 GB／SDM660 条目显示 USD 219，页面多处价格、库存字段不一致，实际报价待核。其他芯片版不可混用。依据：<a href="https://www.carlinkit.com/uhd660" rel="noopener noreferrer" target="_blank">CarlinKit UHD 规格</a>、<a href="https://carlinkitmall.com/collections/wireless-carplay-adapter/products/carlinkit-tbox-uhd-android-13-carplay-ai-box-with-hdmi-output" rel="noopener noreferrer" target="_blank">厂商链接商店</a></td>
+</tr>
+<tr>
+<td>CARPURIDE W903，SKU 903 基础版</td>
+<td>为缺少互联屏幕的车辆增加 9.3 英寸屏和行车记录。5 V／2 A，声音可经内置扬声器、AUX、FM 或指定蓝牙路径输出，无需原车已装 CarPlay</td>
+<td>Siri／Android 语音随手机连接，未披露屏内语言模型。TF 卡用于摄像记录，不能据此宣称可离线播放任意媒体或完成对话</td>
+<td>国际站 USD 219.99，显示加入购物车，结算币种 USD。倒车摄像头为另一组合，手机和内容服务另计。依据：<a href="https://carpuride.com/products/carpuride-w903-portable-smart-multimedia-dashboard-console-with-front-camera" rel="noopener noreferrer" target="_blank">CARPURIDE W903</a></td>
+</tr>
+<tr>
+<td>ATOTO S8 Gen4，S84G2D7PB</td>
+<td>替换车机，7 英寸双 DIN，MT8768、4 GB＋64 GB、Android 13、无线 CarPlay／Android Auto。须核对面板、线束和车辆适配</td>
+<td>DriveChat 与 SSHub 配套。Gen4 手册明确，处理命令与 AI 回复需要车机联网。本地文件、离线地图与联网 AI 是不同能力</td>
+<td>所读欧洲页面区域显示 Austria，EUR 365.90，显示缺货／补货后发货。高级功能或模型可能在 SSHub 内收费，公开固定价未取得。依据：<a href="https://www.atotodirect.com/en-us/products/atoto-s84g2d7pb-7inch-double-din-car-stereo-eu" rel="noopener noreferrer" target="_blank">ATOTO S84G2D7PB</a>、<a href="https://www.atotodirect.com/en-gb/pages/manual-460-en" rel="noopener noreferrer" target="_blank">S8 Gen4 手册第7章</a></td>
+</tr>
+<tr>
+<td>Garmin DriveSmart 76，010-02470-00</td>
+<td>独立 7 英寸 GPS 导航器、北美地图，安装和供电独立于车机协议。OK Garmin 导航与 Alexa 内容服务分开</td>
+<td>手册说明唤醒后请求音频发到 Garmin Drive 或 Alexa 应用处理。独立导航与本地地图不证明语音理解全在导航器内，更无本地通用大模型依据</td>
+<td>美国 West Marine 展示 USD 299.99，同时显示缺货，非 Garmin 直营现价。Alexa 与实时服务需兼容手机和账号。依据：<a href="https://www8.garmin.com/manuals/webhelp/GUID-6E5DFD2E-EEE4-4EF3-89BC-AACD1B4936C7/EN-US/DriveSmart_66-76-86_with_Alexa_OM_EN-US.pdf" rel="noopener noreferrer" target="_blank">Garmin 手册，正文第5、12、53页</a>、<a href="https://www.westmarine.com/garmin-garmin-drivesmart-76-20676136.html" rel="noopener noreferrer" target="_blank">West Marine 对应 SKU</a></td>
+</tr>
+<tr>
+<td>Amazon Echo Auto 第2代</td>
+<td>五麦克风、实体静音和固定配件，借手机 Alexa 应用及原车音响工作，适配时需区分蓝牙音乐、仅蓝牙通话和 AUX</td>
+<td>官方资料证明手机应用依赖，未提供独立离线大模型能力依据。麦克风和车内安装优势不能等同于车内完成推理</td>
+<td>2022年美国发布价 USD 54.99，仅作历史价格。当前官方稳定销售价未核实。支持与固件页仍有第2代条目，不能写成已全面停服。依据：<a href="https://press.aboutamazon.com/2022/9/amazon-introduces-four-new-echo-devices-plus-upgrades-to-echo-studio-audio" rel="noopener noreferrer" target="_blank">Amazon 发布公告</a>、<a href="https://digprjsurvey.amazon.co.uk/csad/help/node/GGQNAZAQA5KAMVKH" rel="noopener noreferrer" target="_blank">Echo Auto 支持</a></td>
+</tr>
+<tr>
+<td>OBDLink MX+，OBD Solutions LLC</td>
+<td>OBD-II 蓝牙诊断配件，读取故障码、车辆数据并由手机／电脑应用显示。支持 iOS、Android、Windows，具体增强信号按车型核对</td>
+<td>本地车辆通信和诊断不依赖通用大模型。若叠加 AI 解释，推理位置和数据权利须另外说明。诊断能力不能推出任意车辆控制能力</td>
+<td>美国官网 USD 139.95，显示加入购物车，含配套应用与固件更新。第三方应用价格另核。依据：<a href="https://www.obdlink.com/products/obdlink-mxp/" rel="noopener noreferrer" target="_blank">OBDLink MX+</a></td>
+</tr>
+</tbody>
+</table></div>
+<p>表中“显示加入购物车”只描述页面状态，不证明仓库库存、实际交付或区域长期供货。所列主体以品牌及官方发布方识别，尚未逐一核验后装品牌的各地区合同销售主体。不同地区原币价保留原值，不做缺少税费、安装和服务口径的统一价排名。</p>
+<h4>2. 原厂助手与方案商</h4>
+<p><strong>真正的车内本地 AI 已有原厂量产陈述。</strong> ECARX 于2025年9月17日公布 Galaxy M9 采用 Pikes、Cloudpeak 和 Snapdragon SA8295P，并明确描述车内 AI 与离线端到端语音，Eva 则与车辆电子架构和多域功能集成。这支持“车内推理已有量产案例”的判断。公开公告仍未给出完整离线任务表、模型大小及同条件性能，也不能把所有多模态、联网知识与车辆控制能力一并标为离线。<a href="https://ir.ecarxgroup.com/news-releases/news-release-details/ecarx-powers-global-launch-geely-galaxy-m9-delivering-next" rel="noopener noreferrer" target="_blank">ECARX Galaxy M9</a></p>
+<p>Cerence xUI 面向 OEM 和 Tier 1，采用云端与嵌入式 AI 组合。其与吉利的2026年1月公告计划于当年4月起在 Galaxy M9 部署海外体验，公告本身不证明所有地区已交付，也不能把它与前述中国版2025年产品视为同一软件配置。它既是竞争方案，也可能是授权合作对象，成本需商务报价。<a href="https://www.cerence.com/platforms/cerence-xui" rel="noopener noreferrer" target="_blank">Cerence xUI</a>、<a href="https://investors.cerence.com/news-events/press-releases/detail/363/geely-auto-selects-cerence-xui-to-power-its-next-gen-llm-powered-in-car-ai-experience" rel="noopener noreferrer" target="_blank">Cerence 吉利合作公告</a></p>
+<p>BMW 当前说明称，Alexa+ 增强的 Intelligent Personal Assistant 从德国 iX3 开始引入，并向 OS 9／X 车型扩展。该例证明原厂入口、账号及车辆功能已被整合，但“集成到车辆软件”不足以证明 LLM 全在车内。Mercedes-Benz 与 Liquid AI 的2026年4月公告则明确嵌入式本地 LFM 路线，范围为北美第三、四代 MBUX，首次量产目标为2026年下半年。本次所读材料没有进一步证明该目标已经完成。<a href="https://www.bmwgroup.com/de/news/allgemein/2026/alexa.html" rel="noopener noreferrer" target="_blank">BMW Alexa+</a>、<a href="https://group.mercedes-benz.com/technology/innovation/collaboration/liquid-ai.html" rel="noopener noreferrer" target="_blank">Mercedes-Benz Liquid AI</a></p>
+<p>这些原厂方案没有可与后装硬件直接相比的统一助手零售价。车型、配置、联网服务和区域资格共同决定取得成本，应将其作为体验上限与整合能力参照。</p>
+<h3>（二）产品能力与价格的实际含义</h3>
+<p>对“导航、媒体、电话和消息”任务，独立后装屏已能为缺少屏幕的老车提供手机互联入口。对于已有有线 CarPlay 的车辆，AI 盒子的直接收益通常是 Android 应用、无线连接和娱乐扩展。两者覆盖的车辆集合不同，不能把盒子广告中的“升级传统车”理解为所有老车插入即可用。P3 的购买前置条件，以及 CarlinKit 对原厂有线协议的要求，是筛选目标车群的直接约束。<a href="https://www.ottocast.com/products/ottoaibox-p3-carplay-ai-box" rel="noopener noreferrer" target="_blank">OTTOCAST P3</a>、<a href="https://www.carlinkit.com/uhd660" rel="noopener noreferrer" target="_blank">CarlinKit UHD 规格</a></p>
+<p>对“自然对话与陪伴”任务，ATOTO 已把 ChatGPT 类交互与车机功能结合，但手册同时确认联网处理依赖。用户已经能够通过成熟硬件取得云端 AI，新产品若增加独立端侧算力，需要证明失网时任务完成、响应、隐私或持续成本的实际改善。仅能安装模型应用还缺少稳定拾音、音频抢占、启动、散热和升级证据。<a href="https://www.atotodirect.com/en-gb/pages/manual-460-en" rel="noopener noreferrer" target="_blank">S8 Gen4 手册第7章</a></p>
+<p>对“车辆维护与状态”任务，OBDLink 提供了明确的数据入口与兼容范围，适合验证故障信息解释等需求。它也说明购买理由可以建立在具体车辆服务上。可读数据、原始诊断结论与 AI 推测必须分别标示，第三方配件不应冒用原厂多域控制能力。<a href="https://www.obdlink.com/products/obdlink-mxp/" rel="noopener noreferrer" target="_blank">OBDLink MX+</a></p>
+<p><strong>现有样本仍缺完整的后装离线 AI 交付证据，商业机会待验证。</strong> 在本次抽取的后装 SKU 中，尚未取得随整机交付、完整离线通用对话、本地模型与长期支持的公开证据链。这不代表全行业没有该产品，也不证明消费者一定愿意为其付费。原厂离线语音和新模型集成正在提高对话、车控与持续更新的比较标准，后装产品还需靠适配旧车和低安装负担建立价值。</p>
+<h3>（三）用户反馈、失败案例与竞争风险</h3>
+<p>官方商店的用户反馈显示，CarlinKit UHD 的购买价值包括在保留原车屏的条件下运行地图和 Spotify，但同页也有应用不可安装、卡顿或 HDMI 连接问题的个案。部分反馈还提及特定流媒体将设备视为不受信任。这些是兼容、启动和内容授权的验证线索，评论身份、软件版本和复现条件不完整，不能据此推算故障率、销量或留存。<a href="https://carlinkitmall.com/collections/wireless-carplay-adapter/products/carlinkit-tbox-uhd-android-13-carplay-ai-box-with-hdmi-output" rel="noopener noreferrer" target="_blank">CarlinKit 商店反馈</a></p>
+<p>Carpuride 的公开说明同样保留手机兼容限制，并将断连问题交给软件更新处理。即使购买理由只是“让老车拥有手机互联”，连接维护也是长期成本。其商品页摄像头像素及内置扬声器参数存在不同段落表述，采购或量产比较应回到确切 SKU 的说明书和供应确认，避免照抄营销参数。<a href="https://carpuride.com/products/carpuride-w903-portable-smart-multimedia-dashboard-console-with-front-camera" rel="noopener noreferrer" target="_blank">CARPURIDE W903</a></p>
+<p><strong>Echo Auto 适合作为持续性风险案例，尚不足以写成确认的全面停服失败。</strong> 2026年9月媒体报告其美国页面不可购买，但明确尚待 Amazon 说明。与此同时，Amazon 支持和固件列表仍包含第2代。停售、缺货、手机 Auto Mode 界面调整与云服务终止应分别核验，不能相互代替。<a href="https://www.androidauthority.com/amazon-echo-auto-2nd-gen-unavailable-3716806/" rel="noopener noreferrer" target="_blank">Echo Auto 销售状态报道</a>、<a href="https://digprjsurvey.amazon.co.uk/csad/help/node/GMB5FVUB6REAVTXY" rel="noopener noreferrer" target="_blank">Amazon 固件列表</a></p>
+<p>Spotify Car Thing 提供了更明确的历史参照：2022年官方发布价为 USD 89.99，依赖 Premium 和带移动数据的手机。<a href="https://newsroom.spotify.com/2022-02-22/car-thing-from-spotify-is-now-officially-available-in-the-u-s/" rel="noopener noreferrer" target="_blank">Spotify Car Thing 发布</a> Car Thing 于2024-12-09停用。<a href="https://techcrunch.com/2024/12/09/spotify-car-thing-units-are-officially-disabled/" rel="noopener noreferrer" target="_blank">Car Thing 停用报道</a> 本次原官方停用 FAQ 已无法取得正文，状态引用限于该报道。</p>
+<p>由这些案例可推断，应同时验证设备交互增量与服务持续性。设备能帮助用户完成任务，不足以保证销售、售后和长期支持能够覆盖成本。若以本地 AI 作为购买理由，应把失网可保留功能、支持期限、迁移或停服方案列为实际产品能力。对于销量、付费转化、闲置和留存，本轮样本缺少可比较的可靠披露，继续保留未知。</p>
+<h2>五、商业模式与投资价值</h2>
+<h3>（一）存量市场与可获得需求</h3>
+<p>ACEA 2026年1月报告的概览给出，2024年欧盟道路上约有2.56亿辆乘用车，其中可外接充电车辆占3.7%。这说明存量车辆基数大，但该分类不能直接换算为传统燃油车目标数量，更不能代表会购买 AI 改装的用户。<a href="https://www.acea.auto/publication/report-vehicles-on-european-roads-2026/" rel="noopener noreferrer" target="_blank">ACEA 欧洲道路车辆2026</a></p>
+<p>建议按以下分析模型估算年度销量，而非将汽车保有量乘一个无依据的渗透率：</p>
+<p>$$Q_{\mathrm{year}}=N_{\mathrm{eligible}}\,r_{\mathrm{reach}}\,r_{\mathrm{buy}}\,r_{\mathrm{fulfill}}$$</p>
+<p>其中，$N_{\mathrm{eligible}}$ 为目标地区内满足车型、接口和用户条件的独立车辆数，$r_{\mathrm{reach}}$ 为一年内被渠道有效触达的比例，$r_{\mathrm{buy}}$ 为触达后真实购买比例，$r_{\mathrm{fulfill}}$ 为购买后成功交付且未退货的比例。各比例均为前一步条件下的比例，不能假定相互独立。以上是研究者的测算结构，现阶段缺少实际参数。</p>
+<h3>（二）收入模式与成本</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th><strong>模式</strong></th>
+<th><strong>收入来源与客户</strong></th>
+<th><strong>需要验证的经济条件</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>硬件加基础软件</td>
+<td>车主支付一次性设备或安装套餐费用</td>
+<td>扣除渠道、安装、退货及全生命周期支持后是否仍有贡献</td>
+</tr>
+<tr>
+<td>本地功能买断加可选在线服务</td>
+<td>车主购买长期本地能力，另订阅有持续外部成本的服务</td>
+<td>本地功能停订后能否继续兑现，付费边界是否清楚</td>
+</tr>
+<tr>
+<td>后装厂商软件授权</td>
+<td>硬件商或渠道按设备或项目付款</td>
+<td>硬件适配、授权计量、固件更新及售后责任可否合同化</td>
+</tr>
+<tr>
+<td>企业或车队服务</td>
+<td>企业按设备、用户或服务支付</td>
+<td>能否证明节省工时、减少录入或提升服务，而不是仅增加聊天能力</td>
+</tr>
+</tbody>
+</table></div>
+<p>汽车语音已有可参考的商业结构。Cerence 截至2025年12月31日季度报告把收入分为许可、联网服务和专业服务，其中边缘软件常见按车机实例收费，移植和集成另有服务业务。它证明按台软件授权与集成服务有行业先例，不能据此推定新团队能获得相同客户或利润。<a href="https://www.sec.gov/Archives/edgar/data/1768267/000162828026005569/crnc-20251231.htm" rel="noopener noreferrer" target="_blank">Cerence 2026财年第一季度报告</a></p>
+<p>语音交易分成不宜预先作为收入支柱。SoundHound 2025年10-K在其三支柱模型中说明，报告所列期间，除音乐识别应用外，尚未从语音产品接入服务形成的线索和交易取得收入。该披露限定于其报告期间，不能延伸为2026年所有车载交易服务均未变现。<a href="https://www.sec.gov/Archives/edgar/data/1840856/000184085626000006/soun-20251231.htm" rel="noopener noreferrer" target="_blank">SoundHound 2025年度报告</a></p>
+<p>单位经济建议分开计算设备贡献与服务贡献：</p>
+<p>$$CM=P_{\mathrm{net}}-C_{\mathrm{device}}-C_{\mathrm{channel}}-C_{\mathrm{install}}-C_{\mathrm{logistics}}-C_{\mathrm{warranty}}-C_{\mathrm{support}}$$</p>
+<p>所有金额采用同币种、同单位。不含增值税且扣除折扣退款的净销售收入为 $P_{\mathrm{net}}$。其余依次为设备、渠道、安装、物流、质保和分摊至已售设备的支持变动成本。若渠道已经按净采购价结算，应避免再次扣除同一分成。服务的逐期净贡献另计，研发、认证、团队、库存与账期另进入现金模型。本地推理减少部分云调用成本，同时增加硬件与维护责任，成本是否下降需要完整比较。</p>
+<p>本轮未取得供应报价、渠道账期、退货和留存，因而不填写 BOM、毛利率或融资金额的伪精确数值。合理的投资节点应对应需求验证、固定设备稳定性、可复制终端交付与单位经济证据，再讨论规模化资金。</p>
+<h3>（三）渠道、壁垒与波兰案例</h3>
+<p>据用户说明，投资人的合作伙伴在波兰有一些渠道。这是一项待核实的进入资源。首先需区分合作伙伴拥有的是可引荐关系、门店网络、安装能力、采购承诺还是持续售后。随后核对客户车型与现有车机，确认设备是否符合渠道客群，不能以“有渠道”直接代替终端购买与激活。</p>
+<p>评估时分别记录进货、终端销售、安装、成功激活、再次使用、付费及退货。能证明渠道价值的是这些环节可重复运行及成本可控。波兰语、当地服务、售后与适用规则在选定客群后补充，无需为本轮主线扩展成独立国家市场研究。</p>
+<p>潜在壁垒在于车内噪声条件下的可靠交互、少配置的安装适配、可审计的本地数据流、合法工具接口、硬件固件协作与长期支持。这些属于待验证的资产。仅能运行通用模型或展示一段对话，尚不足以证明产品差异与持续经营优势。</p>
+<h2>六、智驾演进与进入策略</h2>
+<h3>（一）座舱 AI 与车辆运动控制的能力差距</h3>
+<p><strong>车载本地助手可以构成独立产品机会，通向智驾的连续性需要逐项证明。</strong> 座舱与智驾可能共用部分算力、软件更新与渠道经验，但道路感知、行为规划、执行控制、故障处置和验证责任需要单独建设。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th><strong>能力阶段</strong></th>
+<th><strong>前一步可能复用的资产</strong></th>
+<th><strong>主要新增条件</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>本地交互与信息服务</td>
+<td>语音、模型运行、偏好及后装硬件支持</td>
+<td>真实任务、音频路径、许可与持续交付</td>
+</tr>
+<tr>
+<td>车型相关车辆服务</td>
+<td>用户及安装网络、设备运行、部分任务接口</td>
+<td>合法稳定的数据、车型知识、诊断边界与售后协作</td>
+</tr>
+<tr>
+<td>感知与驾驶提示</td>
+<td>设备与部分运营能力，若有权限可复用部分数据</td>
+<td>传感器、提示准确性、分心风险及相应验证，不默认取得车辆运动控制权限</td>
+</tr>
+<tr>
+<td>涉及运动控制的驾驶辅助</td>
+<td>经验证的感知、部分设备及合法数据</td>
+<td>转向与纵向控制接口、实时系统、驾驶员监督、安全与失效处置验证</td>
+</tr>
+<tr>
+<td>更高程度自动驾驶</td>
+<td>仅限实际符合要求的感知、控制和安全资产</td>
+<td>运行条件定义、完整失效处置、系统验证、准入和责任安排</td>
+</tr>
+</tbody>
+</table></div>
+<p>表格表示能力差距，不能视为每一步都应进入或必然成功。语音交互记录与有授权、同步、场景覆盖和验证标注的道路数据，解决的问题不同。若首代设备主要收集对话，不应把装机量自动表述为自动驾驶数据优势。</p>
+<h3>（二）openpilot 提供的现实参照</h3>
+<p>openpilot 官方说明，它利用车辆既有转向、油门和制动接口，缺少相应接口便不能控制车辆。支持表还按车型、年款、配置及线束列条件，区域车辆需要另外核对。由此可见，“燃油车”本身不足以判断改装难度，现有电子架构与控制接口更直接决定进入条件。<a href="https://docs.comma.ai/CARS/" rel="noopener noreferrer" target="_blank">openpilot 支持车辆</a>、<a href="https://comma.ai/support/vehicle-compatibility" rel="noopener noreferrer" target="_blank">comma 车型兼容核查</a></p>
+<p>其 Safety 文档将 openpilot 定义为 ACC 与车道居中系统，要求驾驶员持续注意并准备接管，也描述了执行限幅和发布前测试。它可以作为后装驾驶辅助的参考，不能作为买一个音箱即可获得自动驾驶的证据。<a href="https://docs.comma.ai/concepts/safety/" rel="noopener noreferrer" target="_blank">openpilot 安全说明</a></p>
+<p>监管风险也已有具体原件。NHTSA 的 PE26007 启动文件记载于2026年9月21日开启初步评估，关注装有 comma 设备的车辆与同车道静止或缓行目标相撞的报告。该文件是调查启动记录，不是已完成的缺陷、因果或责任结论，本轮未核实后续处置。<a href="https://static.nhtsa.gov/odi/inv/2026/INOA-PE26007-17274.pdf" rel="noopener noreferrer" target="_blank">NHTSA PE26007 启动文件</a></p>
+<h3>（三）进入顺序与阶段判断</h3>
+<p>建议先判断车载本地助手是否在明确任务上成立，再决定经营分支。若可重复收益来自语音、内容和车型服务，可以继续作为独立业务，或向后装厂商授权。若确实取得车辆接口、产业伙伴及可持续的安全验证资源，再单独评估驾驶辅助项目。</p>
+<p>“先油车后新能源”应作为客户、接口和合作机会的选择，不能仅按动力类型排序。燃油、混动、纯电都可能拥有不同代际的车载电子与驾驶辅助能力。进入车企或 Tier 1 供应链还需要客户开发、合同、质量与交付体系，消费者安装网络可以提供线索，却不等于已经取得量产项目。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th><strong>下一步应判断的问题</strong></th>
+<th><strong>需要的最小证据</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>值不值得增加车上本地 AI</td>
+<td>同任务比较后的成功率、操作负担、离线收益及再次主动使用</td>
+</tr>
+<tr>
+<td>哪个形态可交付</td>
+<td>固定车型与设备上的完整音频链路、热和启动表现、安装售后工时</td>
+</tr>
+<tr>
+<td>能否经营</td>
+<td>实际净售价、供应条件、退货质保、渠道账期与服务支持成本</td>
+</tr>
+<tr>
+<td>能否进入驾驶相关功能</td>
+<td>提示类功能先验证感知、提示准确性与分心风险。运动控制类另需车辆接口与伙伴授权、感知控制团队、数据及安全验证资源</td>
+</tr>
+</tbody>
+</table></div>
+<p>本轮结论支持继续验证车载本地语音与任务模块，尚不支持把后装助手到自动驾驶描述为已经打通的增长路线。</p>
+<h2>七、参考资料</h2>
+<h3>（一）核心资料与阅读路线</h3>
+<p>先用平台资料确定执行位置与权限，再用技术资料比较完整链路，随后核对具体产品。完整元数据、实际阅读范围及局限集中在 <a href="references.html">来源索引</a>，重要查询、未采用材料及缺口见 <a href="index.html#sources">检索日志</a>。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th><strong>专题</strong></th>
+<th><strong>核心资料</strong></th>
+<th><strong>在本报告中的用途</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>平台与授权</td>
+<td><a href="https://developer.apple.com/download/files/CarPlay-Developer-Guide.pdf" rel="noopener noreferrer" target="_blank">Apple CarPlay 开发指南</a>、<a href="https://developer.android.com/training/cars" rel="noopener noreferrer" target="_blank">Android for Cars</a>、<a href="https://source.android.com/docs/automotive/vhal" rel="noopener noreferrer" target="_blank">AOSP VHAL</a></td>
+<td>区分投射与车内部署、语音资格、车辆信息和车控权限</td>
+</tr>
+<tr>
+<td>本地技术</td>
+<td><a href="https://huggingface.co/Qwen/Qwen3-ASR-0.6B" rel="noopener noreferrer" target="_blank">Qwen3-ASR 模型卡</a>、<a href="https://www.nxp.com/design/design-center/software/embedded-software/eiq-genai-flow-conversational-ai-software-pipeline-on-edge-devices:GEN-AI-FLOW" rel="noopener noreferrer" target="_blank">NXP GenAI Flow</a>、<a href="https://github.com/qualcomm/ai-hub-apps/blob/release/tutorials/llm_on_genie/README.md" rel="noopener noreferrer" target="_blank">Qualcomm 部署指南</a></td>
+<td>核查语言、完整链路资源与汽车 SDK 条件</td>
+</tr>
+<tr>
+<td>产品与成熟度</td>
+<td><a href="https://www.ottocast.com/products/ottoaibox-p3-carplay-ai-box" rel="noopener noreferrer" target="_blank">OTTOCAST P3</a>、<a href="https://www.atotodirect.com/en-gb/pages/manual-460-en" rel="noopener noreferrer" target="_blank">ATOTO 手册</a>、<a href="https://ir.ecarxgroup.com/news-releases/news-release-details/ecarx-powers-global-launch-geely-galaxy-m9-delivering-next" rel="noopener noreferrer" target="_blank">ECARX Galaxy M9</a></td>
+<td>区分兼容前提、联网依赖与厂商原厂量产陈述</td>
+</tr>
+<tr>
+<td>商业</td>
+<td><a href="https://www.acea.auto/publication/report-vehicles-on-european-roads-2026/" rel="noopener noreferrer" target="_blank">ACEA 2026</a>、<a href="https://www.sec.gov/Archives/edgar/data/1768267/000162828026005569/crnc-20251231.htm" rel="noopener noreferrer" target="_blank">Cerence 季度报告</a>、<a href="https://www.sec.gov/Archives/edgar/data/1840856/000184085626000006/soun-20251231.htm" rel="noopener noreferrer" target="_blank">SoundHound 年度报告</a></td>
+<td>存量背景、汽车软件收入结构与交易变现边界</td>
+</tr>
+<tr>
+<td>数据与设备</td>
+<td><a href="https://www.edpb.europa.eu/system/files/documents/2021-03/edpb_guidelines_202001_connected_vehicles_v2.0_adopted_en.pdf" rel="noopener noreferrer" target="_blank">EDPB 联网车辆指南</a>、<a href="https://single-market-economy.ec.europa.eu/sectors/electrical-and-electronic-engineering-industries-eei/radio-equipment-directive-red_en" rel="noopener noreferrer" target="_blank">欧盟委员会 RED</a></td>
+<td>数据最小化、车内处理与无线设备适用性</td>
+</tr>
+<tr>
+<td>驾驶辅助</td>
+<td><a href="https://docs.comma.ai/CARS/" rel="noopener noreferrer" target="_blank">openpilot 支持车辆</a>、<a href="https://docs.comma.ai/concepts/safety/" rel="noopener noreferrer" target="_blank">openpilot Safety</a>、<a href="https://static.nhtsa.gov/odi/inv/2026/INOA-PE26007-17274.pdf" rel="noopener noreferrer" target="_blank">NHTSA PE26007</a></td>
+<td>车辆接口、驾驶员责任与监管事件的证据边界</td>
+</tr>
+</tbody>
+</table></div>
+<h3>（三）局限与更新条件</h3>
+<p>本轮样本用于比较不同产品路线，不是全行业普查。后装设备的完整离线交付证据、目标车主的长期使用与付费、具体供应成本、波兰渠道能力和项目车辆权限，尚需进一步材料或实际验证。商城可下单、厂商公告、模型卡和源码支持分别保留原本能支持的范围。</p>
+<p>价格保留地区、型号、币种与页面状态。企业和监管事件保留报告期与事件日期，不以公告目标日期已过推定交付，不以调查启动推定因果或最终缺陷。模型、平台、许可和政策在实际选型与投放前需复核。</p>
+<p>图中箭头含义与系统边界已作文字说明，保留可编辑 Mermaid 源码。Markdown 结构、链接与公式源码已检查，图示尚未核对具体文档客户端的渲染显示。未上传、同步或发布。</p></main></body></html>
