@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="车载端侧 AI 投资研究：比较车内本地模型产品、离线边界、技术路径与市场进入机会。">
+  <meta name="theme-color" content="#0056ee">
+  <title>车载端侧 AI · DreamSoul 研究</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="topbar">
+  <a class="brand" href="#top"><span class="brand-symbol" aria-hidden="true"></span><b>DreamSoul</b><span>RESEARCH</span></a>
+  <div class="header-meta"><span>公开资料研究 · 2026.11.05</span><button class="text-button" id="print">打印研究页 ↗</button></div>
+</header>
+<section class="hero" id="top">
+  <div class="hero-copy">
+    <p class="eyebrow">IN-VEHICLE AI / INVESTMENT RESEARCH</p>
+    <h1>车载端侧 AI<br><em>产品、证据与进入机会</em></h1>
+    <p class="hero-intro">从“车里有 AI”到“AI 在车里运行”。核查具体产品的模型、算力与离线边界，判断存量汽车的智能化机会。</p>
+    <div class="hero-actions"><a class="button" href="#products">探索产品图鉴 <span>↓</span></a><a href="#entry">查看切入判断 ↗</a></div>
+    <div class="hero-stats" id="stats" aria-live="polite"><span>正在载入研究样本…</span></div>
+    <p class="caption">样本统计描述本研究的覆盖，不代表行业规模或销量。</p>
+  </div>
+  <div class="hero-diagram">
+    <div class="diagram-top"><span class="mini-label">模型的执行位置</span><span class="tag local">车机 / 常驻后装设备</span></div>
+    <svg viewBox="0 0 620 340" role="img" aria-labelledby="car-title car-desc">
+      <title id="car-title">车内本地计算示意</title><desc id="car-desc">车辆内的计算模块负责本地识别、理解和播报，手机与云服务是按任务连接的外部依赖。该图不表示实际产品外观。</desc>
+      <defs><pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="#dce5f1" stroke-width=".6"/></pattern></defs>
+      <rect width="620" height="340" fill="url(#grid)"/>
+      <path d="M57 220L79 172Q86 158 114 153L194 141L251 91Q267 80 295 80H402Q421 81 442 104L488 146L544 158Q566 165 570 185L577 226H57Z" fill="#fff" stroke="#0056ee" stroke-width="2.5"/>
+      <path d="M213 139L264 96H326V139ZM339 96H400Q414 97 428 111L452 139H339Z" fill="#e7efff" stroke="#0056ee" stroke-width="1.5"/>
+      <circle cx="157" cy="224" r="34" fill="#231815"/><circle cx="157" cy="224" r="19" fill="#f6f8fb"/><circle cx="480" cy="224" r="34" fill="#231815"/><circle cx="480" cy="224" r="19" fill="#f6f8fb"/>
+      <path d="M68 266H570" stroke="#c4d1e3" stroke-width="2"/>
+      <rect x="267" y="161" width="115" height="48" rx="7" fill="#0056ee"/><text x="324" y="181" text-anchor="middle" fill="white" font-size="11">ON-DEVICE</text><text x="324" y="198" text-anchor="middle" fill="white" font-size="12">本地模型与工具</text>
+      <path d="M324 159V40H486" stroke="#0056ee" fill="none" stroke-dasharray="5 5"/>
+      <rect x="467" y="21" width="134" height="40" rx="6" fill="#fff8c9" stroke="#dfca62"/><text x="534" y="46" text-anchor="middle" fill="#53431b" font-size="12">手机 / 在线服务</text>
+      <text x="62" y="307" fill="#5c687c" font-size="12">本地运行 ≠ 所有功能都能离线完成</text>
+    </svg>
+    <div class="diagram-bottom"><span>识别 → 理解 → 授权执行 → 播报</span><span>研究架构示意</span></div>
+  </div>
+</section>
+<div class="reading-layout">
+<aside class="sidebar" aria-label="研究导航">
+  <span class="mini-label">READING GUIDE</span>
+  <nav><a href="#thesis">01 核心判断</a><a href="#products">02 产品图鉴</a><a href="#comparison">03 逐项对照</a><a href="#technology">04 技术路径</a><a href="#entry">05 切入机会</a><a href="#sources">06 参考资料</a></nav>
+  <p>本地模型证据、<br>交付状态与价格口径<br>分别记录。</p>
+  <a class="read-report" href="research.html">阅读全文 ↗</a>
+</aside>
+<main id="main">
+<section class="research-section" id="thesis">
+  <div class="section-head"><p class="eyebrow">01 / THE THESIS</p><h2>先看三个决定性问题</h2><p>以公开证据判断产品位置。研究建议仍需通过目标硬件、真实用户与成本验证。</p></div>
+  <div class="thesis-row"><span>01</span><div><h3>模型究竟在哪里运行？</h3><p>车机中的应用、手机投射和云端问答是不同路径。公开声明本地模型，也不等于语音识别、工具调用和回复全部离线。</p></div><a href="#products">查产品证据 →</a></div>
+  <div class="thesis-row"><span>02</span><div><h3>这是可以买到的什么？</h3><p>后装软件、整车集成、企业授权方案和开发演示分别比较。整车起价、助手升级包与 B2B 报价不合并成一个价格排名。</p></div><a href="#comparison">看价格口径 →</a></div>
+  <div class="thesis-row"><span>03</span><div><h3>哪些能力可以带入存量燃油车？</h3><p>优先检验本地语音、车辆资料与少量授权任务的增量。原厂车控权限、道路数据与安全工程需要独立取得。</p></div><a href="#entry">看进入条件 →</a></div>
+</section>
+<section class="research-section" id="products">
+  <div class="section-head"><p class="eyebrow">02 / PRODUCT ATLAS</p><h2>真正车上运行的模型，逐个查清</h2><p>默认查看有本地模型线索的样本。切换对象和证据类型，可查看联网对照与未核实产品。所有状态均基于公开资料，未经本研究实车验证。</p></div>
+  <div class="toolbar">
+    <label class="search-label">搜索型号、模型或芯片<input id="search" type="search" placeholder="例如：Luna、图灵、3.8B、离线语音" autocomplete="off"></label>
+    <label>研究对象<select id="segment"><option value="all">全部对象</option><option value="aftermarket">后装产品与软件</option><option value="oem">原厂车型</option><option value="b2b">企业方案</option><option value="reference">开发与邻接参考</option></select></label>
+    <label>本地运行证据<select id="evidence"><option value="core">有本地模型线索</option><option value="all">包含联网与待核对照</option><option value="local_llm">本地语言 / 多模态模型</option><option value="local_task">本地任务型模型</option><option value="hybrid">明确本地与云端混合</option><option value="unknown">本地模型尚未证实</option><option value="cloud">明确联网功能对照</option></select></label>
+  </div>
+  <div class="filter-bar"><p id="result-count" role="status">正在整理产品证据…</p><div><label class="check"><input id="available" type="checkbox">仅看已发布 / 可获得</label><button class="text-button" id="reset">重置筛选</button></div></div>
+  <div class="legend"><span class="tag local">本地模型</span><span class="tag mixed">端云混合</span><span class="tag unknown">信息待核</span><span>点击“详细证据”查看完整离线边界与来源。</span></div>
+  <div class="product-grid" id="product-grid" aria-live="polite"></div>
+  <p class="empty" id="empty" hidden>当前条件没有匹配样本。可切换“包含联网与待核对照”，或重置筛选。</p>
+</section>
+<section class="research-section" id="comparison">
+  <div class="section-head"><p class="eyebrow">03 / SIDE BY SIDE</p><h2>同一维度，保留不同口径</h2><p>下表随筛选更新。也可以在图鉴中选中最多三个产品，打开详细对比。</p></div>
+  <div class="table-wrap"><table><thead><tr><th>产品 / 状态</th><th>载体与模型</th><th>离线能力</th><th>价格与口径</th><th>证据</th></tr></thead><tbody id="comparison-body"></tbody></table></div>
+</section>
+<section class="research-section" id="technology">
+  <div class="section-head"><p class="eyebrow">04 / INSIDE THE VEHICLE</p><h2>一台车内助手，需要一条完整链路</h2><p>点击环节查看关键约束。语言模型只是其中一部分，任务是否离线取决于整条路径。</p></div>
+<div class="platform-paths"><h3>先确定计算设备与部署权</h3><div class="platform-grid"><article><b>CarPlay / Android Auto</b><p>应用以手机为基础，车内接收界面与音频。应用上屏不等于模型部署到接收主机。</p></article><article><b>AAOS / 后装 Android 设备</b><p>可以提供车内应用运行环境。仍需逐项核实算力、后台运行、麦克风、音频焦点与车辆接口。</p></article></div><p class="caption">依据：<a href="https://developer.apple.com/download/files/CarPlay-Developer-Guide.pdf" target="_blank" rel="noopener noreferrer">Apple CarPlay 指南</a>、<a href="https://developer.android.com/training/cars/platforms/android-auto" target="_blank" rel="noopener noreferrer">Android Auto</a>、<a href="https://source.android.com/docs/automotive/start/what_automotive" target="_blank" rel="noopener noreferrer">AAOS 定义</a>。<a href="overview.html">展开平台与商业背景 ↗</a></p></div>
+  <div class="pipeline" role="group" aria-label="语音助手技术链路"><button data-step="audio" aria-pressed="true"><span>01</span>车内拾音</button><i>→</i><button data-step="asr" aria-pressed="false"><span>02</span>本地识别</button><i>→</i><button data-step="model" aria-pressed="false"><span>03</span>模型与记忆</button><i>→</i><button data-step="tool" aria-pressed="false"><span>04</span>授权执行</button><i>→</i><button data-step="tts" aria-pressed="false"><span>05</span>语音回复</button></div>
+  <div class="step-detail" id="step-detail" aria-live="polite"></div>
+  <div class="technical-notes"><article><span class="mini-label">MEMORY</span><h3>权重能放下，整机未必够用</h3><p>1.7B 参数按理想 4-bit 权重约为 0.85GB。运行时还要加缓存、识别、播报、应用和系统占用。这个估算不是最低内存承诺。</p></article><article><span class="mini-label">LATENCY</span><h3>首 token 不是首次听到回复</h3><p>NXP 的英语开发板示例采用 500M 模型，首 token 0.28 秒，首音频 3.27 秒，平均内存 4794MB。条件不可直接推广到实车。<a href="https://www.nxp.com/design/design-center/software/embedded-software/eiq-genai-flow-conversational-ai-software-pipeline-on-edge-devices:GEN-AI-FLOW" target="_blank" rel="noopener noreferrer">核查官方条件 ↗</a></p></article></div>
+</section>
+<section class="research-section" id="entry">
+  <div class="section-head"><p class="eyebrow">05 / ENTRY STRATEGY</p><h2>从可交付的任务切入</h2><p>以下为研究判断。新增竞品表明“本地运行”已有参与者，差异需要在车内完整体验、适配和交付中证明。</p></div>
+  <article class="opportunity primary"><div class="op-number">A</div><div><span class="tag local">优先验证</span><h3>成熟后装硬件上的本地语音任务模块</h3><p>与能提供系统和音频接口的厂商合作，先覆盖少量高频任务：本地手册、常用信息与授权操作。与现有本地 Launcher 比较任务成功、噪声体验、启动、离线范围和支持成本。</p><dl><dt>进入前提</dt><dd>固定硬件与固件、可用音频链路、合法接口和模型许可。</dd><dt>投资判断</dt><dd>真实用户持续使用与单位贡献先于扩张。SDK 授权或按设备收费是候选模式。</dd></dl></div></article>
+  <article class="opportunity"><div class="op-number">B</div><div><span class="tag mixed">并行比较</span><h3>控制拾音与交互的独立车载设备</h3><p>自带麦克风、按键与本地算力，可能更容易控制体验；也增加供电、散热、原车音频协作、库存与售后责任。需证明增加设备的收益能覆盖全周期成本。</p></div></article>
+  <article class="opportunity"><div class="op-number">C</div><div><span class="tag unknown">后续独立评估</span><h3>驾驶辅助是一条新的工程与商业路径</h3><p>车上已有驾驶模型产品可作参照，但语音用户、渠道和对话数据不能直接替代车辆接口、感知控制、安全验证与道路数据。是否进入，以能力与资源证据判断。</p></div></article>
+  <div class="gate-list"><h3>投资前，先取得四组证据</h3><ol><li><b>用户收益</b><span>相对手机和已有产品，任务是否更容易完成、会否再次主动使用。</span></li><li><b>交付可靠性</b><span>噪声、断网、热稳态、启动、音频抢占与安装工时。</span></li><li><b>经营可行性</b><span>净售价、设备与许可、渠道、退货质保、长期更新和现金周转。</span></li><li><b>渠道匹配</b><span>用实际客群和安装售后能力评估渠道。波兰仅作为可进一步核验的区域案例。</span></li></ol></div>
+</section>
+<section class="research-section" id="sources">
+  <div class="section-head"><p class="eyebrow">06 / EVIDENCE & REFERENCES</p><h2>每个判断，都能回到原始资料</h2><p>优先采用官方产品页、配置表、模型卡、说明书及企业原始公告。开发者声明、计划与实测分别表达。</p></div>
+  <div class="methodology"><h3>研究边界</h3><p>截至2026年11月5日的公开资料核查。未采购设备、未做实车或模型测试、未取得非公开销量、留存和供应报价。整车价格不代表助手单价，未公开不记为零。产品图用于识别，权利归原权利人，具体出处随产品展示。</p><a href="research.html">阅读完整专题与进入判断 ↗</a> · <a href="overview.html">平台与商业背景 ↗</a> · <a href="references.html">完整来源索引 ↗</a></div>
+  <div class="source-list" id="source-list"></div>
+</section>
+</main>
+</div>
+<footer><a class="brand" href="#top"><span class="brand-symbol" aria-hidden="true"></span><b>DreamSoul</b></a><p>车载端侧 AI 研究 · 2026.11.05<br>事实、未知与研究判断分别呈现。</p><a href="#top">回到顶部 ↑</a></footer>
+<div class="compare-tray" id="compare-tray" hidden><span id="selection-label"></span><button class="button" id="open-compare">打开对比 ↗</button><button class="text-button" id="clear-compare">清空</button></div>
+<dialog id="detail-dialog" aria-labelledby="detail-title"><div class="dialog-bar"><span class="mini-label">PRODUCT EVIDENCE</span><button class="close-dialog" aria-label="关闭产品详情">×</button></div><div id="detail-content"></div></dialog>
+<dialog id="compare-dialog" class="wide-dialog" aria-labelledby="compare-title"><div class="dialog-bar"><h2 id="compare-title">产品证据对比</h2><button class="close-dialog" aria-label="关闭对比">×</button></div><div id="compare-content"></div></dialog>
+</body>
+</html>
