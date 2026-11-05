@@ -101,13 +101,13 @@ function openDetail(id) {
     ["产品形态", p.form],
     ["当前核查状态", p.status],
     ["主要功能", p.functions],
+    ["实现方式", p.model],
     ["安装与供电", p.install],
     ["音频路径", p.audio],
     ["手机及服务依赖", p.dependencies],
     ["离线范围", p.offline],
     ["对本阶段的启示", p.lesson],
   ];
-  if (p.phase === "advanced" && p.model) fields.push(["技术说明", p.model]);
   $("detail-content").innerHTML =
     `<div class="detail-heading">${p.image ? imageMarkup(p, true) : ""}<div><span class="tag neutral">${phaseNames[p.phase]}</span><h2 id="detail-title">${escapeHtml(p.name)}</h2><p>${escapeHtml(p.maker)}</p></div></div><dl class="detail-fields">${fields.map(([k, v]) => `<dt>${k}</dt><dd>${escapeHtml(asText(v))}</dd>`).join("")}<dt>价格口径</dt><dd><b>${escapeHtml(p.price.display)}</b><br>${escapeHtml(p.price.scope)}</dd></dl><div class="detail-limits"><h3>证据与使用边界</h3><p>${escapeHtml(asText(p.limits))}</p></div><div class="detail-sources"><h3>原始资料</h3><ol>${p.sources.map((s) => `<li>${sourceLink(s)}<small>${escapeHtml(s.date || "滚动页面")} · 访问 ${escapeHtml(s.access || "2026-11-05")}<br>${escapeHtml(s.scope || "")}</small></li>`).join("")}</ol>${p.image ? `<p>配图：${escapeHtml(p.image.credit || "原始产品资料")} · <a href="${escapeHtml(safeUrl(p.image.sourceUrl))}" target="_blank" rel="noopener noreferrer">原始出处 ↗</a></p>` : ""}</div>`;
   $("detail-dialog").showModal();
@@ -128,6 +128,7 @@ function openComparison() {
     ["产品形态", "form"],
     ["状态", "status"],
     ["功能", "functions"],
+    ["实现方式", "model"],
     ["安装与供电", "install"],
     ["音频路径", "audio"],
     ["手机与服务", "dependencies"],
@@ -152,7 +153,7 @@ function showStage(id) {
 }
 async function initialize() {
   try {
-    const response = await fetch("data/products.json?v=hardware-interfaces-20261106");
+    const response = await fetch("data/products.json?v=editorial-review-20261106");
     if (!response.ok) throw new Error(`数据返回 ${response.status}`);
     const data = await response.json();
     if (!Array.isArray(data.products) || !Array.isArray(data.stages))

@@ -1,35 +1,13 @@
-%% title: 音频与麦克风路径
-%% 图4 音频与拾音的可选路径。分析示意，不代表全部链路可同时使用。
-%% 虚线输入需系统选择、权限与实机核对；实线表示所选输出路径。
-%% 来源 https://www.bluetooth.com/specifications/specs/hands-free-profile-1-10/
-%% 来源 https://developer.android.com/develop/connectivity/bluetooth/profiles
-%% 来源 https://developer.android.com/training/cars/apps/library/car-microphone
-%% 来源 https://support.avantree.com/hc/en-us/articles/50767188774937-How-to-Make-a-Call-by-Voice-Command
-%% 来源 https://carpuride.com/products/carpuride-w903-portable-smart-multimedia-dashboard-console-with-front-camera
-flowchart LR
-  subgraph INPUT["上行：请求音频从哪里来"]
-    PHONE_MIC["手机麦克风"]
-    DEVICE_MIC["外设或车机麦克风"]
-    HFP["HFP免提语音链路<br/>须由相容设备和系统选择"]
-    PROJECTION["投射或车内应用录音<br/>须权限和音频焦点"]
-  end
-  SESSION["当前助手 / App 音频会话<br/>确认实际输入和输出"]
-  PHONE_MIC -.-> SESSION
-  DEVICE_MIC -.-> HFP
-  DEVICE_MIC -.-> PROJECTION
-  HFP -.-> SESSION
-  PROJECTION -.-> SESSION
-  subgraph OUTPUT["下行：回复和媒体送往哪里"]
-    OWN["设备自带扬声器"]
-    BT["相容蓝牙接收端<br/>媒体可走A2DP，免提语音可走HFP"]
-    AUX["AUX输出接原车输入"]
-    FM["FM发射接原车收音机"]
-    CAR["原车音响<br/>需正确音源与音量"]
-    BT --> CAR
-    AUX --> CAR
-    FM --> CAR
-  end
-  SESSION --> OWN
-  SESSION --> BT
-  SESSION --> AUX
-  SESSION --> FM
+%% title: LUMI参照中的设备、手机与可选原车音频
+%% 基于教程转写及政策声明的研究示意，虚线不代表实测链路。
+%% 来源 https://app.mi.com/details?id=com.example.lumi_client
+%% 来源 https://yyzc.yylumi.com/privacy.html
+%% 来源 https://www.douyin.com/video/7629608396925350134
+flowchart TB
+  DEVICE["LUMI实体设备<br/>表情、动作与语音交互参照"]
+  PHONE["手机上的Lumi App<br/>绑定、配置及教程中的聊天协作"]
+  SERVICE["外部模型服务<br/>政策声明，具体链路待核"]
+  CAR["原车音响，可选输出<br/>教程描述手机蓝牙连接车机"]
+  DEVICE -.->|"蓝牙绑定，拾音路由待核"| PHONE
+  PHONE -.->|"按所需服务与网络条件"| SERVICE
+  PHONE -.->|"媒体蓝牙，非CarPlay证明"| CAR

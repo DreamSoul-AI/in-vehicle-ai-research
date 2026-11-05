@@ -1,13 +1,19 @@
-%% title: LUMI参照中的设备、手机与可选原车音频
-%% 基于教程转写及政策声明的研究示意，虚线不代表实测链路。
-%% 来源 https://app.mi.com/details?id=com.example.lumi_client
-%% 来源 https://yyzc.yylumi.com/privacy.html
-%% 来源 https://www.douyin.com/video/7629608396925350134
-flowchart TB
-  DEVICE["LUMI实体设备<br/>表情、动作与语音交互参照"]
-  PHONE["手机上的Lumi App<br/>绑定、配置及教程中的聊天协作"]
-  SERVICE["外部模型服务<br/>政策声明，具体链路待核"]
-  CAR["原车音响，可选输出<br/>教程描述手机蓝牙连接车机"]
-  DEVICE -.->|"蓝牙绑定，拾音路由待核"| PHONE
-  PHONE -.->|"按所需服务与网络条件"| SERVICE
-  PHONE -.->|"媒体蓝牙，非CarPlay证明"| CAR
+%% title: 从上车到任务结果的完整闭环
+flowchart TD
+  A[上车 设备供电与重连] --> B{连接与必要配置可用}
+  B -->|否| X[说明不可用 保留基础操作]
+  X --> Y[停车后按提示修复配置]
+  Y --> B
+  B -->|是| C[按键触发与短反馈]
+  C --> D[所选语音组件处理]
+  D --> E{参数明确且已授权}
+  E -->|否| F[确认参数 或说明缺少权限]
+  F -->|确认或补充后重验| E
+  F -->|缺少权限| X
+  F -->|取消或超时| Z[退出并恢复音频]
+  E -->|是| G[设备功能或支持的应用与服务执行]
+  G --> H{能否确认实际结果}
+  H -->|能| I[反馈完成或明确失败]
+  H -->|不能| J[说明已转交与状态边界]
+  I --> Z
+  J --> Z
