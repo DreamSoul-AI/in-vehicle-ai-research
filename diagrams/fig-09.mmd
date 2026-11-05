@@ -1,8 +1,13 @@
-%% title: 任务验证与改进闭环
+%% title: LUMI参照中的设备、手机与可选原车音频
+%% 基于教程转写及政策声明的研究示意，虚线不代表实测链路。
+%% 来源 https://app.mi.com/details?id=com.example.lumi_client
+%% 来源 https://yyzc.yylumi.com/privacy.html
+%% 来源 https://www.douyin.com/video/7629608396925350134
 flowchart TB
-  A[固定组合与任务] --> B[比较手机直接使用]
-  B --> C[记录完整成功与失败]
-  C --> D[定位连接 拾音 权限或执行原因]
-  D --> E[修正方案或缩小支持范围]
-  E --> F[在原条件复测并检查恢复]
-  F --> A
+  DEVICE["LUMI实体设备<br/>表情、动作与语音交互参照"]
+  PHONE["手机上的Lumi App<br/>绑定、配置及教程中的聊天协作"]
+  SERVICE["外部模型服务<br/>政策声明，具体链路待核"]
+  CAR["原车音响，可选输出<br/>教程描述手机蓝牙连接车机"]
+  DEVICE -.->|"蓝牙绑定，拾音路由待核"| PHONE
+  PHONE -.->|"按所需服务与网络条件"| SERVICE
+  PHONE -.->|"媒体蓝牙，非CarPlay证明"| CAR

@@ -1,35 +1,18 @@
-%% title: 音频与麦克风路径
-%% 图4 音频与拾音的可选路径。分析示意，不代表全部链路可同时使用。
-%% 虚线输入需系统选择、权限与实机核对；实线表示所选输出路径。
-%% 来源 https://www.bluetooth.com/specifications/specs/hands-free-profile-1-10/
-%% 来源 https://developer.android.com/develop/connectivity/bluetooth/profiles
-%% 来源 https://developer.android.com/training/cars/apps/library/car-microphone
-%% 来源 https://support.avantree.com/hc/en-us/articles/50767188774937-How-to-Make-a-Call-by-Voice-Command
+%% title: 硬件载体与安装选型
+%% 图3 按车辆条件选择载体。分析示意，是评估分支，不是采购推荐或保证兼容。
 %% 来源 https://carpuride.com/products/carpuride-w903-portable-smart-multimedia-dashboard-console-with-front-camera
-flowchart LR
-  subgraph INPUT["上行：请求音频从哪里来"]
-    PHONE_MIC["手机麦克风"]
-    DEVICE_MIC["外设或车机麦克风"]
-    HFP["HFP免提语音链路<br/>须由相容设备和系统选择"]
-    PROJECTION["投射或车内应用录音<br/>须权限和音频焦点"]
-  end
-  SESSION["当前助手 / App 音频会话<br/>确认实际输入和输出"]
-  PHONE_MIC -.-> SESSION
-  DEVICE_MIC -.-> HFP
-  DEVICE_MIC -.-> PROJECTION
-  HFP -.-> SESSION
-  PROJECTION -.-> SESSION
-  subgraph OUTPUT["下行：回复和媒体送往哪里"]
-    OWN["设备自带扬声器"]
-    BT["相容蓝牙接收端<br/>媒体可走A2DP，免提语音可走HFP"]
-    AUX["AUX输出接原车输入"]
-    FM["FM发射接原车收音机"]
-    CAR["原车音响<br/>需正确音源与音量"]
-    BT --> CAR
-    AUX --> CAR
-    FM --> CAR
-  end
-  SESSION --> OWN
-  SESSION --> BT
-  SESSION --> AUX
-  SESSION --> FM
+%% 来源 https://www.atotodirect.com/en-gb/pages/manual-460-en
+%% 来源 https://www.carlinkit.com/uhd6225
+flowchart TB
+  START["先以手机直接使用作基线"] --> NEED{"需要新增什么入口"}
+  NEED -->|"方便触发与反馈"| VOICE["免屏外设 / 小音箱<br/>固定、供电、手机与音频适配"]
+  NEED -->|"持续可见的地图或状态"| SCREEN{"原车是否已有相容屏幕和协议"}
+  SCREEN -->|"已有原厂有线投射入口"| BOX["比较原车屏升级盒<br/>核对协议、USB与固件"]
+  SCREEN -->|"没有或不相容"| INSTALL{"是否接受拆换主机"}
+  INSTALL -->|"保留原车机"| PORTABLE["独立接收屏<br/>支架、车充与音频路径"]
+  INSTALL -->|"接受且车型可适配"| HEADUNIT["替换车机<br/>面框、线束、ACC、按键与原车功能"]
+  VOICE --> VALIDATE["按实际车型和手机验证完整任务<br/>安装、重连、通话、播报与恢复"]
+  BOX --> VALIDATE
+  PORTABLE --> VALIDATE
+  HEADUNIT --> VALIDATE
+  VALIDATE --> DECIDE["增量收益与支持成本是否成立<br/>允许保留手机方案或当前阶段"]
