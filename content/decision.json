@@ -30,7 +30,7 @@
     ],
     "stages": {
       "voice": {
-        "label": "阶段1 免屏外设",
+        "label": "参照 无屏语音外设",
         "weights": [
           30,
           30,
@@ -284,7 +284,7 @@
         "name": "Apple Siri",
         "type": "iPhone系统助手",
         "confidence": "中：基础任务与入口有官方依据，目标配件未实测",
-        "prerequisite": "需相容iPhone、已启用Siri及Apple支持的目标语言，并核对锁屏、按钮和真实音频路由。不把Siri AI或任意蓝牙配件能力自动计入；当前官方Siri语言表未列波兰语，若目标只接受波兰语需另作适用性判断。 目标语种须获Siri支持；不能由iPhone界面语言推定波兰语语音任务可用。",
+        "prerequisite": "需相容iPhone、已启用Siri及Apple支持的目标语言，核对锁屏、按钮和实际音频路由。当前官方Siri语言表未列波兰语，iPhone界面语言不能证明语音支持；仅接受波兰语的用户需另选方案。",
         "sources": [
           {
             "title": "Apple车内使用Siri指南",
@@ -347,7 +347,7 @@
         "name": "Google Gemini",
         "type": "手机或车内助手服务",
         "confidence": "中低：任务与官方车内路径可核，通用蓝牙按钮未证",
-        "prerequisite": "按受支持Android手机及已设置的Gemini评估，核对账号、语言、锁屏与目标应用。通用车载蓝牙按钮直接调用Gemini未获本轮证明，不能把Google Assistant配件说明自动移植给Gemini；面板经Android Auto或特定Google built-in另核。",
+        "prerequisite": "按受支持Android手机及已设置的Gemini评估，核对账号、语言、锁屏与目标应用。通用车载蓝牙按钮直接调用Gemini尚未证实，不能把Google Assistant配件说明自动移植给Gemini；面板经Android Auto或特定Google built-in另核。",
         "sources": [
           {
             "title": "Gemini手机任务与限制",

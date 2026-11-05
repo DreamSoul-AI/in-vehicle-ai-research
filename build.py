@@ -21,7 +21,7 @@ from tools.decision_content import render_scores, render_market, validate_decisi
 SITE = Path(__file__).resolve().parent
 DIST = SITE / "dist"
 CONTENT = SITE / "content"
-VERSION = "hardware-interfaces-20261106"
+VERSION = "editorial-review-20261106"
 CHAPTER_IDS = dict(zip("一二三四五六七", ["roadmap", "platforms", "products", "starter", "business", "next", "sources"]))
 
 
@@ -170,7 +170,6 @@ def wrap_research_sections(soup: BeautifulSoup) -> None:
         ("carplay-focus", "carplay-focus", "CarPlay接入重点与Android Auto对照"),
         ("hardware-access", "hardware-access", "独立硬件与原车接口选择"),
         ("lumi-reference", "lumi-case", "LUMI产品参照与证据边界"),
-        ("integration-references", "integration-references", "独立硬件与接口补充资料"),
     ]
     for identity, class_name, label in sections:
         start = soup.find(string=lambda node: isinstance(node, Comment) and node.strip() == identity + ":start")
@@ -196,7 +195,7 @@ def fold_platform_evidence(soup: BeautifulSoup) -> None:
         return
     details = soup.new_tag("details", attrs={"class": "research-evidence", "id": "platform-evidence"})
     summary = soup.new_tag("summary")
-    summary.string = "展开完整平台对照、七张详情卡片与依据"
+    summary.string = "（三）展开平台对照、公司关系与七张详情卡片"
     details.append(summary)
     heading.insert_before(details)
     node = heading
@@ -242,6 +241,17 @@ def render_markdown(text: str, blocks: list[dict], manifest: dict, equations: li
     wrap_research_sections(soup)
     platform_comparison(soup)
     fold_platform_evidence(soup)
+    if "以下资料按主题归类" in text:
+        for heading in soup.find_all("h2"):
+            table = heading.find_next_sibling("table")
+            if table is None:
+                continue
+            details = soup.new_tag("details", attrs={"class": "source-details"})
+            summary = soup.new_tag("summary")
+            summary.string = f"展开{len(table.select('tbody > tr'))}条资料与阅读范围"
+            details.append(summary)
+            table.replace_with(details)
+            details.append(table)
     for table in list(soup.find_all("table")):
         if "score-table" in table.get("class", []):
             continue
@@ -297,9 +307,6 @@ def build(args: argparse.Namespace) -> None:
     template = BeautifulSoup((CONTENT / "index.template.html").read_text(encoding="utf-8"), "html.parser")
     for number, identity in CHAPTER_IDS.items():
         section = template.find("section", id=identity)
-        if number == "七":
-            # Existing source metadata and methods remain visible after the report's reference table.
-            section.find("div", class_="report-body").clear()
         content = re.sub(r"^# [^\n]+\n", "", chapters[number], count=1)
         body = BeautifulSoup(render_markdown(content, blocks, manifest, equations, decision), "html.parser")
         for heading in body.find_all(re.compile("^h[2-5]$")):
@@ -325,21 +332,17 @@ def build(args: argparse.Namespace) -> None:
     (DIST / "research.html").write_text(standalone(full, "车载智能化 产品与阶段路线", decision), encoding="utf-8")
     outline = (CONTENT / "outline.md").read_text(encoding="utf-8")
     (DIST / "outline.html").write_text(standalone(render_markdown(outline, blocks, manifest, equations, decision), "车载智能化 调研大纲", decision), encoding="utf-8")
-    # Keep the dedicated reference page aligned with the new report evidence.
-    references_path = DIST / "references.html"
-    references = BeautifulSoup(references_path.read_text(encoding="utf-8"), "html.parser")
-    update = BeautifulSoup(full, "html.parser").find(id="integration-references")
-    previous = references.find(id="integration-references")
-    if update is not None:
-        if previous is not None:
-            previous.replace_with(update)
-        else:
-            references.main.find("p", class_=None).insert_after(update)
-        for tag in references.find_all(["a", "link", "script"]):
-            for attribute in ["href", "src"]:
+    references = re.sub(r"^# [^\n]+\n", "", chapters["七"], count=1)
+    references_html = render_markdown(references, blocks, manifest, equations, decision)
+    (DIST / "references.html").write_text(standalone(references_html, "参考资料与阅读范围", decision), encoding="utf-8")
+    for name in ["overview.html", "advanced.html"]:
+        path = DIST / name
+        page = BeautifulSoup(path.read_text(encoding="utf-8"), "html.parser")
+        for tag in page.find_all(["a", "link", "script", "img", "source"]):
+            for attribute in ["href", "src", "srcset"]:
                 if tag.get(attribute):
                     tag[attribute] = version_url(tag[attribute])
-        references_path.write_text(str(references), encoding="utf-8")
+        path.write_text(str(page), encoding="utf-8")
     # The data shape did not change. Version the request with the page assets.
     app = DIST / "app.js"
     script = app.read_text(encoding="utf-8")

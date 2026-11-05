@@ -1,119 +1,113 @@
 <!DOCTYPE html>
-<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>车载智能化 调研大纲 · 车载智能化研究</title><link href="style.css?v=hardware-interfaces-20261106" rel="stylesheet"/><link href="report.css?v=hardware-interfaces-20261106" rel="stylesheet"/><script defer="" src="diagrams.js?v=hardware-interfaces-20261106"></script></head><body><header class="topbar"><a class="brand" href="index.html?v=hardware-interfaces-20261106"><span class="brand-symbol"></span><b>DreamSoul</b><span>RESEARCH</span></a><a href="index.html?v=hardware-interfaces-20261106">返回研究主页 ↗</a></header><main class="research-content"><p class="eyebrow">IN-VEHICLE PRODUCTS / RESEARCH</p><h1>车载智能化 调研大纲</h1><p>整理日期：2026年11月6日。用途：支持 DreamSoul 判断传统车辆智能化的产品起点、经营可行性及后续投入顺序。研究主线为小型、便于安装的独立车载语音硬件，包括轻量音箱与LUMI类交互终端，向智能面板和辅助驾驶按条件扩展，再研究通用大模型能力。</p>
-<p>首款允许使用手机、云服务、固定命令及现成语音组件，不将车内本地 LLM 作为立项或验收前提。范围以存量燃油车为重点，按车机、音频接口、手机和用户任务划分客群。波兰仅作为待核实的区域渠道案例。动态资料记录访问日，历史价、当前销售线索、实际采购交付、应用维护及服务状态分别核验。</p>
+<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>车载智能化 调研大纲 · 车载智能化研究</title><link href="style.css?v=editorial-review-20261106" rel="stylesheet"/><link href="report.css?v=editorial-review-20261106" rel="stylesheet"/><script defer="" src="diagrams.js?v=editorial-review-20261106"></script></head><body><header class="topbar"><a class="brand" href="index.html?v=editorial-review-20261106"><span class="brand-symbol"></span><b>DreamSoul</b><span>RESEARCH</span></a><a href="index.html?v=editorial-review-20261106">返回研究主页 ↗</a></header><main class="research-content"><p class="eyebrow">IN-VEHICLE PRODUCTS / RESEARCH</p><h1>车载智能化 调研大纲</h1><p>整理日期：2026年11月6日。研究以存量燃油车的小型独立语音硬件为起点，重点比较现有平台、具体竞品和交付条件。智能面板、辅助驾驶与大模型按各自价值逐步评估；波兰作为区域渠道案例。</p>
 <h2>一、产品起点与渐进路线</h2>
-<h3>（一）首款产品服务谁、解决什么</h3>
+<h3>（一）用户与购买理由</h3>
 <ul>
-<li>比较缺少便捷免提入口的传统车辆、已有基础蓝牙车辆，以及已有成熟手机互联主机的用户</li>
-<li>明确小型语音外设在触发、拾音、连接、反馈和少配置上的价值，与手机自身助手建立比较</li>
+<li>按原车接口、已有手机互联和使用困难划分客群</li>
+<li>比较手机直接使用、轻量音箱和LUMI类实体交互终端</li>
+<li>评估触发、连接、反馈、任务完成和少配置的增量</li>
 </ul>
-<h3>（二）逐阶段的独立目标</h3>
+<h3>（二）扩展关系与进入条件</h3>
 <ul>
-<li>按轻量助手、智能面板、辅助驾驶、后续 LLM 四阶段分清业务目标，辅助驾驶再拆为记录预警和车辆运动辅助</li>
-<li>区分可复用渠道、客户和工程经验，与需要新增的接口、数据、安全和资金能力</li>
-<li>用 Mermaid 表示附带验证条件的四阶段扩展关系，注明不是技术上的强制同序，保留长期独立经营或合作的选择</li>
+<li>用阶段图和资产迁移表比较语音硬件、面板、记录预警、运动辅助和模型能力</li>
+<li>分清可复用的客户、渠道和工程经验，以及新增接口、数据、专业团队和资金需求</li>
+<li>保留单阶段经营、合作和调整方向的选择，模型不设为首期前提</li>
 </ul>
-<p><strong>证据与产出</strong>：原始产品说明、用户与渠道资料。形成客群划分和阶段关系图。首期目标用户、关键任务及产品外形尚待验证。</p>
+<p><strong>产出</strong>：客群假设、产品购买理由、阶段图与进入条件。依据为产品原始说明及待取得的用户、渠道材料。</p>
 <h2>二、平台与载体</h2>
-<p>先用“导航去公司”的例子，解释CarPlay、Android Auto、Siri、Gemini分别是什么、由哪个公司提供，以及手机、互联功能和车机怎样分工；再补充AAOS、GAS、具体车机与无线适配器的简明释义。</p>
-<p>先以短表和Mermaid分清本机/手机协作、普通蓝牙音频、原车屏应用、主机外设接口与车辆数据/控制；App分发、车屏适配及车辆权限分别核查。CarPlay/Android Auto是可选互联扩展，不是首款成立的必要条件。</p>
-<p>优先专题：已有Apple CarPlay时，无屏小外设怎样复用原车屏幕、音响与手机能力？以Google Android Auto作对照，区分既有Siri体验、可选CarPlay语音应用与接收硬件合作。
-- 展示原车语音基线与待核的新增外设路由；不能将普通蓝牙配对画成已加入CarPlay音频链
-- 说明用户已有CarPlay仍需购买新设备的可验证增量与停止条件；以Ottocast实体控制器和无线适配器分清连接便利、操作入口和新增语音任务
-- 对可选语音应用说明类别、系统版本、授权、用户启动、录音、任务转交和分发；明确本项目尚无获准应用或合作
-- 用两张Mermaid说明已有CarPlay链路和可选应用任务流程，并转成SVG/PNG；长条件按需展开，核心接法使用短表
-- Android Auto分别核助手入口、第三方类别、CarAudioRecord与音频焦点，避免套用Apple类别；已有CarPlay细分量未知，不套用汽柴油总量</p>
-<p>补充路线评分：按无屏助手/面板两个目标评估部署、任务复用、现有可配置性、准入和维护；公开权重、原分、理由、未知和敏感性。网页以分数与短标签呈现，完整表和证据按需展开。</p>
-<p>核心问题：任务在哪里执行、界面在哪里、麦克风与声音经过哪里，平台和各合作角色分别开放什么？</p>
-<h3>（一）现有平台横向比较</h3>
+<h3>（一）概念与CarPlay接入专题</h3>
 <ul>
-<li>以Apple CarPlay、Google Android Auto、AAOS、Google GAS/Google built-in、Apple Siri、Google Gemini和ATOTO S8 Gen4 S84G209P为七个现有对象，明确Apple、Google、Aotule及运营主体，标明投射、系统、服务和任务入口层次</li>
-<li>两张对照表分别比较既有任务、执行位置、手机/屏幕、离线，以及应用/硬件准入、车辆权限、费用责任和本项目切入判断</li>
-<li>网页提供按平台展开的卡片，与表格共用正文事实；明确Ultra、通信手机依赖、版本和语言的适用条件</li>
-<li>先按首款免屏入口与第二阶段投射/本机路线提出选择，再用后续架构图解释机制</li>
+<li>解释Apple CarPlay、Google Android Auto、Apple Siri、Google Gemini及各自公司，用导航例子说明手机、互联功能和车机分工</li>
+<li>区分独立设备、本机或手机任务、蓝牙音频、车屏应用、主机外设接口及车辆数据/控制</li>
+<li>说明CarPlay与Android Auto导航的地图绘制、模板、操作输入和应用准入</li>
+<li>围绕已有CarPlay车辆，深入比较外设体验、应用服务、接收硬件合作三条路线</li>
+<li>公开类别、版本、录音、会话、任务转交及分发条件，以Android Auto规则作对照</li>
+<li>用原车基线与可选应用流程图说明接法；新增麦克风、按键及并用兼容须落实到具体组合</li>
 </ul>
-<h3>（二）手机助手、投射界面与车内系统</h3>
+<h3>（二）现有平台评分与横向对比</h3>
 <ul>
-<li>区分Apple Siri、Google Gemini、Apple CarPlay、Google Android Auto、AAOS、GAS与ATOTO S84G209P，并列出对应公司和角色</li>
-<li>解释平台公司、任务、界面、车厂接口与分发的职责，使用平台角色图</li>
+<li>比较CarPlay、Android Auto、AAOS、GAS、Siri、Gemini及ATOTO S84G209P</li>
+<li>明确Apple、Google、Aotule及运营主体的角色，不把系统、服务和具体产品混为同类</li>
+<li>短评分表提供阶段参照，两张详细矩阵与七张平台卡片用于按需查阅</li>
+<li>公开部署、任务复用、可配置性、准入、维护五维权重和理由，未知不计零分</li>
+<li>已有CarPlay车辆不重复计入已有屏幕的新增成本；无屏平台参照不覆盖LUMI类终端的全部方案</li>
 </ul>
-<h3>（三）三种任务接入路线</h3>
+<h3>（三）安装、音频与权限</h3>
 <ul>
-<li>比较Apple Siri入口、Google Gemini候选入口与明确的屏幕/车机产品，说明可控程度和新增责任</li>
-<li>使用任务路径图展示执行位置和按需云依赖</li>
+<li>比较独立语音硬件、独立屏、替换车机和原车屏升级盒</li>
+<li>通过安装选型图，先复用已有可用系统，再判断新增设备</li>
+<li>分清HFP、A2DP、AUX、FM、实际麦克风和音频焦点，用音频图解释输入与输出</li>
+<li>分别核对应用分发、接收硬件许可、设备接口和车辆权限；核查语言、固件与具体型号</li>
 </ul>
-<h3>（四）硬件、安装和音频</h3>
-<ul>
-<li>比较免屏外设、独立屏、替换车机与原车屏升级盒，画出安装选型图</li>
-<li>分清 HFP、A2DP、AUX、FM、投射录音和实际麦克风路由，使用音频图与 CK11 反例</li>
-</ul>
-<h3>（五）权限、合作角色与首款选择</h3>
-<ul>
-<li>核查平台类别、分发、系统权限、MFi 角色与实际设备接口</li>
-<li>把选择依据落到完整任务、支持成本、恢复和可控范围
-<strong>证据与产出</strong>：平台原始指南、具体设备手册与合作公开规则。平台具名比较表、可展开卡片与七张图共同呈现；图保留 Mermaid、SVG 与 PNG，对未知权限和手机/车辆表现保留边界。</li>
-</ul>
+<p><strong>产出</strong>：术语导读、接口短表、CarPlay专题、评分、平台比较和关系图。主要依据官方指南与具体设备手册；配图保留Mermaid、SVG和PNG。</p>
 <h2>三、按阶段竞品比较</h2>
-<h3>（一）首期直接竞品与历史经验</h3>
+<h3>（一）LUMI实体交互参照</h3>
 <ul>
-<li>比较轻量音箱、LUMI类交互终端、手机助手外设及手机自身方案；整机、配套软件与服务状态分别核验，采购交付单独验证</li>
-<li>对LUMI画设备、手机和服务分工图；保留App主体、教程转写阅读深度及CarPlay/本地模型/整机规格未知</li>
-<li>以 Echo Auto、Garmin Speak、Roav VIVA、JBL Smartbase 等历史产品研究外形、服务和连接经验</li>
-<li>各型号分别记录价格时间、供货、App 与云服务状态，不将旧价或支持页面当作当前在售与完整可用证明</li>
+<li>分开核查实体设备、手机App、外部服务及可选原车音频，绘制关系图</li>
+<li>标明已核App主体、教程转写和政策声明的证据深度</li>
+<li>保留确切SKU、制造主体、价格、离线能力和CarPlay支持的未知，不合并同名产品</li>
 </ul>
-<h3>（二）面板、辅助驾驶及后续模型参考</h3>
+<h3>（二）首期与后续竞品</h3>
 <ul>
-<li>比较互联面板与独立应用面板，解释屏幕和软件环境增加什么价值</li>
-<li>把 Garmin 记录提示、Mobileye 历史预警与 comma 运动控制分开</li>
-<li>企业模型方案与开发板仅作为后续能力参考，避免与首期零售外设按价格混排</li>
+<li>比较Avantree CK11、Roadtrip等小型设备，与Echo Auto、Garmin Speak等历史产品</li>
+<li>面板比较Carpuride W903、ATOTO S84G209P、Ottocast和Carlinkit的具体型号</li>
+<li>记录预警、车型适配运动辅助、企业模型和开发演示分层呈现</li>
+<li>每项记录公司角色、型号、功能、价格日期、销售与服务状态、安装、手机/网络依赖和技术方案</li>
+<li>用手机直接使用及成熟互联平台作基线，说明可借鉴之处和购买理由</li>
 </ul>
-<p><strong>证据与产出</strong>：官方商品页、手册、历史公告与业务披露。形成分层竞品表、价格和服务边界、机会与反证。销量、留存和跨产品同条件性能待取得。</p>
+<p><strong>产出</strong>：分阶段产品图鉴、短比较表及可展开详情。现价、历史价、库存标签、采购交付和服务可用性分别记录。</p>
 <h2>四、首款小型语音助手功能与工程</h2>
-<h3>（一）有限功能和完整任务流程</h3>
+<h3>（一）有限任务与完整使用过程</h3>
 <ul>
-<li>从常用地点导航、常用联系人通话、已有媒体控制中选取少量高频任务，核查权限和购买理由</li>
-<li>优先明确激活、短反馈、确认、取消和失败退出，按需使用规则、手机或云端，不为引入模型扩大功能</li>
-<li>用 Mermaid 解释拾音、识别、规则判断、授权执行和回复的路径</li>
+<li>从设备交互、语音服务、媒体及受支持的导航或通话中选择少量任务</li>
+<li>说明配置、触发、确认、执行或转交、结果、取消及音频恢复</li>
+<li>明确本机、手机、配套软件和服务的职责；新增软件按开发、采购授权或合作列入工作</li>
 </ul>
-<h3>（二）独立硬件、手机协作与安装边界</h3>
+<h3>（二）工程责任与验证</h3>
 <ul>
-<li>核查固定、供电、噪声、回声、重连、通话与导航抢占、手机后台和账号配置</li>
-<li>对比原车音响输出与自带扬声器，明确哪些任务需要手机、网络、订阅或其他配件</li>
-<li>区分现成 ODM 整机、成熟外设搭载软件、自研整机的交付与维护责任</li>
+<li>比较固定、供电、噪声、重连、锁屏、来电抢占、账号和网络条件</li>
+<li>对照手机直接使用，在明确的手机、设备、固件和应用组合上测试</li>
+<li>以全部尝试计算完整任务完成，另列连接、误执行、重试和恢复结果</li>
+<li>供应、软件和外部服务分别承担可控环节，不预设识别率、续航、BOM和工期</li>
 </ul>
-<p><strong>证据与产出</strong>：手册、移动平台接口与最小验证设计。形成首期功能取舍、依赖表和验证清单。未验证的识别率、BOM、续航和工期保留未知。</p>
+<p><strong>产出</strong>：任务流程图、职责表和验证方法。验证方案与已执行结果分开。</p>
 <h2>五、商业、渠道与经营可行性</h2>
+<h3>（一）市场量级</h3>
 <ul>
-<li>补充可核实的EU车辆存量、动力和车龄；区分官方数字、由占比推算值与无需求实测的情景</li>
-<li>用入口缺口、技术适配、年度购买及渠道门店模型逐层缩小数量，默认演示值不能视为销量预测；波兰仅渠道案例，中国单列背景口径</li>
+<li>使用EU27同口径乘用车、动力和车龄资料，区分统计数与占比推算值</li>
+<li>以入口缺口、适配和年度购买比例构建可修改演算，清楚标为情景而非销量预测</li>
+<li>波兰存量仅作渠道背景，中国按不同统计分类单列</li>
+<li>渠道销量按有效门店、去重合格客户和成交率计算，真实参数待取得</li>
 </ul>
-<h3>（一）收入、成本与经营投入判断</h3>
+<h3>（二）交付与经济性</h3>
 <ul>
-<li>比较硬件套餐、软件或集成授权、可选持续服务，不预设订阅及交易佣金成立</li>
-<li>区分终端购买、首次激活、再次使用和持续付费，按客户与接口条件估算可获得需求</li>
-<li>用参数明确的单机贡献公式整理硬件、交付、售后与服务成本。净收入按扣税、渠道扣点和促销后实际到账口径计量，渠道扣点不重复扣除，期间保持一致，固定投入、库存及账期另看现金需求</li>
+<li>比较硬件套餐、软件或集成授权、可选持续服务</li>
+<li>明确制造、产品、渠道、安装及外部服务各方的收入和责任</li>
+<li>用配置、交付和支持链说明免拆产品仍需承担的服务</li>
+<li>统一币种、税务和服务期计算单机贡献，固定研发、库存、账期与现金需求另算</li>
+<li>用实际激活、复用、付费和退货判断扩大、改进或缩小销售范围</li>
 </ul>
-<h3>（二）渠道和波兰案例</h3>
-<ul>
-<li>比较电商、自助配置、汽配门店、经销商和车队，确定免拆产品实际需要何种服务</li>
-<li>将波兰作为区域渠道案例，核查客群、销售安装与售后、采购和结算条件，再补语言、价格和区域服务，相关情况均待核实</li>
-<li>用真实经营数据确定是否增加设备、功能、团队或市场，不设置无依据销量与融资目标</li>
-</ul>
-<p><strong>证据与产出</strong>：公开价格及服务条款、企业原始披露、供应和渠道反馈。形成经济性模型与合作问题表。真实报价、退货、账期、服务许可及本地付费意愿待核。</p>
+<p><strong>产出</strong>：市场演算、渠道模型、责任表、交付图及成本框架。供应报价、授权、结算、退货和付费意愿为后续验证重点。</p>
 <h2>六、辅助驾驶和后续大模型演进</h2>
-<h3>（一）从记录提示到运动辅助</h3>
+<h3>（一）记录预警与运动辅助</h3>
 <ul>
-<li>区分记录、风险预警、驾驶员监测与实际转向或纵向控制，分别界定工作条件和责任</li>
-<li>研究感知、标定、车型接口、实时系统、安全验证及产业伙伴的新增门槛</li>
-<li>纳入 Mobileye 后装业务收缩等反证，不以旧车存量或助手用户数证明后装 ADAS 成长</li>
+<li>分开研究记录回看、风险提醒和实际转向或纵向控制</li>
+<li>比较Garmin、Mobileye及comma的功能、车型与责任边界</li>
+<li>纳入后装业务收缩等反证，独立评估感知、标定、接口、安全验证和专业合作</li>
 </ul>
-<h3>（二）何时引入 LLM</h3>
+<h3>（二）模型增量与部署</h3>
 <ul>
-<li>按已验证需求比较自然语言扩展、知识问答、任务组合及多模态，不把全部能力设为首期范围</li>
-<li>比较现成 API、手机模型、车内模型与混合方案的增量、许可、资源、可靠性和维护成本</li>
-<li>将模型技术顺序与产业进入顺序分开，保留单阶段独立业务与专业合作路径</li>
+<li>按自然表达、授权知识问答、受限任务组合和多模态的实际价值决定是否引入模型</li>
+<li>比较现成API、手机、车内及混合方案的许可、资源、可靠性与维护成本</li>
+<li>以Cerence等企业方案作集成参照，区分演示、供应能力、量产和零售整机</li>
+<li>明确座舱任务、感知模型和运动控制的分工</li>
 </ul>
-<p><strong>证据与产出</strong>：功能手册、车辆支持条件、企业披露及模型/平台许可。形成资产迁移和阶段决策表。控制接口、专业团队、道路数据和安全验证资源尚待确认。</p>
+<p><strong>产出</strong>：能力边界图与后续进入条件。既有语音用户或渠道规模不替代车型接口、道路数据及安全证据。</p>
 <h2>七、参考资料</h2>
-<p>按首款产品与音频、平台与面板、商业与服务、辅助驾驶及后续模型分类维护。正式来源记录标题、责任方、版本或发布日期、访问日期、阅读范围和使用边界，正文保留就近名称链接。历史材料、当前供货及未核线索分别标明。</p>
-<p><strong>交付与方法</strong>：正文、大纲、竞品数据和原始来源相互对应。先用公开材料形成可复查分析，再按已选用户、设备和任务设计实测。没有执行的安装、采购、渠道联系、模型与实车测试不写成完成。本轮不因研究建议而自动进入开发或发布产品承诺。</p></main><dialog aria-labelledby="diagram-view-title" class="diagram-dialog" id="diagram-dialog"><div class="dialog-bar"><h2 id="diagram-view-title">关系图</h2><button aria-label="关闭关系图" class="diagram-close">×</button></div><div class="diagram-view-tools"><button aria-label="缩小关系图" data-diagram-zoom="out">−</button><button data-diagram-zoom="reset">适合宽度</button><button aria-label="放大关系图" data-diagram-zoom="in">＋</button><span id="diagram-zoom-label">100%</span><a id="diagram-original" rel="noopener noreferrer" target="_blank">打开 SVG ↗</a></div><div class="diagram-view-scroll"><img alt="放大的关系图" id="diagram-view-image"/></div></dialog></body></html>
+<ul>
+<li>按平台与接入、音频和移动接口、产品、市场、辅助驾驶与模型分类去重</li>
+<li>记录责任方、版本或发布日期、访问日期、实际阅读范围及使用边界</li>
+<li>正文就近保留直接链接，来源索引和检索日志保留详细追溯记录</li>
+<li>明确厂商声明、间接转写、研究判断、假设演算及实测的区别</li>
+</ul>
+<p><strong>交付</strong>：正文、大纲、产品数据和网页口径对应。研究结论支持产品选择；采购、开发、渠道联系与实车验证按明确方案另行开展。</p></main><dialog aria-labelledby="diagram-view-title" class="diagram-dialog" id="diagram-dialog"><div class="dialog-bar"><h2 id="diagram-view-title">关系图</h2><button aria-label="关闭关系图" class="diagram-close">×</button></div><div class="diagram-view-tools"><button aria-label="缩小关系图" data-diagram-zoom="out">−</button><button data-diagram-zoom="reset">适合宽度</button><button aria-label="放大关系图" data-diagram-zoom="in">＋</button><span id="diagram-zoom-label">100%</span><a id="diagram-original" rel="noopener noreferrer" target="_blank">打开 SVG ↗</a></div><div class="diagram-view-scroll"><img alt="放大的关系图" id="diagram-view-image"/></div></dialog></body></html>

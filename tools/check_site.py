@@ -27,8 +27,8 @@ assert abs(annual - 112127.725374) < 0.001
 assert market_estimates(decision["market"], {"gap": 0, "compatible": 50, "purchase": 1})[-1] == 0
 blocks = [match.group(1).strip() + "\n" for match in re.finditer(r"```mermaid\s*\n([\s\S]*?)```", source)]
 manifest = json.loads((dist / "diagrams/manifest.json").read_text(encoding="utf-8"))
-assert len(blocks) == len(manifest["diagrams"]) == 13
-assert len({hashlib.sha256(code.encode()).hexdigest() for code in blocks}) == 13
+assert len(blocks) == len(manifest["diagrams"]) == 12
+assert len({hashlib.sha256(code.encode()).hexdigest() for code in blocks}) == 12
 for code, item in zip(blocks, manifest["diagrams"]):
     digest = hashlib.sha256(code.encode()).hexdigest()
     assert digest == item["sourceHash"] == item["renderedSourceHash"], item["id"]
@@ -45,7 +45,7 @@ for code, item in zip(blocks, manifest["diagrams"]):
 for name in ["index.html", "research.html"]:
     soup = BeautifulSoup((dist / name).read_text(encoding="utf-8"), "html.parser")
     figures = soup.select("figure.research-diagram")
-    assert len(figures) == 13, name
+    assert len(figures) == 12, name
     for item in manifest["diagrams"]:
         figure = soup.find("figure", id=item["id"])
         assert figure and figure.find("source", type="image/svg+xml")
@@ -94,9 +94,9 @@ for name in ["index.html", "research.html"]:
         assert soup.find(id=link["href"][1:]), link["href"]
     assert "产品扩展分析示意：语音助手与智能面板可以积累" not in soup.get_text()
 homepage = BeautifulSoup((dist / "index.html").read_text(encoding="utf-8"), "html.parser")
-assert len(homepage.select("#platforms figure.research-diagram")) == 7
+assert len(homepage.select("#platforms figure.research-diagram")) == 6
 assert len(homepage.select("#starter figure.research-diagram")) == 2
-assert len(homepage.select("#platforms .report-body .table-wrap")) == 8
+assert len(homepage.select("#platforms .report-body .table-wrap")) == 7
 assert all(homepage.select_one("#" + identity + " .report-body") for identity in ["roadmap", "platforms", "products", "starter", "business", "next", "sources"])
 assert "手机麦克风" in homepage.select_one("#platforms").get_text()
 assert "P" in homepage.find("math").get_text()
@@ -121,7 +121,13 @@ data = json.loads((dist / "data/products.json").read_text(encoding="utf-8"))
 assert len(data["products"]) == 24
 assert sum(p["phase"] in ["voice", "panel"] for p in data["products"]) == 17
 assert len({item["id"] for item in data["products"]}) == len(data["products"])
-assert BeautifulSoup((dist / "references.html").read_text(encoding="utf-8"), "html.parser").find(id="integration-references")
+references = BeautifulSoup((dist / "references.html").read_text(encoding="utf-8"), "html.parser")
+reference_body = homepage.select_one("#sources .report-body")
+assert len(reference_body.select("details.source-details table")) == 5
+assert len(references.select("details.source-details table")) == 5
+assert {a['href'] for a in reference_body.select('a[href]')} == {a['href'] for a in references.main.select('a[href]')}
+source_section = homepage.find(id="sources")
+assert list(source_section.children).index(source_section.select_one('.section-head')) < list(source_section.children).index(reference_body)
 canonical_products = site.parent / "车载智能化 产品样本.json"
 if canonical_products.exists():
     normalized = json.loads(json.dumps(data))
@@ -135,4 +141,4 @@ if canonical.exists():
 canonical_decision = site.parent / "车载智能化 评分与市场.json"
 if canonical_decision.exists():
     assert decision == json.loads(canonical_decision.read_text(encoding="utf-8"))
-print(json.dumps({"mermaidSources": 13, "carplayFocusRoutes": 3, "carplayFocusDiagrams": 3, "platformRatings": 6, "serviceLayersUnrated": 1, "marketAnnualExample": round(annual), "localLinks": checked_links, "sourceHashesMatch": True}))
+print(json.dumps({"mermaidSources": 12, "carplayFocusRoutes": 3, "carplayFocusDiagrams": 3, "platformRatings": 6, "serviceLayersUnrated": 1, "marketAnnualExample": round(annual), "localLinks": checked_links, "sourceHashesMatch": True}))
