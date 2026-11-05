@@ -1,34 +1,14 @@
-%% title: 平台、具体产品与公司关系
-%% 分析示意；实线表示提供、实现或投射，虚线表示授权或具体系统集成条件。
+%% title: 已有CarPlay时，小外设接在哪里
+%% 分析示意；实线为已有基线，虚线为尚需验证的新增外设输入，不代表已兼容。
+%% 来源 https://support.apple.com/en-us/108415
 %% 来源 https://developer.apple.com/carplay/
-%% 来源 https://source.android.com/docs/setup/about
-%% 来源 https://source.android.com/docs/automotive/start/what_automotive
-%% 来源 https://www.atotodirect.com/en-gb/pages/about-atoto
 flowchart TB
-  APPLE["Apple Inc."]
-  GOOGLE["Google LLC<br/>主导 AOSP 项目"]
-  AOTULE["Aotule 品牌方<br/>HK Auto Smart 全球运营销售"]
-  subgraph PHONE["手机与相应服务"]
-    SIRI["Apple Siri"]
-    GEMINI["Google Gemini"]
-    CP["Apple CarPlay"]
-    AA["Google Android Auto"]
+  subgraph EXISTING["已有车辆与Apple CarPlay基线"]
+    START["方向盘语音键 / 车屏入口<br/>支持时使用语音唤起"] --> MIC["原车 / 接收机麦克风<br/>实际输入随配置核查"]
+    MIC --> PHONE["iPhone上的Siri或支持的应用<br/>任务服务按条件联网"]
+    PHONE --> OUTPUT["原车屏幕与音响<br/>显示、播报及恢复"]
   end
-  subgraph CAR["车内设备与系统"]
-    SCREEN["相容投射接收设备<br/>逐品牌型号核对"]
-    AAOS["Android Automotive OS<br/>由车厂或设备商具体集成"]
-    ATOTO["ATOTO S8 Gen4 S84G209P<br/>具体 Android 替换车机"]
-  end
-  GAS["Google GAS<br/>授权应用与服务集合"]
-  OEM["车厂 / 系统伙伴"]
-  APPLE --> SIRI
-  APPLE --> CP
-  GOOGLE --> GEMINI
-  GOOGLE --> AA
-  GOOGLE --> AAOS
-  GOOGLE --> GAS
-  GAS -.->|"可选授权集成"| AAOS
-  OEM -.-> AAOS
-  CP -->|"投射交互"| SCREEN
-  AA -->|"投射交互"| SCREEN
-  AOTULE --> ATOTO
+  EXTRA["拟议无屏小外设<br/>按键或外部拾音"] -.->|"触发与输入路由均未证"| PHONE
+  EXTRA -.->|"只有主机明确提供接口时"| MIC
+  VALUE["产品增量需实测<br/>少操作 / 更易触达 / 更稳恢复"]
+  EXTRA --> VALUE

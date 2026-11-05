@@ -1,30 +1,16 @@
-%% title: 三种现有平台接入路径
-%% 分析示意；Gemini目标车载外设入口待核，不代表所有蓝牙套件兼容。
-%% 来源 https://support.apple.com/en-ie/guide/iphone/iph0aa8c80e6/27/ios/27
-%% 来源 https://support.google.com/gemini/answer/15456140?hl=en
-%% 来源 https://support.google.com/gemini/answer/16735982?hl=en
-%% 来源 https://www.atotodirect.com/en-gb/pages/manual-460-en
+%% title: 可选CarPlay语音应用的完整任务流程
+%% 分析示意；这是需要新增软件或合作的路线，不是已具备能力。
+%% 来源 https://developer.apple.com/carplay/
+%% 来源 https://developer.apple.com/download/files/CarPlay-Developer-Guide.pdf
+%% 来源 https://developer.apple.com/videos/play/wwdc2026/212/
 flowchart TB
-  subgraph A["路径一：Apple Siri / Apple"]
-    A1["相容外设或车辆按键"] --> A2["iPhone 上的 Siri"]
-    A2 --> A3["Apple 支持的手机任务"]
-  end
-  subgraph B["路径二：Google Gemini / Google"]
-    B1["手机或相容入口<br/>目标车载套件待核"] -.-> B2["Android 手机的 Gemini"]
-    B2 --> B3["Google 支持的手机任务"]
-  end
-  subgraph C["路径三：固定车内界面"]
-    C1{"采用哪种现有产品"}
-    C1 -->|"手机投射"| C2["Apple CarPlay<br/>Google Android Auto"]
-    C1 -->|"具体本机车机"| C3["ATOTO S84G209P / Aotule<br/>现有厂商应用与设置"]
-  end
-  SERVICE["账号、语言与联网条件<br/>按平台和具体任务需要"]
-  RESULT["导航、电话或媒体结果<br/>完成、失败、取消与恢复"]
-  SERVICE -.-> A2
-  SERVICE -.-> B2
-  SERVICE -.-> C2
-  SERVICE -.-> C3
-  A3 --> RESULT
-  B3 --> RESULT
-  C2 --> RESULT
-  C3 --> RESULT
+  SETUP["停车准备<br/>相容iPhone / 授权应用 / 账号与必要权限"] --> ENTRY["用户打开获准的CarPlay应用<br/>不是自动接管Siri或方向盘键"]
+  ENTRY --> LISTEN["Voice Control状态界面<br/>实际语音期间启用会话与录音"]
+  LISTEN --> TASK["限定任务处理<br/>已有服务、规则或按需云能力"]
+  TASK --> CHECK{"参数与任务执行权限明确"}
+  CHECK -->|"是"| ACTION["在可用范围内执行或转交<br/>导航 / 拨号等依具体接口"]
+  CHECK -->|"否"| CONFIRM["补充确认 / 说明缺失 / 取消"]
+  CONFIRM -->|"补充后重新检查"| CHECK
+  ACTION --> RESULT["反馈实际可观测状态<br/>请求转交不等于任务完成"]
+  RESULT --> END["结束录音和音频会话<br/>中断后恢复原有音源"]
+  CONFIRM -->|"取消或不能执行"| END
