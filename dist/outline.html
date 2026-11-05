@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>车载智能化 调研大纲 · 车载智能化研究</title><link href="style.css?v=platform-basics-20261106" rel="stylesheet"/><link href="report.css?v=platform-basics-20261106" rel="stylesheet"/><script defer="" src="diagrams.js?v=platform-basics-20261106"></script></head><body><header class="topbar"><a class="brand" href="index.html?v=platform-basics-20261106"><span class="brand-symbol"></span><b>DreamSoul</b><span>RESEARCH</span></a><a href="index.html?v=platform-basics-20261106">返回研究主页 ↗</a></header><main class="research-content"><p class="eyebrow">IN-VEHICLE PRODUCTS / RESEARCH</p><h1>车载智能化 调研大纲</h1><p>整理日期：2026年11月5日。用途：支持 DreamSoul 判断传统车辆智能化的产品起点、经营可行性及后续投入顺序。研究主线为免屏、免拆的小型车载语音助手或音箱，向智能面板和辅助驾驶按条件扩展，再研究通用大模型能力。</p>
+<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>车载智能化 调研大纲 · 车载智能化研究</title><link href="style.css?v=hardware-interfaces-20261106" rel="stylesheet"/><link href="report.css?v=hardware-interfaces-20261106" rel="stylesheet"/><script defer="" src="diagrams.js?v=hardware-interfaces-20261106"></script></head><body><header class="topbar"><a class="brand" href="index.html?v=hardware-interfaces-20261106"><span class="brand-symbol"></span><b>DreamSoul</b><span>RESEARCH</span></a><a href="index.html?v=hardware-interfaces-20261106">返回研究主页 ↗</a></header><main class="research-content"><p class="eyebrow">IN-VEHICLE PRODUCTS / RESEARCH</p><h1>车载智能化 调研大纲</h1><p>整理日期：2026年11月6日。用途：支持 DreamSoul 判断传统车辆智能化的产品起点、经营可行性及后续投入顺序。研究主线为小型、便于安装的独立车载语音硬件，包括轻量音箱与LUMI类交互终端，向智能面板和辅助驾驶按条件扩展，再研究通用大模型能力。</p>
 <p>首款允许使用手机、云服务、固定命令及现成语音组件，不将车内本地 LLM 作为立项或验收前提。范围以存量燃油车为重点，按车机、音频接口、手机和用户任务划分客群。波兰仅作为待核实的区域渠道案例。动态资料记录访问日，历史价、当前销售线索、实际采购交付、应用维护及服务状态分别核验。</p>
 <h2>一、产品起点与渐进路线</h2>
 <h3>（一）首款产品服务谁、解决什么</h3>
@@ -16,6 +16,7 @@
 <p><strong>证据与产出</strong>：原始产品说明、用户与渠道资料。形成客群划分和阶段关系图。首期目标用户、关键任务及产品外形尚待验证。</p>
 <h2>二、平台与载体</h2>
 <p>先用“导航去公司”的例子，解释CarPlay、Android Auto、Siri、Gemini分别是什么、由哪个公司提供，以及手机、互联功能和车机怎样分工；再补充AAOS、GAS、具体车机与无线适配器的简明释义。</p>
+<p>先以短表和Mermaid分清本机/手机协作、普通蓝牙音频、原车屏应用、主机外设接口与车辆数据/控制；App分发、车屏适配及车辆权限分别核查。CarPlay/Android Auto是可选互联扩展，不是首款成立的必要条件。</p>
 <p>优先专题：已有Apple CarPlay时，无屏小外设怎样复用原车屏幕、音响与手机能力？以Google Android Auto作对照，区分既有Siri体验、可选CarPlay语音应用与接收硬件合作。
 - 展示原车语音基线与待核的新增外设路由；不能将普通蓝牙配对画成已加入CarPlay音频链
 - 说明用户已有CarPlay仍需购买新设备的可验证增量与停止条件；以Ottocast实体控制器和无线适配器分清连接便利、操作入口和新增语音任务
@@ -50,12 +51,13 @@
 <ul>
 <li>核查平台类别、分发、系统权限、MFi 角色与实际设备接口</li>
 <li>把选择依据落到完整任务、支持成本、恢复和可控范围
-<strong>证据与产出</strong>：平台原始指南、具体设备手册与合作公开规则。平台具名比较表、可展开卡片与六张图共同呈现；图保留 Mermaid、SVG 与 PNG，对未知权限和手机/车辆表现保留边界。</li>
+<strong>证据与产出</strong>：平台原始指南、具体设备手册与合作公开规则。平台具名比较表、可展开卡片与七张图共同呈现；图保留 Mermaid、SVG 与 PNG，对未知权限和手机/车辆表现保留边界。</li>
 </ul>
 <h2>三、按阶段竞品比较</h2>
 <h3>（一）首期直接竞品与历史经验</h3>
 <ul>
-<li>优先核查有官网当前销售线索的免提音箱、手机助手入口，以及手机自身方案，实际采购交付单独验证</li>
+<li>比较轻量音箱、LUMI类交互终端、手机助手外设及手机自身方案；整机、配套软件与服务状态分别核验，采购交付单独验证</li>
+<li>对LUMI画设备、手机和服务分工图；保留App主体、教程转写阅读深度及CarPlay/本地模型/整机规格未知</li>
 <li>以 Echo Auto、Garmin Speak、Roav VIVA、JBL Smartbase 等历史产品研究外形、服务和连接经验</li>
 <li>各型号分别记录价格时间、供货、App 与云服务状态，不将旧价或支持页面当作当前在售与完整可用证明</li>
 </ul>
@@ -73,7 +75,7 @@
 <li>优先明确激活、短反馈、确认、取消和失败退出，按需使用规则、手机或云端，不为引入模型扩大功能</li>
 <li>用 Mermaid 解释拾音、识别、规则判断、授权执行和回复的路径</li>
 </ul>
-<h3>（二）免屏免拆的实际边界</h3>
+<h3>（二）独立硬件、手机协作与安装边界</h3>
 <ul>
 <li>核查固定、供电、噪声、回声、重连、通话与导航抢占、手机后台和账号配置</li>
 <li>对比原车音响输出与自带扬声器，明确哪些任务需要手机、网络、订阅或其他配件</li>

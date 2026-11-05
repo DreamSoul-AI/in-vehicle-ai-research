@@ -1,21 +1,21 @@
 {
   "roadmap": {
-    "textCharacters": 1611,
+    "textCharacters": 1629,
     "diagrams": 1,
     "tables": 1
   },
   "platforms": {
-    "textCharacters": 14239,
-    "diagrams": 6,
-    "tables": 8
+    "textCharacters": 15658,
+    "diagrams": 7,
+    "tables": 9
   },
   "products": {
-    "textCharacters": 1708,
-    "diagrams": 0,
-    "tables": 2
+    "textCharacters": 2814,
+    "diagrams": 1,
+    "tables": 3
   },
   "starter": {
-    "textCharacters": 1509,
+    "textCharacters": 1570,
     "diagrams": 2,
     "tables": 1
   },
@@ -30,8 +30,8 @@
     "tables": 0
   },
   "sources": {
-    "textCharacters": 4637,
+    "textCharacters": 5066,
     "diagrams": 0,
-    "tables": 6
+    "tables": 7
   }
 }

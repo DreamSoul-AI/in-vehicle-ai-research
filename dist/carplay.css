@@ -46,8 +46,20 @@
 .carplay-focus table th { color: var(--ink); }
 .carplay-focus [id^=cp-] { scroll-margin-top: 20px; }
 .cp-scope-note { padding: 13px 16px; margin: 18px 0; border-left: 3px solid #e3c100; background: #fff9d5; font-size: 12px; }
+.hardware-access { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 15px 0 25px; margin: 30px 0; scroll-margin-top: 100px; }
+.hardware-access > :is(h3,h4):first-child { font-size: 22px; margin-top: 0; }
+.hardware-access .cp-terms { margin-top: 24px; }
+.hardware-access .cp-terms p { font-size: 13px; line-height: 1.9; }
+.lumi-case { border: 1px solid #b8ccec; border-top: 4px solid var(--blue); background: #fbfdff; border-radius: 9px; padding: 24px; margin: 28px 0 35px; scroll-margin-top: 100px; }
+.lumi-case > :is(h2,h3):first-child { font-size: 24px; margin-top: 0; }
+.lumi-case .cp-terms { margin: 22px 0; }
+.lumi-case .cp-terms p { font-size: 13px; line-height: 1.9; }
+.lumi-case .table-wrap { background: white; }
+.lumi-case table { min-width: 650px; }
 @media(max-width:800px) { .cp-route-grid { grid-template-columns: 1fr; } }
 @media(max-width:500px) {
+  .hardware-access, .lumi-case { scroll-margin-top: 120px; }
+  .lumi-case { padding: 18px 14px; }
   .cp-concept-grid { grid-template-columns: 1fr; }
   .cp-concept { padding: 16px; }
   .cp-everyday-example { padding: 16px; }

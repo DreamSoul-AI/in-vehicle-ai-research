@@ -1,34 +1,16 @@
-%% title: 平台、具体产品与公司关系
-%% 分析示意；实线表示提供、实现或投射，虚线表示授权或具体系统集成条件。
+%% title: 可选CarPlay语音应用的完整任务流程
+%% 分析示意；这是需要新增软件或合作的路线，不是已具备能力。
 %% 来源 https://developer.apple.com/carplay/
-%% 来源 https://source.android.com/docs/setup/about
-%% 来源 https://source.android.com/docs/automotive/start/what_automotive
-%% 来源 https://www.atotodirect.com/en-gb/pages/about-atoto
+%% 来源 https://developer.apple.com/download/files/CarPlay-Developer-Guide.pdf
+%% 来源 https://developer.apple.com/videos/play/wwdc2026/212/
 flowchart TB
-  APPLE["Apple Inc."]
-  GOOGLE["Google LLC<br/>主导 AOSP 项目"]
-  AOTULE["Aotule 品牌方<br/>HK Auto Smart 全球运营销售"]
-  subgraph PHONE["手机与相应服务"]
-    SIRI["Apple Siri"]
-    GEMINI["Google Gemini"]
-    CP["Apple CarPlay"]
-    AA["Google Android Auto"]
-  end
-  subgraph CAR["车内设备与系统"]
-    SCREEN["相容投射接收设备<br/>逐品牌型号核对"]
-    AAOS["Android Automotive OS<br/>由车厂或设备商具体集成"]
-    ATOTO["ATOTO S8 Gen4 S84G209P<br/>具体 Android 替换车机"]
-  end
-  GAS["Google GAS<br/>授权应用与服务集合"]
-  OEM["车厂 / 系统伙伴"]
-  APPLE --> SIRI
-  APPLE --> CP
-  GOOGLE --> GEMINI
-  GOOGLE --> AA
-  GOOGLE --> AAOS
-  GOOGLE --> GAS
-  GAS -.->|"可选授权集成"| AAOS
-  OEM -.-> AAOS
-  CP -->|"投射交互"| SCREEN
-  AA -->|"投射交互"| SCREEN
-  AOTULE --> ATOTO
+  SETUP["停车准备<br/>相容iPhone / 授权应用 / 账号与必要权限"] --> ENTRY["用户打开获准的CarPlay应用<br/>不是自动接管Siri或方向盘键"]
+  ENTRY --> LISTEN["Voice Control状态界面<br/>实际语音期间启用会话与录音"]
+  LISTEN --> TASK["限定任务处理<br/>已有服务、规则或按需云能力"]
+  TASK --> CHECK{"参数与任务执行权限明确"}
+  CHECK -->|"是"| ACTION["在可用范围内执行或转交<br/>导航 / 拨号等依具体接口"]
+  CHECK -->|"否"| CONFIRM["补充确认 / 说明缺失 / 取消"]
+  CONFIRM -->|"补充后重新检查"| CHECK
+  ACTION --> RESULT["反馈实际可观测状态<br/>请求转交不等于任务完成"]
+  RESULT --> END["结束录音和音频会话<br/>中断后恢复原有音源"]
+  CONFIRM -->|"取消或不能执行"| END

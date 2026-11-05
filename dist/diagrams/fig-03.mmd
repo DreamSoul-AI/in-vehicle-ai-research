@@ -1,16 +1,14 @@
-%% title: 可选CarPlay语音应用的完整任务流程
-%% 分析示意；这是需要新增软件或合作的路线，不是已具备能力。
+%% title: 已有CarPlay时，小外设接在哪里
+%% 分析示意；实线为已有基线，虚线为尚需验证的新增外设输入，不代表已兼容。
+%% 来源 https://support.apple.com/en-us/108415
 %% 来源 https://developer.apple.com/carplay/
-%% 来源 https://developer.apple.com/download/files/CarPlay-Developer-Guide.pdf
-%% 来源 https://developer.apple.com/videos/play/wwdc2026/212/
 flowchart TB
-  SETUP["停车准备<br/>相容iPhone / 授权应用 / 账号与必要权限"] --> ENTRY["用户打开获准的CarPlay应用<br/>不是自动接管Siri或方向盘键"]
-  ENTRY --> LISTEN["Voice Control状态界面<br/>实际语音期间启用会话与录音"]
-  LISTEN --> TASK["限定任务处理<br/>已有服务、规则或按需云能力"]
-  TASK --> CHECK{"参数与任务执行权限明确"}
-  CHECK -->|"是"| ACTION["在可用范围内执行或转交<br/>导航 / 拨号等依具体接口"]
-  CHECK -->|"否"| CONFIRM["补充确认 / 说明缺失 / 取消"]
-  CONFIRM -->|"补充后重新检查"| CHECK
-  ACTION --> RESULT["反馈实际可观测状态<br/>请求转交不等于任务完成"]
-  RESULT --> END["结束录音和音频会话<br/>中断后恢复原有音源"]
-  CONFIRM -->|"取消或不能执行"| END
+  subgraph EXISTING["已有车辆与Apple CarPlay基线"]
+    START["方向盘语音键 / 车屏入口<br/>支持时使用语音唤起"] --> MIC["原车 / 接收机麦克风<br/>实际输入随配置核查"]
+    MIC --> PHONE["iPhone上的Siri或支持的应用<br/>任务服务按条件联网"]
+    PHONE --> OUTPUT["原车屏幕与音响<br/>显示、播报及恢复"]
+  end
+  EXTRA["拟议无屏小外设<br/>按键或外部拾音"] -.->|"触发与输入路由均未证"| PHONE
+  EXTRA -.->|"只有主机明确提供接口时"| MIC
+  VALUE["产品增量需实测<br/>少操作 / 更易触达 / 更稳恢复"]
+  EXTRA --> VALUE

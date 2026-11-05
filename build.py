@@ -21,7 +21,7 @@ from tools.decision_content import render_scores, render_market, validate_decisi
 SITE = Path(__file__).resolve().parent
 DIST = SITE / "dist"
 CONTENT = SITE / "content"
-VERSION = "platform-basics-20261106"
+VERSION = "hardware-interfaces-20261106"
 CHAPTER_IDS = dict(zip("一二三四五六七", ["roadmap", "platforms", "products", "starter", "business", "next", "sources"]))
 
 
@@ -165,22 +165,29 @@ def platform_comparison(soup: BeautifulSoup) -> None:
         table["aria-label"] = "现有平台使用能力对比" if identity == "platform-usage-table" else "现有平台开发与商业条件对比"
 
 
-def wrap_carplay_focus(soup: BeautifulSoup) -> None:
-    start = soup.find(string=lambda node: isinstance(node, Comment) and node.strip() == "carplay-focus:start")
-    end = soup.find(string=lambda node: isinstance(node, Comment) and node.strip() == "carplay-focus:end")
-    if start is None and end is None:
-        return
-    if start is None or end is None or start.parent is not end.parent:
-        raise ValueError("CarPlay focus requires paired markers in the same section")
-    section = soup.new_tag("section", attrs={"id": "carplay-focus", "class": "carplay-focus", "aria-label": "CarPlay接入重点与Android Auto对照"})
-    start.insert_before(section)
-    node = start.next_sibling
-    while node is not None and node is not end:
-        following = node.next_sibling
-        section.append(node)
-        node = following
-    start.extract()
-    end.extract()
+def wrap_research_sections(soup: BeautifulSoup) -> None:
+    sections = [
+        ("carplay-focus", "carplay-focus", "CarPlay接入重点与Android Auto对照"),
+        ("hardware-access", "hardware-access", "独立硬件与原车接口选择"),
+        ("lumi-reference", "lumi-case", "LUMI产品参照与证据边界"),
+        ("integration-references", "integration-references", "独立硬件与接口补充资料"),
+    ]
+    for identity, class_name, label in sections:
+        start = soup.find(string=lambda node: isinstance(node, Comment) and node.strip() == identity + ":start")
+        end = soup.find(string=lambda node: isinstance(node, Comment) and node.strip() == identity + ":end")
+        if start is None and end is None:
+            continue
+        if start is None or end is None or start.parent is not end.parent:
+            raise ValueError("Paired section markers required: " + identity)
+        section = soup.new_tag("section", attrs={"id": identity, "class": class_name, "aria-label": label})
+        start.insert_before(section)
+        node = start.next_sibling
+        while node is not None and node is not end:
+            following = node.next_sibling
+            section.append(node)
+            node = following
+        start.extract()
+        end.extract()
 
 
 def fold_platform_evidence(soup: BeautifulSoup) -> None:
@@ -232,7 +239,7 @@ def render_markdown(text: str, blocks: list[dict], manifest: dict, equations: li
     text = re.sub(r"\$([A-Za-z][^$\n]*?)\$", inline_math, text)
     rendered = markdown.markdown(text, extensions=["tables", "fenced_code"])
     soup = BeautifulSoup(rendered, "html.parser")
-    wrap_carplay_focus(soup)
+    wrap_research_sections(soup)
     platform_comparison(soup)
     fold_platform_evidence(soup)
     for table in list(soup.find_all("table")):
@@ -318,6 +325,21 @@ def build(args: argparse.Namespace) -> None:
     (DIST / "research.html").write_text(standalone(full, "车载智能化 产品与阶段路线", decision), encoding="utf-8")
     outline = (CONTENT / "outline.md").read_text(encoding="utf-8")
     (DIST / "outline.html").write_text(standalone(render_markdown(outline, blocks, manifest, equations, decision), "车载智能化 调研大纲", decision), encoding="utf-8")
+    # Keep the dedicated reference page aligned with the new report evidence.
+    references_path = DIST / "references.html"
+    references = BeautifulSoup(references_path.read_text(encoding="utf-8"), "html.parser")
+    update = BeautifulSoup(full, "html.parser").find(id="integration-references")
+    previous = references.find(id="integration-references")
+    if update is not None:
+        if previous is not None:
+            previous.replace_with(update)
+        else:
+            references.main.find("p", class_=None).insert_after(update)
+        for tag in references.find_all(["a", "link", "script"]):
+            for attribute in ["href", "src"]:
+                if tag.get(attribute):
+                    tag[attribute] = version_url(tag[attribute])
+        references_path.write_text(str(references), encoding="utf-8")
     # The data shape did not change. Version the request with the page assets.
     app = DIST / "app.js"
     script = app.read_text(encoding="utf-8")

@@ -152,7 +152,7 @@ function showStage(id) {
 }
 async function initialize() {
   try {
-    const response = await fetch("data/products.json?v=platform-basics-20261106");
+    const response = await fetch("data/products.json?v=hardware-interfaces-20261106");
     if (!response.ok) throw new Error(`数据返回 ${response.status}`);
     const data = await response.json();
     if (!Array.isArray(data.products) || !Array.isArray(data.stages))
@@ -163,7 +163,7 @@ async function initialize() {
       ["voice", "panel"].includes(p.phase),
     ).length;
     $("stats").innerHTML =
-      `<div class="stat"><b>3</b><span>首款候选任务</span></div><div class="stat"><b>4</b><span>产品研究阶段</span></div><div class="stat"><b>${initial}</b><span>语音与面板样本</span></div>`;
+      `<div class="stat"><b>独立</b><span>首款硬件形态</span></div><div class="stat"><b>4</b><span>产品研究阶段</span></div><div class="stat"><b>${initial}</b><span>语音与面板样本</span></div>`;
     const sources = new Map();
     [
       ...(data.sources || []),

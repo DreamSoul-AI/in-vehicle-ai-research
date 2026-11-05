@@ -69,8 +69,8 @@ def render_scores(data):
     anchors = ''.join('<li><b>' + escape(item["label"]) + '</b>：' + escape(item["anchor"]) + '</li>' for item in dimensions)
     return '''<section class="decision-panel" id="platform-scores" aria-label="平台路线适配评分">
 <div class="decision-heading"><span class="decision-kicker">现有平台与产品</span><h3>先看名字、公司与采用条件</h3><p>按采用现成方案的目标评分，满分100。点击名称查看理由，点击公司查看官方依据。</p></div>
-<p class="cp-scope-note">通用分数按需要新增相容接收设备的条件评估。已有CarPlay不应再次扣除已有屏幕的部署价值，先看 <a href="#carplay-focus">已有CarPlay接入专题</a>。</p>
-<div class="decision-stage" role="group" aria-label="评分目标"><button data-score-stage="voice" aria-pressed="true">首款 · 无屏语音助手</button><button data-score-stage="panel" aria-pressed="false">第二阶段 · 智能面板</button></div>
+<p class="cp-scope-note">本表是采用现成平台的无屏外设/面板路线参考，不覆盖LUMI类独立终端的完整方案。通用部署分按需要新增相容接收设备评估；已有CarPlay不再重复计算已有屏幕，先看 <a href="#carplay-focus">已有CarPlay接入专题</a>。</p>
+<div class="decision-stage" role="group" aria-label="评分目标"><button data-score-stage="voice" aria-pressed="true">参照 · 无屏语音外设</button><button data-score-stage="panel" aria-pressed="false">第二阶段 · 智能面板</button></div>
 <p class="decision-takeaway" id="score-takeaway">Apple Siri、Google Gemini按手机与语言分别验证；具体外设兼容需单独确认。</p>
 <div class="score-table-wrap" tabindex="0" role="region" aria-label="路线评分表，可横向滚动"><table class="score-table"><thead><tr><th>平台 / 具体型号</th><th>公司</th><th>适配分</th>''' + columns + '''<th>采用建议</th></tr></thead><tbody id="score-rows">''' + score_rows(score, "voice") + '''</tbody></table></div>
 <p class="decision-note">单项1–5分，高分更适配。研究判断，非实测排名；相差≤5分按同档理解。GAS依附系统伙伴，不单独计分。</p>

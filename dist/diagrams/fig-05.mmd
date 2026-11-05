@@ -1,30 +1,34 @@
-%% title: 三种现有平台接入路径
-%% 分析示意；Gemini目标车载外设入口待核，不代表所有蓝牙套件兼容。
-%% 来源 https://support.apple.com/en-ie/guide/iphone/iph0aa8c80e6/27/ios/27
-%% 来源 https://support.google.com/gemini/answer/15456140?hl=en
-%% 来源 https://support.google.com/gemini/answer/16735982?hl=en
-%% 来源 https://www.atotodirect.com/en-gb/pages/manual-460-en
+%% title: 平台、具体产品与公司关系
+%% 分析示意；实线表示提供、实现或投射，虚线表示授权或具体系统集成条件。
+%% 来源 https://developer.apple.com/carplay/
+%% 来源 https://source.android.com/docs/setup/about
+%% 来源 https://source.android.com/docs/automotive/start/what_automotive
+%% 来源 https://www.atotodirect.com/en-gb/pages/about-atoto
 flowchart TB
-  subgraph A["路径一：Apple Siri / Apple"]
-    A1["相容外设或车辆按键"] --> A2["iPhone 上的 Siri"]
-    A2 --> A3["Apple 支持的手机任务"]
+  APPLE["Apple Inc."]
+  GOOGLE["Google LLC<br/>主导 AOSP 项目"]
+  AOTULE["Aotule 品牌方<br/>HK Auto Smart 全球运营销售"]
+  subgraph PHONE["手机与相应服务"]
+    SIRI["Apple Siri"]
+    GEMINI["Google Gemini"]
+    CP["Apple CarPlay"]
+    AA["Google Android Auto"]
   end
-  subgraph B["路径二：Google Gemini / Google"]
-    B1["手机或相容入口<br/>目标车载套件待核"] -.-> B2["Android 手机的 Gemini"]
-    B2 --> B3["Google 支持的手机任务"]
+  subgraph CAR["车内设备与系统"]
+    SCREEN["相容投射接收设备<br/>逐品牌型号核对"]
+    AAOS["Android Automotive OS<br/>由车厂或设备商具体集成"]
+    ATOTO["ATOTO S8 Gen4 S84G209P<br/>具体 Android 替换车机"]
   end
-  subgraph C["路径三：固定车内界面"]
-    C1{"采用哪种现有产品"}
-    C1 -->|"手机投射"| C2["Apple CarPlay<br/>Google Android Auto"]
-    C1 -->|"具体本机车机"| C3["ATOTO S84G209P / Aotule<br/>现有厂商应用与设置"]
-  end
-  SERVICE["账号、语言与联网条件<br/>按平台和具体任务需要"]
-  RESULT["导航、电话或媒体结果<br/>完成、失败、取消与恢复"]
-  SERVICE -.-> A2
-  SERVICE -.-> B2
-  SERVICE -.-> C2
-  SERVICE -.-> C3
-  A3 --> RESULT
-  B3 --> RESULT
-  C2 --> RESULT
-  C3 --> RESULT
+  GAS["Google GAS<br/>授权应用与服务集合"]
+  OEM["车厂 / 系统伙伴"]
+  APPLE --> SIRI
+  APPLE --> CP
+  GOOGLE --> GEMINI
+  GOOGLE --> AA
+  GOOGLE --> AAOS
+  GOOGLE --> GAS
+  GAS -.->|"可选授权集成"| AAOS
+  OEM -.-> AAOS
+  CP -->|"投射交互"| SCREEN
+  AA -->|"投射交互"| SCREEN
+  AOTULE --> ATOTO
