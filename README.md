@@ -14,7 +14,7 @@
 - `dist/references.html`：参考资料与阅读范围
 - `content/research.md`、`content/outline.md`：正式正文与大纲的网页发布副本，主页各节和完整正文从这里生成
 - 平台章节按现有名称和对应公司展示100分适配评分与短标签，可切换无屏助手/智能面板并调整权重；详细两张平台表及七张卡片保留在展开区
-- CarPlay重点专题区分沿用Siri的无屏外设、CarPlay应用服务、接收硬件合作三条接入路径，增加2张接入与任务流程图及Android Auto对照；无屏指新增外设形态，车内仍可已有CarPlay屏
+- CarPlay专题先用四张名称/公司卡片和“导航去公司”分工示意解释CarPlay、Android Auto、Siri、Gemini，再说明车机、AAOS、GAS和适配器。随后区分沿用Siri的无屏外设、CarPlay应用服务、接收硬件合作三条接入路径；无屏指新增外设形态，车内仍可已有CarPlay屏
 - 比较对象为Apple CarPlay、Google Android Auto、AAOS、Google GAS、Apple Siri、Google Gemini、ATOTO S84G209P。公司列直链官方依据，详情区分品牌归属、发行、项目主导、运营销售与未确认的制造主体
 - `content/decision.json`、`dist/data/decision.json`：评分原始值、权重、逐项理由、市场统计来源与演算参数；正式主数据位于上级 `车载智能化 评分与市场.json`
 - `dist/decision.js`、`dist/decision.css`、`tools/decision_content.py`：评分、市场量级与渠道情景的静态初值和交互，页面直接嵌入同一JSON以保持口径一致
@@ -63,7 +63,7 @@ Python 依赖版本见 `requirements-render.txt`。图形渲染使用固定 Merm
 
 `main` 保存完整网站源码，`gh-pages` 保存从 `dist/` 提取的静态发布文件，Pages 从 `gh-pages` 分支根目录提供网页。不需要安装依赖或构建，站内资源使用相对路径以适配项目 Pages 子路径。
 
-当前内容和图示版本为 `carplay-integration-20261105`，由 `build.py` 统一写入资源与正文链接。后续结构调整时更新构建脚本的 `VERSION`，再构建静态产物。
+当前页面版本为 `platform-basics-20261106`，由 `build.py` 统一写入资源与正文链接。术语导读于2026年11月6日补充，原有产品与市场资料保留各自的信息日期。后续结构调整时更新构建脚本的 `VERSION`，再构建静态产物。
 
 完成修改和本地检查后，提交源码并发布：
 

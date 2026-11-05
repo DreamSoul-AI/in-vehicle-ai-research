@@ -21,7 +21,7 @@ from tools.decision_content import render_scores, render_market, validate_decisi
 SITE = Path(__file__).resolve().parent
 DIST = SITE / "dist"
 CONTENT = SITE / "content"
-VERSION = "carplay-integration-20261105"
+VERSION = "platform-basics-20261106"
 CHAPTER_IDS = dict(zip("一二三四五六七", ["roadmap", "platforms", "products", "starter", "business", "next", "sources"]))
 
 

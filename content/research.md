@@ -39,12 +39,36 @@ flowchart TB
 本研究不预设销量、BOM、期限或融资额。推进依据应来自实际任务完成、用户复用、供应报价、支持负担和现金需求，不能仅由路线图或旧车存量推导。
 
 # 二、平台与载体
-比较对象直接采用现有平台名和具体产品型号，并列明对应公司。Apple Siri、Google Gemini是手机助手；Apple CarPlay、Google Android Auto是手机互联平台；AAOS是Google主导的AOSP汽车系统基座；GAS是Google授权服务。ATOTO S84G209P则是具体后装车机，不代表整个Android后装市场。以下均为公开资料判断，未进行手机或实车测试。
+先认识这些名称及其分工，再讨论新增产品怎样接入。重点是Apple的CarPlay和Google的Android Auto；平台名称、语音助手与车内硬件分别说明。以下为公开资料梳理，未进行手机或实车测试。
 
 <!-- carplay-focus:start -->
 
-## CarPlay重点：已有平台，第一阶段怎样接入
-**“无屏”描述新增外设的形态，车内仍可以已有CarPlay屏。** 这里重点研究Apple CarPlay，Google Android Auto作为对照。已有平台先提供手机任务、车屏和音响；新增产品必须说明自己插在哪一环，以及为什么比原车入口更好用。
+## CarPlay重点：先认识平台，再看怎样接入
+
+<section class="cp-primer" id="carplay-basics" aria-labelledby="cp-basics-title">
+<p class="cp-primer-kicker">先认识这些名字</p>
+<h3 id="cp-basics-title">CarPlay是什么，和Siri有什么关系？</h3>
+<p><b>CarPlay是Apple（苹果公司）提供的手机与汽车互联功能。</b> 把iPhone连接到支持CarPlay的车辆或后装车机后，就能通过车屏、音响和车内控件使用支持的导航、电话、音乐等功能。</p>
+<div class="cp-concept-grid">
+<article class="cp-concept"><span>手机与汽车互联 · Apple 苹果</span><h4>CarPlay</h4><p>把iPhone中支持的应用带到车内界面，方便看地图、听音乐、打电话。</p><small>使用条件：iPhone＋相容车机</small></article>
+<article class="cp-concept"><span>手机与汽车互联 · Google 谷歌</span><h4>Android Auto</h4><p>让Android手机中支持的应用通过相容车屏和控件使用。</p><small>使用条件：受支持Android手机＋相容车机</small></article>
+<article class="cp-concept"><span>语音助手 · Apple 苹果</span><h4>Siri</h4><p>接收你说出的请求，调用支持的电话、地图、音乐等功能；也可在iPhone上使用。</p><small>在CarPlay里，Siri提供语音交互</small></article>
+<article class="cp-concept"><span>AI助手 · Google 谷歌</span><h4>Gemini</h4><p>提供对话及受支持的任务；满足手机、账号、语言和地区条件时，也可在Android Auto中使用。</p><small>助手能力与互联功能分别核查</small></article>
+</div>
+<div class="cp-everyday-example"><b>举个例子：你说“导航去公司”</b><p>在支持的iPhone与CarPlay组合中，各部分这样分工：</p><ol class="cp-example-flow"><li><strong>iPhone</strong><span>Siri接收语音请求<br/>地图应用提供路线</span></li><li><strong>CarPlay</strong><span>把支持的导航界面<br/>带到车内显示与操作</span></li><li><strong>车机与音响</strong><span>车屏显示地图<br/>车内音响播放导航提示</span></li></ol><small>这是分工示意，实际支持的任务、地图应用与语音入口依配置而定。</small></div>
+<p class="cp-primer-takeaway"><b>先分清三层：</b> Siri、Gemini是助手；CarPlay、Android Auto是手机互联功能；车机是车内的多媒体设备。</p>
+<details class="cp-terms"><summary>后文的车机、AAOS、GAS和适配器分别是什么？</summary><dl>
+<div><dt>车机 / 接收主机</dt><dd>车内负责多媒体显示、声音和相关操作的设备。“接收主机”强调它接收CarPlay或Android Auto的角色，具体由车厂或设备厂商提供。</dd></div>
+<div><dt>AAOS / Google主导的开源系统</dt><dd>Android Automotive OS，直接运行在车内硬件上的汽车操作系统。它与连接手机使用的Android Auto分工不同。</dd></div>
+<div><dt>GAS / Google授权服务</dt><dd>Google Automotive Services，是车厂可选择授权集成的一组Google应用与服务。采用AAOS，不代表已经包含GAS。</dd></div>
+<div><dt>ATOTO S84G209P / Aotule品牌方</dt><dd>本报告选取的一款具体后装车机，需安装进车辆。它是设备型号，不是与CarPlay同类的通用平台名称。</dd></div>
+<div><dt>有线改无线适配器</dt><dd>接在已有相容车机上，让手机省去插线步骤的小盒子。它需要车机原本具备相应互联能力；仅有普通USB口还不够。</dd></div>
+</dl></details>
+<p class="cp-primer-sources">导读依据（2026年11月6日核对）：<a href="https://www.apple.com/ios/carplay/">Apple CarPlay介绍</a>、<a href="https://developer.android.com/training/cars/platforms/android-auto">Google Android Auto介绍</a>、<a href="https://support.google.com/gemini/answer/16735982?hl=en">Google车内Gemini说明</a>、<a href="https://source.android.com/docs/automotive/start/what_automotive">AAOS与GAS定义</a>、<a href="https://www.carlinkit.com/2air">Carlinkit适配器使用条件</a>。ATOTO型号与公司依据见后文详情。</p>
+</section>
+
+### 看懂分工后，再讨论我们增加什么
+**“无屏”描述新增外设的形态，车内仍可以已有CarPlay屏。** 手机提供任务服务，原车或后装车机提供屏幕、音响与控件，CarPlay连接两者。新增产品必须说明自己改善哪一环，以及为什么比原车入口更好用。
 
 <div class="cp-baseline"><b>先用原车建立基线</b><span>方向盘语音键 → Apple Siri → 导航、电话、媒体 → 原车屏与音响</span><small>已是CarPlay的现有能力；再加一个语音设备的增量尚未证明。</small></div>
 
