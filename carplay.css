@@ -1,5 +1,32 @@
 .carplay-focus { margin: 24px 0 40px; padding: 25px; border: 1px solid #b8ccec; border-top: 4px solid var(--blue); background: #fbfdff; border-radius: 10px; scroll-margin-top: 10px; }
 .carplay-focus > :is(h2,h3):first-child { border: 0; padding: 0; margin: 0 0 16px; font-size: 27px; line-height: 1.5; }
+.cp-primer { margin: 25px 0 34px; }
+.cp-primer-kicker { color: var(--blue); font-size: 11px; font-weight: 650; letter-spacing: .08em; margin-bottom: 7px; }
+.cp-primer :is(h3,h4) { margin: 0 0 14px; }
+.cp-primer #cp-basics-title { font-size: 22px; line-height: 1.5; }
+.cp-concept-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 14px; margin: 23px 0; }
+.cp-concept { background: white; border: 1px solid var(--line); border-radius: 7px; padding: 18px 20px; }
+.cp-concept > span { color: var(--blue); font-size: 11px; }
+.cp-concept :is(h4,h5) { font-size: 21px; margin: 7px 0 10px; }
+.cp-concept p { margin: 0 0 11px; font-size: 13px; line-height: 1.85; }
+.cp-concept small, .cp-everyday-example small { color: var(--muted); font-size: 11px; line-height: 1.8; }
+.cp-everyday-example { padding: 20px; background: var(--soft); border-radius: 7px; }
+.cp-everyday-example > b { font-size: 16px; }
+.cp-everyday-example > p { font-size: 12px; margin: 8px 0 14px; }
+.cp-primer .cp-example-flow { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 22px; list-style: none; padding: 0; margin: 0 0 14px; }
+.cp-example-flow li { position: relative; border: 1px solid #cddcf2; background: white; border-radius: 6px; padding: 14px 12px; }
+.cp-example-flow li + li::before { content: '→'; position: absolute; left: -20px; top: 30px; color: var(--blue); }
+.cp-example-flow strong, .cp-example-flow span { display: block; }
+.cp-example-flow strong { color: var(--blue); font-size: 13px; margin-bottom: 7px; }
+.cp-example-flow span { font-size: 12px; line-height: 1.8; }
+.cp-primer-takeaway { border-left: 3px solid var(--blue); padding: 10px 15px; margin: 20px 0; font-size: 13px; }
+.cp-terms { border: 1px solid var(--line); border-radius: 7px; background: white; padding: 16px 18px; }
+.cp-terms summary { color: var(--blue); font-size: 13px; cursor: pointer; font-weight: 600; }
+.cp-terms dl { margin: 12px 0 0; }
+.cp-terms dl > div { padding: 12px 0; border-top: 1px solid var(--line); }
+.cp-terms dt { font-size: 13px; font-weight: 650; }
+.cp-terms dd { margin: 6px 0 0; font-size: 12px; line-height: 1.9; }
+.cp-primer .cp-primer-sources { font-size: 11px; line-height: 1.9; color: var(--muted); margin-top: 16px; }
 .cp-baseline { display: flex; flex-direction: column; gap: 8px; padding: 19px 21px; margin: 22px 0; background: var(--soft); border-radius: 7px; }
 .cp-baseline b { color: var(--blue); font-size: 12px; }
 .cp-baseline span { font-size: 16px; font-weight: 600; }
@@ -21,6 +48,11 @@
 .cp-scope-note { padding: 13px 16px; margin: 18px 0; border-left: 3px solid #e3c100; background: #fff9d5; font-size: 12px; }
 @media(max-width:800px) { .cp-route-grid { grid-template-columns: 1fr; } }
 @media(max-width:500px) {
+  .cp-concept-grid { grid-template-columns: 1fr; }
+  .cp-concept { padding: 16px; }
+  .cp-everyday-example { padding: 16px; }
+  .cp-primer .cp-example-flow { grid-template-columns: 1fr; gap: 24px; }
+  .cp-example-flow li + li::before { content: '↓'; left: calc(50% - 5px); top: -26px; }
   .carplay-focus { padding: 18px 13px; scroll-margin-top: 35px; }
   .carplay-focus > :is(h2,h3):first-child { font-size: 23px; }
   .cp-baseline { padding: 15px 13px; }
