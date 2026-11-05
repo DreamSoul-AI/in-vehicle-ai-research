@@ -1,19 +1,18 @@
-%% title: 从上车到任务结果的完整闭环
-flowchart TD
-  A[上车 设备供电与重连] --> B{连接与必要配置可用}
-  B -->|否| X[说明不可用 保留基础操作]
-  X --> Y[停车后按提示修复配置]
-  Y --> B
-  B -->|是| C[按键触发与短反馈]
-  C --> D[手机或许可语音流程处理]
-  D --> E{参数明确且已授权}
-  E -->|否| F[确认参数 或说明缺少权限]
-  F -->|确认或补充后重验| E
-  F -->|缺少权限| X
-  F -->|取消或超时| Z[退出并恢复音频]
-  E -->|是| G[交给支持的应用执行]
-  G --> H{能否确认实际结果}
-  H -->|能| I[反馈完成或明确失败]
-  H -->|不能| J[说明已转交与状态边界]
-  I --> Z
-  J --> Z
+%% title: 硬件载体与安装选型
+%% 图3 按车辆条件选择载体。分析示意，是评估分支，不是采购推荐或保证兼容。
+%% 来源 https://carpuride.com/products/carpuride-w903-portable-smart-multimedia-dashboard-console-with-front-camera
+%% 来源 https://www.atotodirect.com/en-gb/pages/manual-460-en
+%% 来源 https://www.carlinkit.com/uhd6225
+flowchart TB
+  START["先以手机直接使用作基线"] --> NEED{"需要新增什么入口"}
+  NEED -->|"方便触发与反馈"| VOICE["免屏外设 / 小音箱<br/>固定、供电、手机与音频适配"]
+  NEED -->|"持续可见的地图或状态"| SCREEN{"原车是否已有相容屏幕和协议"}
+  SCREEN -->|"已有原厂有线投射入口"| BOX["比较原车屏升级盒<br/>核对协议、USB与固件"]
+  SCREEN -->|"没有或不相容"| INSTALL{"是否接受拆换主机"}
+  INSTALL -->|"保留原车机"| PORTABLE["独立接收屏<br/>支架、车充与音频路径"]
+  INSTALL -->|"接受且车型可适配"| HEADUNIT["替换车机<br/>面框、线束、ACC、按键与原车功能"]
+  VOICE --> VALIDATE["按实际车型和手机验证完整任务<br/>安装、重连、通话、播报与恢复"]
+  BOX --> VALIDATE
+  PORTABLE --> VALIDATE
+  HEADUNIT --> VALIDATE
+  VALIDATE --> DECIDE["增量收益与支持成本是否成立<br/>允许保留手机方案或当前阶段"]

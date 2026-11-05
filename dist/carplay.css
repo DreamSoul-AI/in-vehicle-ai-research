@@ -1,0 +1,31 @@
+.carplay-focus { margin: 24px 0 40px; padding: 25px; border: 1px solid #b8ccec; border-top: 4px solid var(--blue); background: #fbfdff; border-radius: 10px; scroll-margin-top: 10px; }
+.carplay-focus > :is(h2,h3):first-child { border: 0; padding: 0; margin: 0 0 16px; font-size: 27px; line-height: 1.5; }
+.cp-baseline { display: flex; flex-direction: column; gap: 8px; padding: 19px 21px; margin: 22px 0; background: var(--soft); border-radius: 7px; }
+.cp-baseline b { color: var(--blue); font-size: 12px; }
+.cp-baseline span { font-size: 16px; font-weight: 600; }
+.cp-baseline small { font-size: 12px; color: var(--muted); }
+.cp-route-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 13px; margin: 23px 0; }
+.cp-route { padding: 19px 17px; background: white; border: 1px solid var(--line); border-radius: 7px; display: flex; flex-direction: column; align-items: flex-start; }
+.cp-route-number { font-size: 10px; color: var(--blue); font-weight: 650; letter-spacing: .05em; }
+.cp-route :is(h4,h5) { margin: 8px 0 10px; font-size: 18px; line-height: 1.5; }
+.cp-route p { font-size: 12px; margin: 0 0 14px; line-height: 1.9; }
+.cp-route strong { font-size: 11px; color: #6f5900; background: #fff4bd; padding: 3px 6px; margin-top: auto; }
+.cp-route a { font-size: 11px; margin-top: 13px; }
+.cp-detail { padding: 17px 19px; border: 1px solid var(--line); border-radius: 7px; margin: 24px 0; background: white; }
+.cp-detail summary { color: var(--blue); font-size: 13px; font-weight: 600; cursor: pointer; }
+.cp-detail :is(li,p) { font-size: 13px; line-height: 1.95; }
+.carplay-focus .table-wrap { background: white; border: 1px solid var(--line); border-radius: 7px; }
+.carplay-focus table { min-width: 650px; }
+.carplay-focus table th { color: var(--ink); }
+.carplay-focus [id^=cp-] { scroll-margin-top: 20px; }
+.cp-scope-note { padding: 13px 16px; margin: 18px 0; border-left: 3px solid #e3c100; background: #fff9d5; font-size: 12px; }
+@media(max-width:800px) { .cp-route-grid { grid-template-columns: 1fr; } }
+@media(max-width:500px) {
+  .carplay-focus { padding: 18px 13px; scroll-margin-top: 35px; }
+  .carplay-focus > :is(h2,h3):first-child { font-size: 23px; }
+  .cp-baseline { padding: 15px 13px; }
+  .cp-baseline span { font-size: 14px; line-height: 1.9; }
+  .cp-route { padding: 16px; }
+  .cp-detail { padding: 14px; }
+}
+@media print { .cp-route a { display: none; } .carplay-focus { border: 0; padding: 0; } }

@@ -41,6 +41,123 @@ flowchart TB
 # 二、平台与载体
 比较对象直接采用现有平台名和具体产品型号，并列明对应公司。Apple Siri、Google Gemini是手机助手；Apple CarPlay、Google Android Auto是手机互联平台；AAOS是Google主导的AOSP汽车系统基座；GAS是Google授权服务。ATOTO S84G209P则是具体后装车机，不代表整个Android后装市场。以下均为公开资料判断，未进行手机或实车测试。
 
+<!-- carplay-focus:start -->
+
+## CarPlay重点：已有平台，第一阶段怎样接入
+**“无屏”描述新增外设的形态，车内仍可以已有CarPlay屏。** 这里重点研究Apple CarPlay，Google Android Auto作为对照。已有平台先提供手机任务、车屏和音响；新增产品必须说明自己插在哪一环，以及为什么比原车入口更好用。
+
+<div class="cp-baseline"><b>先用原车建立基线</b><span>方向盘语音键 → Apple Siri → 导航、电话、媒体 → 原车屏与音响</span><small>已是CarPlay的现有能力；再加一个语音设备的增量尚未证明。</small></div>
+
+### “接在CarPlay上”有三种不同含义
+
+<div class="cp-route-grid">
+<article class="cp-route"><span class="cp-route-number">01 / 外设体验</span><h4>沿用 Apple Siri</h4><p>外设不加屏；验证触发、固定与音频体验。</p><strong>新增配件链路待核</strong><a href="#cp-accessory">具体怎样做 ↓</a></article>
+<article class="cp-route"><span class="cp-route-number">02 / 应用服务</span><h4>CarPlay 内提供新任务</h4><p>需新增软件工作，或与获准服务提供方合作。</p><strong>非当前已具备能力</strong><a href="#cp-service">软件与许可路径 ↓</a></article>
+<article class="cp-route"><span class="cp-route-number">03 / 硬件合作</span><h4>与接收主机方案合作</h4><p>把按键、麦克风和固件接口落实到具体设备。</p><strong>需厂商接口与认证核查</strong><a href="#cp-hardware">硬件角色与边界 ↓</a></article>
+</div>
+
+| **接法** | **主要接入点** | **手机新增软件** | **首期先验证** |
+|---|---|---|---|
+| 沿用Siri | 相容触发与音频 | 不以新增软件为前提 | 比原车入口多什么 |
+| CarPlay应用服务 | iPhone应用及CarPlay框架 | 新增开发或合作 | 任务差异与类别资格 |
+| 接收硬件合作 | 具体主机、接口、固件 | 取决于方案 | 接口、责任与成本 |
+
+现有CarPlay可通过方向盘语音键、车屏入口及受支持语音唤起调用Siri。第三方CarPlay应用则有独立的类别与授权路径；接收硬件还涉及设备与MFi技术角色。三种接法不能混称为“插上CarPlay就能用”。[Apple使用CarPlay](https://support.apple.com/en-us/108415)、[CarPlay开发入口](https://developer.apple.com/carplay/)、[MFi FAQ](https://mfi.apple.com/en/faqs)
+
+```mermaid
+%% title: 已有CarPlay时，小外设接在哪里
+%% 分析示意；实线为已有基线，虚线为尚需验证的新增外设输入，不代表已兼容。
+%% 来源 https://support.apple.com/en-us/108415
+%% 来源 https://developer.apple.com/carplay/
+flowchart TB
+  subgraph EXISTING["已有车辆与Apple CarPlay基线"]
+    START["方向盘语音键 / 车屏入口<br/>支持时使用语音唤起"] --> MIC["原车 / 接收机麦克风<br/>实际输入随配置核查"]
+    MIC --> PHONE["iPhone上的Siri或支持的应用<br/>任务服务按条件联网"]
+    PHONE --> OUTPUT["原车屏幕与音响<br/>显示、播报及恢复"]
+  end
+  EXTRA["拟议无屏小外设<br/>按键或外部拾音"] -.->|"触发与输入路由均未证"| PHONE
+  EXTRA -.->|"只有主机明确提供接口时"| MIC
+  VALUE["产品增量需实测<br/>少操作 / 更易触达 / 更稳恢复"]
+  EXTRA --> VALUE
+```
+
+<a id="cp-accessory"></a>
+
+### 路径一：已有CarPlay，先验证无屏小外设的增量
+以“上车后去公司、给联系人打电话、继续播放”为具体任务。先用原车方向盘键、原车麦克风和Apple Siri完成同一流程，记录用户实际不方便的环节。若确有触达或反馈问题，再研究小按钮、固定方式或设备侧反馈；若目标是改善拾音，必须先确定接收主机是否提供外部麦克风输入，或手机音频会话是否能使用目标输入。
+
+**额外配件先看成待验证的输入，不把它画成已经串入CarPlay。** 独立蓝牙音箱通常先连手机；CarPlay接收机也在与手机协作。二者同时连接后由哪个麦克风录音、声音送往哪里、来电后怎样恢复，本轮没有通用兼容结论。外设能在未连接CarPlay时调用Siri，也不证明CarPlay开启后行为相同。
+
+<details class="cp-detail"><summary>停车设置与日常操作，具体检查什么</summary>
+<ol><li><b>停车准备：</b>记录iPhone/iOS、车型/年份、接收主机固件、有线或无线CarPlay及目标语言；不加外设先完成原车任务。</li><li><b>安装配对：</b>明确配件连接手机还是主机、占哪个USB/蓝牙或物理接口；记录电源和实际麦克风来源。</li><li><b>日常使用：</b>上车连接CarPlay → 使用已证实的触发方式 → 等待提示 → 说出任务 → 由Siri与支持的应用处理 → 通过原车界面确认结果。</li><li><b>打断恢复：</b>加入音乐播放中触发、来电、锁屏、重复按键、断网和重新上车；核对是否丢失声音、重复执行或需要重新配对。</li><li><b>继续条件：</b>相对原车基线，完整任务、操作负担或恢复确有改善，且足以承担新增设备与支持成本；若只是重复方向盘已有按钮，先停止这一客群的硬件方案。</li></ol>
+</details>
+
+Avantree Roadtrip的官方按键说明可作“外设调用手机Siri”的现成例子，不能作为它与任意CarPlay主机并用的认证。CK11指南还提示语音命令使用手机麦克风，说明外设有通话麦克风不等于已改善Siri拾音。[Roadtrip助手说明](https://support.avantree.com/hc/en-us/articles/38121800304793-Roadtrip-How-to-activate-the-voice-assistant-with-the-car-kit-Siri-Google-Assistant)、[CK11语音说明](https://support.avantree.com/hc/en-us/articles/50767188774937-How-to-Make-a-Call-by-Voice-Command)
+
+<a id="cp-service"></a>
+
+### 路径二：要提供平台原本没有的任务，才研究应用服务
+Apple已有voice-based conversational应用类别，公开指南列其最低系统为iOS26.4；这是特定应用类别的门槛，不是所有CarPlay的统一门槛。该路径是在iPhone上运行获准的应用，通过CarPlay界面和音频交互提供其任务，**不需要另造一块屏，也不必额外卖一只音箱。** [CarPlay指南](https://developer.apple.com/download/files/CarPlay-Developer-Guide.pdf)，印刷第8、13–15、27、30、67页。
+
+当前没有本项目的获准CarPlay应用或已确认软件伙伴。这是一项需新增投入的选择：先找出Siri和现有应用没有满足的具体服务任务，再决定开发或合作；不把一款尚不存在的软件列作现成平台。仅复述导航、拨号、播放音乐，尚不足以证明这条路线的增量。
+
+<details class="cp-detail"><summary>应用准入、语音会话与执行边界</summary>
+<ul><li><b>准入：</b>明确应用主功能与类别，申请对应CarPlay entitlement，按模板实现、签名、测试并接受分发审核；第三方获得批准不等于本项目已获准。</li><li><b>启动：</b>用户进入相应CarPlay应用后进行语音交互；不能因有语音类别就承诺接管Siri、原车语音键或系统唤醒词。</li><li><b>录音：</b>录音须结合Voice Control模板，语音服务活动期间显示相应状态界面；只在语音功能实际使用时保持音频会话，处理权限、取消、焦点变化与中断，不能据此承诺全天后台监听。</li><li><b>任务：</b>应用只处理自身服务与获准接口内的动作。iOS27讲稿展示通过CarPlay场景URL发起导航、电话请求，但转交不证明最终完成，也不能任意控制其他应用。</li><li><b>版本：</b>iOS27将Voice Control模板扩展到更多类别，不意味着全部录音、车辆或后台特权同时开放。系统、类别和具体功能版本分别核验。</li></ul>
+<p>Apple提供框架与审核；软件提供方承担具体任务、服务、会话和版本维护；车厂或主机提供车内接口。语音识别可以按任务使用现成组件、规则或云服务，这条路线本身不要求车内本地大模型。</p>
+</details>
+
+```mermaid
+%% title: 可选CarPlay语音应用的完整任务流程
+%% 分析示意；这是需要新增软件或合作的路线，不是已具备能力。
+%% 来源 https://developer.apple.com/carplay/
+%% 来源 https://developer.apple.com/download/files/CarPlay-Developer-Guide.pdf
+%% 来源 https://developer.apple.com/videos/play/wwdc2026/212/
+flowchart TB
+  SETUP["停车准备<br/>相容iPhone / 授权应用 / 账号与必要权限"] --> ENTRY["用户打开获准的CarPlay应用<br/>不是自动接管Siri或方向盘键"]
+  ENTRY --> LISTEN["Voice Control状态界面<br/>实际语音期间启用会话与录音"]
+  LISTEN --> TASK["限定任务处理<br/>已有服务、规则或按需云能力"]
+  TASK --> CHECK{"参数与任务执行权限明确"}
+  CHECK -->|"是"| ACTION["在可用范围内执行或转交<br/>导航 / 拨号等依具体接口"]
+  CHECK -->|"否"| CONFIRM["补充确认 / 说明缺失 / 取消"]
+  CONFIRM -->|"补充后重新检查"| CHECK
+  ACTION --> RESULT["反馈实际可观测状态<br/>请求转交不等于任务完成"]
+  RESULT --> END["结束录音和音频会话<br/>中断后恢复原有音源"]
+  CONFIRM -->|"取消或不能执行"| END
+```
+
+<a id="cp-hardware"></a>
+
+### 路径三：与主机或配件方案合作，把硬件接入做实
+如果卖点是外部按键、拾音或一体化安装，应先找能提供明确接口与固件责任的接收主机/设备伙伴。要求对方说明按键信号怎样传入、音频输入输出怎样选择、是否保持原CarPlay体验、哪些车型固件被支持。仅写“支持CarPlay”不足以证明这些接口开放。
+
+采用MFi技术的CarPlay接收硬件，与普通标准蓝牙配件的要求不同；整机认证、品牌方与ODM责任需分别确认。公开MFi FAQ没有给出本项目可直接采用的完整保密规格、许可费用或合作资格，因此这条路线先做方案与商务核查。[Apple MFi FAQ](https://mfi.apple.com/en/faqs)
+
+**有线改无线适配器是连接产品，不能直接叫语音助手。** 比如Carlinkit CPC200-2air的官网重点是把相容有线入口改为无线并保留原车操作；不能从它能传递现有语音操作，推导盒子增加了语音理解、麦克风或独立任务服务。[Carlinkit 2air](https://www.carlinkit.com/2air)
+
+现成无屏控制器例子是**Ottocast OttoSafe Knob**（品牌Ottocast，法律公司主体本轮未确认）。官网说明可配Mini NOVA、Mini Pico、U2Air Edge及相应更新固件，旋转浏览、按压确认或返回/Home；不同页面段落的完整清单并不一致，实际套餐仍需确认。这说明新增外设可以借用原车屏，不证明它提供语音拾音、常驻Siri或外接麦克风。[Ottocast官方商品页](https://www.ottocast.com/products/ottosafe-knob)
+
+路径一可研究硬件与配置服务，路径二主要是具体任务/软件服务，路径三涉及模块、整机或集成合作。它们卖的东西和承担的维护不同；不能因为渠道已有CarPlay客户，就推定需要新音箱。
+
+### Android Auto对照：相似入口，接入规则分别核验
+
+| **问题** | **Apple CarPlay / Apple** | **Android Auto / Google** |
+|---|---|---|
+| 已有助手 | Siri | Gemini等，按手机与账号 |
+| 已有触发 | 方向盘、车屏、支持的唤起 | 方向盘、车屏、Hey Google |
+| 新语音应用 | 有语音对话类别及授权 | 通用对话类别未列 |
+| 应用录音 | 类别、模板与会话限制 | 录音许可及音频焦点 |
+| 额外麦克风 | 具体主机/路由待核 | 具体主机/路由待核 |
+
+Google公开说明了既有Android Auto车辆的Gemini入口；第三方应用仍按支持类别、质量与分发条件接入。CarAudioRecord可在授权后读取车内录音，但它不是把任意蓝牙麦克风指定给系统助手的接口。不能把CarPlay的语音对话类别直接套给Android Auto。[Gemini车内帮助](https://support.google.com/gemini/answer/16735982?hl=en)、[Android车载类别](https://developer.android.com/training/cars)、[车载录音](https://developer.android.com/training/cars/apps/library/car-microphone)
+
+### 产品切入与下一步依据
+先挑一套明确iPhone与CarPlay接收机，测原车入口，再比较新增无屏外设。若没有硬件增量，但有平台未满足的服务需求，才进入应用合作/新增开发；若需要改拾音或主机行为，先取得设备伙伴接口与责任说明。三条路径允许只选一条，也允许在证据不足时停止。
+
+下方通用评分的部署条件以“为缺少合适入口的车辆新增方案”为基础，CarPlay因需相容接收设备而受约束；**用户已经有CarPlay时，不应再次把已有屏幕作为新增成本或部署扣分。** 本专题按该具体场景判断，未据新场景伪造一套已验证的评分。市场中的汽柴油总存量也不能代替“已有CarPlay且仍有付费缺口”的人数；这一细分规模尚未取得。
+
+<!-- carplay-focus:end -->
+
+
 ## （一）现有平台与产品适配评分
 <!-- score-summary:start -->
 评分对象全部为现有平台或具体产品。公司和平台对应关系可直接追到官方资料；分数针对本项目采用现成方案的适配度，非平台性能排名。
@@ -97,7 +214,7 @@ Apple对应Apple Inc.。Google Gemini和Android Auto的官方发行者为Google 
 <a id="platform-choice"></a>
 
 ### 选择落到平台与具体设备
-第一阶段按手机系统和支持语言，分别验证Apple Siri、Google Gemini与具体车载外设。Avantree Roadtrip和CK11资料明确写Siri / Google Assistant，不能把旧Google Assistant名称直接替换成已验证的Gemini兼容。[Roadtrip官方说明](https://support.avantree.com/hc/en-us/articles/38121800304793-Roadtrip-How-to-activate-the-voice-assistant-with-the-car-kit-Siri-Google-Assistant)、[CK11官方说明](https://support.avantree.com/hc/en-us/articles/50767188774937-How-to-Make-a-Call-by-Voice-Command)
+第一阶段先区分已有CarPlay、已有Android Auto与无相容入口的车辆，再按手机系统、语言和具体外设验证。Avantree Roadtrip和CK11资料明确写Siri / Google Assistant，不能把旧Google Assistant名称直接替换成已验证的Gemini兼容。[Roadtrip官方说明](https://support.avantree.com/hc/en-us/articles/38121800304793-Roadtrip-How-to-activate-the-voice-assistant-with-the-car-kit-Siri-Google-Assistant)、[CK11官方说明](https://support.avantree.com/hc/en-us/articles/50767188774937-How-to-Make-a-Call-by-Voice-Command)
 
 第二阶段需要固定地图和可见状态时，再按iPhone/Android客群比较CarPlay、Android Auto及明确接收设备；ATOTO S84G209P是本机软件与拆装车机的具体参照。AAOS与GAS用于理解系统集成和服务许可条件。CarPlay Ultra仍是原厂深度集成边界，不能把其车控功能写给普通CarPlay或后装接收屏。
 
@@ -551,3 +668,18 @@ Cerence CaLLM Edge 的原始公告可作为企业嵌入式模型集成参考，�
 | [AOSP项目说明](https://source.android.com/docs/setup/about)及[GAS说明](https://developers.google.com/cars) | Google主导开源项目、设备商集成与Google服务授权分别核查 |
 | [ATOTO公司说明](https://www.atotodirect.com/en-gb/pages/about-atoto)及[联系主体](https://www.atotodirect.com/en-gb/pages/contact) | 英国页公司关系与经营联络主体；未确认S84G209P铭牌制造商 |
 | [Gemini相容耳机](https://support.google.com/gemini/answer/15456140?hl=en)及[Gemini车内帮助](https://support.google.com/gemini/answer/16735982?hl=en) | 相容设备、触发与Android Auto条件；不外推所有车载蓝牙套件 |
+
+### CarPlay与Android Auto接入专题资料
+访问日2026年11月5日。专题不代表本项目已有获准应用、接口、认证或实车兼容结论；区分既有能力与可选新增工作。
+
+| **资料** | **版本/日期** | **实际阅读范围与边界** |
+|---|---|---|
+| [Apple使用CarPlay](https://support.apple.com/en-us/108415) | 滚动支持页 | 设置、Siri三种入口、原车控制；不证明新增蓝牙配件共存 |
+| [CarPlay开发入口](https://developer.apple.com/carplay/) | 滚动页 | 应用类别、框架、授权与车厂角色 |
+| [CarPlay开发指南](https://developer.apple.com/download/files/CarPlay-Developer-Guide.pdf) | 2026-10-13 | 项目已保存官方PDF，针对性复核印刷8、13–15、27、30、67页；语音类别、录音、启动其他应用与分发 |
+| [WWDC26 CarPlay讲稿](https://developer.apple.com/videos/play/wwdc2026/212/) | iOS27 / WWDC26 | 约6:22–8:17：Voice Control、URL任务与音频会话；未观看完整视频 |
+| [Apple MFi FAQ](https://mfi.apple.com/en/faqs) | 滚动页 | 技术范围、蓝牙例外、角色及保密费用；未取得保密规格 |
+| [Android车载类别](https://developer.android.com/training/cars)及[Android Auto概览](https://developer.android.com/training/cars/platforms/android-auto) | 滚动开发文档 | 支持类别、驾驶/停车、声明与分发；未列通用对话类别不等于全部语音输入不允许 |
+| [Gemini车内帮助](https://support.google.com/gemini/answer/16735982?hl=en)及[车载录音](https://developer.android.com/training/cars/apps/library/car-microphone) | 帮助页滚动、录音页2026-09-08 | 既有Gemini条件、用户授权、焦点与失焦停止；不授予任意外设路由 |
+| [Carlinkit CPC200-2air](https://www.carlinkit.com/2air) | 滚动产品页 | 有线转无线、原有控制与使用条件；不推断新增助手 |
+| [Ottocast OttoSafe Knob](https://www.ottocast.com/products/ottosafe-knob) | 滚动产品页 | 实体旋钮、指定适配器/固件；未证语音或法律公司主体 |

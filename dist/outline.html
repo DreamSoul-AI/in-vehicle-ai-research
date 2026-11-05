@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>车载智能化 调研大纲 · 车载智能化研究</title><link href="style.css?v=named-platforms-20261105" rel="stylesheet"/><link href="report.css?v=named-platforms-20261105" rel="stylesheet"/><script defer="" src="diagrams.js?v=named-platforms-20261105"></script></head><body><header class="topbar"><a class="brand" href="index.html?v=named-platforms-20261105"><span class="brand-symbol"></span><b>DreamSoul</b><span>RESEARCH</span></a><a href="index.html?v=named-platforms-20261105">返回研究主页 ↗</a></header><main class="research-content"><p class="eyebrow">IN-VEHICLE PRODUCTS / RESEARCH</p><h1>车载智能化 调研大纲</h1><p>整理日期：2026年11月5日。用途：支持 DreamSoul 判断传统车辆智能化的产品起点、经营可行性及后续投入顺序。研究主线为免屏、免拆的小型车载语音助手或音箱，向智能面板和辅助驾驶按条件扩展，再研究通用大模型能力。</p>
+<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>车载智能化 调研大纲 · 车载智能化研究</title><link href="style.css?v=carplay-integration-20261105" rel="stylesheet"/><link href="report.css?v=carplay-integration-20261105" rel="stylesheet"/><script defer="" src="diagrams.js?v=carplay-integration-20261105"></script></head><body><header class="topbar"><a class="brand" href="index.html?v=carplay-integration-20261105"><span class="brand-symbol"></span><b>DreamSoul</b><span>RESEARCH</span></a><a href="index.html?v=carplay-integration-20261105">返回研究主页 ↗</a></header><main class="research-content"><p class="eyebrow">IN-VEHICLE PRODUCTS / RESEARCH</p><h1>车载智能化 调研大纲</h1><p>整理日期：2026年11月5日。用途：支持 DreamSoul 判断传统车辆智能化的产品起点、经营可行性及后续投入顺序。研究主线为免屏、免拆的小型车载语音助手或音箱，向智能面板和辅助驾驶按条件扩展，再研究通用大模型能力。</p>
 <p>首款允许使用手机、云服务、固定命令及现成语音组件，不将车内本地 LLM 作为立项或验收前提。范围以存量燃油车为重点，按车机、音频接口、手机和用户任务划分客群。波兰仅作为待核实的区域渠道案例。动态资料记录访问日，历史价、当前销售线索、实际采购交付、应用维护及服务状态分别核验。</p>
 <h2>一、产品起点与渐进路线</h2>
 <h3>（一）首款产品服务谁、解决什么</h3>
@@ -15,6 +15,12 @@
 </ul>
 <p><strong>证据与产出</strong>：原始产品说明、用户与渠道资料。形成客群划分和阶段关系图。首期目标用户、关键任务及产品外形尚待验证。</p>
 <h2>二、平台与载体</h2>
+<p>优先专题：已有Apple CarPlay时，无屏小外设怎样复用原车屏幕、音响与手机能力？以Google Android Auto作对照，区分既有Siri体验、可选CarPlay语音应用与接收硬件合作。
+- 展示原车语音基线与待核的新增外设路由；不能将普通蓝牙配对画成已加入CarPlay音频链
+- 说明用户已有CarPlay仍需购买新设备的可验证增量与停止条件；以Ottocast实体控制器和无线适配器分清连接便利、操作入口和新增语音任务
+- 对可选语音应用说明类别、系统版本、授权、用户启动、录音、任务转交和分发；明确本项目尚无获准应用或合作
+- 用两张Mermaid说明已有CarPlay链路和可选应用任务流程，并转成SVG/PNG；长条件按需展开，核心接法使用短表
+- Android Auto分别核助手入口、第三方类别、CarAudioRecord与音频焦点，避免套用Apple类别；已有CarPlay细分量未知，不套用汽柴油总量</p>
 <p>补充路线评分：按无屏助手/面板两个目标评估部署、任务复用、现有可配置性、准入和维护；公开权重、原分、理由、未知和敏感性。网页以分数与短标签呈现，完整表和证据按需展开。</p>
 <p>核心问题：任务在哪里执行、界面在哪里、麦克风与声音经过哪里，平台和各合作角色分别开放什么？</p>
 <h3>（一）现有平台横向比较</h3>
@@ -43,7 +49,7 @@
 <ul>
 <li>核查平台类别、分发、系统权限、MFi 角色与实际设备接口</li>
 <li>把选择依据落到完整任务、支持成本、恢复和可控范围
-<strong>证据与产出</strong>：平台原始指南、具体设备手册与合作公开规则。平台具名比较表、可展开卡片与四张图共同呈现；图保留 Mermaid、SVG 与 PNG，对未知权限和手机/车辆表现保留边界。</li>
+<strong>证据与产出</strong>：平台原始指南、具体设备手册与合作公开规则。平台具名比较表、可展开卡片与六张图共同呈现；图保留 Mermaid、SVG 与 PNG，对未知权限和手机/车辆表现保留边界。</li>
 </ul>
 <h2>三、按阶段竞品比较</h2>
 <h3>（一）首期直接竞品与历史经验</h3>

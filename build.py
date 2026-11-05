@@ -21,7 +21,7 @@ from tools.decision_content import render_scores, render_market, validate_decisi
 SITE = Path(__file__).resolve().parent
 DIST = SITE / "dist"
 CONTENT = SITE / "content"
-VERSION = "named-platforms-20261105"
+VERSION = "carplay-integration-20261105"
 CHAPTER_IDS = dict(zip("一二三四五六七", ["roadmap", "platforms", "products", "starter", "business", "next", "sources"]))
 
 
@@ -165,6 +165,24 @@ def platform_comparison(soup: BeautifulSoup) -> None:
         table["aria-label"] = "现有平台使用能力对比" if identity == "platform-usage-table" else "现有平台开发与商业条件对比"
 
 
+def wrap_carplay_focus(soup: BeautifulSoup) -> None:
+    start = soup.find(string=lambda node: isinstance(node, Comment) and node.strip() == "carplay-focus:start")
+    end = soup.find(string=lambda node: isinstance(node, Comment) and node.strip() == "carplay-focus:end")
+    if start is None and end is None:
+        return
+    if start is None or end is None or start.parent is not end.parent:
+        raise ValueError("CarPlay focus requires paired markers in the same section")
+    section = soup.new_tag("section", attrs={"id": "carplay-focus", "class": "carplay-focus", "aria-label": "CarPlay接入重点与Android Auto对照"})
+    start.insert_before(section)
+    node = start.next_sibling
+    while node is not None and node is not end:
+        following = node.next_sibling
+        section.append(node)
+        node = following
+    start.extract()
+    end.extract()
+
+
 def fold_platform_evidence(soup: BeautifulSoup) -> None:
     heading = soup.find("h2", string=re.compile("现有平台横向对比"))
     if heading is None:
@@ -184,6 +202,8 @@ def fold_platform_evidence(soup: BeautifulSoup) -> None:
 
 
 def attach_decisions(soup: BeautifulSoup, decision: dict) -> None:
+    if soup.find(id="carplay-focus"):
+        soup.head.append(soup.new_tag("link", rel="stylesheet", href=version_url("carplay.css")))
     if not soup.find(id="platform-scores") and not soup.find(id="market-size"):
         return
     payload = soup.new_tag("script", type="application/json", id="decision-data")
@@ -212,6 +232,7 @@ def render_markdown(text: str, blocks: list[dict], manifest: dict, equations: li
     text = re.sub(r"\$([A-Za-z][^$\n]*?)\$", inline_math, text)
     rendered = markdown.markdown(text, extensions=["tables", "fenced_code"])
     soup = BeautifulSoup(rendered, "html.parser")
+    wrap_carplay_focus(soup)
     platform_comparison(soup)
     fold_platform_evidence(soup)
     for table in list(soup.find_all("table")):

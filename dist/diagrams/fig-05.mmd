@@ -1,35 +1,30 @@
-%% title: 音频与麦克风路径
-%% 图4 音频与拾音的可选路径。分析示意，不代表全部链路可同时使用。
-%% 虚线输入需系统选择、权限与实机核对；实线表示所选输出路径。
-%% 来源 https://www.bluetooth.com/specifications/specs/hands-free-profile-1-10/
-%% 来源 https://developer.android.com/develop/connectivity/bluetooth/profiles
-%% 来源 https://developer.android.com/training/cars/apps/library/car-microphone
-%% 来源 https://support.avantree.com/hc/en-us/articles/50767188774937-How-to-Make-a-Call-by-Voice-Command
-%% 来源 https://carpuride.com/products/carpuride-w903-portable-smart-multimedia-dashboard-console-with-front-camera
-flowchart LR
-  subgraph INPUT["上行：请求音频从哪里来"]
-    PHONE_MIC["手机麦克风"]
-    DEVICE_MIC["外设或车机麦克风"]
-    HFP["HFP免提语音链路<br/>须由相容设备和系统选择"]
-    PROJECTION["投射或车内应用录音<br/>须权限和音频焦点"]
+%% title: 三种现有平台接入路径
+%% 分析示意；Gemini目标车载外设入口待核，不代表所有蓝牙套件兼容。
+%% 来源 https://support.apple.com/en-ie/guide/iphone/iph0aa8c80e6/27/ios/27
+%% 来源 https://support.google.com/gemini/answer/15456140?hl=en
+%% 来源 https://support.google.com/gemini/answer/16735982?hl=en
+%% 来源 https://www.atotodirect.com/en-gb/pages/manual-460-en
+flowchart TB
+  subgraph A["路径一：Apple Siri / Apple"]
+    A1["相容外设或车辆按键"] --> A2["iPhone 上的 Siri"]
+    A2 --> A3["Apple 支持的手机任务"]
   end
-  SESSION["当前助手 / App 音频会话<br/>确认实际输入和输出"]
-  PHONE_MIC -.-> SESSION
-  DEVICE_MIC -.-> HFP
-  DEVICE_MIC -.-> PROJECTION
-  HFP -.-> SESSION
-  PROJECTION -.-> SESSION
-  subgraph OUTPUT["下行：回复和媒体送往哪里"]
-    OWN["设备自带扬声器"]
-    BT["相容蓝牙接收端<br/>媒体可走A2DP，免提语音可走HFP"]
-    AUX["AUX输出接原车输入"]
-    FM["FM发射接原车收音机"]
-    CAR["原车音响<br/>需正确音源与音量"]
-    BT --> CAR
-    AUX --> CAR
-    FM --> CAR
+  subgraph B["路径二：Google Gemini / Google"]
+    B1["手机或相容入口<br/>目标车载套件待核"] -.-> B2["Android 手机的 Gemini"]
+    B2 --> B3["Google 支持的手机任务"]
   end
-  SESSION --> OWN
-  SESSION --> BT
-  SESSION --> AUX
-  SESSION --> FM
+  subgraph C["路径三：固定车内界面"]
+    C1{"采用哪种现有产品"}
+    C1 -->|"手机投射"| C2["Apple CarPlay<br/>Google Android Auto"]
+    C1 -->|"具体本机车机"| C3["ATOTO S84G209P / Aotule<br/>现有厂商应用与设置"]
+  end
+  SERVICE["账号、语言与联网条件<br/>按平台和具体任务需要"]
+  RESULT["导航、电话或媒体结果<br/>完成、失败、取消与恢复"]
+  SERVICE -.-> A2
+  SERVICE -.-> B2
+  SERVICE -.-> C2
+  SERVICE -.-> C3
+  A3 --> RESULT
+  B3 --> RESULT
+  C2 --> RESULT
+  C3 --> RESULT

@@ -1,18 +1,34 @@
-%% title: 硬件载体与安装选型
-%% 图3 按车辆条件选择载体。分析示意，是评估分支，不是采购推荐或保证兼容。
-%% 来源 https://carpuride.com/products/carpuride-w903-portable-smart-multimedia-dashboard-console-with-front-camera
-%% 来源 https://www.atotodirect.com/en-gb/pages/manual-460-en
-%% 来源 https://www.carlinkit.com/uhd6225
+%% title: 平台、具体产品与公司关系
+%% 分析示意；实线表示提供、实现或投射，虚线表示授权或具体系统集成条件。
+%% 来源 https://developer.apple.com/carplay/
+%% 来源 https://source.android.com/docs/setup/about
+%% 来源 https://source.android.com/docs/automotive/start/what_automotive
+%% 来源 https://www.atotodirect.com/en-gb/pages/about-atoto
 flowchart TB
-  START["先以手机直接使用作基线"] --> NEED{"需要新增什么入口"}
-  NEED -->|"方便触发与反馈"| VOICE["免屏外设 / 小音箱<br/>固定、供电、手机与音频适配"]
-  NEED -->|"持续可见的地图或状态"| SCREEN{"原车是否已有相容屏幕和协议"}
-  SCREEN -->|"已有原厂有线投射入口"| BOX["比较原车屏升级盒<br/>核对协议、USB与固件"]
-  SCREEN -->|"没有或不相容"| INSTALL{"是否接受拆换主机"}
-  INSTALL -->|"保留原车机"| PORTABLE["独立接收屏<br/>支架、车充与音频路径"]
-  INSTALL -->|"接受且车型可适配"| HEADUNIT["替换车机<br/>面框、线束、ACC、按键与原车功能"]
-  VOICE --> VALIDATE["按实际车型和手机验证完整任务<br/>安装、重连、通话、播报与恢复"]
-  BOX --> VALIDATE
-  PORTABLE --> VALIDATE
-  HEADUNIT --> VALIDATE
-  VALIDATE --> DECIDE["增量收益与支持成本是否成立<br/>允许保留手机方案或当前阶段"]
+  APPLE["Apple Inc."]
+  GOOGLE["Google LLC<br/>主导 AOSP 项目"]
+  AOTULE["Aotule 品牌方<br/>HK Auto Smart 全球运营销售"]
+  subgraph PHONE["手机与相应服务"]
+    SIRI["Apple Siri"]
+    GEMINI["Google Gemini"]
+    CP["Apple CarPlay"]
+    AA["Google Android Auto"]
+  end
+  subgraph CAR["车内设备与系统"]
+    SCREEN["相容投射接收设备<br/>逐品牌型号核对"]
+    AAOS["Android Automotive OS<br/>由车厂或设备商具体集成"]
+    ATOTO["ATOTO S8 Gen4 S84G209P<br/>具体 Android 替换车机"]
+  end
+  GAS["Google GAS<br/>授权应用与服务集合"]
+  OEM["车厂 / 系统伙伴"]
+  APPLE --> SIRI
+  APPLE --> CP
+  GOOGLE --> GEMINI
+  GOOGLE --> AA
+  GOOGLE --> AAOS
+  GOOGLE --> GAS
+  GAS -.->|"可选授权集成"| AAOS
+  OEM -.-> AAOS
+  CP -->|"投射交互"| SCREEN
+  AA -->|"投射交互"| SCREEN
+  AOTULE --> ATOTO

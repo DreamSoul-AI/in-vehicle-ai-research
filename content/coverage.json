@@ -5,9 +5,9 @@
     "tables": 1
   },
   "platforms": {
-    "textCharacters": 9165,
-    "diagrams": 4,
-    "tables": 6
+    "textCharacters": 13125,
+    "diagrams": 6,
+    "tables": 8
   },
   "products": {
     "textCharacters": 1708,
@@ -20,18 +20,18 @@
     "tables": 1
   },
   "business": {
-    "textCharacters": 2508,
+    "textCharacters": 2509,
     "diagrams": 1,
     "tables": 1
   },
   "next": {
-    "textCharacters": 1407,
+    "textCharacters": 1408,
     "diagrams": 1,
     "tables": 0
   },
   "sources": {
-    "textCharacters": 4002,
+    "textCharacters": 4637,
     "diagrams": 0,
-    "tables": 5
+    "tables": 6
   }
 }

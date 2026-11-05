@@ -1,8 +1,35 @@
-%% title: 任务验证与改进闭环
-flowchart TB
-  A[固定组合与任务] --> B[比较手机直接使用]
-  B --> C[记录完整成功与失败]
-  C --> D[定位连接 拾音 权限或执行原因]
-  D --> E[修正方案或缩小支持范围]
-  E --> F[在原条件复测并检查恢复]
-  F --> A
+%% title: 音频与麦克风路径
+%% 图4 音频与拾音的可选路径。分析示意，不代表全部链路可同时使用。
+%% 虚线输入需系统选择、权限与实机核对；实线表示所选输出路径。
+%% 来源 https://www.bluetooth.com/specifications/specs/hands-free-profile-1-10/
+%% 来源 https://developer.android.com/develop/connectivity/bluetooth/profiles
+%% 来源 https://developer.android.com/training/cars/apps/library/car-microphone
+%% 来源 https://support.avantree.com/hc/en-us/articles/50767188774937-How-to-Make-a-Call-by-Voice-Command
+%% 来源 https://carpuride.com/products/carpuride-w903-portable-smart-multimedia-dashboard-console-with-front-camera
+flowchart LR
+  subgraph INPUT["上行：请求音频从哪里来"]
+    PHONE_MIC["手机麦克风"]
+    DEVICE_MIC["外设或车机麦克风"]
+    HFP["HFP免提语音链路<br/>须由相容设备和系统选择"]
+    PROJECTION["投射或车内应用录音<br/>须权限和音频焦点"]
+  end
+  SESSION["当前助手 / App 音频会话<br/>确认实际输入和输出"]
+  PHONE_MIC -.-> SESSION
+  DEVICE_MIC -.-> HFP
+  DEVICE_MIC -.-> PROJECTION
+  HFP -.-> SESSION
+  PROJECTION -.-> SESSION
+  subgraph OUTPUT["下行：回复和媒体送往哪里"]
+    OWN["设备自带扬声器"]
+    BT["相容蓝牙接收端<br/>媒体可走A2DP，免提语音可走HFP"]
+    AUX["AUX输出接原车输入"]
+    FM["FM发射接原车收音机"]
+    CAR["原车音响<br/>需正确音源与音量"]
+    BT --> CAR
+    AUX --> CAR
+    FM --> CAR
+  end
+  SESSION --> OWN
+  SESSION --> BT
+  SESSION --> AUX
+  SESSION --> FM
