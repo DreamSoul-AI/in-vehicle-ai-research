@@ -60,7 +60,7 @@ Python 依赖版本见 `requirements-render.txt`。图形渲染使用固定 Merm
 市场采用ACEA 2026报告中的2024 EU27乘用车数据，约2.24亿汽柴油车辆由已取整占比推算；波兰采用2025 PZPM更新记录，非实时在用普查。缺口、适配和购买比例无调查数据，所有结果均标为可修改的假设演算。渠道默认不填写实际规模，360台/年为明确标记的示例。网页计算不代表需求、合作方经营实绩或销量预测。
 
 # 四、托管
-主要发布入口为 GitHub Pages。源码仓库位于 `DreamSoul-AI/in-vehicle-ai-research`，保持私有，Pages 网页公开提供研究内容。
+主要发布入口为 GitHub Pages。源码仓库 `DreamSoul-AI/in-vehicle-ai-research` 与 Pages 网页均已公开，可直接浏览研究内容和网站源码。
 
 `main` 保存完整网站源码，`gh-pages` 保存从 `dist/` 提取的静态发布文件，Pages 从 `gh-pages` 分支根目录提供网页。不需要安装依赖或构建，站内资源使用相对路径以适配项目 Pages 子路径。
 
